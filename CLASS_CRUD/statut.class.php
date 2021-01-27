@@ -21,11 +21,15 @@
 		}
 
 		function create($libStat){
-
+			global $db;
 			try {
-          $db->beginTransaction();
+				$query = "INSERT INTO statut (libStat) VALUES (?)";
 
+				$request = $db->prepare($query);
+				
+				$db->beginTransaction();
 
+				$request->execute(array($libStat));
 
 					$db->commit();
 					$request->closeCursor();

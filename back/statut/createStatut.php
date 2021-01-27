@@ -1,14 +1,14 @@
 <?php
-///////////////////////////////////////////////////////////////
-//
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
-//
-//  Script  : createStatut.php  (ETUD)   -   BLOGART21
-//
-///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+    //
+    //  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+    //
+    //  Script  : createStatut.php  (ETUD)   -   BLOGART21
+    //
+    ///////////////////////////////////////////////////////////////
 
-// Mode DEV
-require_once __DIR__ . '/../../util/utilErrOn.php';
+    // Mode DEV
+    require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
     // controle des saisies du formulaire
@@ -16,14 +16,22 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // insertion classe STATUT
 
-
+    require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+    $monStatut = new STATUT;
 
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // ajout effectif du statut
 
 
-
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if(!empty($_POST['libStat'])){
+            $monStatut->create($_POST['libStat']);
+            echo('Le statut ' . $_POST['libStat'] . ' a bien été créé.');
+        }
+    }else{
+        echo('libStat n\'a pas été renseignée');
+    }
 
 
 
@@ -51,7 +59,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       <fieldset>
         <legend class="legend1">Formulaire Statut...</legend>
 
-        <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
+        <!-- <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" /> -->
 
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
