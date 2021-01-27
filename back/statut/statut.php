@@ -15,7 +15,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // insertion classe STATUT
 
-
+require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+global $db;
+$monStatut = new STATUT;
 
 
 ?>
@@ -55,22 +57,27 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     </thead>
     <tbody>
 <?php
+
+        $allStatuts = $monStatut->get_AllStatuts();
+        foreach($allStatuts as $row){
+
 	// Appel méthode : tous les statuts en BDD
 
     // Boucle pour afficher
 	//foreach($all as $row) {
 ?>
         <tr>
-		<td><h4>&nbsp; <?php echo "ici idStat"; ?> &nbsp;</h4></td>
+		<td><h4>&nbsp; <?php echo $row['idStat']; ?> &nbsp;</h4></td>
 
-        <td>&nbsp; <?php echo "ici libStat"; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row['libStat']; ?> &nbsp;</td>
 
-		<td>&nbsp;<a href="./updateStatut.php?id=<?=1 ?>"><i>Modifier</i></a>&nbsp;
+		<td>&nbsp;<a href="./updateStatut.php?id=<?=$row['idStat'] ?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>
-		<td>&nbsp;<a href="./deleteStatut.php?id=<?=1 ?>"><i>Supprimer</i></a>&nbsp;
+		<td>&nbsp;<a href="./deleteStatut.php?id=<?=$row['idStat'] ?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
 <?php
+        }
 	//}	// End of foreach
 ?>
     </tbody>

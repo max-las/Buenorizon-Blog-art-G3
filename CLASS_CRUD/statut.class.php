@@ -5,12 +5,18 @@
 
 	class STATUT{
 		function get_1Statut($idStat){
-
+			global $db;
 
 		}
 
 		function get_AllStatuts(){
+			global $db;
 
+			$query = 'SELECT * FROM statut';
+			$result = $db->query($query);
+			$allStatuts = $result->fetchAll();
+
+			return($allStatuts);
 
 		}
 
