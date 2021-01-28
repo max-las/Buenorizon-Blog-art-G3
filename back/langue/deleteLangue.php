@@ -11,37 +11,27 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
-    // Init variables form
-    include __DIR__ . '/initStatut.php';
-
     // controle des saisies du formulaire
 
 
     // insertion classe STATUT
-    require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
-    $monStatut = new STATUT;
+
+
 
     // Ctrl CIR
-    require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
-    $monUser = new USER;
+
+
+   // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
+   // suppression effective du statut
 
 
 
-    // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-    // suppression effective du statut
-    if($_SERVER["REQUEST_METHOD"] == 'POST'){
-        $idStat = $_POST["id"];
-        $users = get_AllUsersByStat($idStat);
-        if(!$users){
-            $monStatut->delete($idStat);
-        }
-    }
 
 
-    $resultStatut = $monStatut->get_1Statut($_GET['id']);
-    if($resultStatut){
-        $libStat = $resultStatut["libStat"];
-    }
+
+
+    // Init variables form
+    include __DIR__ . '/initStatut.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -110,11 +100,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     </form>
     <br>
 <?php
-
-if($users){
-    echo '<p style="color:red;">Impossible de supprimer le statut '.$libStat.' car il est référencé par les utilisateurs suivant :';
-}
-
 require_once __DIR__ . '/footerStatut.php';
 
 require_once __DIR__ . '/footer.php';

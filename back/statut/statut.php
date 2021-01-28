@@ -16,9 +16,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 // insertion classe STATUT
 
 require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
-global $db;
-$monStatut = new STATUT;
 
+global $db;
+
+$monStatut = new STATUT;
 
 ?>
 <!DOCTYPE html>
