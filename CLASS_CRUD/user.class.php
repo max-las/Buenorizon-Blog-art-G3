@@ -56,7 +56,7 @@
 	
 			$request->execute(array($idStat));
 	
-			$result = $request->fetch();
+			$result = $request->fetchAll();
 	
 			$request->closeCursor();
 			return ($result);
@@ -81,9 +81,13 @@
 		function create($pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat){
 			global $db;
 			try {
-          $db->beginTransaction();
+					$query = "INSERT INTO user (pseudoUser, passUser, nomUser, prenomUser, eMailUser, idStat) VALUES (?, ?, ?, ?, ?, ?)";
 
+					$db->beginTransaction();
 
+					$request = $db->prepare($query);
+
+					$request->execute(array($pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat));
 
 					$db->commit();
 					$request->closeCursor();
@@ -97,13 +101,17 @@
 
 		function update($pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat){
 			global $db;
-      try {
-          $db->beginTransaction();
+			try {
+				$query = "UPDATE user SET passUser = ?, nomUser = ?, prenomUser = ?, emailUser = ?, idStat = ? WHERE pseudoUser = ?";
 
+				$db->beginTransaction();
 
+				$request = $db->prepare($query);
 
-					$db->commit();
-					$request->closeCursor();
+				$request->execute(array($passUser, $nomUser, $prenomUser, $emailUser, $idStat, $pseudoUser));
+
+				$db->commit();
+				$request->closeCursor();
 			}
 			catch (PDOException $e) {
 					die('Erreur update USER : ' . $e->getMessage());
@@ -114,12 +122,17 @@
 
 		function delete($pseudoUser, $passUser){
 			global $db;
-      try {
-          $db->beginTransaction();
+			try {
+				$query = "DELETE FROM user WHERE pseudoUser = ? AND passUser = ?";
 
+				$db->beginTransaction();
 
-					$db->commit();
-					$request->closeCursor();
+				$request = $db->prepare($query);
+
+				$request->execute(array($pseudoUser, $passUser));
+
+				$db->commit();
+				$request->closeCursor();
 			}
 			catch (PDOException $e) {
 					die('Erreur delete USER : ' . $e->getMessage());

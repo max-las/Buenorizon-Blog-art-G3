@@ -13,6 +13,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // Init variables form
     include __DIR__ . '/initStatut.php';
+    $supprImpossible = false;
+    if(!isset($_GET['id'])) $_GET['id'] = '';
 
     // controle des saisies du formulaire
 
@@ -31,9 +33,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // suppression effective du statut
     if($_SERVER["REQUEST_METHOD"] == 'POST'){
         $idStat = $_POST["id"];
-        $users = get_AllUsersByStat($idStat);
+        $users = $monUser->get_AllUsersByStat($idStat);
         if(!$users){
             $monStatut->delete($idStat);
+        }else{
+            $supprImpossible = true;
         }
     }
 
@@ -111,8 +115,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <br>
 <?php
 
-if($users){
-    echo '<p style="color:red;">Impossible de supprimer le statut '.$libStat.' car il est référencé par les utilisateurs suivant :';
+if($supprImpossible){
+    echo '<p style="color:red;">Impossible de supprimer le statut '.$libStat.' car il est référencé par les utilisateurs suivant :</p>';
+    echo '<ul>';
+    foreach($users as $value){
+        echo '<li>'.$value["pseudoUser"].'</li>';
+    }
+    echo '</ul>';
 }
 
 require_once __DIR__ . '/footerStatut.php';

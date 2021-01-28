@@ -22,6 +22,16 @@
 		function get_1LangueByPays($numLang){
 			global $db;
 
+			$query = 'SELECT * FROM langue INNER JOIN pays ON langue.numPays = pays.numPays WHERE numLang = ?';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numLang));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return ($result);
 		}
 
 		function get_AllLangues(){
@@ -40,6 +50,16 @@
 		function get_AllLanguesByPays(){
 			global $db;
 
+			$query = 'SELECT * FROM langue INNER JOIN pays ON langue.numPays = pays.numPays';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numLang));
+	
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
 		}
 
 		function create($numLang, $lib1Lang, $lib2Lang, $numPays){
@@ -104,3 +124,7 @@
 			}
 		}
 	}	// End of class
+
+	$langue = new LANGUE;
+	$test = $langue->get_1LangueByPays("ALLE01");
+	var_dump($test);
