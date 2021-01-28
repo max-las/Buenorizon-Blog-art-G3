@@ -41,10 +41,10 @@
 
 			$request = $db->query($query);
 		
-			$allLangues = $request->fetchAll();
+			$result = $request->fetchAll();
 	
 			$request->closeCursor();
-			return ($allLangues);
+			return ($result);
 		}
 
 		function get_AllLanguesByPays(){
@@ -54,7 +54,7 @@
 
 			$request = $db->prepare($query);
 	
-			$request->execute(array($numLang));
+			$request->execute();
 	
 			$result = $request->fetchAll();
 	
@@ -109,12 +109,16 @@
 		function delete($numLang){
 			global $db;
 			try {
-          $db->beginTransaction();
+				$query = "DELETE FROM langue WHERE numLang = ?";
 
+          		$db->beginTransaction();
 
+				$request = $db->prepare($query);
 
-					$db->commit();
-					$request->closeCursor();
+				$request->execute(array($numLang));
+
+				$db->commit();
+				$request->closeCursor();
 
 			}
 			catch (PDOException $e) {
@@ -124,7 +128,3 @@
 			}
 		}
 	}	// End of class
-
-	$langue = new LANGUE;
-	$test = $langue->get_1LangueByPays("ALLE01");
-	var_dump($test);

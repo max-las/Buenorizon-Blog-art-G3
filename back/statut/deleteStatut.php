@@ -14,6 +14,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // Init variables form
     include __DIR__ . '/initStatut.php';
     $supprImpossible = false;
+    $deleted = false;
     if(!isset($_GET['id'])) $_GET['id'] = '';
 
     // controle des saisies du formulaire
@@ -33,16 +34,20 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // suppression effective du statut
     if($_SERVER["REQUEST_METHOD"] == 'POST'){
         $idStat = $_POST["id"];
+        $resultStatut = $monStatut->get_1Statut($idStat);
+
         $users = $monUser->get_AllUsersByStat($idStat);
         if(!$users){
             $monStatut->delete($idStat);
+            $deleted = true;
         }else{
             $supprImpossible = true;
         }
+    }else{
+        $idStat = $_GET["id"];
+        $resultStatut = $monStatut->get_1Statut($idStat);
     }
-
-
-    $resultStatut = $monStatut->get_1Statut($_GET['id']);
+    
     if($resultStatut){
         $libStat = $resultStatut["libStat"];
     }
@@ -97,7 +102,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" disabled="disabled" />
+            <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $deleted ? '' : $libStat; ?>" disabled="disabled" />
         </div>
 
         <div class="control-group">
@@ -122,6 +127,8 @@ if($supprImpossible){
         echo '<li>'.$value["pseudoUser"].'</li>';
     }
     echo '</ul>';
+} elseif($deleted) {
+    echo '<p style="color:green;">La langue "'.$libStat.'" a été supprimée.</p>';
 }
 
 require_once __DIR__ . '/footerStatut.php';
