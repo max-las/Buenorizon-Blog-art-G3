@@ -133,7 +133,7 @@ if($supprImpossible){
     }
     echo '</ul>';
 } elseif($deleted) {
-    echo '<p style="color:green;">La langue "'.$libStat.'" a été supprimée.</p>';
+    echo '<p style="color:green;">Le statut "'.$libStat.'" a été supprimé.</p>';
 }
 
 require_once __DIR__ . '/footerStatut.php';
