@@ -89,7 +89,7 @@
 			try {
 				$db->beginTransaction();
 
-				$query = "UPDATE langue SET lib1Lang = ?, lib2Lang2 = ?, numPays = ? WHERE numLang = ?";
+				$query = "UPDATE langue SET lib1Lang = ?, lib2Lang = ?, numPays = ? WHERE numLang = ?";
 
 				$request = $db->prepare($query);
 
