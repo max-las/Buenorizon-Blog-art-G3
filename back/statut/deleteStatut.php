@@ -33,6 +33,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // suppression effective du statut
     if($_SERVER["REQUEST_METHOD"] == 'POST'){
+        if($_POST["Submit"] === "Annuler"){
+            header("Location: ./statut.php");
+            die();
+        }
+
         $idStat = $_POST["id"];
         $resultStatut = $monStatut->get_1Statut($idStat);
 
@@ -93,7 +98,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
 
-?>    <form method="post" action="./deleteStatut.php" enctype="multipart/form-data">
+?>    <form method="post" action="<?= "./deleteStatut.php?id=".$idStat; ?>" enctype="multipart/form-data">
 
       <fieldset>
         <legend class="legend1">Formulaire Statut...</legend>

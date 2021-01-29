@@ -32,6 +32,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // suppression effective du statut
     if($_SERVER["REQUEST_METHOD"] == 'POST'){
+        if($_POST["Submit"] === "Annuler"){
+            header("Location: ./langue.php");
+            die();
+        }
+
         $numLang = $_POST["id"];
         $resultLangue = $maLangue->get_1LangueByPays($numLang);
 
@@ -99,7 +104,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
 
-?>    <form method="post" action="./deleteLangue.php" enctype="multipart/form-data">
+?>    <form method="post" action="<?= "./deleteLangue.php?id=".$numLang; ?>" enctype="multipart/form-data">
 
       <fieldset>
         <legend class="legend1">Formulaire Langue...</legend>
