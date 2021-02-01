@@ -57,6 +57,7 @@ $class = new MEMBRE;
         </table>
 
         <?php
+        require_once __DIR__ . '/footerMembre.php';
         require_once __DIR__ . '/footer.php';
         ?>
     </div>
