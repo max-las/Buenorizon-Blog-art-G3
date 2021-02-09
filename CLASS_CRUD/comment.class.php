@@ -5,18 +5,25 @@
 
 	class COMMENT{
 		function get_1Comment($numSeqCom, $numArt){
-			global $db;
+			try{
+				global $db;
 
-			$query = 'SELECT * FROM comment WHERE $numSeqCom = ?, numArt = ?';
+				$query = 'SELECT * FROM comment WHERE (numSeqCom = ? AND numArt = ?)';
 
-			$request = $db->prepare($query);
-	
-			$request->execute(array($numSeqCom, $numArt));
-	
-			$result = $request->fetch();
-	
-			$request->closeCursor();
-			return ($result);
+				$request = $db->prepare($query);
+		
+				$request->execute(array($numSeqCom, $numArt));
+		
+				$result = $request->fetch();
+		
+				$request->closeCursor();
+				return ($result);
+			}
+			catch (PDOException $e) {
+				die('Erreur get_1Comment COMMENT : ' . $e->getMessage());
+				$db->rollBack();
+				$request->closeCursor();
+			}
 		}
 
 		function get_AllComments(){
@@ -74,11 +81,11 @@
 			try {
 				$db->beginTransaction();
 
-				$query = "UPDATE comment SET dtCreCom = ?, libCom = ?, attModOk = ?, affComOK = ?, notifComKOAff = ? WHERE numSeqCom = ?, numArt = ?";
+				$query = "UPDATE comment SET dtCreCom = ?, libCom = ?, attModOk = ?, affComOK = ?, notifComKOAff = ? WHERE (numSeqCom = ? AND numArt = ?)";
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($numSeqCom, $numArt, $dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff));
+				$request->execute(array($dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff, $numSeqCom, $numArt));
 
 				$db->commit();
 				$request->closeCursor();
@@ -93,7 +100,7 @@
 		function delete($numSeqCom, $numArt){
 			global $db;
 			try {
-				$query = "DELETE FROM comment WHERE numSeqCom = ?, numArt = ?";
+				$query = "DELETE FROM comment WHERE (numSeqCom = ? AND numArt = ?)";
 
           		$db->beginTransaction();
 

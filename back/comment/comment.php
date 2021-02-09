@@ -55,10 +55,10 @@ $class = new COMMENT;
                         <td><?= $row['attModOK'] ?></td>
                         <td><?= $row['affComOK'] ?></td>
                         <td><?= $row['notifComKOAff'] ?></td>
-                        <td>&nbsp;<a href="./updateComment.php?numSeqCom=<?= $row['numSeqCom'] ?>&numArt=<?= $row['numArt'] ?>"><i>Modifier</i></a>&nbsp;
+                        <td>&nbsp;<a href="./updateComment.php?numSeqCom=<?= $row['numSeqCom'] ?>&numArt=<?= $row['numArt'] ?>&date=<?= $row['dtCreCom'] ?>"><i>Modifier</i></a>&nbsp;
                         <br />
                         </td>
-                        <td>&nbsp;<a href="./deleteComment.php?numSeqCom=<?= $row['numSeqCom'] ?>&numArt=<?= $row['numArt'] ?>"><i>Supprimer</i></a>&nbsp;
+                        <td>&nbsp;<a href="./deleteComment.php?numSeqCom=<?= $row['numSeqCom'] ?>&numArt=<?= $row['numArt'] ?>&date=<?= $row['dtCreCom'] ?>"><i>Supprimer</i></a>&nbsp;
                         <br />
                         </td>
                     </tr>

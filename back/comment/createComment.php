@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Membre</title>
+    <title>Admin - Gestion du CRUD Commentaire</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -38,8 +38,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 </head>
 
 <body class="ui container">
-    <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
-    <h2>Ajout d'un Membre</h2>
+    <h1>BLOGART21 Admin - Gestion du CRUD Commentaire</h1>
+    <h2>Ajout d'un Commentaire</h2>
     <br>
     <form method="post" action=".\createComment.php" class="ui form">
         <div class="field">
