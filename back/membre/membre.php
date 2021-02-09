@@ -36,6 +36,7 @@ $class = new MEMBRE;
                     <th>Date de création</th>
                     <th>Souvenir ?</th>
                     <th>Accord ?</th>
+                    <th colspan="2">&nbsp;Action&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,12 @@ $class = new MEMBRE;
                         <td><?= $row['dtCreaMemb'] ?></td>
                         <td><?= ($row['souvenirMemb']) ? 'oui' :  'non' ?></td>
                         <td><?= ($row['accordMemb']) ? 'oui' :  'non' ?></td>
+                        <td>&nbsp;<a href="./updateMembre.php?id=<?= $row['numMemb'] ?>&date=<?= $row['dtCreaMemb'] ?>"><i>Modifier</i></a>&nbsp;
+                        <br />
+                    </td>
+                    <td>&nbsp;<a href="./deleteMembre.php?id=<?= $row['numMemb'] ?>"><i>Supprimer</i></a>&nbsp;
+                        <br />
+                    </td>
                     </tr>
                 <?php } ?>
             </tbody>

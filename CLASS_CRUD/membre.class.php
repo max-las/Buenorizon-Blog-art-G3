@@ -115,11 +115,11 @@ class MEMBRE{
         try {
             $db->beginTransaction();
 
-            $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
+            $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
 
             $request = $db->prepare($query);
 
-            $request->execute(array($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb));
+            $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb, $numMemb));
 
             $db->commit();
             $request->closeCursor();
