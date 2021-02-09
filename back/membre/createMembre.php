@@ -85,10 +85,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <button class="ui button" type="submit">Valider</button>
     </form>
     <?php
+    if($created) {
+        echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été créé.</p>';
+    }
+
     require_once __DIR__ . '/footerMembre.php';
 
     require_once __DIR__ . '/footer.php';
     ?>
 </body>
-
 </html>
