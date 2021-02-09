@@ -26,15 +26,11 @@ require_once __DIR__ . '/util/utilErrOn.php';
 					margin-bottom: 0px;
 					margin-left: 60px;
 				}
-        span {
-            background-color: yellow;
-        }
     </style>
 </head>
 <body>
 	<br />
 	<h1>Panneau d'Admin : Gestion des CRUD - BLOGART21</h1>
-	<small><span><i>CRUD fini et valide (reste à tester et à intégrer)</i></span></small>
 	<br /><hr />
 	<div>
 	Gestion du CRUD :
@@ -68,7 +64,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
 	<a href="./BACK/motclearticle/motclearticle.php">Mot-clé Article </a>
 	<br /><br />
 	Gestion du CRUD :
-	<a href="./BACK/statut/statut.php"><span>Statut (*)</span></a>
+	<a href="./BACK/statut/statut.php">Statut </a>
 	<br /><br />
 	Gestion du CRUD :
 	<a href="./BACK/thematique/thematique.php">Thématique </a>

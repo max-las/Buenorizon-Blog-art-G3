@@ -32,6 +32,34 @@
 			return ($result);
 		}
 
+		function get_AllAnglesWithLang(){
+			global $db;
+
+			$query = 'SELECT * FROM angle INNER JOIN langue ON angle.numLang = langue.numLang';
+
+			$request = $db->query($query);
+		
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
+		function get_1AngleWithLang($numAngl){
+			global $db;
+
+			$query = 'SELECT * FROM angle INNER JOIN langue ON angle.numLang = langue.numLang WHERE numAngl = ?';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numAngl));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
 		function get_AllAnglesByLang($numLang){
 			global $db;
 

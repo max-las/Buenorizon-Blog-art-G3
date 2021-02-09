@@ -4,23 +4,22 @@
     require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // Init variables form
-    include __DIR__ . '/initLangue.php';
+    include __DIR__ . '/initAngle.php';
     $created = false;
-
 
     // controle des saisies du formulaire
 
 
     // insertion classe
+    require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
+    require_once __DIR__ . '/../../CLASS_CRUD/getNextNumAngl.php';
+    $monAngle = new ANGLE;
+
     require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
-    require_once __DIR__ . '/../../CLASS_CRUD/getNextNumLang.php';
     $maLangue = new LANGUE;
 
-    require_once __DIR__ . '/../../CLASS_CRUD/pays.class.php';
-    $monPays = new PAYS;
-
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-    // ajout effectif de la langue
+    // ajout effectif de l'angle
 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -29,22 +28,17 @@
             die();
         }
 
-        if(!empty($_POST['lib1Lang']) && !empty($_POST['lib2Lang']) && !empty($_POST['numPays'])){
-            $maLangue->create(getNextNumLang($_POST['numPays']), $_POST['lib1Lang'], $_POST['lib2Lang'], $_POST['numPays']);
+        if(!empty($_POST['libAngl']) && !empty($_POST['numLang'])){
+            $monAngle->create(getNextNumAngl($_POST['numLang']), $_POST['libAngl'], $_POST['numLang']);
             $created = true;
         }
     }
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Langue</title>
+    <title>Admin - Gestion du CRUD Angle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -52,29 +46,26 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Ajout d'une langue</h2>
+    <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
+    <h2>Ajout d'un angle</h2>
 
-    <form method="post" action="./createLangue.php" enctype="multipart/form-data">
+    <form method="post" action="./createAngle.php" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Formulaire Langue...</legend>
+        <legend class="legend1">Formulaire Angle...</legend>
 
         <!-- <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" /> -->
 
         <div class="control-group">
-            <label class="control-label" for="lib1Lang"><b>Désignation :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" autofocus/><br><br>
+            <label class="control-label" for="libAngl"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" autofocus/><br><br>
 
-            <label class="control-label" for="lib2Lang"><b>Dénomination :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80"/><br><br>
-
-            <label class="control-label" for="numPays"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <select name="numPays" id="numPays"> 
+            <label class="control-label" for="numLang"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <select name="numLang" id="numLang"> 
             <?php
-                $allPays = $monPays->get_AllPays();
-                foreach($allPays as $row){
-                    echo '<option value="'.$row["numPays"].'">'.$row["frPays"].'</option>';
+                $allLangues = $maLangue->get_AllLangues();
+                foreach($allLangues as $row){
+                    echo '<option value="'.$row["numLang"].'">'.$row["lib1Lang"].'</option>';
                 }
             ?>
             </select>
@@ -95,10 +86,10 @@
 <?php
 
 if($created) {
-    echo '<p style="color:green;">La langue ' . $_POST['lib2Lang'] . ' a bien été créée.</p>';
+    echo '<p style="color:green;">L\'angle "'.$_POST['libAngl'].'" a été créé.</p>';
 }
 
-require_once __DIR__ . '/footerLangue.php';
+require_once __DIR__ . '/footerAngle.php';
 
 require_once __DIR__ . '/footer.php';
 ?>

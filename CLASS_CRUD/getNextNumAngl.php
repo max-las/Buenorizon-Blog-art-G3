@@ -1,4 +1,4 @@
-<?php
+<?
 ///////////////////////////////////////////////////////////////
 //
 //  Méthodes fournies - 23 Janvier 2021
@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/util/utilErrOn.php';
+require_once __DIR__ . '/../util/utilErrOn.php';
 
     function getNextNumAngl($numLang) {
 
@@ -26,32 +26,42 @@ require_once __DIR__ . '/util/utilErrOn.php';
           $tuple = $result->fetch();
           $numLang = $tuple["numLang"];
           if (is_null($numLang)) {    // New lang dans ANGLE
-              $numSeq2Angl = 0;
+              // Récup dernière PK utilisée
+              $requete = "SELECT MAX(numAngl) AS numAngl FROM ANGLE;";
+              $result = $db->query($requete);
+              $tuple = $result->fetch();
+              $numAngl = $tuple["numAngl"];
+
+              $numAnglSelect = (int)substr($numAngl, 4, 2);
+              // No séquence suivant LANGUE
+              $numSeq1Angl = $numAnglSelect + 1;
+              // Init no séquence ANGLE pour nouvelle lang
+              $numSeq2Angl = 1;
           }
-          // No séquence suivant LANGUE
-          $numSeq2Angl++;
-          // No séquence ANGLE
-          $numSeq1Angl = 0;
+          else {
+              // Récup dernière PK pour FK sélectionnée
+              $requete = "SELECT MAX(numAngl) AS numAngl FROM ANGLE WHERE numLang LIKE '$parmNumLang' ;";
+              $result = $db->query($requete);
+              $tuple = $result->fetch();
+              $numAngl = $tuple["numAngl"];
 
-          // No séquence ANGLE : Récup dernière PK utilisée
-          $requete = "SELECT MAX(numAngl) AS numAngl FROM ANGLE;";
-
-          $result = $db->query($requete);
-          $tuple = $result->fetch();
-          $numAngl = $tuple["numAngl"];
-
-          $numAnglSelect = (int)substr($numAngl, 4, 2);
-          $numSeq1Angl = $numAnglSelect + 1;
+              // No séquence actuel LANGUE
+              $numSeq1Angl = (int)substr($numAngl, 4, 2);
+              // No séquence actuel LANGUE
+              $numSeq2Angl = (int)substr($numAngl, 6, 2);
+              // No séquence suivant ANGLE
+              $numSeq2Angl++;
+          }
 
           $libAnglSelect = "ANGL";
-          // PK reconstituée : ANGL + no seq angle
+          // PK reconstituée : ANGL + no seq langue
           if ($numSeq1Angl < 10) {
               $numAngl = $libAnglSelect . "0" . $numSeq1Angl;
           }
           else {
               $numAngl = $libAnglSelect . $numSeq1Angl;
           }
-          // PK reconstituée : ANGL + no seq angle + no seq langue
+          // PK reconstituée : ANGL + no seq langue + no seq angle
           if ($numSeq2Angl < 10) {
               $numAngl = $numAngl . "0" . $numSeq2Angl;
           }
