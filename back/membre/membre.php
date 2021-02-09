@@ -1,38 +1,66 @@
 <?php
-/////////////////////////////////////////////////////
-//
-//  CRUD MEMBRE (PDO) - Modifié - 6 Décembre 2020
-//
-//  Script  : membre.php  (ETUD)   -   BLOGART21
-//
-/////////////////////////////////////////////////////
-
-// Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
-
+require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+$class = new MEMBRE;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8" />
     <title>Admin - Gestion du CRUD Membre</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
+
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
+    <div class="ui container">
+        <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
+        <hr>
+        <h2><a href="./createMembre.php">Nouveau membre</a></h2>
+        <hr>
+        <h2>Tous les membres</h2>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Pseudo</th>
+                    <th>Mot de passe</th>
+                    <th>Email</th>
+                    <th>Date de création</th>
+                    <th>Souvenir ?</th>
+                    <th>Accord ?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $allMembres = $class->get_AllMembres();
+                foreach ($allMembres as $row) { ?>
+                    <tr>
+                        <td><?= $row['numMemb'] ?></td>
+                        <td><?= $row['prenomMemb'] ?></td>
+                        <td><?= $row['nomMemb'] ?></td>
+                        <td><?= $row['pseudoMemb'] ?></td>
+                        <td><?= $row['passMemb'] ?></td>
+                        <td><?= $row['eMailMemb'] ?></td>
+                        <td><?= $row['dtCreaMemb'] ?></td>
+                        <td><?= ($row['souvenirMemb']) ? 'oui' :  'non' ?></td>
+                        <td><?= ($row['accordMemb']) ? 'oui' :  'non' ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
 
-    <br><br>
-
-    <h2>En construction :-)</h2>
-
-    <br><br>
-
-<?php
-require_once __DIR__ . '/footer.php';
-?>
+        <?php
+        require_once __DIR__ . '/footerMembre.php';
+        require_once __DIR__ . '/footer.php';
+        ?>
+    </div>
 </body>
+
 </html>
