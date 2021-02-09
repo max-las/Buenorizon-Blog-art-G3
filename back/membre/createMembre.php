@@ -11,6 +11,25 @@ $class = new MEMBRE;
 // }else{
 //     echo('libStat n\'a pas été renseignée');
 // }
+
+if(isset($_POST['souvenirMemb'])){
+    $souvenirMemb = 1;
+}else{
+    $souvenirMemb = 0;
+}
+if(isset($_POST['accordMemb'])){
+    $accordMemb = 1;
+}else{
+    $accordMemb = 0;
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) && !empty($_POST['pseudoMemb']) && !empty($_POST['passMemb']) && !empty($_POST['eMailMemb']) && !empty($_POST['souvenirMemb']) && !empty($_POST['accordMemb'])){
+        $class->create($_POST['prenomMemb'],$_POST['nomMemb'],$_POST['pseudoMemb'],$_POST['passMemb'],$_POST['eMailMemb'],date('Y-m-d H:i:s'),$souvenirMemb, $accordMemb);
+        $created = true;
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,7 +48,7 @@ $class = new MEMBRE;
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
     <h2>Ajout d'un Membre</h2>
     <br>
-    <form action="post" class="ui form">
+    <form method="post" action=".\createMembre.php" class="ui form">
         <div class="field">
             <label>Prénom du membre</label>
             <input type="text" name="prenomMemb" placeholder="Prénom">
