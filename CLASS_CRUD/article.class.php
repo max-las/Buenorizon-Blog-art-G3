@@ -3,7 +3,7 @@
 
 	require_once __DIR__ . '../../CONNECT/database.php';
 
-	class ANGLE{
+	class ARTICLE{
 		function get_1Article($numArt){
 			global $db;
 
