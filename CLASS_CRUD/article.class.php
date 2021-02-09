@@ -7,7 +7,7 @@
 		function get_1Article($numArt){
 			global $db;
 
-			$query = 'SELECT * FROM angle WHERE numArt = ?';
+			$query = 'SELECT * FROM article WHERE numArt = ?';
 
 			$request = $db->prepare($query);
 	
