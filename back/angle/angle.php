@@ -8,10 +8,11 @@
 /////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
+require_once __DIR__ . '/../../util/utilErrOn.php';
 
 global $db;
 
+require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
 $monAngle = new ANGLE;
 
 ?>
