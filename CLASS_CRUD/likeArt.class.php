@@ -7,7 +7,7 @@
 		function get_1LikeArt($numMemb, $numArt){
 			global $db;
 
-			$query = 'SELECT * FROM likeart WHERE numMemb = ?, numArt = ?';
+			$query = 'SELECT * FROM likeart WHERE (numMemb = ? AND numArt = ?)';
 
 			$request = $db->prepare($query);
 	
@@ -74,11 +74,11 @@
 			try {
 				$db->beginTransaction();
 
-				$query = "UPDATE likeart SET likeA = ? WHERE numMemb = ?, numArt = ?";
+				$query = "UPDATE likeart SET likeA = ? WHERE (numMemb = ? AND numArt = ?)";
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($numMemb, $numArt, $likeA));
+				$request->execute(array($likeA, $numMemb, $numArt));
 
 				$db->commit();
 				$request->closeCursor();
@@ -93,7 +93,7 @@
 		function delete($numMemb, $numArt){
 			global $db;
 			try {
-				$query = "DELETE FROM likeart WHERE numMemb = ?, numArt = ?";
+				$query = "DELETE FROM likeart WHERE (numMemb = ? AND numArt = ?)";
 
           		$db->beginTransaction();
 
