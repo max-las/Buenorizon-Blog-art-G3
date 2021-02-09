@@ -58,41 +58,44 @@
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
     <h2>Ajout d'un angle</h2>
 
-    <form method="post" action=".\createMembre.php" class="ui form">
-        <div class="field">
-            <label>Prénom du membre</label>
-            <input type="text" name="prenomMemb" placeholder="Prénom">
+    <form method="post" action="<?= "./updateAngle.php?id=".$numAngl; ?>" enctype="multipart/form-data">
+
+      <fieldset>
+        <legend class="legend1">Formulaire Angle...</legend>
+
+        <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
+
+        <div class="control-group">
+            <label class="control-label" for="libAngl"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" value="<?= isset($libAngl) ? $libAngl : ''; ?>"/><br><br>
+
+            <label class="control-label" for="numLang"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <select name="numLang" id="numLang"> 
+            <?php
+                $allLangues = $maLangue->get_AllLangues();
+                foreach($allLangues as $row){
+                    if($row["numLang"] === $numLang){
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                    }
+                    echo '<option value="'.$row["numLang"].'" '.$selected.'>'.$row["lib1Lang"].'</option>';
+                }
+            ?>
+            </select>
         </div>
-        <div class="field">
-            <label>Nom du membre</label>
-            <input type="text" name="nomMemb" placeholder="Nom">
-        </div>
-        <div class="field">
-            <label>Pseudo du membre</label>
-            <input type="text" name="pseudoMemb" placeholder="Pseudo">
-        </div>
-        <div class="field">
-            <label>Mot de passe du membre</label>
-            <input type="text" name="passMemb" placeholder="Mot de passe">
-        </div>
-        <div class="field">
-            <label>Email du membre</label>
-            <input type="text" name="eMailMemb" placeholder="Email">
-        </div>
-        <div class="field">
-            <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" name="souvenirMemb">
-                <label>Se souvenir ?</label>
+
+        <div class="control-group">
+            <div class="controls">
+                <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <br>
             </div>
         </div>
-        <div class="field">
-            <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" name="accordMemb">
-                <label>Accorder les conditions ?</label>
-            </div>
-        </div>
-        <br>
-        <button class="ui button" type="submit">Valider</button>
+      </fieldset>
     </form>
 <?php
 

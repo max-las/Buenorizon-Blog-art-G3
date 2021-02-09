@@ -35,13 +35,13 @@
                 $accordMemb = 0;
             }
 
-            $class->update($numMemb, $_POST['prenomMemb'], $_POST['nomMemb'], $_POST['pseudoMemb'], $_POST['passMemb'], $_POST['eMailMemb'], $dtCreaMemb, $souvenirMemb, $accordMemb);
+            $class->update($numMemb, $_POST['prenomMemb'], $_POST['nomMemb'], $_POST['pseudoMemb'], $_POST['passMemb'], $_POST['eMailMemb'], $date, $souvenirMemb, $accordMemb);
             $updated = true;
         }
 
     }else{
         $numMemb = $_GET["id"];
-        $dtCreaMemb = $_GET["date"];
+        $dtCreaMemb = $_GET['date'];
     }
 
     $resultMembre = $class->get_1Membre($numMemb);
