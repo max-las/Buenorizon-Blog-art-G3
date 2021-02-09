@@ -4,7 +4,7 @@
     require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // Init variables form
-    include __DIR__ . '/initLangue.php';
+    include __DIR__ . '/initAngle.php';
     $updated = false;
     if(!isset($_GET['id'])) $_GET['id'] = '';
 
@@ -12,35 +12,34 @@
 
 
     // insertion classe
+    require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
+    $monAngle = new ANGLE;
+
     require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
     $maLangue = new LANGUE;
 
-    require_once __DIR__ . '/../../CLASS_CRUD/pays.class.php';
-    $monPays = new PAYS;
-
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-    // ajout effectif de la langue
+    // ajout effectif de l'angle
 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $numLang = $_POST["id"];
+        $numAngl = $_POST["id"];
 
-        if(isset($_POST['lib1Lang']) && isset($_POST['lib2Lang']) && isset($_POST['numPays'])){
-            $maLangue->update($numLang, $_POST['lib1Lang'], $_POST['lib2Lang'], $_POST['numPays']);
+        if(isset($_POST['libAngl']) && isset($_POST['numLang'])){
+            $monAngle->update($numAngl, $_POST['libAngl'], $_POST['numLang']);
             $updated = true;
         }
 
     }else{
-        $numLang = $_GET["id"];
+        $numAngl = $_GET["id"];
     }
 
-    $resultLangue = $maLangue->get_1LangueByPays($numLang);
+    $resultAngle = $monAngle->get_1AngleWithLang($numAngl);
     
-    if($resultLangue){
-        $lib1Lang = $resultLangue["lib1Lang"];
-        $lib2Lang = $resultLangue["lib2Lang"];
-        $numPays = $resultLangue["numPays"];
-        $frPays = $resultLangue["frPays"];
+    if($resultAngle){
+        $libAngl = $resultAngle["libAngl"];
+        $numLang = $resultAngle["numLang"];
+        $lib1Lang = $resultAngle["lib1Lang"];
     }
 
 ?>
@@ -48,7 +47,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Langue</title>
+    <title>Admin - Gestion du CRUD Angle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -56,34 +55,31 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Ajout d'une langue</h2>
+    <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
+    <h2>Ajout d'un angle</h2>
 
-    <form method="post" action="<?= "./updateLangue.php?id=".$numLang; ?>" enctype="multipart/form-data">
+    <form method="post" action="<?= "./updateAngle.php?id=".$numAngl; ?>" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Formulaire Langue...</legend>
+        <legend class="legend1">Formulaire Angle...</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="lib1Lang"><b>Désignation :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= isset($lib1Lang) ? $lib1Lang : ''; ?>"/><br><br>
+            <label class="control-label" for="libAngl"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" value="<?= isset($libAngl) ? $libAngl : ''; ?>"/><br><br>
 
-            <label class="control-label" for="lib2Lang"><b>Dénomination :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= isset($lib2Lang) ? $lib2Lang : ''; ?>"/><br><br>
-
-            <label class="control-label" for="numPays"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <select name="numPays" id="numPays"> 
+            <label class="control-label" for="numLang"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <select name="numLang" id="numLang"> 
             <?php
-                $allPays = $monPays->get_AllPays();
-                foreach($allPays as $row){
-                    if($row["numPays"] === $numPays){
+                $allLangues = $maLangue->get_AllLangues();
+                foreach($allLangues as $row){
+                    if($row["numLang"] === $numLang){
                         $selected = "selected";
                     }else{
                         $selected = "";
                     }
-                    echo '<option value="'.$row["numPays"].'" '.$selected.'>'.$row["frPays"].'</option>';
+                    echo '<option value="'.$row["numLang"].'" '.$selected.'>'.$row["lib1Lang"].'</option>';
                 }
             ?>
             </select>
@@ -104,10 +100,10 @@
 <?php
 
 if($updated) {
-    echo '<p style="color:green;">La langue "'.$lib2Lang.'" a été bien modifiée.</p>';
+    echo '<p style="color:green;">L\'angle "'.$libAngl.'" a été bien modifié.</p>';
 }
 
-require_once __DIR__ . '/footerLangue.php';
+require_once __DIR__ . '/footerAngle.php';
 
 require_once __DIR__ . '/footer.php';
 ?>

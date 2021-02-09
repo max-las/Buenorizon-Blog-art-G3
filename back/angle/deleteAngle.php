@@ -33,9 +33,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             die();
         }
 
-        $numLang = $_POST["id"];
-        $resultAngle = $monAngle->get_1AngleWithLang($numAngl);
+        $numAngl = $_POST["id"];
 
+        $resultAngle = $monAngle->get_1AngleWithLang($numAngl);
         $articles = $monArticle->get_AllArticlesByAngle($numAngl);
 
         if(!$articles){
@@ -97,7 +97,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
 
-?>    <form method="post" action="<?= "./deleteAngle.php?id=".$numLang; ?>" enctype="multipart/form-data">
+?>    <form method="post" action="<?= "./deleteAngle.php?id=".$numAngl; ?>" enctype="multipart/form-data">
 
       <fieldset>
         <legend class="legend1">Formulaire Angle...</legend>
@@ -108,7 +108,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <label class="control-label" for="libAngl"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" value="<?= $deleted ? '' : $libAngl; ?>" disabled/><br><br>
 
-            <label class="control-label" for="numLang"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <label class="control-label" for="numLang"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <select name="numLang" id="numLang" disabled> 
                 <option value="<?= $deleted ? '' : $numLang; ?>" selected><?php echo $deleted ? '' : $lib1Lang; ?></option>
             </select>
@@ -133,7 +133,7 @@ if($supprImpossible){
     echo '<p style="color:red;">Impossible de supprimer l\'angle : "'.$libAngl.'" car il est référencé par les articles suivants :</p>';
 
     echo '<ul>';
-    foreach($motcles as $row){
+    foreach($articles as $row){
         echo '<li>'.$row["libTitrArt"].'</li>';
     }
     echo '</ul>';
