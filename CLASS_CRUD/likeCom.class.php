@@ -3,15 +3,15 @@
 
 	require_once __DIR__ . '../../CONNECT/database.php';
 
-	class LIKEART{
-		function get_1LikeArt($numMemb, $numArt){
+	class LIKECOM{
+		function get_1LikeCom($numMemb, $numSeqCom, $numArt){
 			global $db;
 
-			$query = 'SELECT * FROM likeart WHERE numMemb = ?, numArt = ?';
+			$query = 'SELECT * FROM likeart WHERE numMemb = ?, numSeqCom = ?, numArt = ?';
 
 			$request = $db->prepare($query);
 	
-			$request->execute(array($numMemb, $numArt));
+			$request->execute(array($numMemb, $numSeqCom, $numArt));
 	
 			$result = $request->fetch();
 	
@@ -19,10 +19,10 @@
 			return ($result);
 		}
 
-		function get_AllLikesArt(){
+		function get_AllLikesCom(){
 			global $db;
 
-			$query = 'SELECT * FROM likeart';
+			$query = 'SELECT * FROM likecom';
 
 			$request = $db->query($query);
 		
@@ -32,10 +32,10 @@
 			return ($result);
 		}
 
-		function get_AllLikesArtByArticle($numArt){
+		function get_AllLikesComByArticle($numArt){
 			global $db;
 
-			$query = 'SELECT * FROM likeart WHERE numArt = ?';
+			$query = 'SELECT * FROM likecom WHERE numArt = ?';
 
 			$request = $db->prepare($query);
 	
@@ -47,66 +47,66 @@
 			return ($result);
         }
 
-		function create($numMemb, $numArt, $likeA){
+		function create($numMemb, $numSeqCom, $numArt, $likeC){
 			global $db;
 			try {
-				$query = "INSERT INTO likeart (numMemb, numArt, likeA) VALUES (?, ?, ?)";
+				$query = "INSERT INTO likecom (numMemb, numSeqCom, numArt, likeC) VALUES (?, ?, ?, ?)";
 
 				$db->beginTransaction();
 
 				$request = $db->prepare($query);
 				
-				$request->execute(array($numMemb, $numArt, $likeA));
+				$request->execute(array($numMemb, $numSeqCom, $numArt, $likeC));
 
 				$db->commit();
 
 				$request->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert LIKEART : ' . $e->getMessage());
+					die('Erreur insert LIKECOM : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
 			}
 		}
 
-		function update($numMemb, $numArt, $likeA){
+		function update($numMemb, $numSeqCom, $numArt, $likeA){
 			global $db;
 			try {
 				$db->beginTransaction();
 
-				$query = "UPDATE likeart SET likeA = ? WHERE numMemb = ?, numArt = ?";
+				$query = "UPDATE likecom SET likeC = ? WHERE numMemb = ?, numSeqCom = ?, numArt = ?";
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($numMemb, $numArt, $likeA));
+				$request->execute(array($numMemb, $numSeqCom, $numArt, $likeA));
 
 				$db->commit();
 				$request->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur update LIKEART : ' . $e->getMessage());
+					die('Erreur update LIKECOM : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
 			}
 		}
 
-		function delete($numMemb, $numArt){
+		function delete($numMemb, $numSeqCom, $numArt){
 			global $db;
 			try {
-				$query = "DELETE FROM likeart WHERE numMemb = ?, numArt = ?";
+				$query = "DELETE FROM likecome WHERE numMemb = ?, numSeqCom = ?, numArt = ?";
 
           		$db->beginTransaction();
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($numMemb, $numArt));
+				$request->execute(array($numMemb, $numSeqCom, $numArt));
 
 				$db->commit();
 				$request->closeCursor();
 
 			}
 			catch (PDOException $e) {
-					die('Erreur delete LIKEART : ' . $e->getMessage());
+					die('Erreur delete LIKECOM : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
 			}
