@@ -55,7 +55,7 @@ $class = new MEMBRE;
                         <td>&nbsp;<a href="./updateMembre.php?id=<?= $row['numMemb'] ?>&date=<?= $row['dtCreaMemb'] ?>"><i>Modifier</i></a>&nbsp;
                         <br />
                     </td>
-                    <td>&nbsp;<a href="./deleteMembre.php?id=<?= $row['numMemb'] ?>"><i>Supprimer</i></a>&nbsp;
+                    <td>&nbsp;<a href="./deleteMembre.php?id=<?= $row['numMemb'] ?>&date=<?= $row['dtCreaMemb'] ?>"><i>Supprimer</i></a>&nbsp;
                         <br />
                     </td>
                     </tr>
