@@ -32,6 +32,34 @@
 			return ($result);
 		}
 
+		function get_AllArticlesWithAngleAndThematique(){
+			global $db;
+
+			$query = 'SELECT * FROM article INNER JOIN angle ON article.numAngl = angle.numAngl INNER JOIN thematique ON article.numThem = thematique.numThem';
+
+			$request = $db->query($query);
+		
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
+		function get_1ArticleWithAngleAndThematique($numArt){
+			global $db;
+
+			$query = 'SELECT * FROM article INNER JOIN angle ON article.numAngl = angle.numAngl INNER JOIN thematique ON article.numThem = thematique.numThem WHERE numArt = ?';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numArt));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
 		function get_AllArticlesByAngle($numAngl){
 			global $db;
 
@@ -93,7 +121,7 @@
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($numArt, $dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitrArt, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem));
+				$request->execute(array($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitrArt, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem, $numArt));
 
 				$db->commit();
 				$request->closeCursor();

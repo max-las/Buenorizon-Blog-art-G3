@@ -23,6 +23,11 @@
 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($_POST["Submit"] === "Initialiser"){
+            header("Location: ./createAngle.php");
+            die();
+        }
+
         $numAngl = $_POST["id"];
 
         if(isset($_POST['libAngl']) && isset($_POST['numLang'])){

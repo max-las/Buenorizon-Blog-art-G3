@@ -23,6 +23,11 @@
 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($_POST["Submit"] === "Initialiser"){
+            header("Location: ./createLangue.php");
+            die();
+        }
+
         $numLang = $_POST["id"];
 
         if(isset($_POST['lib1Lang']) && isset($_POST['lib2Lang']) && isset($_POST['numPays'])){
