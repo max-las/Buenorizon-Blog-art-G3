@@ -200,7 +200,12 @@
             <?php
                 $allAngles = $monAngle->get_AllAngles();
                 foreach($allAngles as $row){
-                    echo '<option value="'.$row["numAngl"].'">'.$row["libAngl"].'</option>';
+                    if($row["numAngl"] === $numAngl){
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                    }
+                    echo '<option value="'.$row["numAngl"].'" '.$selected.'>'.$row["libAngl"].'</option>';
                 }
             ?>
             </select><br><br>
@@ -210,7 +215,12 @@
             <?php
                 $allThems = $maThem->get_AllThematiques();
                 foreach($allThems as $row){
-                    echo '<option value="'.$row["numThem"].'">'.$row["libThem"].'</option>';
+                    if($row["numThem"] === $numThem){
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                    }
+                    echo '<option value="'.$row["numThem"].'" '.$selected.'>'.$row["libThem"].'</option>';
                 }
             ?>
             </select>

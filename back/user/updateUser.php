@@ -5,7 +5,8 @@
 
     // Init variables form
     include __DIR__ . '/initMotCle.php';
-    $created = false;
+    $updated = false;
+    if(!isset($_GET['id'])) $_GET['id'] = '';
 
     // controle des saisies du formulaire
 
@@ -18,15 +19,19 @@
     $maLangue = new LANGUE;
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
+    // ajout effectif de l'angle
+
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if($_POST["Submit"] === "Initialiser"){
-            header("Location: ./createMotCle.php");
+            header("Location: ./updateMotCle.php?id=".$_POST["id"]);
             die();
         }
 
+        $numMotCle = $_POST["id"];
+
         $erreur = "";
-        $created = true;
+        $updated = true;
 
         if(empty($_POST['libMotCle'])){
             $libMotCle = '';
@@ -44,16 +49,23 @@
             $numLang = $_POST['numLang'];
         }
 
-        if($created){
-            $monMotCle->create($_POST['libMotCle'], $_POST['numLang']);
+        if($updated){
+            $monMotCle->update($numMotCle, $_POST['libMotCle'], $_POST['numLang']);
         }
+
+    }else{
+        $numMotCle = $_GET["id"];
+        $resultMotCle = $monMotCle->get_1MotCleWithLang($numMotCle);
+        $libMotCle = $resultMotCle['libMotCle'];
+        $numLang = $resultMotCle['numLang'];
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Article</title>
+    <title>Admin - Gestion du CRUD Mot-Clé</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -64,23 +76,28 @@
     <h1>BLOGART21 Admin - Gestion du CRUD Mot-Clé</h1>
     <h2>Ajout d'un mot-clé</h2>
 
-    <form method="post" action="./createMotCle.php" enctype="multipart/form-data">
+    <form method="post" action="<?= "./updateMotCle.php?id=".$numMotCle; ?>" enctype="multipart/form-data">
 
       <fieldset>
         <legend class="legend1">Formulaire Mot-Clé...</legend>
 
-        <!-- <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" /> -->
+        <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libMotCle"><b>Libellé :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libMotCle" id="libMotCle" size="80" maxlength="80" /><br><br>
+            <label class="control-label" for="libMotCle"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="libMotCle" id="libMotCle" size="80" maxlength="80" value="<?= $libMotCle ?>" autofocus/><br><br>
 
             <label class="control-label" for="numLang"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
             <br><select name="numLang" id="numLang"> 
             <?php
                 $allLangues = $maLangue->get_AllLangues();
                 foreach($allLangues as $row){
-                    echo '<option value="'.$row["numLang"].'">'.$row["lib1Lang"].'</option>';
+                    if($row["numLang"] === $numLang){
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                    }
+                    echo '<option value="'.$row["numLang"].'" '.$selected.'>'.$row["lib1Lang"].'</option>';
                 }
             ?>
             </select><br><br>
@@ -100,10 +117,10 @@
     </form>
 <?php
 
-if($created) {
-    echo '<p style="color:green;">Le mot-clé "'.$_POST['libMotCle'].'" a été créé.</p>';
+if($updated) {
+    echo '<p style="color:green;">Le mot-clé "'.$libMotCle.'" a été bien modifié.</p>';
 } elseif($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo '<p style="color:red;">Le mot-clé n\'a pas été créé car : </p>';
+    echo '<p style="color:red;">Le mot-clé n\'a pas été modifié car : </p>';
     echo '<ul style="color:red;">'.$erreur.'</ul>';
 }
 

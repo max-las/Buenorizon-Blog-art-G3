@@ -10,6 +10,11 @@
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
 
+global $db;
+
+require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
+$monUser = new USER;
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,10 +30,63 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD User</h1>
 
-    <br><br>
+    <hr /><br />
+    <h2>Nouvel utilisateur :&nbsp;<a href="./createUser.php"><i>Créer un utilisateur</i></a></h2>
+    <br />
+    <hr />
+    <h2>Tous les utilisateurs</h2>
 
-    <h2>En construction :-)</h2>
+    <table border="3" bgcolor="aliceblue">
+        <thead>
+            <tr>
+                <th>&nbsp;Pseudo&nbsp;</th>
+                <th>&nbsp;Mot de passe&nbsp;</th>
+                <th>&nbsp;Nom&nbsp;</th>
+                <th>&nbsp;Prénom&nbsp;</th>
+                <th>&nbsp;eMail&nbsp;</th>
+                <th>&nbsp;Statut&nbsp;</th>
+                <th colspan="2">&nbsp;Action&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
 
+            $allUsers = $monUser->get_AllUsersWithStatut();
+            foreach ($allUsers as $row) {
+
+                // Appel méthode : tous les statuts en BDD
+
+                // Boucle pour afficher
+                //foreach($all as $row) {
+            ?>
+                <tr>
+                    <td>
+                        <h4>&nbsp; <?php echo $row['pseudoUser']; ?> &nbsp;</h4>
+                    </td>
+
+                    <td>&nbsp; <?php echo $row['passUser']; ?> &nbsp;</td>
+
+                    <td>&nbsp; <?php echo $row['nomUser']; ?> &nbsp;</td>
+
+                    <td>&nbsp; <?php echo $row['prenomUser']; ?> &nbsp;</td>
+
+                    <td>&nbsp; <?php echo $row['eMailUser']; ?> &nbsp;</td>
+
+                    <td>&nbsp; <?php echo $row['libStat']; ?> &nbsp;</td>
+
+                    <td>&nbsp;<a href="./updateUser.php?id=<?= $row['pseudoUser'] ?>"><i>Modifier</i></a>&nbsp;
+                        <br />
+                    </td>
+                    <td>&nbsp;<a href="./deleteUser.php?id=<?= $row['pseudoUser'] ?>"><i>Supprimer</i></a>&nbsp;
+                        <br />
+                    </td>
+                </tr>
+            <?php
+            }
+            //}	// End of foreach
+            ?>
+        </tbody>
+    </table>
     <br><br>
 
 <?php
