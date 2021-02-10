@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/util/utilErrOn.php';
+require_once __DIR__ . '/../util/utilErrOn.php';
 
     function getNextNumThem($numLang) {
 
