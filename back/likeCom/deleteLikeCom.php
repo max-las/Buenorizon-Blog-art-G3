@@ -97,7 +97,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Like Article</h1>
     <h2>Modification d'un Like Article</h2>
     <br>
-    <form method="post" action=".\deleteLikeCom.php" class="ui form">
+    <form method="post" action=".\deleteLikeCom .php" class="ui form">
         <div class="field">
             <label>Numéro du Membre</label>
             <input type="number" name="numMemb" placeholder="N° Membre" value="<? echo $numMemb ?>" readonly>
