@@ -55,7 +55,7 @@
 
 			$request = $db->prepare($query);
 	
-			$request->execute(array($numArt));
+			$request->execute();
 	
 			$result = $request->fetchAll();
 	
