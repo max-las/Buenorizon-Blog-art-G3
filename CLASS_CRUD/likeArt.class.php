@@ -35,7 +35,7 @@
 		function get_AllLikesArtByArticle($numArt){
 			global $db;
 
-			$query = 'SELECT * FROM likeart WHERE numArt = ?';
+			$query = 'SELECT * FROM likeart INNER JOIN membre ON membre.numMemb = likeart.numMemb WHERE numArt = ?';
 
 			$request = $db->prepare($query);
 	

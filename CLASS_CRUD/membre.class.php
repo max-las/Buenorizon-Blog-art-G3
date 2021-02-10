@@ -28,7 +28,7 @@ class MEMBRE{
         return ($result);
     }
 
-    function get_AllAnglesByMail($eMailMemb){
+    function get_AllMembresByMail($eMailMemb){
         global $db;
 
         $query = 'SELECT * FROM membre WHERE eMailMemb = ?';
@@ -43,7 +43,7 @@ class MEMBRE{
         return ($result);
     }
 
-    function get_AllAnglesByPseudo($pseudoMemb){
+    function get_AllMembresByPseudo($pseudoMemb){
         global $db;
 
         $query = 'SELECT * FROM membre WHERE pseudoMemb = ?';
@@ -58,7 +58,7 @@ class MEMBRE{
         return ($result);
     }
 
-    function get_AllAnglesByNom($nomMemb){
+    function get_AllMembresByNom($nomMemb){
         global $db;
 
         $query = 'SELECT * FROM membre WHERE nomMemb = ?';
@@ -73,7 +73,7 @@ class MEMBRE{
         return ($result);
     }
 
-    function get_AllAnglesByPrenom($prenomMemb){
+    function get_AllMembresByPrenom($prenomMemb){
         global $db;
 
         $query = 'SELECT * FROM membre WHERE prenomMemb = ?';

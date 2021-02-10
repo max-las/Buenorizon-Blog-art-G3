@@ -1,9 +1,9 @@
 <?php
-	// CRUD MOTCLE (ETUD)
+	// CRUD MOTCLEARTICLE (ETUD)
 
 	require_once __DIR__ . '../../CONNECT/database.php';
 
-	class MOTCLEART{
+	class MOTCLEARTICLE{
 		function get_AllMotClesByArticle($numArt){
 			global $db;
 
