@@ -72,7 +72,7 @@
 
 				$request = $db->prepare($query);
 				
-				$request->execute(array($numArt, $numSeqCom, $numSeqComR, $numArtR));
+				$request->execute(array($numArt, $numSeqCom, $numSeqComR, $numArt));
 
 				$db->commit();
 
