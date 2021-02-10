@@ -31,6 +31,32 @@
 			return ($result);
 		}
 
+		function get_AllUsersWithStatut(){
+			global $db;
+
+			$query = 'SELECT * FROM user INNER JOIN statut ON user.idStat = statut.idStat';
+			$request = $db->query($query);
+		
+			$result = $request->fetchAll();
+
+			$request->closeCursor();
+			return ($result);
+		}
+
+		function get_1UserWithStatut($pseudoUser){
+			global $db;
+
+			$query = 'SELECT * FROM user INNER JOIN statut ON user.idStat = statut.idStat WHERE pseudoUser = ?';
+			$request = $db->prepare($query);
+	
+			$request->execute(array($pseudoUser));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
 		function get_ExistPseudo($pseudoUser) {
 			global $db;
 
