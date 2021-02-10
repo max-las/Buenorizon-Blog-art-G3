@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </div>
         <div class="field">
             <label>Mot de passe du membre</label>
-            <input type="text" name="passMemb" placeholder="Mot de passe">
+            <input type="password" name="passMemb" placeholder="Mot de passe">
         </div>
         <div class="field">
             <label>Email du membre</label>

@@ -7,7 +7,7 @@
 		function get_1LikeCom($numMemb, $numSeqCom, $numArt){
 			global $db;
 
-			$query = 'SELECT * FROM likeart WHERE numMemb = ?, numSeqCom = ?, numArt = ?';
+			$query = 'SELECT * FROM likecom WHERE (numMemb = ? AND numSeqCom = ? AND numArt = ?)';
 
 			$request = $db->prepare($query);
 	
@@ -69,16 +69,16 @@
 			}
 		}
 
-		function update($numMemb, $numSeqCom, $numArt, $likeA){
+		function update($numMemb, $numSeqCom, $numArt, $likeC){
 			global $db;
 			try {
 				$db->beginTransaction();
 
-				$query = "UPDATE likecom SET likeC = ? WHERE numMemb = ?, numSeqCom = ?, numArt = ?";
+				$query = "UPDATE likecom SET likeC = ? WHERE (numMemb = ? AND numSeqCom = ? AND numArt = ?)";
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($numMemb, $numSeqCom, $numArt, $likeA));
+				$request->execute(array($likeC, $numMemb, $numSeqCom, $numArt));
 
 				$db->commit();
 				$request->closeCursor();
@@ -93,7 +93,7 @@
 		function delete($numMemb, $numSeqCom, $numArt){
 			global $db;
 			try {
-				$query = "DELETE FROM likecome WHERE numMemb = ?, numSeqCom = ?, numArt = ?";
+				$query = "DELETE FROM likecom WHERE (numMemb = ? AND numSeqCom = ? AND numArt = ?)";
 
           		$db->beginTransaction();
 

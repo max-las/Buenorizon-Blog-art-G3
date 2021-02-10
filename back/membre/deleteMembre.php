@@ -116,7 +116,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
         <div class="field">
             <label>Mot de passe du membre</label>
-            <input type="text" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?> readonly>
+            <input type="password" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?> readonly>
         </div>
         <div class="field">
             <label>Email du membre</label>
