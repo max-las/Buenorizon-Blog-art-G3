@@ -9,8 +9,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     $supprImpossible = false;
     $deleted = false;
     if(!isset($_GET['id'])) $_GET['id'] = '';
-    $numLang = '';
-    $lib1Lang = '';
 
     // controle des saisies du formulaire
 

@@ -32,6 +32,34 @@
 			return ($result);
 		}
 
+		function get_AllMotClesWithLang(){
+			global $db;
+
+			$query = 'SELECT * FROM motcle INNER JOIN langue ON motcle.numLang = langue.numLang';
+
+			$request = $db->query($query);
+		
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
+		function get_1MotCleWithLang($numMotCle){
+			global $db;
+
+			$query = 'SELECT * FROM motcle INNER JOIN langue ON motcle.numLang = langue.numLang WHERE numMotCle = ?';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numMotCle));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
 		function get_AllMotClesByLang($numLang){
 			global $db;
 
@@ -47,16 +75,16 @@
 			return ($result);
 		}
 
-		function create($numMotCle, $libMotCle, $numLang){
+		function create($libMotCle, $numLang){
 			global $db;
 			try {
-				$query = "INSERT INTO motcle (numMotCle, libMotCle, numLang) VALUES (?, ?, ?)";
+				$query = "INSERT INTO motcle (libMotCle, numLang) VALUES (?, ?)";
 
 				$db->beginTransaction();
 
 				$request = $db->prepare($query);
 				
-				$request->execute(array($numMotCle, $libMotCle, $numLang));
+				$request->execute(array($libMotCle, $numLang));
 
 				$db->commit();
 
