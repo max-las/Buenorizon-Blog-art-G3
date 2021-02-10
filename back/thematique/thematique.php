@@ -40,7 +40,7 @@ $class = new THEMATIQUE;
                         <td><?= $row['numThem'] ?></td>
                         <td><?= $row['libThem'] ?></td>
                         <td><?= $row['numLang'] ?></td>
-                        <td>&nbsp;<a href="./updateThematique.php?numThem=<?= $row['numThem']; ?>"><i>Modifier</i></a>&nbsp;
+                        <td>&nbsp;<a href="./updateThematique.php?numThem=<?= $row['numThem']; ?>&libThem=<?= $row['libThem'] ?>&numLang=<?= $row['numLang']; ?>"><i>Modifier</i></a>&nbsp;
                         <br />
                     </td>
                     <td>&nbsp;<a href="./deleteThematique.php?numThem=<?= $row['numThem']; ?>"><i>Supprimer</i></a>&nbsp;
