@@ -104,33 +104,33 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <input type="hidden" id="date" name="date" value="<?= $_GET['date']; ?>" />
         <div class="field">
             <label>Prénom du membre</label>
-            <input type="text" name="prenomMemb" placeholder="Prénom" value=<? echo($prenomMemb); ?>>
+            <input type="text" name="prenomMemb" placeholder="Prénom" value="<? echo($prenomMemb); ?>" readonly>
         </div>
         <div class="field">
             <label>Nom du membre</label>
-            <input type="text" name="nomMemb" placeholder="Nom" value=<? echo($nomMemb); ?>>
+            <input type="text" name="nomMemb" placeholder="Nom" value=<? echo($nomMemb); ?> readonly>
         </div>
         <div class="field">
             <label>Pseudo du membre</label>
-            <input type="text" name="pseudoMemb" placeholder="Pseudo" value=<? echo($pseudoMemb); ?>>
+            <input type="text" name="pseudoMemb" placeholder="Pseudo" value=<? echo($pseudoMemb); ?> readonly>
         </div>
         <div class="field">
             <label>Mot de passe du membre</label>
-            <input type="text" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?>>
+            <input type="password" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?> readonly>
         </div>
         <div class="field">
             <label>Email du membre</label>
-            <input type="text" name="eMailMemb" placeholder="Email" value=<? echo($eMailMemb); ?>>
+            <input type="text" name="eMailMemb" placeholder="Email" value=<? echo($eMailMemb); ?> readonly>
         </div>
         <div class="field">
             <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" name="souvenirMemb" <? if($souvenirMemb == 1){ echo('checked'); } ?>>
+                <input type="checkbox" tabindex="0" name="souvenirMemb" <? if($souvenirMemb == 1){ echo('checked'); } ?> readonly>
                 <label>Se souvenir ?</label>
             </div>
         </div>
         <div class="field">
             <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" name="accordMemb" <? if($accordMemb == 1){ echo('checked'); } ?>>
+                <input type="checkbox" tabindex="0" name="accordMemb" <? if($accordMemb == 1){ echo('checked'); } ?> readonly>
                 <label>Accorder les conditions ?</label>
             </div>
         </div>

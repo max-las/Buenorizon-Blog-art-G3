@@ -65,28 +65,28 @@ if($resultComment){
     <form method="post" action=".\deleteComment.php" class="ui form">
         <div class="field">
             <label>Numéro du commentaire</label>
-            <input type="number" name="numSeqCom" placeholder="N° Commentaire" value="<? echo($numSeqCom); ?>">
+            <input type="number" name="numSeqCom" placeholder="N° Commentaire" value="<? echo($numSeqCom); ?>" readonly>
         </div>
         <div class="field">
             <label>Numéro de l'Article</label>
-            <input type="number" name="numArt" placeholder="N° Article" value="<? echo($numArt); ?>">
+            <input type="number" name="numArt" placeholder="N° Article" value="<? echo($numArt); ?>" readonly>
         </div>
             <input type="hidden" name="dtCreCom" value="<? echo($dtCreCom); ?>">
         <div class="field">
             <label>Commentaire</label>
-            <input type="text" name="libCom" placeholder="Commentaire" value="<? echo($libCom); ?>">
+            <input type="text" name="libCom" placeholder="Commentaire" value="<? echo($libCom); ?>" readonly>
         </div>
         <div class="field">
             <label>attModOK</label>
-            <input type="number" name="attModOK" placeholder="attModOK" value="<? echo($attModOK); ?>">
+            <input type="number" name="attModOK" placeholder="attModOK" value="<? echo($attModOK); ?>" readonly>
         </div>
         <div class="field">
             <label>affComOK</label>
-            <input type="number" name="affComOK" placeholder="affComOK" value="<? echo($affComOK); ?>">
+            <input type="number" name="affComOK" placeholder="affComOK" value="<? echo($affComOK); ?>" readonly>
         </div>
         <div class="field">
             <label>notifComKOAff</label>
-            <input type="text" name="notifComKOAff" placeholder="notifComKOAff" value="<? echo($notifComKOAff); ?>">
+            <input type="text" name="notifComKOAff" placeholder="notifComKOAff" value="<? echo($notifComKOAff); ?>" readonly>
         </div>
         <br>
         <input class="ui button" type="submit" name="Submit" value="Annuler">

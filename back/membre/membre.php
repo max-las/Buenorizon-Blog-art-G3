@@ -31,7 +31,6 @@ $class = new MEMBRE;
                     <th>Prenom</th>
                     <th>Nom</th>
                     <th>Pseudo</th>
-                    <th>Mot de passe</th>
                     <th>Email</th>
                     <th>Date de création</th>
                     <th>Souvenir ?</th>
@@ -47,7 +46,6 @@ $class = new MEMBRE;
                         <td><?= $row['prenomMemb'] ?></td>
                         <td><?= $row['nomMemb'] ?></td>
                         <td><?= $row['pseudoMemb'] ?></td>
-                        <td><?= $row['passMemb'] ?></td>
                         <td><?= $row['eMailMemb'] ?></td>
                         <td><?= $row['dtCreaMemb'] ?></td>
                         <td><?= ($row['souvenirMemb']) ? 'oui' :  'non' ?></td>
