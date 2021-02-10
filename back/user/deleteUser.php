@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
     // Init variables form
-    include __DIR__ . '/initMotCle.php';
+    include __DIR__ . '/initUser.php';
     $supprImpossible = false;
     $deleted = false;
     if(!isset($_GET['id'])) $_GET['id'] = '';
@@ -13,13 +13,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // controle des saisies du formulaire
 
 
-    // insertion classe MOTCLE
-    require_once __DIR__ . '/../../CLASS_CRUD/motcle.class.php';
-    $monMotCle = new MOTCLE;
+    // insertion classe USER
+    require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
+    $monUser = new USER;
 
     // Ctrl CIR
-    require_once __DIR__ . '/../../CLASS_CRUD/motclearticle.class.php';
-    $monMotCleArt = new MOTCLEARTICLE;
+    require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+    $monStatut = new STATUT;
 
 
 
@@ -27,29 +27,27 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // suppression effective du statut
     if($_SERVER["REQUEST_METHOD"] == 'POST'){
         if($_POST["Submit"] === "Annuler"){
-            header("Location: ./motcle.php");
+            header("Location: ./user.php");
             die();
         }
 
-        $numMotCle = $_POST["id"];
-        $resultMotCle = $monMotCle->get_1MotCleWithLang($numMotCle);
-        $motclearts = $monMotCleArt->get_AllArticlesByMotCle($numMotCle);
+        $pseudoUser = $_POST["id"];
+        $resultUser = $monUser->get_1UserWithStatut($pseudoUser);
 
-        if(!$motclearts){
-            $monMotCle->delete($numMotCle);
-            $deleted = true;
-        }else{
-            $supprImpossible = true;
-        }
+        $monUser->delete($pseudoUser);
+        $deleted = true;
     }else{
-        $numMotCle = $_GET["id"];
-        $resultMotCle = $monMotCle->get_1MotCleWithLang($numMotCle);
+        $pseudoUser = $_GET["id"];
+        $resultUser = $monUser->get_1UserWithStatut($pseudoUser);
     }
 
-    if($resultMotCle){
-        $libMotCle = $resultMotCle['libMotCle'];
-        $numLang = $resultMotCle['numLang'];
-        $lib1Lang = $resultMotCle['lib1Lang'];
+    if($resultUser){
+        $passUser = $resultUser['passUser'];
+        $nomUser = $resultUser['nomUser'];
+        $prenomUser = $resultUser['prenomUser'];
+        $eMailUser = $resultUser['eMailUser'];
+        $idStat = $resultUser['idStat'];
+        $libStat = $resultUser['libStat'];
     }
 
 ?>
@@ -57,7 +55,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Mot-Clé</title>
+    <title>Admin - Gestion du CRUD User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -87,27 +85,39 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     </style>
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Mot-Clé</h1>
-    <h2>Suppression d'un mot-clé</h2>
+    <h1>BLOGART21 Admin - Gestion du CRUD User</h1>
+    <h2>Suppression d'un utilisateur</h2>
 <?php
     // Supp : récup id à supprimer
 
 
 
-?>    <form method="post" action="<?= "./deleteMotCle.php?id=".$numMotCle; ?>" enctype="multipart/form-data">
+?>    <form method="post" action="<?= "./deleteUser.php?id=".$pseudoUser; ?>" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Formulaire Mot-Clé...</legend>
+        <legend class="legend1">Formulaire Utilisateur..</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libMotCle"><b>Titre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libMotCle" id="libMotCle" size="80" maxlength="80" value="<?= $deleted ? '' : $libMotCle ?>" disabled/><br><br>
+            <label class="control-label" for="pseudoUser"><b>Pseudo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="pseudoUser" id="pseudoUser" size="80" maxlength="80" value="<?= $deleted ? '' : $pseudoUser ?>" disabled/><br><br>
 
-            <label class="control-label" for="numLang"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><select name="numLang" id="numLang" disabled> 
-                <option value="<?= $deleted ? '' : $numLang; ?>" selected><?php echo $deleted ? '' : $lib1Lang; ?></option>
+            <label class="control-label" for="passUser"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="passUser" id="passUser" size="80" maxlength="80" value="<?= $deleted ? '' :  $passUser ?>" disabled/><br><br>
+
+            <label class="control-label" for="nomUser"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $deleted ? '' : $nomUser ?>" disabled/><br><br>
+
+            <label class="control-label" for="prenomUser"><b>Prénom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="prenomUser" id="prenomUser" size="80" maxlength="80" value="<?= $deleted ? '' : $prenomUser ?>" disabled/><br><br>
+
+            <label class="control-label" for="eMailUser"><b>Email :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="eMailUser" id="eMailUser" size="80" maxlength="80" value="<?= $deleted ? '' : $eMailUser ?>" disabled/><br><br>
+
+            <label class="control-label" for="idStat"><b>Statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <br><select name="idStat" id="idStat" disabled> 
+                <option value="<?= $deleted ? '' : $idStat; ?>" selected><?php echo $deleted ? '' : $libStat; ?></option>
             </select>
         </div>
 
@@ -126,26 +136,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <br>
 <?php
 
-if($supprImpossible){
-    echo '<div style="color:red;">';
-    echo '<p>Impossible de supprimer le mot-clé "'.$libMotCle.'" car il est référencé par les éléments suivants :</p>';
-
-    if($motclearts){
-        echo '<p>Table MOTCLEARTICLE :</p>';
-        echo '<ul>';
-        foreach($motclearts as $row){
-            echo '<li>Article n°'.$row["numArt"].' ('.$row["libTitrArt"].')</li>';
-        }
-        echo '</ul>';
-    }
-
-    echo '</div>';
-
-} elseif($deleted) {
-    echo '<p style="color:green;">Le mot-clé "'.$libMotCle.'" a été supprimé.</p>';
+if($deleted) {
+    echo '<p style="color:green;">L\'utilisateur "'.$pseudoUser.'" a été supprimé.</p>';
 }
 
-require_once __DIR__ . '/footerMotCle.php';
+require_once __DIR__ . '/footerUser.php';
 
 require_once __DIR__ . '/footer.php';
 ?>

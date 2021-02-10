@@ -29,8 +29,6 @@
     $erreur = "";
     $created = true;
 
-    echo 'banane';
-
     if(empty($_POST['pseudoUser'])){
         $pseudoUser = '';
         $erreur = $erreur."<li>Il manque le pseudo.</li>";

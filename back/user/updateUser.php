@@ -4,7 +4,7 @@
     require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // Init variables form
-    include __DIR__ . '/initMotCle.php';
+    include __DIR__ . '/initUser.php';
     $updated = false;
     if(!isset($_GET['id'])) $_GET['id'] = '';
 
@@ -12,52 +12,79 @@
 
 
     // insertion classe
-    require_once __DIR__ . '/../../CLASS_CRUD/motcle.class.php';
-    $monMotCle = new MOTCLE;
+    require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
+    $monUser = new USER;
 
-    require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
-    $maLangue = new LANGUE;
+    require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+    $monStatut = new STATUT;
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-    // ajout effectif de l'angle
+    // ajout effectif de l'user
 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if($_POST["Submit"] === "Initialiser"){
-            header("Location: ./updateMotCle.php?id=".$_POST["id"]);
+            header("Location: ./updateUser.php?id=".$_POST["id"]);
             die();
         }
 
-        $numMotCle = $_POST["id"];
-
+        $pseudoUser = $_POST["id"];
+        
         $erreur = "";
         $updated = true;
-
-        if(empty($_POST['libMotCle'])){
-            $libMotCle = '';
-            $erreur = $erreur."<li>Il manque le libellé.</li>";
-            $created = false;
+    
+        if(empty($_POST['passUser'])){
+            $passUser = '';
+            $erreur = $erreur."<li>Il manque le mot de passe.</li>";
+            $updated = false;
         }else{
-            $libMotCle = $_POST['libMotCle'];
+            $passUser = $_POST['passUser'];
         }
-
-        if(empty($_POST['numLang'])){
-            $numLang = '';
-            $erreur = $erreur."<li>Il manque la langue.</li>";
-            $created = false;
+    
+        if(empty($_POST['nomUser'])){
+            $nomUser = '';
+            $erreur = $erreur."<li>Il manque le nom.</li>";
+            $updated = false;
         }else{
-            $numLang = $_POST['numLang'];
+            $nomUser = $_POST['nomUser'];
+        }
+    
+        if(empty($_POST['prenomUser'])){
+            $prenomUser = '';
+            $erreur = $erreur."<li>Il manque le prénom.</li>";
+            $updated = false;
+        }else{
+            $prenomUser = $_POST['prenomUser'];
+        }
+    
+        if(empty($_POST['eMailUser'])){
+            $eMailUser = '';
+            $erreur = $erreur."<li>Il manque l'email.</li>";
+            $updated = false;
+        }else{
+            $eMailUser = $_POST['eMailUser'];
+        }
+    
+        if(empty($_POST['idStat'])){
+            $idStat = '';
+            $erreur = $erreur."<li>Il manque le statut.</li>";
+            $updated = false;
+        }else{
+            $idStat = $_POST['idStat'];
         }
 
         if($updated){
-            $monMotCle->update($numMotCle, $_POST['libMotCle'], $_POST['numLang']);
+            $monUser->update($pseudoUser, $_POST['passUser'], $_POST['nomUser'], $_POST['prenomUser'], $_POST['eMailUser'], $_POST['idStat']);
         }
 
     }else{
-        $numMotCle = $_GET["id"];
-        $resultMotCle = $monMotCle->get_1MotCleWithLang($numMotCle);
-        $libMotCle = $resultMotCle['libMotCle'];
-        $numLang = $resultMotCle['numLang'];
+        $pseudoUser = $_GET["id"];
+        $resultUser = $monUser->get_1UserWithStatut($pseudoUser);
+        $passUser = $resultUser['passUser'];
+        $nomUser = $resultUser['nomUser'];
+        $prenomUser = $resultUser['prenomUser'];
+        $eMailUser = $resultUser['eMailUser'];
+        $idStat = $resultUser['idStat'];
     }
 
 ?>
@@ -65,7 +92,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Mot-Clé</title>
+    <title>Admin - Gestion du CRUD User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -73,34 +100,46 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Mot-Clé</h1>
-    <h2>Ajout d'un mot-clé</h2>
+    <h1>BLOGART21 Admin - Gestion du CRUD User</h1>
+    <h2>Ajout d'un utilisateur</h2>
 
-    <form method="post" action="<?= "./updateMotCle.php?id=".$numMotCle; ?>" enctype="multipart/form-data">
+    <form method="post" action="<?= "./updateUser.php?id=".$pseudoUser; ?>" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Formulaire Mot-Clé...</legend>
+        <legend class="legend1">Formulaire Utilisateur...</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libMotCle"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libMotCle" id="libMotCle" size="80" maxlength="80" value="<?= $libMotCle ?>" autofocus/><br><br>
+            <label class="control-label" for="pseudoUser"><b>Pseudo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="pseudoUser" id="pseudoUser" size="80" maxlength="80" value="<?= $pseudoUser ?>" disabled/><br><br>
 
-            <label class="control-label" for="numLang"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><select name="numLang" id="numLang"> 
+            <label class="control-label" for="passUser"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="passUser" id="passUser" size="80" maxlength="80" value="<?= $passUser ?>" /><br><br>
+
+            <label class="control-label" for="nomUser"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="nomUser" id="nomUser" size="80" maxlength="80" value="<?= $nomUser ?>" /><br><br>
+
+            <label class="control-label" for="prenomUser"><b>Prénom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="prenomUser" id="prenomUser" size="80" maxlength="80" value="<?= $prenomUser ?>" /><br><br>
+
+            <label class="control-label" for="eMailUser"><b>Email :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="text" name="eMailUser" id="eMailUser" size="80" maxlength="80" value="<?= $eMailUser ?>" /><br><br>
+
+            <label class="control-label" for="idStat"><b>Statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <br><select name="idStat" id="idStat"> 
             <?php
-                $allLangues = $maLangue->get_AllLangues();
-                foreach($allLangues as $row){
-                    if($row["numLang"] === $numLang){
+                $allStatuts = $monStatut->get_AllStatuts();
+                foreach($allStatuts as $row){
+                    if($row["idStat"] === $idStat){
                         $selected = "selected";
                     }else{
                         $selected = "";
                     }
-                    echo '<option value="'.$row["numLang"].'" '.$selected.'>'.$row["lib1Lang"].'</option>';
+                    echo '<option value="'.$row["idStat"].'" '.$selected.'>'.$row["libStat"].'</option>';
                 }
             ?>
-            </select><br><br>
+            </select>
         </div>
 
         <div class="control-group">
@@ -118,13 +157,13 @@
 <?php
 
 if($updated) {
-    echo '<p style="color:green;">Le mot-clé "'.$libMotCle.'" a été bien modifié.</p>';
+    echo '<p style="color:green;">L\'utilisateur "'.$pseudoUser.'" a été modifié.</p>';
 } elseif($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo '<p style="color:red;">Le mot-clé n\'a pas été modifié car : </p>';
+    echo '<p style="color:red;">L\'utilisateur n\'a pas été modifié car : </p>';
     echo '<ul style="color:red;">'.$erreur.'</ul>';
 }
 
-require_once __DIR__ . '/footerMotCle.php';
+require_once __DIR__ . '/footerUser.php';
 
 require_once __DIR__ . '/footer.php';
 ?>

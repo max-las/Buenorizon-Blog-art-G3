@@ -4,14 +4,14 @@
 	require_once __DIR__ . '../../CONNECT/database.php';
 
 	class USER{
-		function get_1User($pseudoUser, $passUser){
+		function get_1User($pseudoUser){
 			global $db;
 
-			$query = 'SELECT * FROM user WHERE pseudoUser = ? AND passUser = ?';
+			$query = 'SELECT * FROM user WHERE pseudoUser = ?';
 
 			$request = $db->prepare($query);
 	
-			$request->execute(array($pseudoUser, $passUser));
+			$request->execute(array($pseudoUser));
 	
 			$result = $request->fetch();
 	
@@ -146,16 +146,16 @@
 			}
 		}
 
-		function delete($pseudoUser, $passUser){
+		function delete($pseudoUser){
 			global $db;
 			try {
-				$query = "DELETE FROM user WHERE pseudoUser = ? AND passUser = ?";
+				$query = "DELETE FROM user WHERE pseudoUser = ?";
 
 				$db->beginTransaction();
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($pseudoUser, $passUser));
+				$request->execute(array($pseudoUser));
 
 				$db->commit();
 				$request->closeCursor();
