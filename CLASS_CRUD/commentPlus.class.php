@@ -6,7 +6,7 @@
 		function get_1CommentR($numArt, $numSeqCom, $numSeqComR){
 			global $db;
 
-			$query = 'SELECT * FROM commentplus INNER JOIN comment ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE numArt = ? AND numSeqCom = ? AND numSeqComR = ?';
+			$query = 'SELECT * FROM comment INNER JOIN commentplus ON (commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt) WHERE commentplus.numArt = ? AND commentplus.numSeqCom = ? AND numSeqComR = ?';
 
 			$request = $db->prepare($query);
 	
@@ -21,7 +21,7 @@
 		function get_AllCommentsRByComment($numArt, $numSeqCom){
 			global $db;
 
-			$query = 'SELECT * FROM commentplus INNER JOIN comment ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE numArt = ? AND numSeqCom = ?';
+			$query = 'SELECT * FROM comment INNER JOIN commentplus ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE numArt = ? AND numSeqCom = ?';
 
 			$request = $db->prepare($query);
 	
@@ -36,7 +36,7 @@
         function get_AllCommentsRByArticle($numArt){
 			global $db;
 
-			$query = 'SELECT * FROM commentplus INNER JOIN comment ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE numArt = ?';
+			$query = 'SELECT * FROM comment INNER JOIN commentplus ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE numArt = ?';
 
 			$request = $db->prepare($query);
 	
@@ -51,7 +51,7 @@
         function get_AllCommentsR(){
 			global $db;
 
-			$query = 'SELECT * FROM commentplus INNER JOIN comment ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt';
+			$query = 'SELECT * FROM comment INNER JOIN commentplus ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt';
 
 			$request = $db->prepare($query);
 	
@@ -72,7 +72,7 @@
 
 				$request = $db->prepare($query);
 				
-				$request->execute(array($numArt, $numSeqCom, $numSeqComR, $numArtR));
+				$request->execute(array($numArt, $numSeqCom, $numSeqComR, $numArt));
 
 				$db->commit();
 

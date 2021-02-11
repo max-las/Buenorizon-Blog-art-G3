@@ -19,6 +19,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
     $maLangue = new LANGUE;
 
+    require_once __DIR__ . '/../../CLASS_CRUD/pays.class.php';
+    $monPays = new PAYS;
+
     // Ctrl CIR
     require_once __DIR__ . '/../../CLASS_CRUD/thematique.class.php';
     require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
@@ -72,69 +75,32 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        #p1 {
-            max-width: 600px;
-            width: 600px;
-            max-height: 200px;
-            height: 200px;
-            border: 1px solid #000000;
-            background-color: whitesmoke;
-            /* Coins arrondis et couleur du cadre */
-            border: 2px solid grey;
-            -moz-border-radius: 8px;
-            -webkit-border-radius: 8px;
-            border-radius: 8px;
-        }
-        .error {
-            padding: 2px;
-            border: solid 0px black;
-            color: red;
-            font-style: italic;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Suppression d'une langue</h2>
-<?php
-    // Supp : récup id à supprimer
-
-
-
-?>    <form method="post" action="<?= "./deleteLangue.php?id=".$numLang; ?>" enctype="multipart/form-data">
-
-      <fieldset>
-        <legend class="legend1">Formulaire Langue...</legend>
-
+    <h2>Suppression d'une Langue</h2>
+    <br>
+    <form method="post" action=".\updateLangue.php" class="ui form">
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
-
-        <div class="control-group">
-            <label class="control-label" for="lib1Lang"><b>Désignation :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $deleted ? '' : $lib1Lang; ?>" disabled/><br><br>
-
-            <label class="control-label" for="lib2Lang"><b>Dénomination :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $deleted ? '' : $lib2Lang; ?>" disabled/><br><br>
-
-            <label class="control-label" for="numPays"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <select name="numPays" id="numPays" disabled> 
-                <option value="<?= $deleted ? '' : $numPays; ?>" selected><?php echo $deleted ? '' : $frPays; ?></option>
-            </select>
+        <div class="field">
+            <label>Désignation</label>
+            <input type="text" name="lib1Lang" id="lib1Lang" placeholder="Désignation" value="<?= isset($lib1Lang) ? $lib1Lang : ''; ?>" disabled>
         </div>
-
-        <div class="control-group">
-            <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
-            </div>
+        <div class="field">
+            <label>Dénomination</label>
+            <input type="text" name="lib2Lang" id="lib2Lang" placeholder="Dénomination" value="<?= isset($lib2Lang) ? $lib2Lang : ''; ?>" disabled>
         </div>
-      </fieldset>
+        <div class="field">
+            <label>Pays</label>
+            <input type="text" name="numPays" id="numPays" value="<?
+                $allPays = $monPays->get_1Pays($numPays);
+                echo $allPays['frPays'];
+            ?>" disabled>
+        </div>
+        <br>
+        <input class="ui button" type="submit" name="Submit" value="Valider">
     </form>
     <br>
 <?php
