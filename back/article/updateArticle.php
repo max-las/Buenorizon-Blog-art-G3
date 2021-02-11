@@ -174,96 +174,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
     <h2>Ajout d'un article</h2>
 
-    <form method="post" action="<?= "./updateArticle.php?id=".$numArt; ?>" enctype="multipart/form-data">
+    <form method="post" action="<?= "./updateArticle.php?id=".$numArt; ?>" enctype="multipart/form-data" class="ui form">
 
-      <fieldset>
-        <legend class="legend1">Formulaire Article...</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="datetime-local" name="dtCreArt" id="dtCreArt" size="80" maxlength="80" value="<?= $dtCreArt ?>" autofocus/><br><br>
+            <div class="field">
+                <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="datetime-local" name="dtCreArt" id="dtCreArt" size="80" maxlength="80" value="<?= $dtCreArt ?>" autofocus/><br><br>
+            </div>
 
-            <label class="control-label" for="libTitrArt"><b>Titre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt ?>"/><br><br>
+            <div class="field">
+                <label class="control-label" for="libTitrArt"><b>Titre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $libTitrArt ?>"/><br><br>
+            </div>
 
-            <label class="control-label" for="libChapoArt"><b>Chapeau :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="libChapoArt" id="libChapoArt" cols="80" rows="10"><?= $libChapoArt ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="libChapoArt"><b>Chapeau :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="libChapoArt" id="libChapoArt" cols="80" rows="10"><?= $libChapoArt ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="libAccrochArt"><b>Accroche :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libAccrochArt" id="libAccrochArt" size="80" maxlength="80" value="<?= $libAccrochArt ?>"/><br><br>
+            <div class="field">
+                <label class="control-label" for="libAccrochArt"><b>Accroche :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libAccrochArt" id="libAccrochArt" size="80" maxlength="80" value="<?= $libAccrochArt ?>"/><br><br>
+            </div>
 
-            <label class="control-label" for="parag1Art"><b>Paragraphe 1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="parag1Art" id="parag1Art" cols="80" rows="10"><?= $parag1Art ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="parag1Art"><b>Paragraphe 1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="parag1Art" id="parag1Art" cols="80" rows="10"><?= $parag1Art ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="libSsTitr1Art"><b>Sous-Titre 1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" size="80" maxlength="80" value="<?= $libSsTitr1Art ?>"/><br><br>
+            <div class="field">
+                <label class="control-label" for="libSsTitr1Art"><b>Sous-Titre 1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" size="80" maxlength="80" value="<?= $libSsTitr1Art ?>"/><br><br>
+            </div>
 
-            <label class="control-label" for="parag2Art"><b>Paragraphe 2 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="parag2Art" id="parag2Art" cols="80" rows="10"><?= $parag2Art ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="parag2Art"><b>Paragraphe 2 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="parag2Art" id="parag2Art" cols="80" rows="10"><?= $parag2Art ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="libSsTitr2Art"><b>Sous-Titre 2 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" size="80" maxlength="80" value="<?= $libSsTitr2Art ?>"/><br><br>
+            <div class="field">
+                <label class="control-label" for="libSsTitr2Art"><b>Sous-Titre 2 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" size="80" maxlength="80" value="<?= $libSsTitr2Art ?>"/><br><br>
+            </div>
 
-            <label class="control-label" for="parag3Art"><b>Paragraphe 3 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="parag3Art" id="parag3Art" cols="80" rows="10"><?= $parag3Art ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="parag3Art"><b>Paragraphe 3 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="parag3Art" id="parag3Art" cols="80" rows="10"><?= $parag3Art ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="libConclArt"><b>Conclusion :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="libConclArt" id="libConclArt" cols="80" rows="10"><?= $libConclArt ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="libConclArt"><b>Conclusion :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="libConclArt" id="libConclArt" cols="80" rows="10"><?= $libConclArt ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="urlPhotArt"><b>URL Photo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="urlPhotArt" id="urlPhotArt" size="80" maxlength="80" value="<?= $urlPhotArt ?>"/><br><br>
+            <div class="field">
+                <label class="control-label" for="urlPhotArt"><b>URL Photo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="urlPhotArt" id="urlPhotArt" size="80" maxlength="80" value="<?= $urlPhotArt ?>"/><br><br>
+            </div>
 
-            <label class="control-label" for="numAngl"><b>Angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><select name="numAngl" id="numAngl"> 
-            <?php
-                $allAngles = $monAngle->get_AllAngles();
-                foreach($allAngles as $row){
-                    if($row["numAngl"] === $numAngl){
-                        $selected = "selected";
-                    }else{
-                        $selected = "";
+            <div class="field">
+                <label class="control-label" for="numAngl"><b>Angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><select name="numAngl" id="numAngl"> 
+                <?php
+                    $allAngles = $monAngle->get_AllAngles();
+                    foreach($allAngles as $row){
+                        if($row["numAngl"] === $numAngl){
+                            $selected = "selected";
+                        }else{
+                            $selected = "";
+                        }
+                        echo '<option value="'.$row["numAngl"].'" '.$selected.'>'.$row["libAngl"].'</option>';
                     }
-                    echo '<option value="'.$row["numAngl"].'" '.$selected.'>'.$row["libAngl"].'</option>';
-                }
-            ?>
-            </select><br><br>
+                ?>
+                </select><br><br>
+            </div>
 
-            <label class="control-label" for="numThem"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><select name="numThem" id="numThem"> 
-            <?php
-                $allThems = $maThem->get_AllThematiques();
-                foreach($allThems as $row){
-                    if($row["numThem"] === $numThem){
-                        $selected = "selected";
-                    }else{
-                        $selected = "";
+            <div class="field">
+                <label class="control-label" for="numThem"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><select name="numThem" id="numThem"> 
+                <?php
+                    $allThems = $maThem->get_AllThematiques();
+                    foreach($allThems as $row){
+                        if($row["numThem"] === $numThem){
+                            $selected = "selected";
+                        }else{
+                            $selected = "";
+                        }
+                        echo '<option value="'.$row["numThem"].'" '.$selected.'>'.$row["libThem"].'</option>';
                     }
-                    echo '<option value="'.$row["numThem"].'" '.$selected.'>'.$row["libThem"].'</option>';
-                }
-            ?>
-            </select>
+                ?>
+                </select>
+            </div>
         </div>
 
         <div class="control-group">
             <div class="controls">
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <!-- <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" /> -->
+                <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <!-- <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" /> -->
+                <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
                 <br>
             </div>
         </div>
-      </fieldset>
     </form>
 <?php
 

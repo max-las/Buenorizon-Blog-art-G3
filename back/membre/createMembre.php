@@ -3,6 +3,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
 $class = new MEMBRE;
 
+$created = false;
+
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
 //     if(!empty($_POST['libStat'])){
 //         $monStatut->create($_POST['libStat']);

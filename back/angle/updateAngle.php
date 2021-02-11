@@ -24,7 +24,7 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if($_POST["Submit"] === "Initialiser"){
-            header("Location: ./createAngle.php");
+            header("Location: ./updateAngle.php?id=".$_POST["id"]);
             die();
         }
 
@@ -56,51 +56,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
     <h2>Ajout d'un angle</h2>
 
-    <form method="post" action="<?= "./updateAngle.php?id=".$numAngl; ?>" enctype="multipart/form-data">
-
-      <fieldset>
-        <legend class="legend1">Formulaire Angle...</legend>
+    <form method="post" action="<?= "./updateAngle.php?id=".$numAngl; ?>" enctype="multipart/form-data" class="ui form">
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libAngl"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" value="<?= isset($libAngl) ? $libAngl : ''; ?>"/><br><br>
-
-            <label class="control-label" for="numLang"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <select name="numLang" id="numLang"> 
-            <?php
-                $allLangues = $maLangue->get_AllLangues();
-                foreach($allLangues as $row){
-                    if($row["numLang"] === $numLang){
-                        $selected = "selected";
-                    }else{
-                        $selected = "";
+            <div class="field">
+                <label class="control-label" for="libAngl"><b>Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libAngl" id="libAngl" size="80" maxlength="80" value="<?= isset($libAngl) ? $libAngl : ''; ?>"/><br><br>
+            </div>
+            
+            <div class="field">
+                <label class="control-label" for="numLang"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <select name="numLang" id="numLang"> 
+                <?php
+                    $allLangues = $maLangue->get_AllLangues();
+                    foreach($allLangues as $row){
+                        if($row["numLang"] === $numLang){
+                            $selected = "selected";
+                        }else{
+                            $selected = "";
+                        }
+                        echo '<option value="'.$row["numLang"].'" '.$selected.'>'.$row["lib1Lang"].'</option>';
                     }
-                    echo '<option value="'.$row["numLang"].'" '.$selected.'>'.$row["lib1Lang"].'</option>';
-                }
-            ?>
-            </select>
+                ?>
+                </select>
+            </div>
         </div>
 
         <div class="control-group">
             <div class="controls">
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <!-- <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" /> -->
+                <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <!-- <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" /> -->
+                <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
                 <br>
             </div>
         </div>
-      </fieldset>
+
     </form>
 <?php
 
