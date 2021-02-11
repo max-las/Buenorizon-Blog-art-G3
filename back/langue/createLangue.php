@@ -49,27 +49,24 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Ajout d'une langue</h2>
-
-    <form method="post" action="./createLangue.php" enctype="multipart/form-data">
-
-      <fieldset>
-        <legend class="legend1">Formulaire Langue...</legend>
-
-        <!-- <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" /> -->
-
-        <div class="control-group">
-            <label class="control-label" for="lib1Lang"><b>Désignation :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" autofocus/><br><br>
-
-            <label class="control-label" for="lib2Lang"><b>Dénomination :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80"/><br><br>
-
-            <label class="control-label" for="numPays"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+    <h2>Suppression d'une Langue</h2>
+    <br>
+    <form method="post" action=".\createLangue.php" class="ui form">
+        <div class="field">
+            <label>Désignation</label>
+            <input type="text" name="lib1Lang" id="lib1Lang" placeholder="Désignation">
+        </div>
+        <div class="field">
+            <label>Dénomination</label>
+            <input type="text" name="lib2Lang" id="lib2Lang" placeholder="Dénomination">
+        </div>
+        <div class="field">
+            <label>Pays</label>
             <select name="numPays" id="numPays"> 
             <?php
                 $allPays = $monPays->get_AllPays();
@@ -79,18 +76,8 @@
             ?>
             </select>
         </div>
-
-        <div class="control-group">
-            <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
-            </div>
-        </div>
-      </fieldset>
+        <br>
+        <input class="ui button" type="submit" name="Submit" value="Valider">
     </form>
 <?php
 
