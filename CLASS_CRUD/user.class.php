@@ -113,7 +113,7 @@
 
 					$request = $db->prepare($query);
 
-					$request->execute(array($pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat));
+					$request->execute(array($pseudoUser, password_hash($passUser, PASSWORD_BCRYPT), $nomUser, $prenomUser, $emailUser, $idStat));
 
 					$db->commit();
 					$request->closeCursor();
@@ -128,13 +128,21 @@
 		function update($pseudoUser, $passUser, $nomUser, $prenomUser, $emailUser, $idStat){
 			global $db;
 			try {
-				$query = "UPDATE user SET passUser = ?, nomUser = ?, prenomUser = ?, emailUser = ?, idStat = ? WHERE pseudoUser = ?";
-
 				$db->beginTransaction();
 
-				$request = $db->prepare($query);
+				if(empty($passUser)){
+					$query = "UPDATE user SET nomUser = ?, prenomUser = ?, emailUser = ?, idStat = ? WHERE pseudoUser = ?";
 
-				$request->execute(array($passUser, $nomUser, $prenomUser, $emailUser, $idStat, $pseudoUser));
+					$request = $db->prepare($query);
+	
+					$request->execute(array($nomUser, $prenomUser, $emailUser, $idStat, $pseudoUser));
+				}else{
+					$query = "UPDATE user SET passUser = ?, nomUser = ?, prenomUser = ?, emailUser = ?, idStat = ? WHERE pseudoUser = ?";
+
+					$request = $db->prepare($query);
+	
+					$request->execute(array(password_hash($passUser, PASSWORD_BCRYPT), $nomUser, $prenomUser, $emailUser, $idStat, $pseudoUser));
+				}
 
 				$db->commit();
 				$request->closeCursor();

@@ -33,13 +33,7 @@
         $erreur = "";
         $updated = true;
     
-        if(empty($_POST['passUser'])){
-            $passUser = '';
-            $erreur = $erreur."<li>Il manque le mot de passe.</li>";
-            $updated = false;
-        }else{
-            $passUser = $_POST['passUser'];
-        }
+        $passUser = $_POST['passUser'];
     
         if(empty($_POST['nomUser'])){
             $nomUser = '';
@@ -80,7 +74,7 @@
     }else{
         $pseudoUser = $_GET["id"];
         $resultUser = $monUser->get_1UserWithStatut($pseudoUser);
-        $passUser = $resultUser['passUser'];
+        $passUser = "";
         $nomUser = $resultUser['nomUser'];
         $prenomUser = $resultUser['prenomUser'];
         $eMailUser = $resultUser['eMailUser'];
@@ -124,7 +118,7 @@
 
             <div class="field">
                 <label class="control-label" for="passUser"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="passUser" id="passUser" size="80" maxlength="80" value="<?= $passUser ?>" /><br><br>
+                <input type="text" name="passUser" id="passUser" size="80" maxlength="80" value="<?= $passUser ?>" placeholder="(Laisser vide pour ne pas changer)" /><br><br>
             </div>
 
             <div class="field">

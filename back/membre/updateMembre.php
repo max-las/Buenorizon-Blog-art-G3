@@ -27,8 +27,9 @@
 
         $numMemb = $_POST["id"];
         $dtCreaMemb = $_POST["date"];
+        $passMemb = $_POST['passMemb'];
 
-        if(isset($_POST['prenomMemb']) && isset($_POST['nomMemb']) && isset($_POST['pseudoMemb']) && isset($_POST['passMemb']) && isset($_POST['eMailMemb'])){
+        if(isset($_POST['prenomMemb']) && isset($_POST['nomMemb']) && isset($_POST['pseudoMemb']) && isset($_POST['eMailMemb'])){
             if(isset($_POST['souvenirMemb'])){
                 $souvenirMemb = 1;
             }else{
@@ -47,6 +48,7 @@
     }else{
         $numMemb = $_GET["id"];
         $dtCreaMemb = $_GET['date'];
+        $passMemb = "";
     }
 
     $resultMembre = $class->get_1Membre($numMemb);
@@ -55,7 +57,6 @@
         $prenomMemb = $resultMembre['prenomMemb'];
         $nomMemb = $resultMembre['nomMemb'];
         $pseudoMemb = $resultMembre['pseudoMemb'];
-        $passMemb = $resultMembre['passMemb'];
         $eMailMemb = $resultMembre['eMailMemb'];
         $souvenirMemb = $resultMembre['souvenirMemb'];
         $accordMemb = $resultMembre['accordMemb'];
@@ -102,7 +103,7 @@
         </div>
         <div class="field">
             <label>Mot de passe du membre</label>
-            <input type="password" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?>>
+            <input type="password" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?>  placeholder="(Laisser vide pour ne pas changer)">
         </div>
         <div class="field">
             <label>Email du membre</label>

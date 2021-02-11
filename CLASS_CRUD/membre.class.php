@@ -97,7 +97,7 @@ class MEMBRE{
 
             $request = $db->prepare($query);
             
-            $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb));
+            $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, password_hash($passMemb, PASSWORD_BCRYPT), $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb));
 
             $db->commit();
 
@@ -115,11 +115,19 @@ class MEMBRE{
         try {
             $db->beginTransaction();
 
-            $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
+            if(empty($passMemb)){
+                $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
 
-            $request = $db->prepare($query);
+                $request = $db->prepare($query);
+    
+                $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb, $numMemb));
+            }else{
+                $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
 
-            $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb, $numMemb));
+                $request = $db->prepare($query);
+    
+                $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, password_hash($passMemb, PASSWORD_BCRYPT), $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb, $numMemb));
+            }
 
             $db->commit();
             $request->closeCursor();
