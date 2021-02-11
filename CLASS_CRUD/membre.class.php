@@ -16,6 +16,21 @@ class MEMBRE{
 		return ($result);
     }
 
+    function get_1MembreByMail($eMailMemb){
+        global $db;
+
+        $query = 'SELECT * FROM membre WHERE eMailMemb = ?';
+
+		$request = $db->prepare($query);
+	
+		$request->execute(array($eMailMemb));
+	
+		$result = $request->fetch();
+	
+		$request->closeCursor();
+		return ($result);
+    }
+
     function get_AllMembres(){
         global $db;
 

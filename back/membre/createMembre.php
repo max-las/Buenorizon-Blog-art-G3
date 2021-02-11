@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     <?php
     if($created) {
-        $numMembResult = $class->get_AllMembresByMail($_POST['eMailMemb']);
+        $numMembResult = $class->get_1MembreByMail($_POST['eMailMemb']);
         $numMemb = $numMembResult['numMemb'];
         echo '<p style="color:green;">Le membre ' . $_POST['pseudoMemb'] . ' #' . $numMemb . ' a été créé.</p>';
     }

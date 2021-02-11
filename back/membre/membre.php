@@ -24,42 +24,47 @@ $class = new MEMBRE;
         <h2><a href="./createMembre.php">Nouveau membre</a></h2>
         <hr>
         <h2>Tous les membres</h2>
-        <table class="ui celled table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Prenom</th>
-                    <th>Nom</th>
-                    <th>Pseudo</th>
-                    <th>Email</th>
-                    <th>Date de création</th>
-                    <th>Souvenir ?</th>
-                    <th>Accord ?</th>
-                    <th colspan="2">&nbsp;Action&nbsp;</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $allMembres = $class->get_AllMembres();
-                foreach ($allMembres as $row) { ?>
+        <div style="max-width: 100%; overflow-x: auto;">
+            <table class="ui celled table">
+                <thead>
                     <tr>
-                        <td><?= $row['numMemb'] ?></td>
-                        <td><?= $row['prenomMemb'] ?></td>
-                        <td><?= $row['nomMemb'] ?></td>
-                        <td><?= $row['pseudoMemb'] ?></td>
-                        <td><?= $row['eMailMemb'] ?></td>
-                        <td><?= $row['dtCreaMemb'] ?></td>
-                        <td><?= ($row['souvenirMemb']) ? 'oui' :  'non' ?></td>
-                        <td><?= ($row['accordMemb']) ? 'oui' :  'non' ?></td>
-                        <td>&nbsp;<a href="./updateMembre.php?id=<?= $row['numMemb'] ?>&date=<?= $row['dtCreaMemb'] ?>"><i>Modifier</i></a>&nbsp;
-                        <br />
-                    </td>
-                    <td>&nbsp;<a href="./deleteMembre.php?id=<?= $row['numMemb'] ?>&date=<?= $row['dtCreaMemb'] ?>"><i>Supprimer</i></a>&nbsp;
-                        <br />
-                    </td>
+                        <th>ID</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Pseudo</th>
+                        <th>Email</th>
+                        <th>Mot de passe</th>
+                        <th>Date de création</th>
+                        <th>Souvenir ?</th>
+                        <th>Accord ?</th>
+                        <th colspan="2">&nbsp;Action&nbsp;</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php $allMembres = $class->get_AllMembres();
+                    foreach ($allMembres as $row) { ?>
+                        <tr>
+                            <td><?= $row['numMemb'] ?></td>
+                            <td><?= $row['prenomMemb'] ?></td>
+                            <td><?= $row['nomMemb'] ?></td>
+                            <td><?= $row['pseudoMemb'] ?></td>
+                            <td><?= $row['eMailMemb'] ?></td>
+                            <td><?= $row['passMemb'] ?></td>
+                            <td><?= $row['dtCreaMemb'] ?></td>
+                            <td><?= ($row['souvenirMemb']) ? 'oui' :  'non' ?></td>
+                            <td><?= ($row['accordMemb']) ? 'oui' :  'non' ?></td>
+                            <td>&nbsp;<a href="./updateMembre.php?id=<?= $row['numMemb'] ?>&date=<?= $row['dtCreaMemb'] ?>"><i>Modifier</i></a>&nbsp;
+                            <br />
+                        </td>
+                        <td>&nbsp;<a href="./deleteMembre.php?id=<?= $row['numMemb'] ?>&date=<?= $row['dtCreaMemb'] ?>"><i>Supprimer</i></a>&nbsp;
+                            <br />
+                        </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        
 
         <?php
         require_once __DIR__ . '/footerMembre.php';

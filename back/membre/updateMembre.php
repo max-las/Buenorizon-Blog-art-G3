@@ -103,7 +103,7 @@
         </div>
         <div class="field">
             <label>Mot de passe du membre</label>
-            <input type="password" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?>  placeholder="(Laisser vide pour ne pas changer)">
+            <input type="text" name="passMemb" value="<? echo($passMemb); ?>"  placeholder="(Laisser vide pour ne pas changer)">
         </div>
         <div class="field">
             <label>Email du membre</label>
