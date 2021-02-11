@@ -49,6 +49,12 @@
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
     <h2>Ajout d'un angle</h2>
 
+    <?php
+    if($created) {
+        echo '<p style="color:green;">L\'angle "'.$_POST['libAngl'].'" a été créé.</p>';
+    }
+    ?>
+
     <form method="post" action="./createAngle.php" enctype="multipart/form-data" class="ui form">
 
         <!-- <legend class="legend1">Formulaire Angle...</legend> -->
@@ -88,10 +94,6 @@
         </div>
     </form>
 <?php
-
-if($created) {
-    echo '<p style="color:green;">L\'angle "'.$_POST['libAngl'].'" a été créé.</p>';
-}
 
 require_once __DIR__ . '/footerAngle.php';
 

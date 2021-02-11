@@ -181,8 +181,16 @@
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
     <h2>Ajout d'un article</h2>
 
-    <form method="post" action="<?= "./updateArticle.php?id=".$numArt; ?>" enctype="multipart/form-data" class="ui form">
+    <?php
+    if($updated) {
+        echo '<p style="color:green;">L\'angle "'.$libTitrArt.'" a été bien modifié.</p>';
+    } elseif($_SERVER['REQUEST_METHOD'] == 'POST') {
+        echo '<p style="color:red;">L\'article n\'a pas été modifié car : </p>';
+        echo '<ul style="color:red;">'.$erreur.'</ul>';
+    }
+    ?>
 
+    <form method="post" action="<?= "./updateArticle.php?id=".$numArt; ?>" enctype="multipart/form-data" class="ui form">
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
@@ -291,13 +299,6 @@
         </div>
     </form>
 <?php
-
-if($updated) {
-    echo '<p style="color:green;">L\'angle "'.$libTitrArt.'" a été bien modifié.</p>';
-} elseif($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo '<p style="color:red;">L\'article n\'a pas été modifié car : </p>';
-    echo '<ul style="color:red;">'.$erreur.'</ul>';
-}
 
 require_once __DIR__ . '/footerArticle.php';
 

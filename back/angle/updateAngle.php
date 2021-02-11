@@ -63,6 +63,12 @@
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
     <h2>Ajout d'un angle</h2>
 
+    <?php
+    if($updated) {
+        echo '<p style="color:green;">L\'angle "'.$libAngl.'" a été bien modifié.</p>';
+    }
+    ?>
+
     <form method="post" action="<?= "./updateAngle.php?id=".$numAngl; ?>" enctype="multipart/form-data" class="ui form">
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
@@ -106,10 +112,6 @@
 
     </form>
 <?php
-
-if($updated) {
-    echo '<p style="color:green;">L\'angle "'.$libAngl.'" a été bien modifié.</p>';
-}
 
 require_once __DIR__ . '/footerAngle.php';
 

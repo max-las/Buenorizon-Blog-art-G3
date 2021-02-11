@@ -113,6 +113,45 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
     <h2>Suppression d'un article</h2>
 
+    <?php 
+    if($supprImpossible){
+        echo '<div style="color:red;">';
+        echo '<p>Impossible de supprimer l\'article "'.$libTitrArt.'" car il est référencé par les éléments suivants :</p>';
+    
+        if($comments){
+            echo '<p>Table COMMENT (numéros valables pour cet article uniquement) :</p>';
+            echo '<ul>';
+            foreach($comments as $row){
+                echo '<li>Commentaire n°'.$row["numSeqCom"].' ('.$row["libCom"].')</li>';
+            }
+            echo '</ul>';
+        }
+    
+        if($likearts){
+            echo '<p>Table LIKEART :</p>';
+            echo '<ul>';
+            foreach($likearts as $row){
+                echo '<li>Membre n°'.$row["numMemb"].' ('.$row["pseudoMemb"].')</li>';
+            }
+            echo '</ul>';
+        }
+    
+        if($motcles){
+            echo '<p>Table MOTCLEARTICLE :</p>';
+            echo '<ul>';
+            foreach($motcles as $row){
+                echo '<li>Mot-Clé n°'.$row["numMotCle"].' ('.$row["libMotCle"].')</li>';
+            }
+            echo '</ul>';
+        }
+    
+        echo '</div>';
+    
+    } elseif($deleted) {
+        echo '<p style="color:green;">L\'article "'.$libTitrArt.'" a été supprimé.</p>';
+    }
+    ?>
+
    <form method="post" action="<?= "./deleteArticle.php?id=".$numArt; ?>" enctype="multipart/form-data" class="ui form">
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
@@ -203,43 +242,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     </form>
     <br>
 <?php
-
-if($supprImpossible){
-    echo '<div style="color:red;">';
-    echo '<p>Impossible de supprimer l\'article "'.$libTitrArt.'" car il est référencé par les éléments suivants :</p>';
-
-    if($comments){
-        echo '<p>Table COMMENT (numéros valables pour cet article uniquement) :</p>';
-        echo '<ul>';
-        foreach($comments as $row){
-            echo '<li>Commentaire n°'.$row["numSeqCom"].' ('.$row["libCom"].')</li>';
-        }
-        echo '</ul>';
-    }
-
-    if($likearts){
-        echo '<p>Table LIKEART :</p>';
-        echo '<ul>';
-        foreach($likearts as $row){
-            echo '<li>Membre n°'.$row["numMemb"].' ('.$row["pseudoMemb"].')</li>';
-        }
-        echo '</ul>';
-    }
-
-    if($motcles){
-        echo '<p>Table MOTCLEARTICLE :</p>';
-        echo '<ul>';
-        foreach($motcles as $row){
-            echo '<li>Mot-Clé n°'.$row["numMotCle"].' ('.$row["libMotCle"].')</li>';
-        }
-        echo '</ul>';
-    }
-
-    echo '</div>';
-
-} elseif($deleted) {
-    echo '<p style="color:green;">L\'article "'.$libTitrArt.'" a été supprimé.</p>';
-}
 
 require_once __DIR__ . '/footerArticle.php';
 

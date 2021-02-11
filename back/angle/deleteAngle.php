@@ -93,6 +93,21 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
     <h2>Suppression d'un angle</h2>
 
+    <?php
+    if($supprImpossible){
+        echo '<p style="color:red;">Impossible de supprimer l\'angle : "'.$libAngl.'" car il est référencé par les articles suivants :</p>';
+    
+        echo '<ul>';
+        foreach($articles as $row){
+            echo '<li>'.$row["libTitrArt"].'</li>';
+        }
+        echo '</ul>';
+    
+    } elseif($deleted) {
+        echo '<p style="color:green;">L\'angle "'.$libAngl.'" a été supprimé.</p>';
+    }    
+    ?>
+
     <form method="post" action="<?= "./deleteAngle.php?id=".$numAngl; ?>" enctype="multipart/form-data" class="ui form">
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
@@ -126,19 +141,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     </form>
     <br>
 <?php
-
-if($supprImpossible){
-    echo '<p style="color:red;">Impossible de supprimer l\'angle : "'.$libAngl.'" car il est référencé par les articles suivants :</p>';
-
-    echo '<ul>';
-    foreach($articles as $row){
-        echo '<li>'.$row["libTitrArt"].'</li>';
-    }
-    echo '</ul>';
-
-} elseif($deleted) {
-    echo '<p style="color:green;">L\'angle "'.$libAngl.'" a été supprimé.</p>';
-}
 
 require_once __DIR__ . '/footerAngle.php';
 
