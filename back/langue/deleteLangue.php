@@ -82,7 +82,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
     <h2>Suppression d'une Langue</h2>
     <br>
-    <form method="post" action=".\updateLangue.php" class="ui form">
+    <form method="post" action=".\deleteLangue.php" class="ui form">
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
         <div class="field">
             <label>Désignation</label>

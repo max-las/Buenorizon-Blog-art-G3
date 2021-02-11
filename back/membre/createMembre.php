@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         die();
     }
 
-    if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) && !empty($_POST['pseudoMemb']) && !empty($_POST['passMemb']) && !empty($_POST['eMailMemb']) && !empty($_POST['souvenirMemb']) && !empty($_POST['accordMemb'])){
+    if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) && !empty($_POST['pseudoMemb']) && !empty($_POST['passMemb']) && !empty($_POST['eMailMemb']) && !empty($_POST['accordMemb'])){
         $class->create($_POST['prenomMemb'],$_POST['nomMemb'],$_POST['pseudoMemb'],$_POST['passMemb'],$_POST['eMailMemb'],date('Y-m-d H:i:s'),$souvenirMemb, $accordMemb);
         $created = true;
     }
@@ -58,7 +58,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     <?php
     if($created) {
-        echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été créé.</p>';
+        $numMembResult = $class->get_AllMembresByMail($_POST['eMailMemb']);
+        $numMemb = $numMembResult['numMemb'];
+        echo '<p style="color:green;">Le membre ' . $_POST['pseudoMemb'] . ' #' . $numMemb . ' a été créé.</p>';
     }
     ?>
 
