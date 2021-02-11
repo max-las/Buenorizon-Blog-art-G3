@@ -58,45 +58,31 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!--<link href="../css/style.css" rel="stylesheet" type="text/css" />-->
 </head>
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Mot-Clé</h1>
-    <h2>Ajout d'un mot-clé</h2>
-
-    <form method="post" action="./createMotCle.php" enctype="multipart/form-data">
-
-      <fieldset>
-        <legend class="legend1">Formulaire Mot-Clé...</legend>
-
-        <!-- <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" /> -->
-
-        <div class="control-group">
-            <label class="control-label" for="libMotCle"><b>Libellé :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libMotCle" id="libMotCle" size="80" maxlength="80" /><br><br>
-
-            <label class="control-label" for="numLang"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><select name="numLang" id="numLang"> 
+    <h2>Création d'un Mot-Clé</h2>
+    <br>
+    <form method="post" action=".\createMotCle.php" class="ui form">
+        <div class="field">
+            <label>Libellé</label>
+            <input type="text" name="libMotCle" id="libMotCle" placeholder="Désignation">
+        </div>
+        <div class="field">
+            <label>Langue</label>
+            <select name="numLang" id="numLang"> 
             <?php
                 $allLangues = $maLangue->get_AllLangues();
                 foreach($allLangues as $row){
                     echo '<option value="'.$row["numLang"].'">'.$row["lib1Lang"].'</option>';
                 }
             ?>
-            </select><br><br>
+            </select>
         </div>
-
-        <div class="control-group">
-            <div class="controls">
-                <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                <br>
-            </div>
-        </div>
-      </fieldset>
+        <br>
+        <input class="ui button" type="submit" name="Submit" value="Valider">
     </form>
 <?php
 
