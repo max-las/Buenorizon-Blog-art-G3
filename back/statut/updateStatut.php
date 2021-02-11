@@ -11,7 +11,9 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
-// controle des saisies du formulaire
+// Init variables form
+include __DIR__ . '/initStatut.php';
+$updated = false;
 
 
 // insertion classe STATUT
@@ -24,31 +26,41 @@ $monStatut = new STATUT;
 // (isset($_POST['libStat'])) ?? $monStatut->update($_GET['id'], 'aaaaa');
 
 
-
-
-
-
-
 // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
 // modification effective du statut
 
 
 // echo $id;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['libStat'])) {
-       
-        $monStatut->update($_GET['id'], $_POST['libStat']);
-        echo ('Le statut ' . $_POST['libStat'] . ' a bien été modifié.');
-        }
-} else {
-    echo ('libStat n\'a pas été renseignée');
+    if($_POST["Submit"] === "Initialiser"){
+        header("Location: ./updateStatut.php?id=".$_POST["id"]);
+        die();
+    }
+
+    $idStat = $_POST["id"];
+
+    $erreur = "";
+    $updated = true;
+
+    if(empty($_POST['libStat'])){
+        $libStat = '';
+        $erreur = $erreur."<li>Il manque le libellé.</li>";
+        $updated = false;
+    }else{
+        $libStat = $_POST['libStat'];
+    }
+
+    if($updated){
+        $monStatut->update($idStat, $_POST['libStat']);
+    }
+
+}else{
+    $idStat = $_GET["id"];
+    $resultStatut = $monStatut->get_1Statut($idStat);
+    $libStat = $resultStatut['libStat'];
 }
 
 
-
-
-// Init variables form
-include __DIR__ . '/initStatut.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -59,44 +71,44 @@ include __DIR__ . '/initStatut.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
 
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
     <h2>Modification d'un statut</h2>
+
     <?php
-    // Modif : récup id à modifier
-    $libStat = $db->prepare("SELECT libStat FROM statut WHERE idStat= :id");
-    $libStat->execute([':id' => $_GET['id']]);
-    $libStat = $libStat->fetch();
-
-
+    if($updated) {
+        echo '<p style="color:green;">Le statut "'.$libStat.'" a été bien modifié.</p>';
+    } elseif($_SERVER['REQUEST_METHOD'] == 'POST') {
+        echo '<p style="color:red;">Le statut n\'a pas été modifié car : </p>';
+        echo '<ul style="color:red;">'.$erreur.'</ul>';
+    }
     ?>
-    <form method="post" action="" enctype="multipart/form-data">
 
-        <fieldset>
-            <legend class="legend1">Formulaire Statut...</legend>
+    <form method="post" action="" enctype="multipart/form-data" class="ui form">
 
             <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
             <div class="control-group">
-                <label class="control-label" for="libStat"><b>Nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat['libStat'] ?>" autofocus="autofocus" />
+                <div class="field">
+                    <label class="control-label" for="libStat"><b>Nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                    <input type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat ?>" autofocus="autofocus" />
+                </div>
             </div>
 
             <div class="control-group">
                 <div class="controls">
                     <br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                    <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                    <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
                     <br>
                 </div>
             </div>
-        </fieldset>
     </form>
     <?php
     require_once __DIR__ . '/footerStatut.php';

@@ -26,6 +26,11 @@
     $prevNumLang = $_GET['numLang'];
 
      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($_POST["Submit"] === "Initialiser"){
+            header("Location: ./updateThematique.php?id=".$_POST["id"]);
+            die();
+        }
+
         if(isset($_POST['libThem']) && isset($_POST['numLang'])){
             $libThem = $_POST['libThem'];
             $numLang = $_POST['numLang'];
@@ -43,7 +48,6 @@
     }else{
         $libThem = $_GET['libThem'];
         $numLang = $_GET['numLang'];
-        echo("libThem: $libThem <br>numLang: $numLang");
     }
 
     $resultThematique = $class->get_1Thematique($numThem);
@@ -71,6 +75,13 @@
     <h1>BLOGART21 Admin - Gestion du CRUD Thématique</h1>
     <h2>Modification d'une Thématique</h2>
     <br>
+
+    <?php
+    if($updated) {
+        echo '<p style="color:green;">La thématique ' . $libThem . '#' . $numThem . ' a été modifiée.</p>';
+    }
+    ?>
+
     <form method="post" action=".\updateThematique.php?numThem=<?= $prevNumThem ?>&numLang=<?= $prevNumLang ?>" class="ui form">
         <div class="field">
             <label>Libellé de la Thématique</label>
@@ -93,13 +104,12 @@
             </select>
         </div>
         <br>
-        <button class="ui button" type="submit">Valider</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
 <?php
-
-if($updated) {
-    echo '<p style="color:green;">La thématique ' . $libThem . '#' . $numThem . ' a été modifiée.</p>';
-}
 
 require_once __DIR__ . '/footerThematique.php';
 

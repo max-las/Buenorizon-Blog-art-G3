@@ -31,7 +31,8 @@ $monStatut = new STATUT;
     <meta n ame="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <style type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- <style type="text/css">
         .error {
             padding: 2px;
             border: solid 0px black;
@@ -39,10 +40,10 @@ $monStatut = new STATUT;
             font-style: italic;
             border-radius: 5px;
         }
-    </style>
+    </style> -->
 </head>
 
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
 
     <hr /><br />
@@ -51,7 +52,7 @@ $monStatut = new STATUT;
     <hr />
     <h2>Tous les statuts</h2>
 
-    <table border="3" bgcolor="aliceblue">
+    <table class="ui celled table">
         <thead>
             <tr>
                 <th>&nbsp;Numéro&nbsp;</th>

@@ -26,6 +26,11 @@ if(isset($_POST['accordMemb'])){
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_POST["Submit"] === "Initialiser"){
+        header("Location: ./createMembre.php");
+        die();
+    }
+
     if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) && !empty($_POST['pseudoMemb']) && !empty($_POST['passMemb']) && !empty($_POST['eMailMemb']) && !empty($_POST['souvenirMemb']) && !empty($_POST['accordMemb'])){
         $class->create($_POST['prenomMemb'],$_POST['nomMemb'],$_POST['pseudoMemb'],$_POST['passMemb'],$_POST['eMailMemb'],date('Y-m-d H:i:s'),$souvenirMemb, $accordMemb);
         $created = true;
@@ -50,6 +55,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
     <h2>Ajout d'un Membre</h2>
     <br>
+
+    <?php
+    if($created) {
+        echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été créé.</p>';
+    }
+    ?>
+
     <form method="post" action=".\createMembre.php" class="ui form">
         <div class="field">
             <label>Prénom du membre</label>
@@ -84,12 +96,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             </div>
         </div>
         <br>
-        <button class="ui button" type="submit">Valider</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
     <?php
-    if($created) {
-        echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été créé.</p>';
-    }
 
     require_once __DIR__ . '/footerMembre.php';
 

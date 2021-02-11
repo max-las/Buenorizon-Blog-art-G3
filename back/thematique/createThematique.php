@@ -17,6 +17,11 @@ $created = false;
 // }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_POST["Submit"] === "Initialiser"){
+        header("Location: ./createThematique.php");
+        die();
+    }
+
     if(isset($_POST['libThem']) && isset($_POST['numLang'])){
         $libThem = $_POST['libThem'];
         $numLang = $_POST['numLang'];
@@ -43,8 +48,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Thématique</h1>
-    <h2>Ajout d'un Thématique</h2>
+    <h2>Ajout d'une Thématique</h2>
     <br>
+
+    <?php
+    if($created) {
+        echo '<p style="color:green;">La thématique ' . $libThem . '#' .  $numThem . ' a été créée.</p>';
+    }
+    ?>
+
     <form method="post" action=".\createThematique.php" class="ui form">
         <div class="field">
             <label>Libellé de la Thématique</label>
@@ -62,12 +74,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             </select>
         </div>
         <br>
-        <button class="ui button" type="submit">Valider</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
     <?php
-    if($created) {
-        echo '<p style="color:green;">La thématique ' . $libThem . '#' .  $numThem . ' a été créée.</p>';
-    }
 
     require_once __DIR__ . '/footerThematique.php';
 

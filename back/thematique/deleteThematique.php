@@ -61,6 +61,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Thématique</h1>
     <h2>Suppression d'une Thématique</h2>
     <br>
+
+    <?php
+    if($deleted) {
+        echo '<p style="color:green;">La thématique ' . $libThem . '#' . $numThem . ' a été supprimée.</p>';
+    }
+    ?>
+
     <form method="post" action=".\deleteThematique.php" class="ui form">
         <input type="hidden" name="numThem" value="<?= $numThem ?>">
         <div class="field">
@@ -72,15 +79,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             <input type="text" name="numLang" placeholder="N° Langue" value="<?= $numLang ?>" readonly>
         </div>
         <br>
-        <input class="ui button" type="submit" name="Submit" value="Annuler">
-        <input class="ui button" type="submit" name="Submit" value="Valider">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Annuler" name="Submit" class="ui button">Annuler</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
 
 <?php
-
-if($deleted) {
-    echo '<p style="color:green;">La thématique ' . $libThem . '#' . $numThem . ' a été supprimée.</p>';
-}
 
 require_once __DIR__ . '/footerThematique.php';
 

@@ -20,6 +20,11 @@
      // ajout effectif de l'angle
 
      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($_POST["Submit"] === "Initialiser"){
+            header("Location: ./updateMembre.php?id=".$_POST["id"]);
+            die();
+        }
+
         $numMemb = $_POST["id"];
         $dtCreaMemb = $_POST["date"];
 
@@ -73,6 +78,12 @@
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
     <h2>Modification d'un Membre</h2>
 
+    <?php
+    if($updated) {
+        echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été bien modifié.</p>';
+    }
+    ?>
+
     <form method="post" action=".\updateMembre.php" class="ui form">
     
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
@@ -110,13 +121,12 @@
             </div>
         </div>
         <br>
-        <button class="ui button" type="submit">Valider</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
 <?php
-
-if($updated) {
-    echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été bien modifié.</p>';
-}
 
 require_once __DIR__ . '/footerMembre.php';
 

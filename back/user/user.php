@@ -24,10 +24,11 @@ $monUser = new USER;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD User</h1>
 
     <hr /><br />
@@ -36,7 +37,7 @@ $monUser = new USER;
     <hr />
     <h2>Tous les utilisateurs</h2>
 
-    <table border="3" bgcolor="aliceblue">
+    <table class="ui celled table">
         <thead>
             <tr>
                 <th>&nbsp;Pseudo&nbsp;</th>

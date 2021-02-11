@@ -21,9 +21,9 @@ $class = new THEMATIQUE;
     <div class="ui container">
         <h1>BLOGART21 Admin - Gestion du CRUD Thématique</h1>
         <hr>
-        <h2><a href="./createThematique.php">Nouveau Thématique</a></h2>
+        <h2><a href="./createThematique.php">Nouvelle Thématique</a></h2>
         <hr>
-        <h2>Tous les Thématiques</h2>
+        <h2>Toutes les Thématiques</h2>
         <table class="ui celled table">
             <thead>
                 <tr>

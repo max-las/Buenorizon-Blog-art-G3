@@ -70,6 +70,28 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Mot-Clé</h1>
     <h2>Suppression d'un Mot-Clé</h2>
     <br>
+
+    <?php
+        if($supprImpossible){
+            echo '<div style="color:red;">';
+            echo '<p>Impossible de supprimer le mot-clé "'.$libMotCle.'" car il est référencé par les éléments suivants :</p>';
+
+            if($motclearts){
+                echo '<p>Table MOTCLEARTICLE :</p>';
+                echo '<ul>';
+                foreach($motclearts as $row){
+                    echo '<li>Article n°'.$row["numArt"].' ('.$row["libTitrArt"].')</li>';
+                }
+                echo '</ul>';
+            }
+
+            echo '</div>';
+
+        } elseif($deleted) {
+            echo '<p style="color:green;">Le mot-clé "'.$libMotCle.'" a été supprimé.</p>';
+        }
+    ?>
+
     <form method="post" action=".\deleteMotCle.php?id=<?= $numMotCle ?>" class="ui form">
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
         <div class="field">
@@ -84,29 +106,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             ?>" disabled>
         </div>
         <br>
-        <input class="ui button" type="submit" name="Submit" value="Valider">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Annuler" name="Submit" class="ui button">Annuler</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
     <br>
 <?php
-
-if($supprImpossible){
-    echo '<div style="color:red;">';
-    echo '<p>Impossible de supprimer le mot-clé "'.$libMotCle.'" car il est référencé par les éléments suivants :</p>';
-
-    if($motclearts){
-        echo '<p>Table MOTCLEARTICLE :</p>';
-        echo '<ul>';
-        foreach($motclearts as $row){
-            echo '<li>Article n°'.$row["numArt"].' ('.$row["libTitrArt"].')</li>';
-        }
-        echo '</ul>';
-    }
-
-    echo '</div>';
-
-} elseif($deleted) {
-    echo '<p style="color:green;">Le mot-clé "'.$libMotCle.'" a été supprimé.</p>';
-}
 
 require_once __DIR__ . '/footerMotCle.php';
 

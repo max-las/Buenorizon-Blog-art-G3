@@ -65,6 +65,16 @@
     <h1>BLOGART21 Admin - Gestion du CRUD Mot-Clé</h1>
     <h2>Création d'un Mot-Clé</h2>
     <br>
+
+    <?php
+    if($created) {
+        echo '<p style="color:green;">Le mot-clé "'.$_POST['libMotCle'].'" a été créé.</p>';
+    } elseif($_SERVER['REQUEST_METHOD'] == 'POST') {
+        echo '<p style="color:red;">Le mot-clé n\'a pas été créé car : </p>';
+        echo '<ul style="color:red;">'.$erreur.'</ul>';
+    }
+    ?>
+
     <form method="post" action=".\createMotCle.php" class="ui form">
         <div class="field">
             <label>Libellé</label>
@@ -82,16 +92,12 @@
             </select>
         </div>
         <br>
-        <input class="ui button" type="submit" name="Submit" value="Valider">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
 <?php
-
-if($created) {
-    echo '<p style="color:green;">Le mot-clé "'.$_POST['libMotCle'].'" a été créé.</p>';
-} elseif($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo '<p style="color:red;">Le mot-clé n\'a pas été créé car : </p>';
-    echo '<ul style="color:red;">'.$erreur.'</ul>';
-}
 
 require_once __DIR__ . '/footerMotCle.php';
 

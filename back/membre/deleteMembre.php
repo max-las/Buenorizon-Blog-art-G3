@@ -98,6 +98,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
     <h2>Suppression d'un Membre</h2>
 
+    <?php
+    if($deleted) {
+        echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été supprimé.</p>';
+    }
+    ?>
+
     <form method="post" action=".\deleteMembre.php" class="ui form">
     
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
@@ -135,15 +141,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             </div>
         </div>
         <br>
-        <input class="ui button" type="submit" name="Submit" value="Annuler">
-        <input class="ui button" type="submit" name="Submit" value="Valider">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Annuler" name="Submit" class="ui button">Annuler</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
 
 <?php
-
-if($deleted) {
-    echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été supprimé.</p>';
-}
 
 require_once __DIR__ . '/footerMembre.php';
 
