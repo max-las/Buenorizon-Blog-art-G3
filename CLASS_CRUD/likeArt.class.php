@@ -32,6 +32,21 @@
 			return ($result);
 		}
 
+		function get_AllLikesArtByMembre($numMemb){
+			global $db;
+
+			$query = 'SELECT * FROM likeart WHERE numMemb = ?';
+
+			$request = $db->prepare($query);
+
+			$request->execute(array($numMemb));
+		
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
 		function get_AllLikesArtByArticle($numArt){
 			global $db;
 

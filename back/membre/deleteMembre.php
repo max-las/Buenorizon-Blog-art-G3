@@ -6,6 +6,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // Init variables form
     include __DIR__ . '/initMembre.php';
+    $supprImpossible = false;
     $deleted = false;
     if(!isset($_GET['id'])) $_GET['id'] = '';
     $numLang = '';
@@ -17,6 +18,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     // insertion classe MEMBRE
     require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
     $class = new MEMBRE;
+
+    require_once __DIR__ . '/../../CLASS_CRUD/likeArt.class.php';
+    require_once __DIR__ . '/../../CLASS_CRUD/likeCom.class.php';
+    $likeArt = new LIKEART;
+    $likeCom = new LIKECOM;
 
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
@@ -30,9 +36,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $numMemb = $_POST["id"];
 
         $resultMembre = $class->get_1Membre($numMemb);
-        
-        $class->delete($numMemb);
-        $deleted = true;
+
+        $contrainteLikeArt = $likeArt->get_AllLikesArtByMembre($numMemb);
+        $contrainteLikeCom = $likeCom->get_AllLikesComByMembre($numMemb);
+
+        if(!$contrainteLikeArt && !$contrainteLikeCom){
+            $class->delete($numMemb);
+            $deleted = true;
+        }else{
+            $supprImpossible = true;
+        }
 
     }else{
         $numMemb = $_GET["id"];
@@ -99,7 +112,28 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h2>Suppression d'un Membre</h2>
 
     <?php
-    if($deleted) {
+    if($supprImpossible){
+        echo '<p style="color:red;">Impossible de supprimer le Membre "'.$pseudoMemb.'#'.$numMemb.'" car il est référencé par les éléments suivant :</p>';
+    
+        if($contrainteLikeArt){
+            echo '<p style="color:red;">Table LIKEART :</p>';
+            echo '<ul>';
+            foreach($contrainteLikeArt as $row){
+                echo '<li style="color:red;">'.$row["numArt"].'</li>';
+            }
+            echo '</ul>';
+        }
+    
+        if($contrainteLikeCom){
+            echo '<p style="color:red;">Table LIKECOM :</p>';
+            echo '<ul>';
+            foreach($contrainteLikeCom as $row){
+                echo '<li style="color:red;">'.$row["numSeqCom"].' - '.$row['numArt'].'</li>';
+            }
+            echo '</ul>';
+        }
+    
+    } elseif($deleted) {
         echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été supprimé.</p>';
     }
     ?>

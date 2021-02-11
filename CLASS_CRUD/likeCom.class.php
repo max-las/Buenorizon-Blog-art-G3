@@ -32,6 +32,21 @@
 			return ($result);
 		}
 
+		function get_AllLikesComByMembre($numMemb){
+			global $db;
+
+			$query = 'SELECT * FROM likecom WHERE numMemb = ?';
+
+			$request = $db->prepare($query);
+
+			$request->execute(array($numMemb));
+		
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
 		function get_AllLikesComByArticle($numArt){
 			global $db;
 
