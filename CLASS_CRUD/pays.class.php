@@ -85,7 +85,7 @@
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($numLang));
+				$request->execute(array($numPays));
 
 				$db->commit();
 				$request->closeCursor();
