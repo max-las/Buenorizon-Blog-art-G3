@@ -105,7 +105,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             </div>
 
             <div class="field">
-                <label class="control-label" for="passUser"><b>Mot de passe :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <label class="control-label" for="passUser"><b>Mot de passe (chiffré) :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
                 <input type="text" name="passUser" id="passUser" size="80" maxlength="80" value="<?= $deleted ? '' :  $passUser ?>" disabled/><br><br>
             </div>
 
