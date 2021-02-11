@@ -6,7 +6,7 @@
 		function get_1CommentR($numArt, $numSeqCom, $numSeqComR){
 			global $db;
 
-			$query = 'SELECT * FROM comment INNER JOIN commentplus ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE numArt = ? AND numSeqCom = ? AND numSeqComR = ?';
+			$query = 'SELECT * FROM comment INNER JOIN commentplus ON (commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt) WHERE commentplus.numArt = ? AND commentplus.numSeqCom = ? AND numSeqComR = ?';
 
 			$request = $db->prepare($query);
 	

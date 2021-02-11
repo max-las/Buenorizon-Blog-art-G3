@@ -50,7 +50,6 @@ $article = new ARTICLE;
             </thead>
             <tbody>
                 <?php $allCommentsPlus = $class->get_AllCommentsR();
-                var_dump($allCommentsPlus);
                 foreach ($allCommentsPlus as $row) { ?>
                     <tr>
                         <td><?= $row['numSeqCom'] ?></td>
