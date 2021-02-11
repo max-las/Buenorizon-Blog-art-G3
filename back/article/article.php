@@ -24,10 +24,10 @@ $monArticle = new ARTICLE;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
-<body>
+<body class="ui container">
 <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
 
     <hr /><br />
@@ -36,7 +36,9 @@ $monArticle = new ARTICLE;
     <hr />
     <h2>Tous les articles</h2>
 
-    <table border="3" bgcolor="aliceblue">
+    <div style="max-width: 100%; overflow-x: auto;">
+
+    <table class="ui celled table">
         <thead>
             <tr>
                 <th>&nbsp;Numéro&nbsp;</th>
@@ -111,6 +113,9 @@ $monArticle = new ARTICLE;
             ?>
         </tbody>
     </table>
+
+    </div>
+
     <br><br>
 
 <?php

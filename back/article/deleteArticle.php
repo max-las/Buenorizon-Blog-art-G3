@@ -84,8 +84,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         #p1 {
             max-width: 600px;
@@ -107,79 +107,99 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             font-style: italic;
             border-radius: 5px;
         }
-    </style>
+    </style> -->
 </head>
-<body>
+<body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Article</h1>
     <h2>Suppression d'un article</h2>
-<?php
-    // Supp : récup id à supprimer
 
-
-
-?>    <form method="post" action="<?= "./deleteArticle.php?id=".$numArt; ?>" enctype="multipart/form-data">
-
-      <fieldset>
-        <legend class="legend1">Formulaire Article...</legend>
+   <form method="post" action="<?= "./deleteArticle.php?id=".$numArt; ?>" enctype="multipart/form-data" class="ui form">
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="datetime-local" name="dtCreArt" id="dtCreArt" size="80" maxlength="80" value="<?= $deleted ? '' : $dtCreArt ?>" disabled/><br><br>
+            <div class="field">
+                <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="datetime-local" name="dtCreArt" id="dtCreArt" size="80" maxlength="80" value="<?= $deleted ? '' : $dtCreArt ?>" disabled/><br><br>
+            </div>
 
-            <label class="control-label" for="libTitrArt"><b>Titre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $deleted ? '' : $libTitrArt ?>" disabled/><br><br>
+            <div class="field">
+                <label class="control-label" for="libTitrArt"><b>Titre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libTitrArt" id="libTitrArt" size="80" maxlength="80" value="<?= $deleted ? '' : $libTitrArt ?>" disabled/><br><br>
+            </div>
 
-            <label class="control-label" for="libChapoArt"><b>Chapeau :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="libChapoArt" id="libChapoArt" cols="80" rows="10" disabled><?= $deleted ? '' : $libChapoArt ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="libChapoArt"><b>Chapeau :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="libChapoArt" id="libChapoArt" cols="80" rows="10" disabled><?= $deleted ? '' : $libChapoArt ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="libAccrochArt"><b>Accroche :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libAccrochArt" id="libAccrochArt" size="80" maxlength="80" value="<?= $deleted ? '' : $libAccrochArt ?>" disabled/><br><br>
+            <div class="field">
+                <label class="control-label" for="libAccrochArt"><b>Accroche :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libAccrochArt" id="libAccrochArt" size="80" maxlength="80" value="<?= $deleted ? '' : $libAccrochArt ?>" disabled/><br><br>
+            </div>
 
-            <label class="control-label" for="parag1Art"><b>Paragraphe 1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="parag1Art" id="parag1Art" cols="80" rows="10" disabled><?= $deleted ? '' : $parag1Art ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="parag1Art"><b>Paragraphe 1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="parag1Art" id="parag1Art" cols="80" rows="10" disabled><?= $deleted ? '' : $parag1Art ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="libSsTitr1Art"><b>Sous-Titre 1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" size="80" maxlength="80" value="<?= $deleted ? '' : $libSsTitr1Art ?>" disabled/><br><br>
+            <div class="field">
+                <label class="control-label" for="libSsTitr1Art"><b>Sous-Titre 1 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libSsTitr1Art" id="libSsTitr1Art" size="80" maxlength="80" value="<?= $deleted ? '' : $libSsTitr1Art ?>" disabled/><br><br>
+            </div>
 
-            <label class="control-label" for="parag2Art"><b>Paragraphe 2 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="parag2Art" id="parag2Art" cols="80" rows="10" disabled><?= $deleted ? '' : $parag2Art ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="parag2Art"><b>Paragraphe 2 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="parag2Art" id="parag2Art" cols="80" rows="10" disabled><?= $deleted ? '' : $parag2Art ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="libSsTitr2Art"><b>Sous-Titre 2 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" size="80" maxlength="80" value="<?= $deleted ? '' : $libSsTitr2Art ?>" disabled/><br><br>
+            <div class="field">
+                <label class="control-label" for="libSsTitr2Art"><b>Sous-Titre 2 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="libSsTitr2Art" id="libSsTitr2Art" size="80" maxlength="80" value="<?= $deleted ? '' : $libSsTitr2Art ?>" disabled/><br><br>
+            </div>
 
-            <label class="control-label" for="parag3Art"><b>Paragraphe 3 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="parag3Art" id="parag3Art" cols="80" rows="10" disabled><?= $deleted ? '' : $parag3Art ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="parag3Art"><b>Paragraphe 3 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="parag3Art" id="parag3Art" cols="80" rows="10" disabled><?= $deleted ? '' : $parag3Art ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="libConclArt"><b>Conclusion :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><textarea name="libConclArt" id="libConclArt" cols="80" rows="10" disabled><?= $deleted ? '' : $libConclArt ?></textarea><br><br>
+            <div class="field">
+                <label class="control-label" for="libConclArt"><b>Conclusion :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><textarea name="libConclArt" id="libConclArt" cols="80" rows="10" disabled><?= $deleted ? '' : $libConclArt ?></textarea><br><br>
+            </div>
 
-            <label class="control-label" for="urlPhotArt"><b>URL Photo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="urlPhotArt" id="urlPhotArt" size="80" maxlength="80" value="<?= $deleted ? '' : $urlPhotArt ?>" disabled/><br><br>
+            <div class="field">
+                <label class="control-label" for="urlPhotArt"><b>URL Photo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="text" name="urlPhotArt" id="urlPhotArt" size="80" maxlength="80" value="<?= $deleted ? '' : $urlPhotArt ?>" disabled/><br><br>
+            </div>
 
-            <label class="control-label" for="numAngl"><b>Angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><select name="numAngl" id="numAngl" disabled> 
-                <option value="<?= $deleted ? '' : $numAngl; ?>" selected><?php echo $deleted ? '' : $libAngl; ?></option>
-            </select><br><br>
+            <div class="field">
+                <label class="control-label" for="numAngl"><b>Angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><select name="numAngl" id="numAngl" disabled> 
+                    <option value="<?= $deleted ? '' : $numAngl; ?>" selected><?php echo $deleted ? '' : $libAngl; ?></option>
+                </select><br><br>
+            </div>
 
-            <label class="control-label" for="numThem"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <br><select name="numThem" id="numThem" disabled> 
-                <option value="<?= $deleted ? '' : $numThem; ?>" selected><?php echo $deleted ? '' : $libThem; ?></option>
-            </select>
+            <div class="field">
+                <label class="control-label" for="numThem"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><select name="numThem" id="numThem" disabled> 
+                    <option value="<?= $deleted ? '' : $numThem; ?>" selected><?php echo $deleted ? '' : $libThem; ?></option>
+                </select>
+            </div>
         </div>
 
         <div class="control-group">
             <div class="controls">
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <!-- <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" /> -->
+                <button type="submit" value="Annuler" name="Submit" class="ui button">Annuler</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <!-- <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" /> -->
+                <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
                 <br>
             </div>
         </div>
-      </fieldset>
     </form>
     <br>
 <?php

@@ -24,64 +24,68 @@ $monAngle = new ANGLE;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
+    <div class="ui container">
+        <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
 
-    <hr /><br />
-    <h2>Nouvel Angle :&nbsp;<a href="./createAngle.php"><i>Créer un angle</i></a></h2>
-    <br />
-    <hr />
-    <h2>Tous les angles</h2>
+        <hr /><br />
+        <h2>Nouvel Angle :&nbsp;<a href="./createAngle.php"><i>Créer un angle</i></a></h2>
+        <br />
+        <hr />
+        <h2>Tous les angles</h2>
 
-    <table border="3" bgcolor="aliceblue">
-        <thead>
-            <tr>
-                <th>&nbsp;Numéro&nbsp;</th>
-                <th>&nbsp;Nom&nbsp;</th>
-                <th>&nbsp;Langue&nbsp;</th>
-                <th colspan="2">&nbsp;Action&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-
-            $allAngles = $monAngle->get_AllAnglesWithLang();
-            foreach ($allAngles as $row) {
-
-                // Appel méthode : tous les statuts en BDD
-
-                // Boucle pour afficher
-                //foreach($all as $row) {
-            ?>
+        <!-- <table border="3" bgcolor="aliceblue"> -->
+        <table class="ui celled table">
+            <thead>
                 <tr>
-                    <td>
-                        <h4>&nbsp; <?php echo $row['numAngl']; ?> &nbsp;</h4>
-                    </td>
-
-                    <td>&nbsp; <?php echo $row['libAngl']; ?> &nbsp;</td>
-
-                    <td>&nbsp; <?php echo $row['lib1Lang']; ?> &nbsp;</td>
-
-                    <td>&nbsp;<a href="./updateAngle.php?id=<?= $row['numAngl'] ?>"><i>Modifier</i></a>&nbsp;
-                        <br />
-                    </td>
-                    <td>&nbsp;<a href="./deleteAngle.php?id=<?= $row['numAngl'] ?>"><i>Supprimer</i></a>&nbsp;
-                        <br />
-                    </td>
+                    <th>&nbsp;Numéro&nbsp;</th>
+                    <th>&nbsp;Nom&nbsp;</th>
+                    <th>&nbsp;Langue&nbsp;</th>
+                    <th colspan="2">&nbsp;Action&nbsp;</th>
                 </tr>
-            <?php
-            }
-            //}	// End of foreach
-            ?>
-        </tbody>
-    </table>
-    <br><br>
+            </thead>
+            <tbody>
+                <?php
 
-<?php
-require_once __DIR__ . '/footer.php';
-?>
+                $allAngles = $monAngle->get_AllAnglesWithLang();
+                foreach ($allAngles as $row) {
+
+                    // Appel méthode : tous les statuts en BDD
+
+                    // Boucle pour afficher
+                    //foreach($all as $row) {
+                ?>
+                    <tr>
+                        <td>
+                            <h4>&nbsp; <?php echo $row['numAngl']; ?> &nbsp;</h4>
+                        </td>
+
+                        <td>&nbsp; <?php echo $row['libAngl']; ?> &nbsp;</td>
+
+                        <td>&nbsp; <?php echo $row['lib1Lang']; ?> &nbsp;</td>
+
+                        <td>&nbsp;<a href="./updateAngle.php?id=<?= $row['numAngl'] ?>"><i>Modifier</i></a>&nbsp;
+                            <br />
+                        </td>
+                        <td>&nbsp;<a href="./deleteAngle.php?id=<?= $row['numAngl'] ?>"><i>Supprimer</i></a>&nbsp;
+                            <br />
+                        </td>
+                    </tr>
+                <?php
+                }
+                //}	// End of foreach
+                ?>
+            </tbody>
+        </table>
+        <br><br>
+
+        <?php
+        require_once __DIR__ . '/footer.php';
+        ?>
+    </div>
 </body>
 </html>
