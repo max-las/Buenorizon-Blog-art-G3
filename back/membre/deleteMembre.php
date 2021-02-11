@@ -107,7 +107,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <form method="post" action=".\deleteMembre.php" class="ui form">
     
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
-        <input type="hidden" id="date" name="date" value="<?= $_GET['date']; ?>" />
         <div class="field">
             <label>Prénom du membre</label>
             <input type="text" name="prenomMemb" placeholder="Prénom" value="<? echo($prenomMemb); ?>" readonly>
