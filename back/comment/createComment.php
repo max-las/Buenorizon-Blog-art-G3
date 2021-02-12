@@ -2,6 +2,10 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/comment.class.php';
 $class = new COMMENT;
+
+require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+$monMembre = new MEMBRE;
+
 $created = false;
 
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -14,11 +18,11 @@ $created = false;
 // }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    if(isset($_POST['numSeqCom']) && isset($_POST['numArt']) && !empty($_POST['dtCreCom']) && !empty($_POST['libCom']) && isset($_POST['attModOK']) && isset($_POST['affComOK'])){
+    if(isset($_POST['numSeqCom']) && isset($_POST['numArt']) && !empty($_POST['dtCreCom']) && !empty($_POST['libCom']) && isset($_POST['attModOK']) && isset($_POST['affComOK']) && !empty($_POST['eMailMemb']) && !empty($_POST['numMemb'])){
         $numSeqCom = $_POST['numSeqCom'];
         $numArt = $_POST['numArt'];
 
-        $class->create($_POST['numSeqCom'], $_POST['numArt'], $_POST['dtCreCom'], $_POST['libCom'], $_POST['attModOK'], $_POST['affComOK'], $_POST['notifComKOAff']);
+        $class->create($_POST['numSeqCom'], $_POST['numArt'], $_POST['dtCreCom'], $_POST['libCom'], $_POST['attModOK'], $_POST['affComOK'], $_POST['notifComKOAff'], $_POST['numMemb']);
         $created = true;
     }
 }
@@ -66,6 +70,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <div class="field">
             <label>notifComKOAff</label>
             <input type="text" name="notifComKOAff" placeholder="notifComKOAff">
+        </div>
+        <div class="field">
+            <label class="control-label" for="numMemb"><b>Membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <br><select name="numMemb" id="numMemb"> 
+            <?php
+                $allMembres = $monMembre->get_AllMembres();
+                foreach($allMembres as $row){
+                    if($row["numMemb"] === $numMemb){
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                    }
+                    echo '<option value="'.$row["numMemb"].'" '.$selected.'>'.$row["pseudoMemb"].'</option>';
+                }
+            ?>
+            </select><br><br>
         </div>
         <br>
         <button class="ui button" type="submit">Valider</button>

@@ -28,6 +28,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
     $monUser = new USER;
 
+    require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+    $monMembre = new MEMBRE;
+
 
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
@@ -41,8 +44,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $idStat = $_POST["id"];
         $resultStatut = $monStatut->get_1Statut($idStat);
         $users = $monUser->get_AllUsersByStat($idStat);
+        $membres = $monMembre->get_AllMembreByStatut($idStat);
 
-        if(!$users){
+        if(!$users && !$membres){
             $monStatut->delete($idStat);
             $deleted = true;
         }else{
@@ -95,16 +99,31 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
     <h2>Suppression d'un statut</h2>
 
-    <?php
+    <?php 
     if($supprImpossible){
         echo '<div style="color:red;">';
-        echo '<p>Impossible de supprimer le statut '.$libStat.' car il est référencé par les utilisateurs suivant :</p>';
-        echo '<ul>';
-        foreach($users as $value){
-            echo '<li>'.$value["pseudoUser"].'</li>';
+        echo '<p>Impossible de supprimer le statut '.$libStat.' car il est référencé par les éléments suivant :</p>';
+    
+        if($users){
+            echo '<p>Table USER (numéros valables pour cet article uniquement) :</p>';
+            echo '<ul>';
+            foreach($users as $row){
+                echo '<li>'.$row["pseudoUser"].'</li>';
+            }
+            echo '</ul>';
         }
-        echo '</ul>';
+    
+        if($membres){
+            echo '<p>Table MEMBRE :</p>';
+            echo '<ul>';
+            foreach($membres as $row){
+                echo '<li>'.$row["pseudoMemb"].'</li>';
+            }
+            echo '</ul>';
+        }
+    
         echo '</div>';
+    
     } elseif($deleted) {
         echo '<p style="color:green;">Le statut "'.$libStat.'" a été supprimé.</p>';
     }

@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     $numSeqCom = $_POST["numSeqCom"];
     $numArt = $_POST["numArt"];
 
-    $resultComment = $class->get_1Comment(intval($numSeqCom), intval($numArt));
+    $resultComment = $class->get_1CommentWithMembre(intval($numSeqCom), intval($numArt));
     
     $class->delete(intval($numSeqCom), intval($numArt));
     $deleted = true;
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     $numSeqCom = $_GET['numSeqCom'];
     $numArt = $_GET['numArt'];
 
-    $resultComment = $class->get_1Comment(intval($numSeqCom), intval($numArt));
+    $resultComment = $class->get_1CommentWithMembre(intval($numSeqCom), intval($numArt));
 }
 
 if($resultComment){
@@ -42,6 +42,8 @@ if($resultComment){
     $attModOK = $resultComment['attModOK'];
     $affComOK = $resultComment['affComOK'];
     $notifComKOAff = $resultComment['notifComKOAff'];
+    $numMemb = $resultComment['numMemb'];
+    $pseudoMemb = $resultComment['pseudoMemb'];
 }
 
 ?>
@@ -87,6 +89,12 @@ if($resultComment){
         <div class="field">
             <label>notifComKOAff</label>
             <input type="text" name="notifComKOAff" placeholder="notifComKOAff" value="<? echo($notifComKOAff); ?>" readonly>
+        </div>
+        <div class="field">
+            <label class="control-label" for="numMemb"><b>Statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <br><select name="numMemb" id="numMemb" disabled> 
+                <option value="<?= $deleted ? '' : $numMemb; ?>" selected><?php echo $deleted ? '' : $pseudoMemb; ?></option>
+            </select><br><br>
         </div>
         <br>
         <input class="ui button" type="submit" name="Submit" value="Annuler">

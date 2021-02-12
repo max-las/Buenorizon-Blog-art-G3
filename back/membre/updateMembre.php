@@ -15,6 +15,9 @@
      // insertion classe
      require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
      $class = new MEMBRE;
+
+     require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+     $monStatut = new STATUT;
  
      // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
      // ajout effectif de l'angle
@@ -28,8 +31,9 @@
         $numMemb = $_POST["id"];
         $dtCreaMemb = $_POST["date"];
         $passMemb = $_POST['passMemb'];
+        $idStat = $_POST['idStat'];
 
-        if(isset($_POST['prenomMemb']) && isset($_POST['nomMemb']) && isset($_POST['pseudoMemb']) && isset($_POST['eMailMemb'])){
+        if(isset($_POST['prenomMemb']) && isset($_POST['nomMemb']) && isset($_POST['pseudoMemb']) && isset($_POST['eMailMemb']) && isset($_POST['idStat'])){
             if(isset($_POST['souvenirMemb'])){
                 $souvenirMemb = 1;
             }else{
@@ -41,7 +45,7 @@
                 $accordMemb = 0;
             }
 
-            $class->update($numMemb, $_POST['prenomMemb'], $_POST['nomMemb'], $_POST['pseudoMemb'], $_POST['passMemb'], $_POST['eMailMemb'], $dtCreaMemb, $souvenirMemb, $accordMemb);
+            $class->update($numMemb, $_POST['prenomMemb'], $_POST['nomMemb'], $_POST['pseudoMemb'], $_POST['passMemb'], $_POST['eMailMemb'], $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb);
             $updated = true;
         }
 
@@ -58,6 +62,7 @@
         $nomMemb = $resultMembre['nomMemb'];
         $pseudoMemb = $resultMembre['pseudoMemb'];
         $eMailMemb = $resultMembre['eMailMemb'];
+        $idStat = $resultMembre['idStat'];
         $souvenirMemb = $resultMembre['souvenirMemb'];
         $accordMemb = $resultMembre['accordMemb'];
     }
@@ -108,6 +113,22 @@
         <div class="field">
             <label>Email du membre</label>
             <input type="text" name="eMailMemb" placeholder="Email" value=<? echo($eMailMemb); ?>>
+        </div>
+        <div class="field">
+            <label class="control-label" for="idStat"><b>Statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <br><select name="idStat" id="idStat"> 
+            <?php
+                $allStatuts = $monStatut->get_AllStatuts();
+                foreach($allStatuts as $row){
+                    if($row["idStat"] === $idStat){
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                    }
+                    echo '<option value="'.$row["idStat"].'" '.$selected.'>'.$row["libStat"].'</option>';
+                }
+            ?>
+            </select><br><br>
         </div>
         <div class="field">
             <div class="ui checkbox">

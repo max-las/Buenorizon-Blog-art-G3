@@ -3,6 +3,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
 $class = new MEMBRE;
 
+require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+$monStatut = new STATUT;
+
 $created = false;
 
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -31,10 +34,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         die();
     }
 
-    if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) && !empty($_POST['pseudoMemb']) && !empty($_POST['passMemb']) && !empty($_POST['eMailMemb']) && !empty($_POST['accordMemb'])){
-        $class->create($_POST['prenomMemb'],$_POST['nomMemb'],$_POST['pseudoMemb'],$_POST['passMemb'],$_POST['eMailMemb'],date('Y-m-d H:i:s'),$souvenirMemb, $accordMemb);
+    if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) && !empty($_POST['pseudoMemb']) && !empty($_POST['passMemb']) && !empty($_POST['eMailMemb']) && !empty($_POST['idStat']) && !empty($_POST['accordMemb'])){
+        $class->create($_POST['prenomMemb'],$_POST['nomMemb'],$_POST['pseudoMemb'],$_POST['passMemb'],$_POST['eMailMemb'],date('Y-m-d H:i:s'),$_POST['idStat'],$souvenirMemb, $accordMemb);
         $created = true;
     }
+
+    $idStat = empty($_POST["idStat"]) ? '' : $_POST["idStat"];
 }
 
 ?>
@@ -84,6 +89,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <div class="field">
             <label>Email du membre</label>
             <input type="text" name="eMailMemb" placeholder="Email">
+        </div>
+        <div class="field">
+            <label class="control-label" for="idStat"><b>Statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <br><select name="idStat" id="idStat"> 
+            <?php
+                $allStatuts = $monStatut->get_AllStatuts();
+                foreach($allStatuts as $row){
+                    if($row["idStat"] === $idStat){
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                    }
+                    echo '<option value="'.$row["idStat"].'" '.$selected.'>'.$row["libStat"].'</option>';
+                }
+            ?>
+            </select><br><br>
         </div>
         <div class="field">
             <div class="ui checkbox">

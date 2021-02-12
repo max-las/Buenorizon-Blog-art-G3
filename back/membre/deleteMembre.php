@@ -6,6 +6,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // Init variables form
     include __DIR__ . '/initMembre.php';
+    $supprImpossible = false;
     $deleted = false;
     if(!isset($_GET['id'])) $_GET['id'] = '';
     $numLang = '';
@@ -18,6 +19,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
     $class = new MEMBRE;
 
+    require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+    $monStatut = new STATUT;
+
+    require_once __DIR__ . '/../../CLASS_CRUD/comment.class.php';
+    $monComment = new COMMENT;
+
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // suppression effective du statut
@@ -29,14 +36,20 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         $numMemb = $_POST["id"];
 
-        $resultMembre = $class->get_1Membre($numMemb);
+        $resultMembre = $class->get_1MembreWithStatut($numMemb);
         
-        $class->delete($numMemb);
-        $deleted = true;
+        $comments = $monComment->get_AllCommentsByMembre($numMemb);
+
+        if(!$comments){
+            $monMembre->delete($numMemb);
+            $deleted = true;
+        }else{
+            $supprImpossible = true;
+        }
 
     }else{
         $numMemb = $_GET["id"];
-        $resultMembre = $class->get_1Membre($numMemb);
+        $resultMembre = $class->get_1MembreWithStatut($numMemb);
     }
 
     if($resultMembre){
@@ -47,43 +60,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $eMailMemb = $resultMembre['eMailMemb'];
         $souvenirMemb = $resultMembre['souvenirMemb'];
         $accordMemb = $resultMembre['accordMemb'];
+        $idStat = $resultMembre['idStat'];
+        $libStat = $resultMembre['libStat'];
     }
 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Angle</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-        #p1 {
-            max-width: 600px;
-            width: 600px;
-            max-height: 200px;
-            height: 200px;
-            border: 1px solid #000000;
-            background-color: whitesmoke;
-            /* Coins arrondis et couleur du cadre */
-            border: 2px solid grey;
-            -moz-border-radius: 8px;
-            -webkit-border-radius: 8px;
-            border-radius: 8px;
-        }
-        .error {
-            padding: 2px;
-            border: solid 0px black;
-            color: red;
-            font-style: italic;
-            border-radius: 5px;
-        }
-    </style>
-<html lang="fr">
-
 <head>
     <meta charset="utf-8" />
     <title>Admin - Gestion du CRUD Membre</title>
@@ -98,8 +81,23 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
     <h2>Suppression d'un Membre</h2>
 
-    <?php
-    if($deleted) {
+    <?php 
+    if($supprImpossible){
+        echo '<div style="color:red;">';
+        echo '<p>Impossible de supprimer le membre '.$pseudoMemb.' car il est référencé par les éléments suivant :</p>';
+    
+        if($comments){
+            echo '<p>Table COMMENT :</p>';
+            echo '<ul>';
+            foreach($comments as $row){
+                echo '<li>Commentaire n°'.$row["numSeqCom"].'de l`\'article n°'.$row["numArt"].' ('.$row["pseudoUser"].')</li>';
+            }
+            echo '</ul>';
+        }
+    
+        echo '</div>';
+    
+    } elseif($deleted) {
         echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été supprimé.</p>';
     }
     ?>
@@ -126,6 +124,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="field">
             <label>Email du membre</label>
             <input type="text" name="eMailMemb" placeholder="Email" value=<? echo($eMailMemb); ?> readonly>
+        </div>
+        <div class="field">
+            <label class="control-label" for="idStat"><b>Statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <br><select name="idStat" id="idStat" disabled> 
+                <option value="<?= $deleted ? '' : $idStat; ?>" selected><?php echo $deleted ? '' : $libStat; ?></option>
+            </select><br><br>
         </div>
         <div class="field">
             <div class="ui checkbox">

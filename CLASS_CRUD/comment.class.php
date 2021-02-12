@@ -54,16 +54,61 @@
 			return ($result);
         }
 
-		function create($numSeqCom, $numArt, $dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff){
+		function get_AllCommentsByMembre($numMemb){
+			global $db;
+
+			$query = 'SELECT * FROM comment WHERE numMemb = ?';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numMemb));
+	
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+        }
+
+		function get_AllCommentsWithMembre(){
+			global $db;
+
+			$query = 'SELECT * FROM comment INNER JOIN membre ON comment.numMemb = membre.numMemb';
+
+			$request = $db->prepare($query);
+	
+			$request->execute();
+	
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+        }
+		
+		function get_1CommentWithMembre($numSeqCom, $numArt){
+			global $db;
+
+			$query = 'SELECT * FROM comment INNER JOIN membre ON comment.numMemb = membre.numMemb WHERE (numSeqCom = ? AND numArt = ?)';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numSeqCom, $numArt));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return ($result);
+        }
+
+		function create($numSeqCom, $numArt, $dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff, $numMemb){
 			global $db;
 			try {
-				$query = "INSERT INTO comment (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				$query = "INSERT INTO comment (numSeqCom, numArt, dtCreCom, libCom, attModOK, affComOK, notifComKOAff, numMemb) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 				$db->beginTransaction();
 
 				$request = $db->prepare($query);
 				
-				$request->execute(array($numSeqCom, $numArt, $dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff));
+				$request->execute(array($numSeqCom, $numArt, $dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff, $numMemb));
 
 				$db->commit();
 
@@ -76,16 +121,16 @@
 			}
 		}
 
-		function update($numSeqCom, $numArt, $dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff){
+		function update($numSeqCom, $numArt, $dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff, $numMemb){
 			global $db;
 			try {
 				$db->beginTransaction();
 
-				$query = "UPDATE comment SET dtCreCom = ?, libCom = ?, attModOk = ?, affComOK = ?, notifComKOAff = ? WHERE (numSeqCom = ? AND numArt = ?)";
+				$query = "UPDATE comment SET dtCreCom = ?, libCom = ?, attModOk = ?, affComOK = ?, notifComKOAff = ?, numMemb = ? WHERE (numSeqCom = ? AND numArt = ?)";
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff, $numSeqCom, $numArt));
+				$request->execute(array($dtCreCom, $libCom, $attModOK, $affComOK, $notifComKOAff, $numMemb, $numSeqCom, $numArt));
 
 				$db->commit();
 				$request->closeCursor();

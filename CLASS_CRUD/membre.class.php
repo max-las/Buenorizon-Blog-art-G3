@@ -88,16 +88,61 @@ class MEMBRE{
         return ($result);
     }
 
-    function create($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb){
+    function get_AllMembreByStatut($idStat){
+        global $db;
+
+        $query = 'SELECT * FROM membre WHERE idStat = ?';
+
+        $request = $db->prepare($query);
+
+        $request->execute(array($idStat));
+
+        $result = $request->fetchAll();
+
+        $request->closeCursor();
+        return ($result);
+    }
+
+    function get_AllMembresWithStatut(){
+        global $db;
+
+        $query = 'SELECT * FROM membre INNER JOIN statut ON membre.idStat = statut.idStat';
+
+        $request = $db->prepare($query);
+
+        $request->execute();
+
+        $result = $request->fetchAll();
+
+        $request->closeCursor();
+        return ($result);
+    }
+
+    function get_1MembreWithStatut($numMemb){
+        global $db;
+
+        $query = 'SELECT * FROM membre INNER JOIN statut ON membre.idStat = statut.idStat WHERE numMemb = ?';
+
+        $request = $db->prepare($query);
+
+        $request->execute(array($numMemb));
+
+        $result = $request->fetch();
+
+        $request->closeCursor();
+        return ($result);
+    }
+
+    function create($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb){
         global $db;
         try {
-            $query = "INSERT INTO membre (prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, souvenirMemb, accordMemb) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO membre (prenomMemb, nomMemb, pseudoMemb, passMemb, eMailMemb, dtCreaMemb, idStat, souvenirMemb, accordMemb) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $db->beginTransaction();
 
             $request = $db->prepare($query);
             
-            $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, password_hash($passMemb, PASSWORD_BCRYPT), $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb));
+            $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, password_hash($passMemb, PASSWORD_BCRYPT), $eMailMemb, $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb));
 
             $db->commit();
 
@@ -110,23 +155,23 @@ class MEMBRE{
         }
     }
 
-    function update($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb){
+    function update($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb){
         global $db;
         try {
             $db->beginTransaction();
 
             if(empty($passMemb)){
-                $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
+                $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, accordMemb = ?, idStat = ? WHERE numMemb = ?";
 
                 $request = $db->prepare($query);
     
-                $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb, $numMemb));
+                $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, $eMailMemb, $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb, $numMemb));
             }else{
-                $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
+                $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, dtCreaMemb = ?, idStat = ?, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
 
                 $request = $db->prepare($query);
     
-                $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, password_hash($passMemb, PASSWORD_BCRYPT), $eMailMemb, $dtCreaMemb, $souvenirMemb, $accordMemb, $numMemb));
+                $request->execute(array($prenomMemb, $nomMemb, $pseudoMemb, password_hash($passMemb, PASSWORD_BCRYPT), $eMailMemb, $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb, $numMemb));
             }
 
             $db->commit();

@@ -33,13 +33,14 @@ $class = new MEMBRE;
                     <th>Pseudo</th>
                     <th>Email</th>
                     <th>Date de création</th>
+                    <th>Statut</th>
                     <th>Souvenir ?</th>
                     <th>Accord ?</th>
                     <th colspan="2">&nbsp;Action&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                <?php $allMembres = $class->get_AllMembres();
+                <?php $allMembres = $class->get_AllMembresWithStatut();
                 foreach ($allMembres as $row) { ?>
                     <tr>
                         <td><?= $row['numMemb'] ?></td>
@@ -48,6 +49,7 @@ $class = new MEMBRE;
                         <td><?= $row['pseudoMemb'] ?></td>
                         <td><?= $row['eMailMemb'] ?></td>
                         <td><?= $row['dtCreaMemb'] ?></td>
+                        <td><?= $row['libStat'] ?></td>
                         <td><?= ($row['souvenirMemb']) ? 'oui' :  'non' ?></td>
                         <td><?= ($row['accordMemb']) ? 'oui' :  'non' ?></td>
                         <td>&nbsp;<a href="./updateMembre.php?id=<?= $row['numMemb'] ?>&date=<?= $row['dtCreaMemb'] ?>"><i>Modifier</i></a>&nbsp;

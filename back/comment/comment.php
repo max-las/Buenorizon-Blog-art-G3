@@ -41,11 +41,12 @@ $class = new COMMENT;
                     <th>attModOK</th>
                     <th>affComOK</th>
                     <th>notifComKOAff</th>
+                    <th>Membre</th>
                     <th colspan="2">&nbsp;Action&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                <?php $allComments = $class->get_AllComments();
+                <?php $allComments = $class->get_AllCommentsWithMembre();
                 foreach ($allComments as $row) { ?>
                     <tr>
                         <td><?= $row['numSeqCom'] ?></td>
@@ -55,6 +56,7 @@ $class = new COMMENT;
                         <td><?= $row['attModOK'] ?></td>
                         <td><?= $row['affComOK'] ?></td>
                         <td><?= $row['notifComKOAff'] ?></td>
+                        <td><?= $row['pseudoMemb'] ?></td>
                         <td>&nbsp;<a href="./updateComment.php?numSeqCom=<?= $row['numSeqCom'] ?>&numArt=<?= $row['numArt'] ?>&date=<?= $row['dtCreCom'] ?>"><i>Modifier</i></a>&nbsp;
                         <br />
                         </td>

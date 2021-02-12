@@ -2,6 +2,10 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/comment.class.php';
 $class = new COMMENT;
+
+require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+$monMembre = new MEMBRE;
+
 $updated = false;
 
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -21,17 +25,18 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
     $numSeqCom = $_POST["numSeqCom"];
     $numArt = $_POST["numArt"];
+    $numMemb = $_POST["numMemb"];
     
     $class->update($_POST["numSeqCom"], $_POST["numArt"], $_POST['dtCreCom'], $_POST['libCom'], $_POST['attModOK'], $_POST['affComOK'], $_POST['notifComKOAff']);
     $updated = true;
 
-    $resultComment = $class->get_1Comment($numSeqCom, $numArt);
+    $resultComment = $class->get_1CommentWithMembre($numSeqCom, $numArt);
 
 }else{
     $numSeqCom = $_GET['numSeqCom'];
     $numArt = $_GET['numArt'];
 
-    $resultComment = $class->get_1Comment($numSeqCom, $numArt);
+    $resultComment = $class->get_1CommentWithMembre($numSeqCom, $numArt);
 }
 
 if($resultComment){
@@ -42,6 +47,8 @@ if($resultComment){
     $attModOK = $resultComment['attModOK'];
     $affComOK = $resultComment['affComOK'];
     $notifComKOAff = $resultComment['notifComKOAff'];
+    $numMemb = $resultComment["numMemb"];
+    $pseudoMemb = $resultComment["pseudoMemb"];
 }
 
 ?>
@@ -87,6 +94,22 @@ if($resultComment){
         <div class="field">
             <label>notifComKOAff</label>
             <input type="text" name="notifComKOAff" placeholder="notifComKOAff" value="<? echo($notifComKOAff); ?>">
+        </div>
+        <div class="field">
+            <label class="control-label" for="numMemb"><b>Membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <br><select name="numMemb" id="numMemb"> 
+            <?php
+                $allMembres = $monMembre->get_AllMembres();
+                foreach($allMembres as $row){
+                    if($row["numMemb"] === $numMemb){
+                        $selected = "selected";
+                    }else{
+                        $selected = "";
+                    }
+                    echo '<option value="'.$row["numMemb"].'" '.$selected.'>'.$row["pseudoMemb"].'</option>';
+                }
+            ?>
+            </select><br><br>
         </div>
         <br>
         <input class="ui button" type="submit" name="Submit" value="Annuler">
