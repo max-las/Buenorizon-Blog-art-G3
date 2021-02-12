@@ -116,7 +116,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             echo '<p>Table COMMENT :</p>';
             echo '<ul>';
             foreach($comments as $row){
-                echo '<li>Commentaire n°'.$row["numSeqCom"].'de l`\'article n°'.$row["numArt"].' ('.$row["pseudoUser"].')</li>';
+                echo '<li>Commentaire n°'.$row["numSeqCom"].' de l\'article n°'.$row["numArt"].' ('.$row["libCom"].')</li>';
             }
             echo '<ul>';
         }
