@@ -24,6 +24,10 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     require_once __DIR__ . '/../../CLASS_CRUD/comment.class.php';
     $monComment = new COMMENT;
+    require_once __DIR__ . '/../../CLASS_CRUD/likeArt.class.php';
+    require_once __DIR__ . '/../../CLASS_CRUD/likeCom.class.php';
+    $likeArt = new LIKEART;
+    $likeCom = new LIKECOM;
 
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
@@ -40,8 +44,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         
         $comments = $monComment->get_AllCommentsByMembre($numMemb);
 
-        if(!$comments){
-            $monMembre->delete($numMemb);
+        $contrainteLikeArt = $likeArt->get_AllLikesArtByMembre($numMemb);
+        $contrainteLikeCom = $likeCom->get_AllLikesComByMembre($numMemb);
+
+        if(!$contrainteLikeArt && !$contrainteLikeCom && !$comments){
+            $class->delete($numMemb);
             $deleted = true;
         }else{
             $supprImpossible = true;
@@ -82,19 +89,38 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h2>Suppression d'un Membre</h2>
 
     <?php 
+
     if($supprImpossible){
         echo '<div style="color:red;">';
         echo '<p>Impossible de supprimer le membre '.$pseudoMemb.' car il est référencé par les éléments suivant :</p>';
     
+        if($contrainteLikeArt){
+            echo '<p style="color:red;">Table LIKEART :</p>';
+            echo '<ul>';
+            foreach($contrainteLikeArt as $row){
+                echo '<li style="color:red;">'.$row["numArt"].'</li>';
+            }
+            echo '</ul>';
+        }
+    
+        if($contrainteLikeCom){
+            echo '<p style="color:red;">Table LIKECOM :</p>';
+            echo '<ul>';
+            foreach($contrainteLikeCom as $row){
+                echo '<li style="color:red;">'.$row["numSeqCom"].' - '.$row['numArt'].'</li>';
+            }
+            echo '</ul>';
+        }
+
         if($comments){
             echo '<p>Table COMMENT :</p>';
             echo '<ul>';
             foreach($comments as $row){
                 echo '<li>Commentaire n°'.$row["numSeqCom"].'de l`\'article n°'.$row["numArt"].' ('.$row["pseudoUser"].')</li>';
             }
-            echo '</ul>';
+            echo '<ul>';
         }
-    
+
         echo '</div>';
     
     } elseif($deleted) {
