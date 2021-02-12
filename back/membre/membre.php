@@ -34,8 +34,8 @@ $class = new MEMBRE;
                     <th>Email</th>
                     <th>Date de création</th>
                     <th>Statut</th>
-                    <th>Souvenir ?</th>
-                    <th>Accord ?</th>
+                    <th>Se souvenir de moi</th>
+                    <th>Accord des conditions</th>
                     <th colspan="2">&nbsp;Action&nbsp;</th>
                 </tr>
             </thead>

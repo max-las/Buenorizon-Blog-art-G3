@@ -139,7 +139,7 @@
         <div class="field">
             <div class="ui checkbox">
                 <input type="checkbox" tabindex="0" name="accordMemb" <? if($accordMemb == 1){ echo('checked'); } ?>>
-                <label>Accorder les conditions ?</label>
+                <label>Accord des conditions ?</label>
             </div>
         </div>
         <br>

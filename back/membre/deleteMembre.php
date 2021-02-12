@@ -166,7 +166,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="field">
             <div class="ui checkbox">
                 <input type="checkbox" tabindex="0" name="accordMemb" <? if($accordMemb == 1){ echo('checked'); } ?> readonly>
-                <label>Accorder les conditions ?</label>
+                <label>Accord des conditions ?</label>
             </div>
         </div>
         <br>

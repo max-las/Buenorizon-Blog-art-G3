@@ -115,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <div class="field">
             <div class="ui checkbox">
                 <input type="checkbox" tabindex="0" name="accordMemb">
-                <label>Accorder les conditions ?</label>
+                <label>Accord des conditions ?</label>
             </div>
         </div>
         <br>
