@@ -17,7 +17,7 @@
             <a <?php echo ($_SERVER['REQUEST_URI'] == '/Buenorizon-Blog-art-G3/front/includes/pages/about.php') ? 'class="highlight"' : '' ?> href="../pages/about.php">A propos</a>
         </div>
         <div>
-            <a href="../pages/login.php">Connexion</a>
+            <a <?php echo ($_SERVER['REQUEST_URI'] == '/Buenorizon-Blog-art-G3/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php">Connexion</a>
             <button>S'inscrire</button>
         </div>
     </div>
