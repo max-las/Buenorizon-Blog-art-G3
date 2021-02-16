@@ -1,0 +1,27 @@
+header {
+  font-family: $montserrat;
+  height: 3rem;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  align-items: center;
+  .navbar {
+    display: flex;
+    width: 80vw;
+    justify-content: space-between;
+    button {
+      border-radius: 1rem;
+      background-color: $primary;
+      font-family: $montserrat;
+      color: white;
+      text-decoration: none;
+      border: none;
+    }
+    a {
+      color: $primary;
+      margin-right: 1rem;
+      text-decoration: none;
+    }
+  }
+}
