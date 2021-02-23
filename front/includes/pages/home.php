@@ -9,7 +9,7 @@ require_once('../commons/header.php');
     </div>
     <div class="content">
         <div class="title">
-        <svg width="15" height="64" viewBox="0 0 15 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="15" height="64" viewBox="0 0 15 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.83444e-06 0L15 6.47133e-07V0.75278L2.8011e-06 0.75278L2.83444e-06 0ZM2.76776e-06 1.50556L15 1.50556V3.01112L2.70108e-06 3.01112L2.76776e-06 1.50556ZM2.60106e-06 5.26946L15 5.26946V6.02224L2.56772e-06 6.02224L2.60106e-06 5.26946Z" fill="white" />
                 <path d="M2.46762e-06 8.28254L15 8.28254V9.7881L2.40094e-06 9.7881L2.46762e-06 8.28254ZM2.30092e-06 12.0464H15V12.7992L2.26758e-06 12.7992L2.30092e-06 12.0464ZM2.23425e-06 13.552L15 13.552V15.8103L2.13423e-06 15.8103L2.23425e-06 13.552Z" fill="white" />
                 <path d="M2.1008e-06 16.5651L15 16.5651V17.3179L2.06746e-06 17.3179L2.1008e-06 16.5651ZM1.96745e-06 19.5762L15 19.5762V21.8345H1.86743e-06L1.96745e-06 19.5762ZM1.83409e-06 22.5873L15 22.5873V24.0929H1.76741e-06L1.83409e-06 22.5873Z" fill="white" />
@@ -25,9 +25,10 @@ require_once('../commons/header.php');
 </div>
 
 
-<div style="display: block;" id="articles">
+<div id="articles">
     <?php require_once('./article.php') ?>
 </div>
+
 <?php
 require_once('../commons/footer.php');
 ?>

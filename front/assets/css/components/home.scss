@@ -1,6 +1,6 @@
 .container-arrivee {
   width: 100vw;
-  height: 100vh;
+  position: relative;
 
   .content {
     position: absolute;
@@ -26,7 +26,7 @@
     overflow: hidden;
     
     img {
-      max-width: 100%;
+      width: 100%;
       filter: brightness(0.8);
     }
   }
