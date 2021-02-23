@@ -25,6 +25,5 @@ $isConnected = false;
                 <button onclick="location.href='../pages/signin.php'"><?= $isConnected ? "Mon compte" : "S'inscrire"?></button>
             </div>
         </div>
-    
     </header>
     <main>
