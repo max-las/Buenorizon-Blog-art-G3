@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 html,
 body,
 div,
@@ -149,13 +150,13 @@ h2 {
 
 h3 {
   font-family: "Montserrat", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
 }
 
 p {
   font-family: "Montserrat", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
 }
 
@@ -196,11 +197,18 @@ header .navbar a {
 }
 
 .container-arrivee {
+  width: 100vw;
+  height: 100vh;
   position: absolute;
 }
 .container-arrivee img {
-  height: 500px;
-  width: 500px;
+  overflow: hidden;
+  max-width: 100vw;
+  margin-top: -100px;
+  filter: brightness(0.8);
+}
+.container-arrivee h1 {
+  font-family: "Michroma", sans-serif;
 }
 
 .codbar1 {
@@ -228,6 +236,22 @@ header .navbar a {
   top: 279px;
 }
 
+.souvenir {
+  position: absolute;
+  width: 134px;
+  height: 17px;
+  left: 308px;
+  top: 939px;
+}
+
+.textjamaislu {
+  position: absolute;
+  width: 871px;
+  height: 374px;
+  left: 285px;
+  top: 1265px;
+}
+
 .red {
   font-family: Montserrat;
   font-style: normal;
@@ -235,6 +259,50 @@ header .navbar a {
   font-size: 0.833vw;
   line-height: 28px;
   color: red;
+}
+
+.ligne {
+  border-bottom: 1px solid white;
+  position: absolute;
+  width: 351px;
+  left: 282.5px;
+  top: 424.5px;
+}
+
+.ligne1 {
+  left: 282.5px;
+  top: 424.5px;
+}
+
+.ligne2 {
+  left: 282px;
+  top: 515px;
+}
+
+.ligne3 {
+  left: 282px;
+  top: 604px;
+}
+
+.ligne4 {
+  left: 282px;
+  top: 695px;
+}
+
+.ligne5 {
+  left: 282px;
+  top: 785px;
+}
+
+.ligne6 {
+  left: 282px;
+  top: 875px;
+}
+
+.ligne7 {
+  width: 216px;
+  left: 900px;
+  top: 666px;
 }
 
 .ice1 {
@@ -260,6 +328,8 @@ header .navbar a {
   width: 69.444vw;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0;
+  padding-bottom: 5%;
   background: #0C0C0C;
   backdrop-filter: blur(1000px);
 }
@@ -282,12 +352,7 @@ header .navbar a {
 
 .h3about {
   font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.938vw;
-  line-height: 28px;
-  /* or 156% */
-  color: #FFFFFF;
+  text-indent: 2%;
 }
 
 /*# sourceMappingURL=main.css.map */
