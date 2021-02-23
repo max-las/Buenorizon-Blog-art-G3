@@ -4,44 +4,35 @@ $primary: #e63946;
 $michroma: "Michroma", sans-serif;
 $montserrat: "Montserrat", sans-serif;
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
 h1{
-  font-family: Montserrat;
-font-style: normal;
-font-weight: 600;
-font-size: 1.875vw;
-line-height: 28px;
-/* or 156% */
-
-/*color: #FFFFFF;*/
-}
-h2 { 
-  font-family: Montserrat;
-font-style: normal;
-font-weight: 600;
-font-size: 1.250vw;
-line-height: 28px;
-/* or 156% */
-/*color: #FFFFFF;*/
-}
-h3{
   font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
-  font-size: 0.938vw;
+  font-size: 1.875vw;
+  line-height: 28px;
+  /* or 156% */
+
+  /*color: #FFFFFF;*/
+}
+
+h2{
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25vw;
   line-height: 28px;
   /* or 156% */
   /*color: #FFFFFF;*/
 }
-h4,
-h5,
-h6,
+h3{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.938vw;
+    line-height: 28px;
+    /* or 156% */
+    /*color: #FFFFFF;*/
+}
 p{
   font-family: Montserrat;
   font-style: normal;
@@ -51,6 +42,20 @@ p{
   /* or 156% */
   /*color: #FFFFFF;*/
 }
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h3,
+h4,
+h5,
+h6,
+p,
 blockquote,
 pre,
 a,
@@ -160,4 +165,7 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+button:focus {
+  outline: 0;
 }
