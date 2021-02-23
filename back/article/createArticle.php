@@ -18,6 +18,8 @@
     $monAngle = new ANGLE;
     require_once __DIR__ . '/../../CLASS_CRUD/thematique.class.php';
     $maThem = new THEMATIQUE;
+    require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
+    $maLang = new LANGUE;
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
 
@@ -237,7 +239,19 @@
                         echo '<option value="'.$row["numAngl"].'" '.$selected.'>'.$row["libAngl"].'</option>';
                     }
                 ?>
-                </select><br><br>
+                </select>
+            </div>
+
+            <div class="field">
+                <label class="control-label" for="numThem"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><select name="numLang" id="numLang"> 
+                <?php
+                    $allLangs = $maLang->get_AllLangues();
+                    foreach($allLangs as $row){
+                        echo '<option value="'.$row["numLang"].'">'.$row["numLang"].' - '.$row['lib1Lang'].'</option>';
+                    }
+                ?>
+                </select>
             </div>
 
             <div class="field">
