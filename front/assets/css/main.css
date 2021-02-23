@@ -212,11 +212,21 @@ header .navbar a {
 
 .fondSansLesMarges {
   position: relative;
-  width: 1128px;
-  height: 8000px;
-  margin: auto;
+  width: 69.444vw;
+  margin-left: auto;
+  margin-right: auto;
   background: #d4cbcb;
   backdrop-filter: blur(1000px);
+}
+
+.fondArticle {
+  position: relative;
+  background: linear-gradient(144.37deg, rgba(18, 71, 94, 0.15) 0%, rgba(18, 71, 94, 0.05) 90.25%);
+  backdrop-filter: blur(100px);
+  margin-top: 64px;
+  margin-bottom: 64px;
+  margin-left: 64px;
+  margin-right: 64px;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -6,7 +6,7 @@ require_once('../commons/header.php');
 <div class="fondSansLesMarges">
     <h1>À propos</h1>
     <h2>Conditions générales d’utilisation du site EclatTech</h2>
-    <div>
+    <div class="fondArticle">
         <h3>Article 1 : Objet</h3>
         <p>Les présentes CGU ou Conditions Générales d’Utilisation encadrent juridiquement l’utilisation des services du site EclatTech.
             Constituant le contrat entre la société Buenorizon, l’Utilisateur, l’accès au site doit être précédé de l’acceptation de ces CGU. L’accès à cette plateforme signifie l’acceptation des présentes CGU.
@@ -63,7 +63,8 @@ require_once('../commons/header.php');
             L’information présente dans les cookies est utilisée pour améliorer les performances de navigation sur le site EclatTech.
         </p>
     </div>
-    <div>
+    <h2>Mentions légales</h2>
+    <div class="fondArticle">
         <p>Conformément aux dispositions des Articles 6-III et 19 de la Loi n°2004-575 du 21 juin 2004 pour la Confiance dans l’économie numérique, dite L.C.E.N., il est porté à la connaissance des Utilisateurs du site Eclat Tech les présentes mentions légales.
 La connexion et la navigation sur le site (indiquer le nom du site) par l’Utilisateur implique acceptation intégrale et sans réserve des présentes mentions légales.
 Ces dernières sont accessibles sur le site à la rubrique « Mentions légales ».
