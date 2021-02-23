@@ -21,7 +21,7 @@ $isConnected = false;
         </div>
         <div>
             <a <?php echo ($_SERVER['REQUEST_URI'] == '/Buenorizon-Blog-art-G3/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php"><?= $isConnected ? "JacquesDu33" : "Connexion" ?> </a>
-            <button onclick="../pages/a"><?= $isConnected ? "Mon compte" : "S'inscrire"?></button>
+            <button onclick="location.href='../pages/signin.php'"><?= $isConnected ? "Mon compte" : "S'inscrire"?></button>
         </div>
     </div>
 

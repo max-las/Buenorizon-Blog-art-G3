@@ -1,18 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
-html,
-body {
-  padding: 0;
-  margin: 0;
-  max-height: 100%;
-  overflow: hidden;
-  background-color: #181818;
-}
-
-div,
-span,
-applet,
-object,
-iframe,
 h1 {
   font-family: Montserrat;
   font-style: normal;
@@ -20,7 +6,7 @@ h1 {
   font-size: 1.875vw;
   line-height: 28px;
   /* or 156% */
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
 }
 
 h2 {
@@ -40,12 +26,9 @@ h3 {
   font-size: 0.938vw;
   line-height: 28px;
   /* or 156% */
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
 }
 
-h4,
-h5,
-h6,
 p {
   font-family: Montserrat;
   font-style: normal;
@@ -56,6 +39,19 @@ p {
   color: #FFFFFF;
 }
 
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h3,
+h4,
+h5,
+h6,
+p,
 blockquote,
 pre,
 a,
@@ -173,6 +169,10 @@ table {
   border-spacing: 0;
 }
 
+button:focus {
+  outline: 0;
+}
+
 header {
   font-family: "Montserrat", sans-serif;
   height: 3rem;
@@ -244,11 +244,21 @@ header .navbar a {
 
 .fondSansLesMarges {
   position: relative;
-  width: 1128px;
-  height: 8000px;
-  margin: auto;
+  width: 69.444vw;
+  margin-left: auto;
+  margin-right: auto;
   background: #d4cbcb;
   backdrop-filter: blur(1000px);
+}
+
+.fondArticle {
+  position: relative;
+  background: linear-gradient(144.37deg, rgba(18, 71, 94, 0.15) 0%, rgba(18, 71, 94, 0.05) 90.25%);
+  backdrop-filter: blur(100px);
+  margin-top: 64px;
+  margin-bottom: 64px;
+  margin-left: 64px;
+  margin-right: 64px;
 }
 
 /*# sourceMappingURL=main.css.map */
