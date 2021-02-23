@@ -1,6 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
 html,
-body,
+body {
+  padding: 0;
+  margin: 0;
+  max-height: 100%;
+  overflow: hidden;
+  background-color: #181818;
+}
+
 div,
 span,
 applet,
@@ -13,7 +20,7 @@ h1 {
   font-size: 1.875vw;
   line-height: 28px;
   /* or 156% */
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
 }
 
 h2 {
@@ -23,7 +30,7 @@ h2 {
   font-size: 1.25vw;
   line-height: 28px;
   /* or 156% */
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
 }
 
 h3 {
@@ -33,7 +40,7 @@ h3 {
   font-size: 0.938vw;
   line-height: 28px;
   /* or 156% */
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
 }
 
 h4,
@@ -46,7 +53,7 @@ p {
   font-size: 0.833vw;
   line-height: 28px;
   /* or 156% */
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
 }
 
 blockquote,
@@ -201,13 +208,17 @@ header .navbar a {
   text-decoration: none;
 }
 
-.codeBar {
+.codbar1 {
+  /* eclatech bueno horizon blog */
   position: absolute;
-  width: 20px;
-  height: 337px;
+  width: 470px;
+  height: 40px;
   left: 32px;
-  top: 333px;
-  background: #FFFFFF;
+  top: 170px;
+}
+
+.text {
+  z-index: 5;
 }
 
 .fondSansLesMarges {

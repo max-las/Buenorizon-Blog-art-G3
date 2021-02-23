@@ -5,7 +5,13 @@ $michroma: "Michroma", sans-serif;
 $montserrat: "Montserrat", sans-serif;
 
 html,
-body,
+body{
+  padding:0;
+  margin:0;
+  max-height:100%;
+  overflow:hidden;
+  background-color: #181818;
+  }
 div,
 span,
 applet,
@@ -19,7 +25,8 @@ font-size: 1.875vw;
 line-height: 28px;
 /* or 156% */
 
-/*color: #FFFFFF;*/
+color: #FFFFFF;
+
 }
 h2 { 
   font-family: Montserrat;
@@ -28,7 +35,7 @@ font-weight: 600;
 font-size: 1.250vw;
 line-height: 28px;
 /* or 156% */
-/*color: #FFFFFF;*/
+color: #FFFFFF;
 }
 h3{
   font-family: Montserrat;
@@ -37,7 +44,7 @@ h3{
   font-size: 0.938vw;
   line-height: 28px;
   /* or 156% */
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
 }
 h4,
 h5,
@@ -49,7 +56,7 @@ p{
   font-size: 0.833vw;
   line-height: 28px;
   /* or 156% */
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
 }
 blockquote,
 pre,
