@@ -244,6 +244,22 @@ header .navbar a {
   top: 279px;
 }
 
+.souvenir {
+  position: absolute;
+  width: 134px;
+  height: 17px;
+  left: 308px;
+  top: 939px;
+}
+
+.textjamaislu {
+  position: absolute;
+  width: 871px;
+  height: 374px;
+  left: 285px;
+  top: 1265px;
+}
+
 .red {
   font-family: Montserrat;
   font-style: normal;
@@ -251,6 +267,50 @@ header .navbar a {
   font-size: 0.833vw;
   line-height: 28px;
   color: red;
+}
+
+.ligne {
+  border-bottom: 1px solid white;
+  position: absolute;
+  width: 351px;
+  left: 282.5px;
+  top: 424.5px;
+}
+
+.ligne1 {
+  left: 282.5px;
+  top: 424.5px;
+}
+
+.ligne2 {
+  left: 282px;
+  top: 515px;
+}
+
+.ligne3 {
+  left: 282px;
+  top: 604px;
+}
+
+.ligne4 {
+  left: 282px;
+  top: 695px;
+}
+
+.ligne5 {
+  left: 282px;
+  top: 785px;
+}
+
+.ligne6 {
+  left: 282px;
+  top: 875px;
+}
+
+.ligne7 {
+  width: 216px;
+  left: 900px;
+  top: 666px;
 }
 
 .ice1 {
