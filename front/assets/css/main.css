@@ -164,3 +164,14 @@ header .navbar a {
   margin-right: 2rem;
   text-decoration: none;
 }
+
+.codeBar {
+  position: absolute;
+  width: 20px;
+  height: 337px;
+  left: 32px;
+  top: 333px;
+  background: #FFFFFF;
+}
+
+/*# sourceMappingURL=main.css.map */
