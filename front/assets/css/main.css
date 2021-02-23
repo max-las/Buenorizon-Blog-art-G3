@@ -6,7 +6,7 @@ h1 {
   font-size: 1.875vw;
   line-height: 28px;
   /* or 156% */
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
 }
 
 h2 {
@@ -26,7 +26,7 @@ h3 {
   font-size: 0.938vw;
   line-height: 28px;
   /* or 156% */
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
 }
 
 p {
