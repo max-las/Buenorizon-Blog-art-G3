@@ -155,6 +155,8 @@
             $upadted = false;
         }else{
             $numThem = $_POST['numThem'];
+            $resultThem = $maThem->get_1Thematique($numThem);
+            $numLang = $resultThem['numLang'];
         }
 
         if($updated){
