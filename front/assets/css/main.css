@@ -276,7 +276,7 @@ header .navbar a {
   width: 69.444vw;
   margin-left: auto;
   margin-right: auto;
-  background: #d4cbcb;
+  background: #0C0C0C;
   backdrop-filter: blur(1000px);
 }
 
@@ -298,6 +298,7 @@ header .navbar a {
   line-height: 28px;
   /* or 156% */
   padding-top: 100px;
+  margin-right: 100%;
   margin-bottom: 80px;
   color: #FFFFFF;
 }
