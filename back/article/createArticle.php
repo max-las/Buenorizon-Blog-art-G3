@@ -191,7 +191,7 @@
         <div class="control-group">
             <div class="field">
                 <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="dtCreArt" id="dtCreArt" value="<?= date("d-m-Y H:i:s") ?>" disabled /><br><br>
+                <input type="text" name="dtCreArt" id="dtCreArt" value="<?= date("Y-m-d H:i:s") ?>" readonly /><br><br>
             </div>
 
             <div class="field">
