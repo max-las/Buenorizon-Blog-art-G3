@@ -19,6 +19,8 @@
     $monAngle = new ANGLE;
     require_once __DIR__ . '/../../CLASS_CRUD/thematique.class.php';
     $maThem = new THEMATIQUE;
+    require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
+    $maLang = new LANGUE;
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // ajout effectif de l'angle
@@ -175,6 +177,8 @@
         $urlPhotArt = $resultArticle['urlPhotArt'];
         $numAngl = $resultArticle['numAngl'];
         $numThem = $resultArticle['numThem'];
+        $resultThem = $maThem->get_1Thematique($numThem);
+        $numLang = $resultThem['numLang'];
     }
 
     if($dtCreArt){
@@ -191,6 +195,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
 <body class="ui container">
@@ -213,7 +220,7 @@
         <div class="control-group">
             <div class="field">
                 <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="datetime-local" name="dtCreArt" id="dtCreArt" size="80" maxlength="80" value="<?= $dtCreArt ?>" autofocus/><br><br>
+                <input type="text" name="dtCreArt" id="dtCreArt" value="<?= date("d-m-Y H:i:s") ?>" disabled /><br><br>
             </div>
 
             <div class="field">
@@ -267,38 +274,104 @@
             </div>
 
             <div class="field">
-                <label class="control-label" for="numAngl"><b>Angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <br><select name="numAngl" id="numAngl"> 
+                <label class="control-label" for="numLang"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <br><select name="numLang" id="numLang"> 
                 <?php
-                    $allAngles = $monAngle->get_AllAngles();
-                    foreach($allAngles as $row){
-                        if($row["numAngl"] === $numAngl){
+                    $allLangs = $maLang->get_AllLangues();
+                    foreach($allLangs as $row){
+                        if($row["numLang"] === $numLang){
                             $selected = "selected";
                         }else{
                             $selected = "";
                         }
-                        echo '<option value="'.$row["numAngl"].'" '.$selected.'>'.$row["libAngl"].'</option>';
-                    }
-                ?>
-                </select><br><br>
-            </div>
-
-            <div class="field">
-                <label class="control-label" for="numThem"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <br><select name="numThem" id="numThem"> 
-                <?php
-                    $allThems = $maThem->get_AllThematiques();
-                    foreach($allThems as $row){
-                        if($row["numThem"] === $numThem){
-                            $selected = "selected";
-                        }else{
-                            $selected = "";
-                        }
-                        echo '<option value="'.$row["numThem"].'" '.$selected.'>'.$row["libThem"].'</option>';
+                        echo '<option value="'.$row["numLang"].'"'.$selected.'>'.$row["numLang"].' - '.$row['lib1Lang'].'</option>';
                     }
                 ?>
                 </select>
             </div>
+
+            <script>
+                $(document).ready(function(){
+                    changeSelect();
+                    changeThem();
+                    changeAngl();
+
+                    $("#numLang").change(function(){
+                        changeSelect();
+                        changeThem();
+                        changeAngl();
+                    });
+                    $(".themSelect").change(function(){
+                        changeThem();
+                    });
+                    $(".anglSelect").change(function(){
+                        changeAngl();
+                    });
+                });
+
+                function changeThem(){
+                    langVal = $("#numLang option:selected").val();
+                    themVal = $("#"+langVal).val();
+                    $("#numThem").val(themVal);
+                }
+
+                function changeAngl(){
+                    langVal = $("#numLang option:selected").val();
+                    anglVal = $("#ang"+langVal).val();
+                    console.log(anglVal);
+                    $("#numAngl").val(anglVal);
+                }
+
+                function changeSelect(){
+                    langVal = $("#numLang option:selected").val();
+                    $(".langSelect").hide();
+                    $("#them"+langVal).show();
+                    $("#angl"+langVal).show();
+                }
+            </script>
+
+            <?php 
+                foreach($allLangs as $row){
+                    $group = $monAngle->get_AllAnglesByLang($row['numLang']);
+
+                    echo "<div class=\"field langSelect\" id=\""."angl".$row['numLang']."\">";
+                    echo "<label class=\"control-label\" for=\""."ang".$row['numLang']."\"><b>Angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>";
+                    echo "<br><select class=\"anglSelect\" name=\""."ang".$row['numLang']."\" id=\""."ang".$row['numLang']."\">";
+                    foreach($group as $raw){
+                        if($raw["numAngl"] === $numAngl){
+                            $selected = "selected";
+                        }else{
+                            $selected = "";
+                        }
+                        echo '<option value="'.$raw["numAngl"].'"'.$selected.'>'.$raw["libAngl"].'</option>';
+                    }
+                    echo "</select>";
+                    echo "</div>";
+                }
+            ?>
+
+            <?php
+                foreach($allLangs as $row){
+                    $group = $maThem->get_AllThematiquesByLang($row['numLang']);
+                        
+                    echo "<div class=\"field langSelect\" id=\""."them".$row['numLang']."\">";
+                    echo "<label class=\"control-label\" for=\"".$row['numLang']."\"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>";
+                    echo "<br><select class=\"themSelect\" name=\"".$row['numLang']."\" id=\"".$row['numLang']."\">";
+                    foreach($group as $raw){
+                        if($raw["numThem"] === $numThem){
+                            $selected = "selected";
+                        }else{
+                            $selected = "";
+                        }
+                        echo '<option value="'.$raw["numThem"].'"'.$selected.'>'.$raw["libThem"].'</option>';
+                    }
+                    echo "</select>";
+                    echo "</div>";
+                }
+            ?>
+
+            <input type="hidden" name="numAngl" id="numAngl" value="" />
+            <input type="hidden" name="numThem" id="numThem" value="" />
         </div>
 
         <div class="control-group">
