@@ -110,6 +110,7 @@ section {
 body {
   line-height: 1;
   background-color: #002D41;
+  color: white;
 }
 ol,
 ul {
@@ -134,40 +135,23 @@ button:focus {
   outline: 0;
 }
 h1{
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1.875vw;
-  line-height: 28px;
-  /* or 156% */
-
-  /*color: #FFFFFF;*/
+  font-family: $michroma;
+  font-size: 48px;
 }
 
 h2{
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1.25vw;
-  line-height: 28px;
-  /* or 156% */
-  color: #FFFFFF;
+  font-family: $montserrat;
+  font-size: 24px;
+  font-weight: 400;
 }
 h3{
-    font-family: Montserrat;
-    font-style: normal;
+    font-family: $montserrat;
+    font-size: 24px;
     font-weight: 600;
-    font-size: 0.938vw;
-    line-height: 28px;
-    /* or 156% */
-    /*color: #FFFFFF;*/ 
 }
 p{
-  font-family: Montserrat;
-  font-style: normal;
+  font-family: $montserrat;
   font-weight: 600;
-  font-size: 0.833vw;
-  line-height: 28px;
-  /* or 156% */
-  color: #FFFFFF;
+  font-size: 16px;
+  
 }

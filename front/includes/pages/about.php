@@ -4,7 +4,7 @@ require_once('../commons/header.php');
 
 
 <div class="fondSansLesMarges">
-    <h1 class="AproposTitre">À propos</h1>
+    <div class="AproposTitre"> <h1>À propos</h1></div>
     <h2>Conditions générales d’utilisation du site EclatTech</h2>
     <div class="fondArticle">
         <h3 class="h3about" >Article 1 : Objet</h3 class="h3about" >
