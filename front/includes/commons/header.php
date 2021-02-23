@@ -28,6 +28,3 @@ $isConnected = false;
     
     </header>
     <main>
-        <h1>aaaaaaaaaaa</h1>
-        <h2>bbbbbbb</h2>
-        <h3>cccccc</h3>
