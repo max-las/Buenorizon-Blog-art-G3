@@ -13,6 +13,21 @@ require_once('../commons/header.php');
 </svg>
 </div>
 
+<div class=ice>
+<svg width="1128" height="1964" viewBox="0 0 1128 1964" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_b)">
+<rect width="1128" height="8000" fill="#0C0C0C"/>
+</g>
+<defs>
+<filter id="filter0_b" x="-1000" y="-1000" width="3128" height="10000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0.1" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="500"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"/>
+</filter>
+</defs>
+</svg>
+</div>
 
 <div class=ice1>
 <svg width="416" height="670" viewBox="0 0 416 670" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -116,36 +131,45 @@ require_once('../commons/header.php');
 <div class="ligne ligne7"></div>
 
 
-
-
-
-
-
-
-
 <h1 class=titre>Enregistrez vous</h1>
 <p class=soustitre>Les champs marqués d’un <span class=red>*</span> sont obligatoires.</p>
 
 <p class=souvenir>Se souvenir de moi</p>
+<p class=cgu >Accepter les <a href="front\includes\pages\about.php" style="color:#FFFFFF; title="Vers nos Conditions générales">Conditions générales d’utilisation</a></p>
+
 
 <p class=textjamaislu>
 Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par Buenorizon (contact 1 : samuel.labagnere@mmibordeaux.com; contact 2 maxime.lasserre@mmibordeaux.com) pour la gestion des comptes. 
-
+<br>
+<br>
 Les données collectées seront communiquées aux seuls destinataires suivants : Le service de gestions de donnée (contact ci-dessus) ainsi que les professeurs et intervenants dans le cadre du projet « Blog art ».
-
+<br>
+<br>
 Les données sont conservées pendant toute la durée du projet (un a deux mois).
-
+<br>
+<br>
 Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données. (En fonction de la base légale du traitement, mentionner également : Vous pouvez retirer à tout moment votre consentement au traitement de vos données ; Vous pouvez également vous opposer au traitement de vos données ; Vous pouvez également exercer votre droit à la portabilité de vos données)
-
+<br>
+<br>
 Consultez le site cnil.fr pour plus d’informations sur vos droits.
-
+<br>
+<br>
 Pour exercer ces droits ou pour toute question sur le traitement de vos données dans ce dispositif, vous pouvez contacter (le cas échéant, nos délégués à la protection des données ou le service chargé de l’exercice de ces droits) : Maxime Lasserre (maxime.lasserre@mmibordeaux.com ) ou Samuel Labagnere (samuel.labagnere@mmibordeaux.com). 
-
+<br>
+<br>
 Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
 <p>
 
 
 
+
+
+<form method="post" action="traitement.php">
+    <p class = pseudo>
+        <label for="pseudo"></label>
+        <input type="text" name="pseudo" id="pseudo" placeholder="Votre Pseudo" size="40" maxlength="40" />
+    </p>
+</form>
 
 <?php
 require_once('../commons/footer.php');
