@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  background-color: #002D41;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button:focus {
+  outline: 0;
+}
+
+h1 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.875vw;
+  line-height: 28px;
+  /* or 156% */
+  /*color: #FFFFFF;*/
+}
+
+h2 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25vw;
+  line-height: 28px;
+  /* or 156% */
+  color: #FFFFFF;
+}
+
+h3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.938vw;
+  line-height: 28px;
+  /* or 156% */
+  /*color: #FFFFFF;*/
+}
+
+p {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.833vw;
+  line-height: 28px;
+  /* or 156% */
+  color: #FFFFFF;
+}
+
+header {
+  position: fixed;
+  font-family: "Montserrat", sans-serif;
+  height: 3rem;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  align-items: center;
+}
+header .navbar {
+  margin-top: 1.5rem;
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+  align-items: center;
+}
+header .navbar button {
+  border-radius: 0.5rem;
+  background-color: #e63946;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  text-decoration: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1rem;
+}
+header .navbar .highlight {
+  color: #e63946;
+}
+header .navbar a {
+  color: white;
+  margin-right: 2rem;
+  text-decoration: none;
+}
+
+.container-arrivee {
+  position: absolute;
+}
+.container-arrivee img {
+  height: 500px;
+  width: 500px;
+}
+
+.codbar1 {
+  /* eclatech bueno horizon blog */
+  position: absolute;
+  width: 470px;
+  height: 40px;
+  left: 32px;
+  top: 300px;
+}
+
+.titre {
+  position: absolute;
+  width: 397px;
+  height: 51px;
+  left: 522px;
+  top: 179px;
+}
+
+.soustitre {
+  position: absolute;
+  width: 409px;
+  height: 22px;
+  left: 516px;
+  top: 279px;
+}
+
+.red {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.833vw;
+  line-height: 28px;
+  color: red;
+}
+
+.ice1 {
+  position: absolute;
+  left: 250px;
+  top: 367px;
+}
+
+.ice2 {
+  position: absolute;
+  left: 828px;
+  top: 397px;
+}
+
+.ice3 {
+  position: absolute;
+  left: 253px;
+  top: 1233px;
+}
+
+.fondSansLesMarges {
+  position: relative;
+  width: 69.444vw;
+  margin-left: auto;
+  margin-right: auto;
+  background: #d4cbcb;
+  backdrop-filter: blur(1000px);
+}
+
+.fondArticle {
+  position: relative;
+  background: linear-gradient(144.37deg, rgba(18, 71, 94, 0.15) 0%, rgba(18, 71, 94, 0.05) 90.25%);
+  backdrop-filter: blur(100px);
+  margin-top: 64px;
+  margin-bottom: 64px;
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+/*# sourceMappingURL=main.css.map */
