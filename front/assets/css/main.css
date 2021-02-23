@@ -1,44 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
-h1 {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1.875vw;
-  line-height: 28px;
-  /* or 156% */
-  /*color: #FFFFFF;*/
-}
-
-h2 {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1.25vw;
-  line-height: 28px;
-  /* or 156% */
-  color: #FFFFFF;
-}
-
-h3 {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.938vw;
-  line-height: 28px;
-  /* or 156% */
-  /*color: #FFFFFF;*/
-}
-
-p {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.833vw;
-  line-height: 28px;
-  /* or 156% */
-  color: #FFFFFF;
-}
-
 html,
 body,
 div,
@@ -47,6 +7,7 @@ applet,
 object,
 iframe,
 h1,
+h2,
 h3,
 h4,
 h5,
@@ -144,6 +105,7 @@ section {
 
 body {
   line-height: 1;
+  background-color: #002D41;
 }
 
 ol,
@@ -173,7 +135,48 @@ button:focus {
   outline: 0;
 }
 
+h1 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.875vw;
+  line-height: 28px;
+  /* or 156% */
+  /*color: #FFFFFF;*/
+}
+
+h2 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25vw;
+  line-height: 28px;
+  /* or 156% */
+  color: #FFFFFF;
+}
+
+h3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.938vw;
+  line-height: 28px;
+  /* or 156% */
+  /*color: #FFFFFF;*/
+}
+
+p {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.833vw;
+  line-height: 28px;
+  /* or 156% */
+  color: #FFFFFF;
+}
+
 header {
+  position: fixed;
   font-family: "Montserrat", sans-serif;
   height: 3rem;
   z-index: 99;
@@ -206,6 +209,14 @@ header .navbar a {
   color: white;
   margin-right: 2rem;
   text-decoration: none;
+}
+
+.container-arrivee {
+  position: absolute;
+}
+.container-arrivee img {
+  height: 500px;
+  width: 500px;
 }
 
 .codbar1 {
