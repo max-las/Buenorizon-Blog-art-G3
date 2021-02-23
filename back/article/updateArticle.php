@@ -162,13 +162,13 @@
                 unlink("./uploads/".$thisArticle['urlPhotArt']);
                 move_uploaded_file($_FILES['imageArt']['tmp_name'], $target_file);
             }
-            $monArticle->update($numArt, $_POST['dtCreArt'], $_POST['libTitrArt'], $_POST['libChapoArt'], $_POST['libAccrochArt'], $_POST['parag1Art'], $_POST['libSsTitr1Art'], $_POST['parag2Art'], $_POST['libSsTitr2Art'], $_POST['parag3Art'], $_POST['libConclArt'], $urlPhotArt, $_POST['numAngl'], $_POST['numThem']);
+            $monArticle->update($numArt, $_POST['libTitrArt'], $_POST['libChapoArt'], $_POST['libAccrochArt'], $_POST['parag1Art'], $_POST['libSsTitr1Art'], $_POST['parag2Art'], $_POST['libSsTitr2Art'], $_POST['parag3Art'], $_POST['libConclArt'], $urlPhotArt, $_POST['numAngl'], $_POST['numThem']);
         
-            $motcles = $monMotCleArt->get_AllMotClesByArticle($numArt);
+            $motcles = $monMotCleA->get_AllMotClesByArticle($numArt);
 
             if($motcles){
                 foreach($motcles as $row){
-                    $monMotCleArt->delete($row['numMotCle'], $numArt);
+                    $monMotCleA->delete($row['numMotCle'], $numArt);
                 }
             }
 
@@ -239,7 +239,7 @@
         <div class="control-group">
             <div class="field">
                 <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="dtCreArt" id="dtCreArt" value="<?= date("d-m-Y H:i:s") ?>" disabled /><br><br>
+                <input type="text" name="dtCreArt" id="dtCreArt" value="<?= date("d-m-Y H:i:s") ?>" readonly /><br><br>
             </div>
 
             <div class="field">
@@ -317,6 +317,7 @@
 
                     $("#numLang").change(function(){
                         changeSelect();
+                        $(".checkboxes").prop("checked",false);
                         changeThem();
                         changeAngl();
                     });
@@ -347,8 +348,6 @@
                     $("#them"+langVal).show();
                     $("#angl"+langVal).show();
                     $("#motCle"+langVal).show();
-
-                    $(".checkboxes").prop("checked",false);
                 }
             </script>
 
@@ -410,7 +409,7 @@
                         
 
                         echo '<div class="ui checkbox" style="width: 150px; margin-bottom: 10px;">';
-                        echo '<input type="checkbox" class="checkboxes" tabindex="0" name="'.$raw['numMotCle'].'"'.$checked.' />';
+                        echo '<input type="checkbox" class="checkboxes" tabindex="0" name="'.$raw['numMotCle'].'" '.$checked.' />';
                         echo '<label>'.$raw['libMotCle'].'</label>';
                         echo '</div>';
                     }
