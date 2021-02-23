@@ -44,6 +44,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if(!$comments && !$likearts && !$motcles){
             $monArticle->delete($numArt);
+            unlink("./uploads/".$resultArticle['urlPhotArt']);
             $deleted = true;
         }else{
             $supprImpossible = true;

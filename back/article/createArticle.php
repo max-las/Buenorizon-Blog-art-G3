@@ -7,7 +7,13 @@
     include __DIR__ . '/initArticle.php';
     $created = false;
 
-    // controle des saisies du formulaire
+    function getNextImageNumber(){
+        $k = 0;
+        while(glob("./uploads/imgArt$k.*")){
+            $k++;
+        }
+        return $k;
+    }
 
 
     // insertion classe
@@ -110,12 +116,21 @@
             $libConclArt = $_POST['libConclArt'];
         }
 
-        if(empty($_POST['urlPhotArt'])){
+        if(!$_FILES['imageArt']['size']){
             $urlPhotArt = '';
-            $erreur = $erreur."<li>Il manque l'url de la photo.</li>";
+            $erreur = $erreur."<li>Il manque l'image.</li>";
             $created = false;
         }else{
-            $urlPhotArt = $_POST['urlPhotArt'];
+            $target_dir = "uploads/";
+            $fileType = pathinfo(basename($_FILES["imageArt"]["name"]),PATHINFO_EXTENSION);
+            if($fileType != "jpg" && $fileType != "jpeg" && $fileType != "png" && $fileType != "gif"){
+                $urlPhotArt = '';
+                $erreur = $erreur."<li>L'image n'est pas au bon format ($fileType). Les formats valides sont JPG, JPEG, PNG et GIF.</li>";
+                $created = false;
+            }else{
+                $urlPhotArt = "imgArt".getNextImageNumber().".$fileType";
+                $target_file = $target_dir.$urlPhotArt;
+            }
         }
 
         if(empty($_POST['numAngl'])){
@@ -135,7 +150,8 @@
         }
 
         if($created){
-            $monArticle->create($_POST['dtCreArt'], $_POST['libTitrArt'], $_POST['libChapoArt'], $_POST['libAccrochArt'], $_POST['parag1Art'], $_POST['libSsTitr1Art'], $_POST['parag2Art'], $_POST['libSsTitr2Art'], $_POST['parag3Art'], $_POST['libConclArt'], $_POST['urlPhotArt'], $_POST['numAngl'], $_POST['numThem']);
+            move_uploaded_file($_FILES['imageArt']['tmp_name'], $target_file);
+            $monArticle->create($_POST['dtCreArt'], $_POST['libTitrArt'], $_POST['libChapoArt'], $_POST['libAccrochArt'], $_POST['parag1Art'], $_POST['libSsTitr1Art'], $_POST['parag2Art'], $_POST['libSsTitr2Art'], $_POST['parag3Art'], $_POST['libConclArt'], $urlPhotArt, $_POST['numAngl'], $_POST['numThem']);
         }
     }
 ?>
@@ -170,7 +186,7 @@
         <div class="control-group">
             <div class="field">
                 <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="datetime-local" name="dtCreArt" id="dtCreArt" size="80" maxlength="80" value="<?= $dtCreArt ?>" autofocus/><br><br>
+                <input type="datetime-local" name="dtCreArt" id="dtCreArt" value="<?= $dtCreArt ?>" autofocus/><br><br>
             </div>
 
             <div class="field">
@@ -219,8 +235,8 @@
             </div>
 
             <div class="field">
-                <label class="control-label" for="urlPhotArt"><b>URL Photo :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="urlPhotArt" id="urlPhotArt" size="80" maxlength="80" value="<?= $urlPhotArt ?>"/><br><br>
+                <label class="control-label" for="imageArt"><b>Image :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <input type="file" name="imageArt" id="imageArt" /><br><br>
             </div>
 
             <div class="field">
