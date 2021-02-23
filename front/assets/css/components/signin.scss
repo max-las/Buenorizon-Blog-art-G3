@@ -5,12 +5,33 @@
     width: 470px;
     height: 40px;
     left: 32px;
-    top: 170px;
+    top: 300px;
 }
 
 
 
-.text{
-    z-index: 5;
+.titre{
+    position: absolute;
+    width: 397px;
+    height: 51px;
+    left: 522px;
+    top: 179px;
 }
 
+.soustitre{
+    position: absolute;
+    width: 409px;
+    height: 22px;
+    left: 516px;
+    top: 279px;
+    
+}
+
+.red{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.833vw;
+    line-height: 28px;
+    color: red;
+}
