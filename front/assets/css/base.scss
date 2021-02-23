@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
 
 $primary: #e63946;
 $michroma: "Michroma", sans-serif;
@@ -110,6 +111,7 @@ section {
 body {
   line-height: 1;
   background-color: #002D41;
+  color: white;
 }
 ol,
 ul {
@@ -134,40 +136,22 @@ button:focus {
   outline: 0;
 }
 h1{
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1.875vw;
-  line-height: 28px;
-  /* or 156% */
-
-  /*color: #FFFFFF;*/
+  font-family: $michroma;
+  font-size: 48px;
 }
 
 h2{
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1.25vw;
-  line-height: 28px;
-  /* or 156% */
-  color: #FFFFFF;
+  font-family: $montserrat;
+  font-size: 24px;
+  font-weight: 400;
 }
 h3{
-    font-family: Montserrat;
-    font-style: normal;
+    font-family: $montserrat;
+    font-size: 24px;
     font-weight: 600;
-    font-size: 0.938vw;
-    line-height: 28px;
-    /* or 156% */
-    /*color: #FFFFFF;*/ 
 }
 p{
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.833vw;
-  line-height: 28px;
-  /* or 156% */
-  color: #FFFFFF;
+  font-family: $montserrat;
+  font-weight: 400;
+  font-size: 16px; 
 }

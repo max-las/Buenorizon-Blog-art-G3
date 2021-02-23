@@ -7,6 +7,9 @@ require_once('../commons/header.php');
 <div class="container-arrivee">
 <img src="./../../assets/img/drone-carrousel.jpg" alt="Drone_fond_carrousel">
 
+<h1>DRONISOS</h1>
+
+
 
 </div>
 
