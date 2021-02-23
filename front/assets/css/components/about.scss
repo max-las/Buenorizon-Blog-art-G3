@@ -4,8 +4,9 @@
 
     margin-left: auto;
     margin-right: auto;
-
-    background: #d4cbcb;
+    margin-bottom: 0;
+    padding-bottom: 5%;
+    background: #0C0C0C;
     backdrop-filter: blur(1000px);
 }
 .fondArticle {
@@ -17,3 +18,14 @@
     margin-left: 64px;
     margin-right: 64px;
 }
+.AproposTitre{
+    padding-top: 100px;
+    margin-bottom: 80px;   
+    text-align: center;
+  }
+
+  .h3about{
+    font-family: Montserrat;
+    text-indent: 2%;
+  }
+
