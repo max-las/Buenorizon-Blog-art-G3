@@ -242,6 +242,24 @@ header .navbar a {
   color: red;
 }
 
+.ice1 {
+  position: absolute;
+  left: 250px;
+  top: 367px;
+}
+
+.ice2 {
+  position: absolute;
+  left: 828px;
+  top: 397px;
+}
+
+.ice3 {
+  position: absolute;
+  left: 253px;
+  top: 1233px;
+}
+
 .fondSansLesMarges {
   position: relative;
   width: 69.444vw;
