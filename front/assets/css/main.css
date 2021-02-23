@@ -164,3 +164,20 @@ header .navbar a {
   margin-right: 2rem;
   text-decoration: none;
 }
+
+.codbar1 {
+  /* eclatech bueno horizon blog */
+  position: absolute;
+  width: 470px;
+  height: 40px;
+  left: 32px;
+  top: 170px;
+}
+
+.fond {
+  position: absolute;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/*# sourceMappingURL=main.css.map */
