@@ -1,6 +1,6 @@
 .fondSansLesMarges {
     position: relative;
-    width: 69.444vw;
+    width: 81vw;
 
     margin-left: auto;
     margin-right: auto;
@@ -15,8 +15,12 @@
     backdrop-filter: blur(100px);
     margin-top: 64px;
     margin-bottom: 64px;
-    margin-left: 64px;
-    margin-right: 64px;
+    margin-left: 3.90625vw;
+    margin-right: 3.90625vw;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 .AproposTitre{
     padding-top: 100px;
@@ -27,5 +31,6 @@
   .h3about{
     font-family: Montserrat;
     text-indent: 2%;
+    padding-top: 28px;
   }
 
