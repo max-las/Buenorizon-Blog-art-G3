@@ -21,6 +21,10 @@
     $maThem = new THEMATIQUE;
     require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
     $maLang = new LANGUE;
+    require_once __DIR__ . '/../../CLASS_CRUD/motcle.class.php';
+    $monMotCle = new MOTCLE;
+    require_once __DIR__ . '/../../CLASS_CRUD/motclearticle.class.php';
+    $monMotCleA = new MOTCLEARTICLE;
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // ajout effectif de l'angle
@@ -151,6 +155,8 @@
             $upadted = false;
         }else{
             $numThem = $_POST['numThem'];
+            $resultThem = $maThem->get_1Thematique($numThem);
+            $numLang = $resultThem['numLang'];
         }
 
         if($updated){
@@ -158,7 +164,22 @@
                 unlink("./uploads/".$thisArticle['urlPhotArt']);
                 move_uploaded_file($_FILES['imageArt']['tmp_name'], $target_file);
             }
-            $monArticle->update($numArt, $_POST['dtCreArt'], $_POST['libTitrArt'], $_POST['libChapoArt'], $_POST['libAccrochArt'], $_POST['parag1Art'], $_POST['libSsTitr1Art'], $_POST['parag2Art'], $_POST['libSsTitr2Art'], $_POST['parag3Art'], $_POST['libConclArt'], $urlPhotArt, $_POST['numAngl'], $_POST['numThem']);
+            $monArticle->update($numArt, $_POST['libTitrArt'], $_POST['libChapoArt'], $_POST['libAccrochArt'], $_POST['parag1Art'], $_POST['libSsTitr1Art'], $_POST['parag2Art'], $_POST['libSsTitr2Art'], $_POST['parag3Art'], $_POST['libConclArt'], $urlPhotArt, $_POST['numAngl'], $_POST['numThem']);
+        
+            $motcles = $monMotCleA->get_AllMotClesByArticle($numArt);
+
+            if($motcles){
+                foreach($motcles as $row){
+                    $monMotCleA->delete($row['numMotCle'], $numArt);
+                }
+            }
+
+            $allMotsCles = $monMotCle->get_AllMotCles();
+            foreach($allMotsCles as $row){
+                if(isset($_POST[$row['numMotCle']])){
+                    $monMotCleA->create($row['numMotCle'], $numArt);
+                }
+            }
         }
 
     }else{
@@ -220,7 +241,7 @@
         <div class="control-group">
             <div class="field">
                 <label class="control-label" for="dtCreArt"><b>Date :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-                <input type="text" name="dtCreArt" id="dtCreArt" value="<?= date("d-m-Y H:i:s") ?>" disabled /><br><br>
+                <input type="text" name="dtCreArt" id="dtCreArt" value="<?= date("d-m-Y H:i:s") ?>" readonly /><br><br>
             </div>
 
             <div class="field">
@@ -298,6 +319,7 @@
 
                     $("#numLang").change(function(){
                         changeSelect();
+                        $(".checkboxes").prop("checked",false);
                         changeThem();
                         changeAngl();
                     });
@@ -327,6 +349,7 @@
                     $(".langSelect").hide();
                     $("#them"+langVal).show();
                     $("#angl"+langVal).show();
+                    $("#motCle"+langVal).show();
                 }
             </script>
 
@@ -366,6 +389,32 @@
                         echo '<option value="'.$raw["numThem"].'"'.$selected.'>'.$raw["libThem"].'</option>';
                     }
                     echo "</select>";
+                    echo "</div>";
+                }
+            ?>
+
+            <?php 
+
+                $allMotsCles = $monMotCleA->get_AllMotClesByArticle($numArt);
+
+                foreach($allLangs as $row){
+                    $group = $monMotCle->get_AllMotClesByLang($row['numLang']);
+
+                    echo "<div class=\"field langSelect\" id=\""."motCle".$row['numLang']."\">";
+                    foreach($group as $raw){
+                        $checked = "";
+                        foreach($allMotsCles as $riw){
+                            if($riw['numMotCle'] === $raw['numMotCle']){
+                                $checked = "checked";
+                            }
+                        }
+                        
+
+                        echo '<div class="ui checkbox" style="width: 150px; margin-bottom: 10px;">';
+                        echo '<input type="checkbox" class="checkboxes" tabindex="0" name="'.$raw['numMotCle'].'" '.$checked.' />';
+                        echo '<label>'.$raw['libMotCle'].'</label>';
+                        echo '</div>';
+                    }
                     echo "</div>";
                 }
             ?>

@@ -112,16 +112,16 @@
 			}
 		}
 
-		function update($numArt, $dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitrArt, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem){
+		function update($numArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitrArt, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem){
 			global $db;
 			try {
 				$db->beginTransaction();
 
-				$query = "UPDATE article SET dtCreArt = ?, libTitrArt = ?, libChapoArt = ?, libAccrochArt = ?, parag1Art = ?, libSsTitr1Art = ?, parag2Art = ?, libSsTitr2Art = ?, parag3Art = ?, libConclArt = ?, urlPhotArt = ?, numAngl = ?, numThem = ? WHERE numArt = ?";
+				$query = "UPDATE article SET libTitrArt = ?, libChapoArt = ?, libAccrochArt = ?, parag1Art = ?, libSsTitr1Art = ?, parag2Art = ?, libSsTitr2Art = ?, parag3Art = ?, libConclArt = ?, urlPhotArt = ?, numAngl = ?, numThem = ? WHERE numArt = ?";
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($dtCreArt, $libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitrArt, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem, $numArt));
+				$request->execute(array($libTitrArt, $libChapoArt, $libAccrochArt, $parag1Art, $libSsTitr1Art, $parag2Art, $libSsTitrArt, $parag3Art, $libConclArt, $urlPhotArt, $numAngl, $numThem, $numArt));
 
 				$db->commit();
 				$request->closeCursor();

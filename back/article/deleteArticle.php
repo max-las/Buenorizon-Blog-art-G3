@@ -42,7 +42,13 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $likearts = $monLikeArt->get_AllLikesArtByArticle($numArt);
         $motcles = $monMotCleArt->get_AllMotClesByArticle($numArt);
 
-        if(!$comments && !$likearts && !$motcles){
+        if($motcles){
+            foreach($motcles as $row){
+                $monMotCleArt->delete($row['numMotCle'], $numArt);
+            }
+        }
+
+        if(!$comments && !$likearts){
             $monArticle->delete($numArt);
             unlink("./uploads/".$resultArticle['urlPhotArt']);
             $deleted = true;
@@ -133,15 +139,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             echo '<ul>';
             foreach($likearts as $row){
                 echo '<li>Membre n°'.$row["numMemb"].' ('.$row["pseudoMemb"].')</li>';
-            }
-            echo '</ul>';
-        }
-    
-        if($motcles){
-            echo '<p>Table MOTCLEARTICLE :</p>';
-            echo '<ul>';
-            foreach($motcles as $row){
-                echo '<li>Mot-Clé n°'.$row["numMotCle"].' ('.$row["libMotCle"].')</li>';
             }
             echo '</ul>';
         }
