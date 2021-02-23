@@ -3,3 +3,6 @@ BDD
 upload
 front/assets/css/main.css
 front/assets/css/main.css.map
+node_modules
+package-lock.json
+package.json
