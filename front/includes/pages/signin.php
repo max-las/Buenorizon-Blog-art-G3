@@ -3,42 +3,8 @@ require_once('../commons/header.php');
 ?>
 
 <!-- Put your code here my friend ;) -->
-<div class=fond>
-<svg width="1440" height="1964" viewBox="0 0 1440 1964" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="1446" height="8000" fill="black"/>
-</svg>
-</div>  
 
-<div class=fond>
-<svg width="1128" height="1964" viewBox="0 0 1128 1964" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_b)">
-<rect width="1128" height="8000" fill="#0C0C0C"/>
-</g>
-<defs>
-<filter id="filter0_b" x="-1000" y="-1000" width="3128" height="10000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feGaussianBlur in="BackgroundImage" stdDeviation="500"/>
-<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"/>
-</filter>
-</defs>
-</svg>
-</div>
 
-<div class=fond>
-<svg width="1440" height="1926" viewBox="0 0 1440 1926" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_f)">
-<path d="M33.1859 -6L2488.88 654.052L2227.69 1625.78L-228 965.729L33.1859 -6Z" fill="#002D41" fill-opacity="0.48"/>
-</g>
-<defs>
-<filter id="filter0_f" x="-528" y="-306" width="3316.88" height="2231.78" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur"/>
-</filter>
-</defs>
-</svg>
-</div>
 
 
 <div class=codbar1>
@@ -47,7 +13,7 @@ require_once('../commons/header.php');
 </svg>
 </div>
 
-<h1>Enregistrez vous</h1>
+<h1 class=text>Enregistrez vous</h1>
 
 
 
