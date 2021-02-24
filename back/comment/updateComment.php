@@ -6,6 +6,9 @@ $class = new COMMENT;
 require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
 
+require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+$monArticle = new ARTICLE;
+
 $updated = false;
 
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -27,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     $numArt = $_POST["numArt"];
     $numMemb = $_POST["numMemb"];
     
-    $class->update($_POST["numSeqCom"], $_POST["numArt"], $_POST['dtCreCom'], $_POST['libCom'], $_POST['attModOK'], $_POST['affComOK'], $_POST['notifComKOAff']);
+    $class->update($numSeqCom, $numArt, $_POST['dtCreCom'], $_POST['libCom'], $_POST['attModOK'], $_POST['affComOK'], $_POST['notifComKOAff'], $numMemb);
     $updated = true;
 
     $resultComment = $class->get_1CommentWithMembre($numSeqCom, $numArt);
@@ -70,13 +73,22 @@ if($resultComment){
     <h2>Suppression d'un Commentaire</h2>
     <br>
     <form method="post" action=".\updateComment.php" class="ui form">
+            <input type="hidden" name="numSeqCom" placeholder="N° Commentaire" value="<? echo($numSeqCom); ?>">
         <div class="field">
-            <label>Numéro du commentaire</label>
-            <input type="number" name="numSeqCom" placeholder="N° Commentaire" value="<? echo($numSeqCom); ?>">
-        </div>
-        <div class="field">
-            <label>Numéro de l'Article</label>
-            <input type="number" name="numArt" placeholder="N° Article" value="<? echo($numArt); ?>">
+            <label>Article</label>
+            <select name="numArt" id="numArt">
+                <?
+                    $allArticles = $monArticle->get_AllArticles();
+                    foreach($allArticles as $row){
+                        if($row["numArt"] === $numArt){
+                            $selected = "selected";
+                        }else{
+                            $selected = "";
+                        }
+                        echo "<option value=\"".$row['numArt']."\"".$selected.">[".$row['numArt']."] ".$row['libTitrArt']."</option>";
+                    }
+                ?>
+            </select>
         </div>
             <input type="hidden" name="dtCreCom" value="<? echo($dtCreCom); ?>">
         <div class="field">

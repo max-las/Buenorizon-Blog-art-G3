@@ -32,6 +32,35 @@
 			return ($result);
 		}
 
+		function get_AllLikesArtWithMembreAndArticle(){
+			global $db;
+
+			$query = 'SELECT * FROM likeart INNER JOIN membre ON likeart.numMemb = membre.numMemb INNER JOIN article ON likeart.numArt = article.numArt';
+
+			$request = $db->query($query);
+		
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
+		function get_1LikeArtWithMembreAndArticle($numMemb, $numArt){
+			global $db;
+
+			$query = 'SELECT * FROM likeart INNER JOIN membre ON likeart.numMemb = membre.numMemb INNER JOIN article ON likeart.numArt = article.numArt WHERE (likeart.numMemb = ? AND likeart.numArt = ?)';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numMemb, $numArt));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+		
+
 		function get_AllLikesArtByMembre($numMemb){
 			global $db;
 

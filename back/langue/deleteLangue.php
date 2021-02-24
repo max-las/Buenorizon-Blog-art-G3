@@ -81,6 +81,48 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
     <h2>Suppression d'une Langue</h2>
+
+    <?php
+
+    if($supprImpossible){
+        echo '<div style="color:red;">';
+        echo '<p>Impossible de supprimer la langue "'.$lib2Lang.'" car elle est référencée par les éléments suivant :</p>';
+
+        if($thematiques){
+            echo '<p>Table THEMATIQUE :</p>';
+            echo '<ul>';
+            foreach($thematiques as $row){
+                echo '<li>'.$row["libThem"].'</li>';
+            }
+            echo '</ul>';
+        }
+
+        if($angles){
+            echo '<p>Table ANGLE :</p>';
+            echo '<ul>';
+            foreach($angles as $row){
+                echo '<li>'.$row["libAngl"].'</li>';
+            }
+            echo '</ul>';
+        }
+
+        if($motcles){
+            echo '<p>Table MOTCLE :</p>';
+            echo '<ul>';
+            foreach($motcles as $row){
+                echo '<li>'.$row["libMotCle"].'</li>';
+            }
+            echo '</ul>';
+        }
+
+        echo '</div>';
+
+    } elseif($deleted) {
+        echo '<p style="color:green;">La langue "'.$lib2Lang.'" a été supprimée.</p>';
+    }
+
+    ?>
+
     <br>
     <form method="post" action=".\deleteLangue.php" class="ui form">
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
@@ -103,41 +145,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <input class="ui button" type="submit" name="Submit" value="Valider">
     </form>
     <br>
+
 <?php
-
-if($supprImpossible){
-    echo '<p style="color:red;">Impossible de supprimer la langue "'.$lib2Lang.'" car elle est référencée par les éléments suivant :</p>';
-
-    if($thematiques){
-        echo '<p>Table THEMATIQUE :</p>';
-        echo '<ul>';
-        foreach($thematiques as $row){
-            echo '<li>'.$row["libThem"].'</li>';
-        }
-        echo '</ul>';
-    }
-
-    if($angles){
-        echo '<p>Table ANGLE :</p>';
-        echo '<ul>';
-        foreach($angles as $row){
-            echo '<li>'.$row["libAngl"].'</li>';
-        }
-        echo '</ul>';
-    }
-
-    if($motcles){
-        echo '<p>Table MOTCLE :</p>';
-        echo '<ul>';
-        foreach($motcles as $row){
-            echo '<li>'.$row["libMotCle"].'</li>';
-        }
-        echo '</ul>';
-    }
-
-} elseif($deleted) {
-    echo '<p style="color:green;">La langue "'.$lib2Lang.'" a été supprimée.</p>';
-}
 
 require_once __DIR__ . '/footerLangue.php';
 
