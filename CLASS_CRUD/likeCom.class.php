@@ -32,6 +32,19 @@
 			return ($result);
 		}
 
+		function get_AllLikesComJoined(){
+			global $db;
+
+			$query = 'SELECT likecom.numMemb, likecom.numArt, likecom.numSeqCom, likecom.likeC, membre.pseudoMemb, article.libTitrArt, comment.libCom FROM likecom INNER JOIN membre ON likecom.numMemb = membre.numMemb INNER JOIN article ON likecom.numArt = article.numArt INNER JOIN comment ON (likecom.numArt = comment.numArt AND likecom.numSeqCom = comment.numSeqCom) ORDER BY likecom.numArt, likecom.numSeqCom';
+
+			$request = $db->query($query);
+		
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
+		}
+
 		function get_AllLikesComByMembre($numMemb){
 			global $db;
 
