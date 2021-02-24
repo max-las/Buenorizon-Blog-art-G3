@@ -34,10 +34,39 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         die();
     }
 
-    if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) && !empty($_POST['pseudoMemb']) && !empty($_POST['passMemb']) && !empty($_POST['eMailMemb']) && !empty($_POST['idStat']) && !empty($_POST['accordMemb'])){
-        $class->create($_POST['prenomMemb'],$_POST['nomMemb'],$_POST['pseudoMemb'],$_POST['passMemb'],$_POST['eMailMemb'],date('Y-m-d H:i:s'),$_POST['idStat'],$souvenirMemb, $accordMemb);
-        $created = true;
+    $response = $_POST['g-recaptcha-response'];
+    $secret = '6LcKCWYaAAAAAE0bkTnA1urVqeb1D6nLRKOiQfRy';
+    $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
+
+    $data = array('secret' => $secret, 'response' => $response);
+
+    $options = array(
+        'http' => array(
+            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context = stream_context_create($options);
+    $result = file_get_contents($urlApi, false, $context);
+
+    if ($result === FALSE){
+        // Erreur
+        echo("<p style=\"color: red;\">Il semblerait qu'il y ait une erreur. Veuillez réessayer plus tard.</p>");
     }
+
+   $json = json_decode($result);
+
+   if($json->success){
+        if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) && !empty($_POST['pseudoMemb']) && !empty($_POST['passMemb']) && !empty($_POST['eMailMemb']) && !empty($_POST['idStat']) && !empty($_POST['accordMemb'])){
+            $class->create($_POST['prenomMemb'],$_POST['nomMemb'],$_POST['pseudoMemb'],$_POST['passMemb'],$_POST['eMailMemb'],date('Y-m-d H:i:s'),$_POST['idStat'],$souvenirMemb, $accordMemb);
+            $created = true;
+        }
+   }else{
+       echo("<p style=\"color: red;\">Vous n'avez pas validé le Captcha.</p>");
+   }
+
+    
 
     $idStat = empty($_POST["idStat"]) ? '' : $_POST["idStat"];
 }
@@ -56,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
-            document.getElementById("demo-form").submit();
+            document.getElementById("theForm").submit();
         }
     </script>
     <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
@@ -124,13 +153,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <label>Accord des conditions ?</label>
             </div>
         </div>
-        <div class="field">
-            <button class="g-recaptcha" data-sitekey="6LeG1GUaAAAAAFVaLStreHRssZtrLK3DQtXVPXwl" data-callback='onSubmit' data-action='submit'>Submit</button>
-        </div>
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="g-recaptcha" data-sitekey="6LcKCWYaAAAAAHODjm984yFyXkPlZfEM_5wC0Ks8"></div>
+        <br />
         <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
     </form>
     <?php
