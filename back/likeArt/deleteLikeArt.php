@@ -37,12 +37,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $numArt = $_GET['numArt'];
     }
 
-    $resultLikeArt = $class->get_1LikeArt($numMemb, $numArt);
+    $resultLikeArt = $class->get_1LikeArtWithMembreAndArticle($numMemb, $numArt);
 
     if($resultLikeArt){
         $numMemb = $resultLikeArt['numMemb'];
         $numArt = $resultLikeArt['numArt'];
         $likeA = $resultLikeArt['likeA'];
+        $pseudoMemb = $resultLikeArt['pseudoMemb'];
+        $libTitrArt = $resultLikeArt['libTitrArt'];
+        var_dump($pseudoMemb);
     }
 
 ?>
@@ -98,11 +101,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <form method="post" action=".\deleteLikeArt.php" class="ui form">
         <div class="field">
             <label>Numéro du Membre</label>
-            <input type="number" name="numMemb" placeholder="N° Membre" value="<? echo $numMemb ?>" readonly>
+            <input type="text" name="numMemb" placeholder="N° Membre" value="<?= $pseudoMemb ?>" readonly>
         </div>
         <div class="field">
             <label>Numéro de l'Article</label>
-            <input type="number" name="numArt" placeholder="N° Article" value="<? echo $numArt ?>" readonly>
+            <input type="text" name="numArt" placeholder="N° Article" value="<?= $libTitrArt ?>" readonly>
         </div>
         <div class="field">
             <label>Like</label>

@@ -6,6 +6,9 @@ $class = new COMMENT;
 require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
 
+require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+$monArticle = new ARTICLE;
+
 $created = false;
 
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -18,11 +21,14 @@ $created = false;
 // }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    if(isset($_POST['numSeqCom']) && isset($_POST['numArt']) && !empty($_POST['dtCreCom']) && !empty($_POST['libCom']) && isset($_POST['attModOK']) && isset($_POST['affComOK']) && !empty($_POST['eMailMemb']) && !empty($_POST['numMemb'])){
-        $numSeqCom = $_POST['numSeqCom'];
+    if(isset($_POST['numArt']) && !empty($_POST['dtCreCom']) && !empty($_POST['libCom']) && isset($_POST['attModOK']) && isset($_POST['affComOK']) && !empty($_POST['numMemb'])){
         $numArt = $_POST['numArt'];
 
-        $class->create($_POST['numSeqCom'], $_POST['numArt'], $_POST['dtCreCom'], $_POST['libCom'], $_POST['attModOK'], $_POST['affComOK'], $_POST['notifComKOAff'], $_POST['numMemb']);
+        $myComments = $class->get_AllCommentsByArticle($numArt);
+        $numSeqCom = intval(end($myComments)['numSeqCom']) + 1;
+
+
+        $class->create($numSeqCom, $numArt, $_POST['dtCreCom'], $_POST['libCom'], $_POST['attModOK'], $_POST['affComOK'], $_POST['notifComKOAff'], $_POST['numMemb']);
         $created = true;
     }
 }
@@ -47,12 +53,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <br>
     <form method="post" action=".\createComment.php" class="ui form">
         <div class="field">
-            <label>Numéro du commentaire</label>
-            <input type="number" name="numSeqCom" placeholder="N° Commentaire">
-        </div>
-        <div class="field">
-            <label>Numéro de l'Article</label>
-            <input type="number" name="numArt" placeholder="N° Article">
+            <label>Article</label>
+            <select name="numArt" id="numArt">
+                <?
+                    $allArticles = $monArticle->get_AllArticles();
+                    foreach($allArticles as $row){
+                        echo "<option value=\"".$row['numArt']."\">[".$row['numArt']."] ".$row['libTitrArt']."</option>";
+                    }
+                ?>
+            </select>
         </div>
             <input type="hidden" name="dtCreCom" value="<? echo date('Y-m-d H:i:s'); ?>">
         <div class="field">
