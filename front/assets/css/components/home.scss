@@ -1,6 +1,6 @@
 .container-arrivee {
   width: 100vw;
-  height: 100vh;
+  position: relative;
 
   .content {
     position: absolute;
@@ -11,6 +11,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .title {
+      display: flex;
+      justify-content: center;
+
+      svg {
+      padding-top: 0.5vh;
+      }
+
+
+
+    }
+    h1{
+      margin-left: 0.5rem;
+      font-size: 4rem;
+    }
   }
 
   .background {
@@ -18,7 +34,7 @@
     overflow: hidden;
     
     img {
-      max-width: 100%;
+      width: 100%;
       filter: brightness(0.8);
     }
   }

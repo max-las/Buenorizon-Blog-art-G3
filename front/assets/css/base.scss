@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
 
 $primary: #e63946;
-$michroma: "Michroma", sans-serif;
-$montserrat: "Montserrat", sans-serif;
+$michroma: 'Michroma', sans-serif;
+$montserrat: 'Montserrat', sans-serif;
 
 
 html,
@@ -138,21 +138,21 @@ button:focus {
 }
 h1{
   font-family: $michroma;
-  font-size: 48px;
+  font-size: 2.25rem;
 }
 
 h2{
   font-family: $montserrat;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
 }
 h3{
     font-family: $montserrat;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 600;
 }
 p{
   font-family: $montserrat;
   font-weight: 400;
-  font-size: 16px; 
+  font-size: 1rem; 
 }

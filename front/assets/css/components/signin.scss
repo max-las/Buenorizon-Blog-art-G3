@@ -4,7 +4,7 @@
     position: absolute;
     width: 470px;
     height: 40px;
-    left: 32px;
+    left: 72px;
     top: 300px;
 }
 
@@ -14,7 +14,7 @@
     position: absolute;
     width: 397px;
     height: 51px;
-    left: 522px;
+    left: 572px;
     top: 179px;
 }
 
@@ -22,7 +22,7 @@
     position: absolute;
     width: 409px;
     height: 22px;
-    left: 516px;
+    left: 566px;
     top: 279px;
     
 }
@@ -31,15 +31,22 @@
     position: absolute;
     width: 134px;
     height: 17px;
-    left: 308px;
+    left: 358px;
     top: 939px;
 }
+
+.cgu{
+    position: absolute;
+    width: 323px;
+    height: 17px;
+    left: 358px;
+    top: 988px;}
 
 .textjamaislu{
     position: absolute;
     width: 871px;
     height: 374px;
-    left: 285px;
+    left: 335px;
     top: 1265px;
 }
 .red{
@@ -55,63 +62,76 @@
     border-bottom: 1px solid white;
     position: absolute;
     width: 351px;
-    left: 282.5px;
+    left: 332.5px;
     top: 424.5px;
 }
 
 .ligne1{
-    left: 282.5px;
+    left: 332.5px;
     top: 424.5px;
 }
 
 .ligne2{
-    left: 282px;
+    left: 332px;
     top: 515px;
 }
 
 .ligne3{
-    left: 282px;
+    left: 332px;
     top: 604px;
 }
 
 .ligne4{
-    left: 282px;
+    left: 332px;
     top: 695px;
 }
 
 .ligne5{
-    left: 282px;
+    left: 332px;
     top: 785px;
 }
 
 .ligne6{
-    left: 282px;
+    left: 332px;
     top: 875px; 
 }
 
 .ligne7{
     width: 216px;
-    left: 900px;
+    left: 950px;
     top: 666px;
+}
+
+.ice{
+    position: absolute;
+    left: 206px;
+    top: 0px;
 }
 
 .ice1{
     position: absolute;
-    left: 250px;
+    left: 300px;
     top: 367px;
 }
 
 .ice2{
     position: absolute;
-    left: 828px;
+    left: 878px;
     top: 397px;
     
 }
 .ice3{
     position: absolute;
-    left: 253px;
+    left: 303px;
     top: 1233px;
     
 }
 
 
+.pseudo{
+    position: absolute;
+    width: 401px;
+    height: 25.5px;
+    left: 332.5px;
+    top: 399px;
+}
