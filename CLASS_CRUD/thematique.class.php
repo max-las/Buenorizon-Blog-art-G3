@@ -69,16 +69,16 @@
 			}
 		}
 
-		function update($newNumThem, $numThem, $libThem, $numLang){
+		function update($numThem, $libThem, $numLang){
 			global $db;
 			try {
 				$db->beginTransaction();
 
-				$query = "UPDATE thematique SET numThem = ?, libThem = ?, numLang = ? WHERE numThem = ?";
+				$query = "UPDATE thematique SET libThem = ?, numLang = ? WHERE numThem = ?";
 
 				$request = $db->prepare($query);
 
-				$request->execute(array($newNumThem, $libThem, $numLang, $numThem));
+				$request->execute(array($libThem, $numLang, $numThem));
 
 				$db->commit();
 				$request->closeCursor();

@@ -22,33 +22,7 @@
      // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
      // ajout effectif de l'angle
 
-    $prevNumThem = $_GET['numThem'];
-    $prevNumLang = $_GET['numLang'];
-
-     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if($_POST["Submit"] === "Initialiser"){
-            header("Location: ./updateThematique.php?id=".$_POST["id"]);
-            die();
-        }
-
-        if(isset($_POST['libThem']) && isset($_POST['numLang'])){
-            $libThem = $_POST['libThem'];
-            $numLang = $_POST['numLang'];
-            
-            if($prevNumLang == $numLang){
-                $numThem = $prevNumThem;
-            }else{
-                $numThem = getNextNumThem($numLang);
-            }
-
-            $class->update($numThem, $prevNumThem, $libThem, $numLang);
-            $updated = true;
-        }
-
-    }else{
-        $libThem = $_GET['libThem'];
-        $numLang = $_GET['numLang'];
-    }
+    $numThem = $_GET['numThem'];
 
     $resultThematique = $class->get_1Thematique($numThem);
     
@@ -56,6 +30,23 @@
         $libThem = $resultThematique['libThem'];
         $numLang = $resultThematique['numLang'];
     }
+
+     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if($_POST["Submit"] === "Initialiser"){
+            header("Location: ./updateThematique.php?numThem=".$numThem);
+            die();
+        }
+
+        if(isset($_POST['libThem'])){
+            $libThem = $_POST['libThem'];
+
+            $class->update($numThem, $libThem, $numLang);
+            $updated = true;
+        }
+
+    }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -82,14 +73,14 @@
     }
     ?>
 
-    <form method="post" action=".\updateThematique.php?numThem=<?= $prevNumThem ?>&numLang=<?= $prevNumLang ?>" class="ui form">
+    <form method="post" action=".\updateThematique.php?numThem=<?= $numThem ?>" class="ui form">
         <div class="field">
             <label>Libellé de la Thématique</label>
             <input type="text" name="libThem" placeholder="Thématique" value="<?= $libThem ?>">
         </div>
         <div class="field">
             <label>Numéro de la Langue</label>
-            <select name="numLang" id="numLang">
+            <select name="numLang" id="numLang" disabled>
             <? 
                 $allLangs = $lang->get_AllLangues();
                 foreach($allLangs as $row){
