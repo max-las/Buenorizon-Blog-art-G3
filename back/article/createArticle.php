@@ -156,6 +156,9 @@
         }
 
         if($created){
+            if(!is_dir("./uploads")){
+                mkdir("./uploads");       
+            }
             move_uploaded_file($_FILES['imageArt']['tmp_name'], $target_file);
             $monArticle->create($_POST['dtCreArt'], $_POST['libTitrArt'], $_POST['libChapoArt'], $_POST['libAccrochArt'], $_POST['parag1Art'], $_POST['libSsTitr1Art'], $_POST['parag2Art'], $_POST['libSsTitr2Art'], $_POST['parag3Art'], $_POST['libConclArt'], $urlPhotArt, $_POST['numAngl'], $_POST['numThem']);
 
