@@ -35,6 +35,8 @@
         padding: 15px 0 0;
         width: 80%;
         font-size: 1.125rem;
+        display: flex;
+        align-items: center;
         input {
           color: white;
           font-weight: 400;
@@ -75,6 +77,11 @@
           transition: 0.2s;
           font-size: 1rem;
           pointer-events: none;
+        }
+        .eye{
+            position: absolute;
+            right: 0.5em;
+            bottom: 0.15em;
         }
       }
       .souvenir {
