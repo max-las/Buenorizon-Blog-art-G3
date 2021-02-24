@@ -2,16 +2,19 @@
   position: relative;
   padding: 15px 0 0;
   margin-top: 10px;
-  width: 50%;
+  width: 256px;
   font-size: 1.125rem;
   display: flex;
   align-items: center;
   input {
+    color: white;
+    font-weight: 400;
+    font-size: 0.75rem;
     width: 100%;
     border: 0;
     border-bottom: 2px solid white;
     outline: 0;
-    padding: 6px 1rem;
+    padding: 6px 2rem;
     background: transparent;
     transition: border-color 0.2s;
     &::placeholder {
@@ -19,7 +22,7 @@
     }
     &:placeholder-shown ~ label {
       cursor: text;
-      top: 20px;
+      top: 22px;
     }
     &:focus {
       border-color: $primary;
@@ -48,7 +51,7 @@
   }
   .search-icon {
     margin-left: 0.5rem;
-    margin-bottom: 6px;
+    margin-bottom: 0px;
     position: absolute;
   }
 }
