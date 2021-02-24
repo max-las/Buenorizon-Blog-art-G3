@@ -1,9 +1,7 @@
 <?php
 $isConnected = false;
-function removeFirstFolder($path)
-{
-    return substr($path, strpos($path, '/', 1));
-}
+$chemin = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/', 1));
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,13 +19,13 @@ function removeFirstFolder($path)
     <header>
         <div class="navbar">
             <div>
-                <a <?= (removefirstFolder($_SERVER['REQUEST_URI']) == '/front/includes/pages/home.php') ? 'class="highlight"' : '' ?> href="../pages/home.php">Accueil</a>
-                <a <?= (removefirstFolder($_SERVER['REQUEST_URI']) == '/front/includes/pages/article.php') ? 'class="highlight"' : '' ?> href="../pages/home.php#articles">Articles</a>
-                <a <?= (removefirstFolder($_SERVER['REQUEST_URI']) == '/front/includes/pages/contact.php') ? 'class="highlight"' : '' ?> href="../pages/contact.php">Contact</a>
-                <a <?= (removefirstFolder($_SERVER['REQUEST_URI']) == '/front/includes/pages/about.php') ? 'class="highlight"' : '' ?> href="../pages/about.php">A propos</a>
+                <a <?= ($chemin == '/front/includes/pages/home.php') ? 'class="highlight"' : '' ?> href="../pages/home.php">Accueil</a>
+                <a <?= ($chemin == '/front/includes/pages/article.php') ? 'class="highlight"' : '' ?> href="../pages/home.php#articles">Articles</a>
+                <a <?= ($chemin == '/front/includes/pages/contact.php') ? 'class="highlight"' : '' ?> href="../pages/contact.php">Contact</a>
+                <a <?= ($chemin == '/front/includes/pages/about.php') ? 'class="highlight"' : '' ?> href="../pages/about.php">A propos</a>
             </div>
             <div>
-                <a <?= (removefirstFolder($_SERVER['REQUEST_URI']) == '/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php"><?= $isConnected ? "JacquesDu33" : "Connexion" ?> </a>
+                <a <?= ($chemin == '/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php"><?= $isConnected ? "JacquesDu33" : "Connexion" ?> </a>
                 <button onclick="location.href='../pages/signin.php'"><?= $isConnected ? "Mon compte" : "S'inscrire" ?></button>
             </div>
         </div>
