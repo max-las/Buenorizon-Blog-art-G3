@@ -50,7 +50,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if(!$comments && !$likearts){
             $monArticle->delete($numArt);
-            unlink("./uploads/".$resultArticle['urlPhotArt']);
+            if(file_exists("./uploads/".$resultArticle['urlPhotArt'])){
+                unlink("./uploads/".$resultArticle['urlPhotArt']);
+            }
             $deleted = true;
         }else{
             $supprImpossible = true;
