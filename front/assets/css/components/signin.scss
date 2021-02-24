@@ -1,150 +1,112 @@
-
-
-.container-global{
-
+.container-login {
+    padding-top: 10em;
+    width: 100vw;
+    height: 100vw;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap ;    
-    justify-content: center;
-
-}
-
-.backgrounddd{
-    position: relative;
-    overflow: hidden;
-}
-
-.precontent{
-
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
     align-items: center;
-
-}
-
-.cont1{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-content: center;
     flex-direction: column;
-
-}
-
-.cont2{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-
-}
-
-.cont3{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column; 
-
-}
-
-
-
-
-
-
-
-
-.codbar1{
-/* eclatech bueno horizon blog */
-
-   
-    width: 470px;
-    height: 40px;
-}
-
-
-
-.titre{
- 
-    width: 397px;
-    height: 51px;
-}
-
-.soustitre{
-    
-    width: 409px;
-    height: 22px;
-    
-}
-
-.souvenir{
+    .login {
+      position: relative;
+      width: 50vw;
+      margin-top: 32px;
+      .background1 {
+        position: relative;
+        width: 100%;
+      }
+      .content1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .form-connexion {
+        padding: 2em 0;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex-direction: column;
+        .form-group {
+          margin-top: 2em;
+          position: relative;
+          padding: 15px 0 0;
+          width: 80%;
+          font-size: 1.125rem;
+          display: flex;
+          align-items: center;
+          input {
+            color: white;
+            font-weight: 400;
+            font-size: 0.75rem;
+            width: 100%;
+            border: 0;
+            border-bottom: 2px solid white;
+            outline: 0;
+            padding: 6px 0.25rem;
+            background: transparent;
+            transition: border-color 0.2s;
+            &::placeholder {
+              visibility: hidden;
+            }
+            &:placeholder-shown ~ label {
+              cursor: text;
+              top: 22px;
+            }
+            &:focus {
+              border-color: $primary;
+              padding-bottom: 6px;
+              ~ label {
+                position: absolute;
+                top: 0;
+                font-size: 1rem;
+                color: $primary;
+                transition: 0.2s;
+                font-weight: 600;
+              }
+            }
+          }
+          label {
+            margin-left: 0.25rem;
+            display: block;
+            font-weight: 400;
+            position: absolute;
+            top: 0;
+            transition: 0.2s;
+            font-size: 1rem;
+            pointer-events: none;
+          }
+          .eye{
+              position: absolute;
+              right: 0.5em;
+              bottom: 0.15em;
+          }
+        }
+        .souvenir {
+          margin-top: 3em;
+          display: flex;
+          align-items: center;
+          width: fit-content;
+          span {
+            font-size: 14px;
+            margin-left: 0.5rem;
+          }
+        }
+        button {
+          margin-top: 4em;
+          font-weight: 600;
+          border-radius: 0.5rem;
+          background-color: $primary;
+          font-family: $montserrat;
+          color: white;
+          text-decoration: none;
+          border: none;
+          padding: 8px 12px;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
   
-    width: 134px;
-    height: 17px;
-}
-
-.cgu{
-   
-    width: 323px;
-    height: 17px;
-}
-
-.textjamaislu{
-    
-    width: 871px;
-    height: 374px;
-
-}
-.red{
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 0.833vw;
-    line-height: 28px;
-    color: red;
-}
-
-.ligne{
-    border-bottom: 1px solid white;
-   
-    width: 351px;
-
-}
-
-
-.ligne7{
-    width: 216px;
-}
-
-.ice{
-    position: absolute;
-
-}
-
-.ice1{
-    position: flex;
-
-}
-
-.ice2{
-    position: flex;
-
-    
-}
-.ice3{
-    position: flex;
-    
-}
-
-
-.pseudo{
-    width: 401px;
-    height: 25.5px;
-}
