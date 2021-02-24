@@ -73,7 +73,7 @@ require_once('../commons/header.php');
             <div class="ligne ligne6"></div>
 
             <p class=souvenir>Se souvenir de moi</p>
-            <p class=cgu>Accepter les <a href="front\includes\pages\about.php" style="color:#FFFFFF; title=" Vers nos Conditions générales">Conditions générales d’utilisation</a></p>
+            <p class=cgu>Accepter les <a href="front\includes\pages\about.php" style="color:#FFFFFF; " Vers nos Conditions générales">Conditions générales d’utilisation</a></p>
 
 
             <form method="post" action="traitement.php">
