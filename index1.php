@@ -61,9 +61,6 @@ require_once __DIR__ . '/util/utilErrOn.php';
 	<a href="./BACK/motcle/motcle.php">Mot-clé </a>
 	<br /><br />
 	Gestion du CRUD :
-	<a href="./BACK/motclearticle/motclearticle.php">Mot-clé Article </a>
-	<br /><br />
-	Gestion du CRUD :
 	<a href="./BACK/statut/statut.php">Statut </a>
 	<br /><br />
 	Gestion du CRUD :
