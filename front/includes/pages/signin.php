@@ -6,8 +6,8 @@ require_once('../commons/header.php');
 
 
 <div class="container-global">
-    <div class="ice backgrounddd">
-        <svg width="1128" height="1964" viewBox="0 0 1128 1964" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="ice">
+        <svg class="backgrounddd" width="1128" height="1964" viewBox="0 0 1128 1964" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_b)">
                 <rect width="1128" height="8000" fill="#0C0C0C" />
             </g>
@@ -36,8 +36,8 @@ require_once('../commons/header.php');
 
 
 
-        <div class="ice1 cont1">
-            <svg width="416" height="670" viewBox="0 0 416 670" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div class="ice1">
+            <svg class="cont1" width="416" height="670" viewBox="0 0 416 670" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g filter="url(#filter0_b)">
                     <rect width="416" height="670" fill="url(#paint0_linear)" />
                 </g>
@@ -87,8 +87,8 @@ require_once('../commons/header.php');
 
 
 
-        <div class="ice2 cont2">
-            <svg width="360" height="425" viewBox="0 0 360 425" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div class="ice2">
+            <svg class="cont2" width="360" height="425" viewBox="0 0 360 425" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g filter="url(#filter0_b)">
                     <rect width="360" height="425" fill="url(#paint0_linear)" />
                 </g>
@@ -121,8 +121,8 @@ require_once('../commons/header.php');
         </div>
 
 
-        <div class="ice3 cont3">
-            <svg width="935" height="438" viewBox="0 0 935 438" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div class="ice3 ">
+            <svg class="cont3" width="935" height="438" viewBox="0 0 935 438" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g filter="url(#filter0_b)">
                     <rect y="0.0610352" width="935" height="437.939" fill="url(#paint0_linear)" />
                 </g>
