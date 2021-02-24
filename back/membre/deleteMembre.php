@@ -28,7 +28,17 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     require_once __DIR__ . '/../../CLASS_CRUD/likeCom.class.php';
     $likeArt = new LIKEART;
     $likeCom = new LIKECOM;
-
+    
+    
+    $prenomMemb = "";
+    $nomMemb = "";
+    $pseudoMemb = "";
+    $passMemb = "";
+    $eMailMemb = "";
+    $souvenirMemb = "";
+    $accordMemb = "";
+    $idStat = "";
+    $libStat = "";
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // suppression effective du statut
@@ -40,8 +50,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         $numMemb = $_POST["id"];
 
-        $resultMembre = $class->get_1MembreWithStatut($numMemb);
-        
         $comments = $monComment->get_AllCommentsByMembre($numMemb);
 
         $contrainteLikeArt = $likeArt->get_AllLikesArtByMembre($numMemb);
@@ -51,6 +59,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             $class->delete($numMemb);
             $deleted = true;
         }else{
+            $resultMembre = $class->get_1MembreWithStatut($numMemb);
             $supprImpossible = true;
         }
 
@@ -59,7 +68,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         $resultMembre = $class->get_1MembreWithStatut($numMemb);
     }
 
-    if($resultMembre){
+    if(isset($resultMembre)){
         $prenomMemb = $resultMembre['prenomMemb'];
         $nomMemb = $resultMembre['nomMemb'];
         $pseudoMemb = $resultMembre['pseudoMemb'];
@@ -137,19 +146,19 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         </div>
         <div class="field">
             <label>Nom du membre</label>
-            <input type="text" name="nomMemb" placeholder="Nom" value=<? echo($nomMemb); ?> readonly>
+            <input type="text" name="nomMemb" placeholder="Nom" value="<? echo($nomMemb); ?>" readonly>
         </div>
         <div class="field">
             <label>Pseudo du membre</label>
-            <input type="text" name="pseudoMemb" placeholder="Pseudo" value=<? echo($pseudoMemb); ?> readonly>
+            <input type="text" name="pseudoMemb" placeholder="Pseudo" value="<? echo($pseudoMemb); ?>" readonly>
         </div>
         <div class="field">
             <label>Mot de passe du membre</label>
-            <input type="password" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?> readonly>
+            <input type="password" name="passMemb" placeholder="Mot de passe" value="<? echo($passMemb); ?>" readonly>
         </div>
         <div class="field">
             <label>Email du membre</label>
-            <input type="text" name="eMailMemb" placeholder="Email" value=<? echo($eMailMemb); ?> readonly>
+            <input type="text" name="eMailMemb" placeholder="Email" value="<? echo($eMailMemb); ?>" readonly>
         </div>
         <div class="field">
             <label class="control-label" for="idStat"><b>Statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
