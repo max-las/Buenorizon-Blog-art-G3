@@ -14,17 +14,7 @@ header {
     width: 80vw;
     justify-content: space-between;
     align-items: center;
-    button {
-      font-weight: 600;
-      border-radius: 0.5rem;
-      background-color: $primary;
-      font-family: $montserrat;
-      color: white;
-      text-decoration: none;
-      border: none;
-      padding: 8px 12px;
-      font-size: 1rem;
-    }
+    
     .highlight {
       color: $primary;
     }
