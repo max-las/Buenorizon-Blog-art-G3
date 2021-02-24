@@ -146,6 +146,10 @@ button {
   &:focus {
     outline: 0;
   }
+  &:hover {
+    top: 20px;
+    transition: 0.2s;
+  }
 }
 h1 {
   font-family: $michroma;
@@ -166,4 +170,5 @@ p {
   font-family: $montserrat;
   font-weight: 400;
   font-size: 1rem;
+  line-height: 22px;
 }
