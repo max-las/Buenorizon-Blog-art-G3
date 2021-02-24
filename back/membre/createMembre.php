@@ -53,6 +53,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("demo-form").submit();
+        }
+    </script>
     <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
 
@@ -69,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     ?>
 
-    <form method="post" action=".\createMembre.php" class="ui form">
+    <form method="post" action=".\createMembre.php" class="ui form" id="theForm">
         <div class="field">
             <label>Prénom du membre</label>
             <input type="text" name="prenomMemb" placeholder="Prénom">
@@ -117,6 +123,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <input type="checkbox" tabindex="0" name="accordMemb">
                 <label>Accord des conditions ?</label>
             </div>
+        </div>
+        <div class="field">
+            <button class="g-recaptcha" data-sitekey="6LeG1GUaAAAAAFVaLStreHRssZtrLK3DQtXVPXwl" data-callback='onSubmit' data-action='submit'>Submit</button>
         </div>
         <br>
         &nbsp;&nbsp;&nbsp;&nbsp;
