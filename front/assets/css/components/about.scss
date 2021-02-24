@@ -1,13 +1,14 @@
 .fondSansLesMarges {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 81vw;
-
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10%;
     margin-bottom: 0;
     padding-bottom: 5%;
     background: #0c0c0c;
     backdrop-filter: blur(1000px);
+ 
 }
 .fondArticle {
     position: relative;
@@ -36,5 +37,10 @@
 
 .h2about {
     text-indent: 6.2vw;
+}
+.fondAbout{
+    position: relative;
+    overflow: hidden;
+    justify-content: right;
 }
 
