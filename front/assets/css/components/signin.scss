@@ -1,9 +1,9 @@
 
 
-.container-globak{
+.container-global{
 
     display: flex;
-    flex-direction: space-evenly;
+    flex-direction: column;
     flex-wrap: wrap ;    
     justify-content: center;
 
@@ -28,20 +28,29 @@
 }
 
 .cont1{
+    position: absolute;
     display: flex;
     justify-content: center;
+    align-content: center;
+    flex-direction: column;
 
 }
 
 .cont2{
+    position: absolute;
     display: flex;
     justify-content: center;
+    align-content: center;
+    flex-direction: column;
 
 }
 
 .cont3{
+    position: absolute;
     display: flex;
     justify-content: center;
+    align-content: center;
+    flex-direction: column; 
 
 }
 

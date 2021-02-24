@@ -1,0 +1,42 @@
+.lign{
+    border-bottom: 1px solid white;
+   
+    width: 359px;
+
+}
+
+.container-global{
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap ;    
+    justify-content: center;
+
+}
+
+
+.ice{
+    position: absolute;
+
+}
+
+.ice0{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column; 
+
+
+}
+
+
+
+
+.souvenir{
+  
+    width: 134px;
+    height: 17px;
+}
