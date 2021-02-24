@@ -47,7 +47,11 @@ require_once('../commons/header.php');
                     <label>Pseudo ou mail<label>
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Rechercher un article...">
+                    <input id="input-login" type="password" placeholder="Rechercher un article...">
+                    <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
                     <label>Mot de passe<label>
                 </div>
                 <div class="souvenir">
@@ -65,3 +69,11 @@ require_once('../commons/header.php');
 <?php
 require_once('../commons/footer.php');
 ?>
+
+<script>
+    const eye = document.getElementById('eye')
+    const input = document.getElementById('input-login')
+    eye.addEventListener('click', () => {
+        input.type = input.type === 'password' ? 'text' : 'password'
+    })
+</script>

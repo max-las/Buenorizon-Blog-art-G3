@@ -34,7 +34,7 @@
         color: $primary;
         transition: 0.2s;
       }
-      ~ .search-icon{
+      ~ .search-icon {
         transition: 0.2s;
         stroke: $primary;
       }
@@ -48,10 +48,21 @@
     top: 0;
     transition: 0.2s;
     font-size: 1rem;
+    pointer-events: none;
   }
   .search-icon {
     margin-left: 0.5rem;
     margin-bottom: 0px;
     position: absolute;
+  }
+}
+.tri {
+  .category-deselect {
+    border: 1px white solid;
+    background: linear-gradient(
+      144.37deg,
+      rgba(18, 71, 94, 0.15) 0%,
+      rgba(18, 71, 94, 0.05) 90.25%
+    );
   }
 }
