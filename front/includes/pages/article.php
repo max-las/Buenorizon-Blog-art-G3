@@ -6,3 +6,10 @@
         </svg>
         <label>Rechercher un article</label>
     </div>
+    <div class="tri">
+        3 articles en ligne
+        Trier par catégories :
+        <button>Startups</button>
+        <button>Évenements</button>
+        <button class="category-deselect">Acteurs</button>
+    </div>
