@@ -1,1 +1,4 @@
-<input type="text" placeholder="Rechercher un article...">
+<div class="search">
+    <input type="input" placeholder="Rechercher un article...">
+    <label>Rechercher un article ...</label>
+</div>
