@@ -6,6 +6,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     // Init variables form
     include __DIR__ . '/initThematique.php';
+    $supprImpossible = false;
     $deleted = false;
     if(!isset($_GET['numThem'])) $_GET['numThem'] = '';
     // controle des saisies du formulaire
@@ -17,6 +18,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     $lang = new LANGUE;
     $class = new THEMATIQUE;
 
+    require_once __DIR__ . '/../../CLASS_CRUD/article.class.php';
+    $monArticle = new ARTICLE;
+
 
     // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
     // suppression effective du statut
@@ -27,9 +31,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         }
 
         $numThem = $_POST["numThem"];
-        
-        $class->delete($numThem);
-        $deleted = true;
+
+        $articles = $monArticle->get_AllArticlesByThematique($numThem);
+
+        if(!$articles){
+            $class->delete($numThem);
+            $deleted = true;
+        }else{
+            $supprImpossible = true;
+        } 
 
     }else{
         $numThem = $_GET["numThem"];
@@ -63,9 +73,20 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <br>
 
     <?php
-    if($deleted) {
+    if($supprImpossible){
+        echo '<div style="color:red">';
+        echo '<p>Impossible de supprimer la thématique ' . $libThem . '#' . $numThem . ' car elle est référencéé par les articles suivants :</p>';
+    
+        echo '<ul>';
+        foreach($articles as $row){
+            echo '<li>'.$row["libTitrArt"].'</li>';
+        }
+        echo '</ul>';
+        echo '</div>';
+    
+    } elseif($deleted) {
         echo '<p style="color:green;">La thématique ' . $libThem . '#' . $numThem . ' a été supprimée.</p>';
-    }
+    }    
     ?>
 
     <form method="post" action=".\deleteThematique.php" class="ui form">

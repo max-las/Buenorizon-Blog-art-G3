@@ -80,7 +80,7 @@
             </div>
             
             <div class="field">
-                <label class="control-label" for="numLang"><b>Pays :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+                <label class="control-label" for="numLang"><b>Langue :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
                 <select name="numLang" id="numLang"> 
                 <?php
                     $allLangues = $maLangue->get_AllLangues();
