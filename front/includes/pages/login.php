@@ -69,6 +69,7 @@ require_once('../commons/header.php');
 <?php
 require_once('../commons/footer.php');
 ?>
+
 <script>
     const eye = document.getElementById('eye')
     const input = document.getElementById('input-login')
