@@ -16,7 +16,7 @@ $isConnected = false;
     <header>
         <div class="navbar">
             <div>
-                <a <?= ($_SERVER['REQUEST_URI'] == '/Buenorizon-Blog-art-G3/front/includes/pages/home.php') ? 'class="highlight"' : '' ?> href="../pages/home.php">Acceuil</a>
+                <a <?= ($_SERVER['REQUEST_URI'] == '/Buenorizon-Blog-art-G3/front/includes/pages/home.php') ? 'class="highlight"' : '' ?> href="../pages/home.php">Accueil</a>
                 <a <?= ($_SERVER['REQUEST_URI'] == '/Buenorizon-Blog-art-G3/front/includes/pages/article.php') ? 'class="highlight"' : '' ?> href="../pages/home.php#articles">Articles</a>
                 <a <?= ($_SERVER['REQUEST_URI'] == '/Buenorizon-Blog-art-G3/front/includes/pages/contact.php') ? 'class="highlight"' : '' ?> href="../pages/contact.php">Contact</a>
                 <a <?= ($_SERVER['REQUEST_URI'] == '/Buenorizon-Blog-art-G3/front/includes/pages/about.php') ? 'class="highlight"' : '' ?> href="../pages/about.php">A propos</a>

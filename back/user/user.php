@@ -41,7 +41,6 @@ $monUser = new USER;
         <thead>
             <tr>
                 <th>&nbsp;Pseudo&nbsp;</th>
-                <th>&nbsp;Mot de passe&nbsp;</th>
                 <th>&nbsp;Nom&nbsp;</th>
                 <th>&nbsp;Prénom&nbsp;</th>
                 <th>&nbsp;eMail&nbsp;</th>
@@ -64,8 +63,6 @@ $monUser = new USER;
                     <td>
                         <h4>&nbsp; <?php echo $row['pseudoUser']; ?> &nbsp;</h4>
                     </td>
-
-                    <td>&nbsp; <?php echo $row['passUser']; ?> &nbsp;</td>
 
                     <td>&nbsp; <?php echo $row['nomUser']; ?> &nbsp;</td>
 

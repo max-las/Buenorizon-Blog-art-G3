@@ -2,6 +2,13 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/likeArt.class.php';
 $class = new LIKEART;
+
+
+if(isset($_GET['numMemb']) && isset($_GET['numArt']) && isset($_GET['like'])){
+    $class->update($_GET['numMemb'], $_GET['numArt'], $_GET['like']);
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,20 +34,20 @@ $class = new LIKEART;
         <table class="ui celled table">
             <thead>
                 <tr>
-                    <th>Numéro Membre</th>
-                    <th>Numéro Article</th>
+                    <th>Membre</th>
+                    <th>Article</th>
                     <th>Like</th>
                     <th colspan="2">&nbsp;Action&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                <?php $allLikesArt = $class->get_AllLikesArt();
+                <?php $allLikesArt = $class->get_AllLikesArtWithMembreAndArticle();
                 foreach ($allLikesArt as $row) { ?>
                     <tr>
-                        <td><?= $row['numMemb'] ?></td>
-                        <td><?= $row['numArt'] ?></td>
+                        <td><?= $row['pseudoMemb'] ?></td>
+                        <td><?= $row['libTitrArt'] ?></td>
                         <td><?= $row['likeA'] ?></td>
-                        <td>&nbsp;<a href="./updateLikeArt.php?numMemb=<?= $row['numMemb'] ?>&numArt=<?= $row['numArt'] ?>"><i>Modifier</i></a>&nbsp;
+                        <td>&nbsp;<a href="./likeArt.php?numMemb=<?= $row['numMemb'] ?>&numArt=<?= $row['numArt'] ?>&like=<?= intval(!$row['likeA']) ?>"><i>Modifier</i></a>&nbsp;
                         <br />
                     </td>
                     <td>&nbsp;<a href="./deleteLikeArt.php?numMemb=<?= $row['numMemb'] ?>&numArt=<?= $row['numArt'] ?>"><i>Supprimer</i></a>&nbsp;
