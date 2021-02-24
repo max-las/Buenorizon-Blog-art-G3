@@ -1,11 +1,11 @@
-.container-login {
+.container-signin {
     padding-top: 10em;
     width: 100vw;
     height: 100vw;
     display: flex;
     align-items: center;
     flex-direction: column;
-    .login {
+    .signin {
       position: relative;
       width: 50vw;
       margin-top: 32px;
@@ -23,7 +23,7 @@
         align-items: center;
         flex-direction: column;
       }
-      .form-connexion {
+      .form-inscription {
         padding: 2em 0;
         display: flex;
         align-items: center;
