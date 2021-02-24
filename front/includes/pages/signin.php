@@ -8,9 +8,9 @@ require_once('../commons/header.php');
     <div class="container-signin">
 
         <h1>Enregistrez vous</h1>
-        <p class=soustitre>Les champs marqués d’un <span class=red>*</span> sont obligatoires.</p>
+        <p class="soustitre">Les champs marqués d’un <span class=red>*</span> sont obligatoires.</p>
 
-        <div class="inscription">
+        <div class="signin">
             <div class="background1">
                 <svg width="416" height="670" viewBox="0 0 416 670" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g filter="url(#filter0_b)">
