@@ -95,13 +95,15 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
     <?php
     if($supprImpossible){
-        echo '<p style="color:red;">Impossible de supprimer l\'angle : "'.$libAngl.'" car il est référencé par les articles suivants :</p>';
+        echo '<div style="color:red">';
+        echo '<p>Impossible de supprimer l\'angle : "'.$libAngl.'" car il est référencé par les articles suivants :</p>';
     
         echo '<ul>';
         foreach($articles as $row){
             echo '<li>'.$row["libTitrArt"].'</li>';
         }
         echo '</ul>';
+        echo '</div>';
     
     } elseif($deleted) {
         echo '<p style="color:green;">L\'angle "'.$libAngl.'" a été supprimé.</p>';
