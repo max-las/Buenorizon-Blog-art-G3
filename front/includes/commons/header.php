@@ -3,6 +3,9 @@ if(session_status() === PHP_SESSION_NONE){
     session_start();
 }
 
+require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
+$monMembre = new MEMBRE;
+
 $isConnected = false;
 $chemin = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/', 1));
 ?>
@@ -34,10 +37,16 @@ $chemin = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/', 1
                 <? if(isset($_SESSION['pseudoMemb'])){ ?>
                         <p><?= $_SESSION['pseudoMemb'] ?></p>
                         <button onclick="location.href='../pages/moncompte.php'">Mon compte</button>
+                        <? 
+                            $myMembre = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
+                            if ($myMembre['idStat'] == 9){ 
+                        ?>
+                            <!-- HTML link to CRUD -->
+                        <? } ?>
                     <? }else{ ?>
-                        <a <?= ($chemin == '/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php"><?= $isConnected ? "JacquesDu33" : "Connexion" ?> </a>
-                        <button onclick="location.href='../pages/signin.php'"><?= $isConnected ? "Mon compte" : "S'inscrire" ?></button>
-                <? } ?>
+                        <a <?= ($chemin == '/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php">Connexion</a>
+                        <button onclick="location.href='../pages/signin.php'">S'inscrire</button>
+                    <? } ?>
             </div>
         </div>
     </header>
