@@ -1,3 +1,7 @@
+<? 
+    require_once __DIR__ . '/../checkAdmin.php';
+?>
+
 <?php
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/comment.class.php';
@@ -44,6 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
     <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
 
