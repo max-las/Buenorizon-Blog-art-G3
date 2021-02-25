@@ -7,4 +7,4 @@ node_modules
 package-lock.json
 package.json
 CONNECT/config.php
-back/keys/reCaptchaKey.php
+back/keys/reCaptchaKeys.php
