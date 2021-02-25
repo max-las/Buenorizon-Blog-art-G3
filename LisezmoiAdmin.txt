@@ -1,0 +1,19 @@
+Login / Signin:
+_______________
+
+Il aura été choisi d'utiliser le champ idStat de la table MEMBRE pour déterminer si un utilisateur est Super Administrateur (et donc ayant accès au CRUD),
+plutôt que d'utiliser la table USER.
+
+===========================================================================================================================================================
+
+Accès au CRUD:
+______________
+
+Chaque page appartenant au pannel administrateur est innaccessible si la personne n'est pas connectée, et que son compte n'est pas Super Administrateur.
+Auquel cas, lors d'une tentative d'accès à l'aide de l'URL, la page redirigera instannnément vers l'accueil du site sans prévention.
+
+Si toutefois l'utilisateur est connecté et possède un compte accrédité, le pannel est accessible soit à l'aide de l'URL, soit grâce à un bouton qui n'apparaîtra que pour
+lui sur la barre de navigation du site, à côté de "Mon compte", en haut à droite.
+
+============================================================================================================================================================
+
