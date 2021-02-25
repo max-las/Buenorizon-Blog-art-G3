@@ -2,27 +2,26 @@
   width: 100vw;
   position: relative;
 
-  .content {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  div#slider { width: 100%; max-width:  100vw;
 
-    .title {
+    .content {
+      position: absolute;
+      height: 70%;
+      width: 100%;
+      top: 0;
+      left: 0;
       display: flex;
       justify-content: center;
+      align-items: center;
+    
 
-      svg {
-      padding-top: 0.5vh;
+      .title {
+        display: flex;
+        justify-content: center;
       }
 
-
-
     }
+
     h1{
       margin-left: 0.5rem;
       font-size: 4rem;
@@ -38,4 +37,6 @@
       filter: brightness(0.8);
     }
   }
+
 }
+
