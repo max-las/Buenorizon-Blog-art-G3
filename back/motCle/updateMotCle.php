@@ -32,7 +32,7 @@
             die();
         }
 
-        $numMotCle = $_POST["id"];
+        $numMotCle = $_GET["id"];
 
         $erreur = "";
         $updated = true;
