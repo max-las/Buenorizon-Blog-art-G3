@@ -6,7 +6,7 @@ $class = new MEMBRE;
 require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
 $monStatut = new STATUT;
 
-require_once __DIR__ . '/../keys/reCaptchaKey.php';
+require_once __DIR__ . '/../keys/reCaptchaKeys.php';
 
 $created = false;
 
@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 
     $response = $_POST['g-recaptcha-response'];
-    $secret = $reCaptchaKey;
+    $secret = $reCaptchaPrivateKey;
     $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
 
     $data = array('secret' => $secret, 'response' => $response);
@@ -155,7 +155,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <label>Accord des conditions ?</label>
             </div>
         </div>
-        <div class="g-recaptcha" data-sitekey="6LcKCWYaAAAAAHODjm984yFyXkPlZfEM_5wC0Ks8"></div>
+        <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
         <br />
         <button type="submit" value="Initialiser" name="Submit" class="ui button">Initialiser</button>
         <button type="submit" value="Valider" name="Submit" class="ui button">Valider</button>
