@@ -69,7 +69,7 @@ require_once('../commons/header.php');
             <p>L’édition du site EclatTech est assurée par la société Buenorizon créer uniquement dans le cadre du projet étudiant mmi «Blog art ».
                 L’hébergeur du site EclatTech est la société [Nom et adresse de l’hébergeur] , [adresse de l’hébergeur].
             </p>
-            <h3 class="h3about">Article 3 : Accès ²au site</h3 class="h3about">
+            <h3 class="h3about">Article 3 : Accès au site</h3 class="h3about">
             <p>Le site EclatTech permet d’accéder gratuitement aux services suivants :
                 -Lecteur d’articles
                 -Mettre des commentaires
