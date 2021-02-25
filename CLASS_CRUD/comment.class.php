@@ -42,7 +42,7 @@
 		function get_AllCommentsByArticle($numArt){
 			global $db;
 
-			$query = 'SELECT * FROM comment INNER JOIN membre ON comment.numMemb = membre.numMemb WHERE numArt = ?';
+			$query = 'SELECT * FROM comment INNER JOIN membre ON comment.numMemb = membre.numMemb WHERE numArt = ? ORDER BY numSeqCom';
 
 			$request = $db->prepare($query);
 	
