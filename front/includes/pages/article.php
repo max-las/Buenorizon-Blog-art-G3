@@ -19,7 +19,7 @@
 </div>
 <div class="article">
     <img class="" src="./../../assets/img/drone-carrousel.jpg" alt="image de drone">
-    <div class="info">
+    <div class="info-articles">
         <div class="background"></div>
         <div class="content">
             <div class="meta">
@@ -47,5 +47,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>

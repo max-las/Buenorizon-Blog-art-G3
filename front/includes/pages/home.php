@@ -25,10 +25,11 @@ require_once('../commons/header.php');
 </div>
 
 
-<div id="articles">
-    <?php require_once('./article.php') ?>
+<div class="container">
+    <div id="articles">
+        <?php require_once('./article.php') ?>
+    </div>
 </div>
-
 <?php
 require_once('../commons/footer.php');
 ?>
