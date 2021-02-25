@@ -5,6 +5,10 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    .red {
+        color: $primary;
+    }
     .signin {
         position: relative;
         width: 50vw;
@@ -120,11 +124,6 @@
     }
 }
 
-
-
-
-
-
 .visualprofil {
     padding-top: 10em;
     width: 100vw;
@@ -132,7 +131,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    .signin {
+    .profil {
         position: relative;
         width: 50vw;
         margin-top: 32px;
@@ -150,39 +149,17 @@
             align-items: center;
             flex-direction: column;
         }
-        .form-inscription {
-            padding: 2em 0;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            flex-direction: column;
-            .form-group {
-                margin-top: 2em;
-                position: relative;
-                padding: 15px 0 0;
-                width: 80%;
-                font-size: 1.125rem;
-                display: flex;
-                align-items: center;
-            }
-        }
     }
 }
 
-
-
-
-
-
-
-.info {
+.infocgu {
     padding-top: 10em;
     width: 100vw;
     height: 100vw;
     display: flex;
     align-items: center;
     flex-direction: column;
-    .signin {
+    .cguinfo {
         position: relative;
         width: 50vw;
         margin-top: 32px;
