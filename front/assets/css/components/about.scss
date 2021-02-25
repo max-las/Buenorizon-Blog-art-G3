@@ -45,9 +45,13 @@
     position: relative;
     top: 0;
     left: 0;
+    min-height: 100%;
 }
 .codbarabout{
-    position: relative;
-    top: 0;
-    left: 0;
+    position: absolute;
+    width: 20px;
+    height: 337px;
+    left: 30px;
+    top: 333px;
+        
 }
