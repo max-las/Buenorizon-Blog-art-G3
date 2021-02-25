@@ -10,7 +10,7 @@
     <div class="tri">
         3 articles en ligne
         <div class="cmd-tri">
-            Trier par catégories :
+            Trier par catégories : 
             <button>Startups</button>
             <button>Évenements</button>
             <button class="category-deselect">Acteurs</button>
