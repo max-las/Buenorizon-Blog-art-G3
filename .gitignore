@@ -6,3 +6,5 @@ front/assets/css/main.css.map
 node_modules
 package-lock.json
 package.json
+CONNECT/config.php
+back/keys/reCaptchaKeys.php
