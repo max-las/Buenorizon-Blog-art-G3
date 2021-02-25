@@ -6,6 +6,7 @@ if(session_status() === PHP_SESSION_NONE){
 $isConnected = false;
 $chemin = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/', 1));
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
