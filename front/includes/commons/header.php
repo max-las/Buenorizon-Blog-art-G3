@@ -8,6 +8,10 @@ $monMembre = new MEMBRE;
 
 $isConnected = false;
 $chemin = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/', 1));
+
+if($chemin == '/front/includes/pages/signin.php'){
+    require_once __DIR__ . '/../../../back/keys/reCaptchaKeys.php';
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +26,15 @@ $chemin = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/', 1
 
     <? if(isset($_SESSION['pseudoMemb']) && $chemin == '/front/includes/pages/login.php'){ ?>
         <meta http-equiv="refresh" content="2, url=../pages/home.php" />
+    <? } ?>
+
+    <? if($chemin == '/front/includes/pages/signin.php'){ ?>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script>
+            function onSubmit(token) {
+                document.getElementById("theForm").submit();
+            }
+        </script>
     <? } ?>
 </head>
 

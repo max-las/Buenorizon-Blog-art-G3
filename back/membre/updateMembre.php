@@ -7,6 +7,8 @@
      // Mode DEV
      require_once __DIR__ . '/../../util/utilErrOn.php';
 
+     require_once __DIR__ . '/../keys/reCaptchaKeys.php';
+
      // Init variables form
      include __DIR__ . '/initMembre.php';
      $updated = false;
@@ -50,7 +52,7 @@
             }
 
             $response = $_POST['g-recaptcha-response'];
-            $secret = '6LcKCWYaAAAAAE0bkTnA1urVqeb1D6nLRKOiQfRy';
+            $secret = $reCaptchaPrivateKey;
             $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
 
             $data = array('secret' => $secret, 'response' => $response);
@@ -73,6 +75,8 @@
             $json = json_decode($result);
 
             if($json->success){
+                var_dump($numMemb);
+                var_dump($idStat);
                 $class->update($numMemb, $_POST['prenomMemb'], $_POST['nomMemb'], $_POST['pseudoMemb'], $_POST['passMemb'], $_POST['eMailMemb'], $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb);
                 $updated = true;
             }else{
@@ -178,7 +182,7 @@
                 <input type="checkbox" tabindex="0" name="accordMemb" <? if($accordMemb == 1){ echo('checked'); } ?>>
                 <label>Accord des conditions ?</label>
             </div>
-            <div class="g-recaptcha" data-sitekey="6LcKCWYaAAAAAHODjm984yFyXkPlZfEM_5wC0Ks8"></div>
+            <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
         </div>
         <br>
         &nbsp;&nbsp;&nbsp;&nbsp;
