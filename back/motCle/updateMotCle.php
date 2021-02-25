@@ -1,3 +1,7 @@
+<? 
+    require_once __DIR__ . '/../checkAdmin.php';
+?>
+
 <?php
 
     // Mode DEV
@@ -28,7 +32,7 @@
             die();
         }
 
-        $numMotCle = $_POST["id"];
+        $numMotCle = $_GET["id"];
 
         $erreur = "";
         $updated = true;

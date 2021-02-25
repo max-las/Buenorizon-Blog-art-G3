@@ -6,7 +6,12 @@
     margin-left: 10%;
     margin-bottom: 0;
     padding-bottom: 5%;
- 
+    /* Rectangle 6 */
+
+    background: url(front\assets\img\fondDiv.svg);  
+
+    backdrop-filter: blur(1000px);
+    /* Note: backdrop-filter has minimal browser support */
 }
 .fondArticle {
     position: relative;
@@ -30,14 +35,25 @@
 .h3about {
     font-family: Montserrat;
     text-indent: 2%;
-    padding-top: 28px;
+    padding-top: 35px;
+    padding-bottom: 17.5px;
+    
 }
 
 .h2about {
     text-indent: 6.2vw;
 }
-.fondAbout{
+.fondAbout {
     position: relative;
-    overflow: hidden;
+    top: 0;
+    left: 0;
+    min-height: 100%;
 }
+.codbarabout{
+    position: absolute;
+    width: 20px;
+    height: 337px;
+    left: 30px;
+    top: 333px;
 
+}

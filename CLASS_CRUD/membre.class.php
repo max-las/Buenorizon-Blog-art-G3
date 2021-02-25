@@ -31,6 +31,21 @@ class MEMBRE{
 		return ($result);
     }
 
+    function get_1MembreByPseudo($pseudoMemb){
+        global $db;
+
+        $query = 'SELECT * FROM membre WHERE pseudoMemb = ?';
+
+		$request = $db->prepare($query);
+	
+		$request->execute(array($pseudoMemb));
+	
+		$result = $request->fetch();
+	
+		$request->closeCursor();
+		return ($result);
+    }
+
     function get_AllMembres(){
         global $db;
 
@@ -176,7 +191,7 @@ class MEMBRE{
             $db->beginTransaction();
 
             if(empty($passMemb)){
-                $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, eMailMemb = ?, dtCreaMemb = ?, souvenirMemb = ?, accordMemb = ?, idStat = ? WHERE numMemb = ?";
+                $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, eMailMemb = ?, dtCreaMemb = ?, idStat = ?, souvenirMemb = ?, accordMemb = ? WHERE numMemb = ?";
 
                 $request = $db->prepare($query);
     

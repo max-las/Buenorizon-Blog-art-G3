@@ -115,7 +115,7 @@ section {
 }
 body {
   line-height: 1;
-  background-color: white;
+  width: 100vw;
   color: white;
   background-image: url("./../img/Fondabout.svg");
   background-size: 200vw;
@@ -185,7 +185,6 @@ p {
 }
 
 .container {
-  
     background: linear-gradient(
       176.95deg,
       #0c0c0c9c -9.45%,

@@ -1,170 +1,190 @@
 <?php
 require_once('../commons/header.php');
+
+if(isset($_SESSION['pseudoMemb'])){
+    header("Location: ../../includes/pages/home.php");
+}
+
+$created = false;
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $pseudoMemb = $_POST['pseudoMemb'];
+    $prenomMemb = $_POST['prenomMemb'];
+    $nomMemb = $_POST['nomMemb'];
+    $eMailMemb = $_POST['eMailMemb'];
+    $passMemb = $_POST['passMemb'];
+    $passMembVerif = $_POST['passMembVerif'];
+    $souvMemb = $_POST['souvMemb'];
+    $condMemb = $_POST['condMemb'];
+    $dtCreaMemb = date('Y-m-d H:i:s');
+    $idStat = 1;
+    
+    $response = $_POST['g-recaptcha-response'];
+    $secret = $reCaptchaPrivateKey;
+    $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
+
+    $data = array('secret' => $secret, 'response' => $response);
+
+    $options = array(
+        'http' => array(
+            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context = stream_context_create($options);
+    $result = file_get_contents($urlApi, false, $context);
+
+    if ($result === FALSE){
+        // Erreur
+        $e = "<p style=\"color: red;\">Il semblerait qu'il y ait une erreur. Veuillez réessayer plus tard.</p>";
+    }
+
+    $json = json_decode($result);
+
+    if($json->success){
+        if(!empty($pseudoMemb) && !empty($eMailMemb) && !empty($passMemb) && !empty($passMembVerif)){
+            if(!empty($condMemb)){
+                if($passMemb === $passMembVerif){
+                    $created = true;
+                    $success = 'Compte créé avec succès.';
+                    $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $idStat, $souvMemb, $condMemb);
+                }else{
+                    $e = 'Les deux mots de passe ne correspondent pas.';
+                }
+            }else{
+                $e = 'Vous n\'avez pas accepté les conditions générales d\'utilisation.';
+            }
+        }else{
+            $e = 'Vous n\'avez pas renseigné tous les champs obligatoires.';
+        }
+    }else{
+        $e = "<p style=\"color: red;\">Vous n'avez pas validé le Captcha.</p>";
+    }
+}
 ?>
 
 <!-- Put your code here my friend ;) -->
 
+<div class="signinblock">
+    <div class="container-haut">
 
-    <div class="container-signin">
 
-        <h1>Enregistrez vous</h1>
-        <p class="soustitre">Les champs marqués d’un <span class=red>*</span> sont obligatoires.</p>
+        <div class="container-signin">
 
-        <div class="signin">
-            <div class="background1">
-                <svg width="416" height="670" viewBox="0 0 416 670" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g filter="url(#filter0_b)">
-                        <rect width="416" height="670" fill="url(#paint0_linear)" />
-                    </g>
-                    <g style="mix-blend-mode:overlay" opacity="0.15">
-                        <path d="M187.991 291.593C132.191 184.413 34.3444 100.812 0.00095502 79.4048L0 669.998H162.684C229.737 593.451 251.256 413.113 187.991 291.593Z" fill="white" />
-                    </g>
-                    <g style="mix-blend-mode:overlay" opacity="0.05">
-                        <rect width="415.09" height="670" fill="url(#pattern0)" />
-                    </g>
-                    <defs>
-                        <filter id="filter0_b" x="-100" y="-100" width="616" height="870" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                            <feGaussianBlur in="BackgroundImage" stdDeviation="50" />
-                            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur" />
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape" />
-                        </filter>
-                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1.47197" height="1.06269">
-                            <use xlink:href="#image0" transform="scale(0.00240912 0.00149254)" />
-                        </pattern>
-                        <linearGradient id="paint0_linear" x1="0" y1="0" x2="513.688" y2="445.087" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#12475E" stop-opacity="0.15" />
-                            <stop offset="1" stop-color="#12475E" stop-opacity="0.05" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+            <h1>Enregistrez vous</h1>
+            <p class="soustitre">Les champs marqués d’un <b class=red>*</b> sont obligatoires.</p>
 
+            <div class="signin">
+                <div class="infosignin">
+
+                    <p style="color: red;"><? if(isset($e)){echo $e;} ?></p>
+                    <p style="color: green;"><? if($created){echo $success;} ?></p>
+
+                    <div class="content1">
+                        <form class="form-inscription" action="./signin.php" method="post">
+
+                            <div class="form-group">
+                                <input type="input" name="pseudoMemb" id="pseudoMemb" placeholder="Rechercher un article...">
+                                <label>Pseudo<b class=red>*</b><label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="input" name="prenomMemb" id="prenomMemb" placeholder="Rechercher un article...">
+                                <label>Prénom<label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="input" name="nomMemb" id="nomMemb" placeholder="Rechercher un article...">
+                                <label>Nom<label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="input" name="eMailMemb" id="eMailMemb" placeholder="Rechercher un article...">
+                                <label>Adresse mail <b class=red>*</b><label>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <input id="input-signin" name="passMemb" id="passMemb" type="password" placeholder="Rechercher un article...">
+                                <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <label>Mot de passe <b class=red>*</b><label>
+                            </div>
+
+                            <div class="form-group">
+                                <input id="input-signin" name="passMembVerif" id="passMembVerif" type="password" placeholder="Rechercher un article...">
+                                <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <label>Confirmer le mot de passe <b class=red>*</b><label>
+                            </div>
+
+                            <script>
+
+                            </script>
+
+
+                            <div class="souvenir">
+                                <svg name="souvMembSvg" id="souvMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <input type="hidden" name="souvMemb" id="souvMemb" value="" />
+                                <span>Se souvenir de moi</span>
+                            </div>
+
+                            <div class="cdu">
+                                <svg name="condMembSvg" id="condMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <input type="hidden" name="condMemb" id="condMemb" value="1" />
+                                <span>Accepter les <a href="../pages/about.php" style="color:#FFFFFF;">Conditions générales d’utilisation</a></span>
+                            </div>
+                            <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
+
+                            <button type="submit">S'enregistrer</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="content1">
-                <form class="form-inscription" action="" method="post">
-
-                    <div class="form-group">
-                        <input type="input" placeholder="Rechercher un article...">
-                        <label>Pseudo *<label>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="input" placeholder="Rechercher un article...">
-                        <label>Prénom<label>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="input" placeholder="Rechercher un article...">
-                        <label>Nom<label>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="input" placeholder="Rechercher un article...">
-                        <label>Adresse mail *<label>
-                    </div>
+        </div>
 
 
 
 
-                    <div class="form-group">
-                        <input id="input-signin" type="password" placeholder="Rechercher un article...">
-                        <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                            <circle cx="12" cy="12" r="3"></circle>
+
+
+
+
+
+
+
+        <div class="visualprofil">
+            <div class="profil">
+                <div class="content2">
+                    <form>
+                        <svg width="128" height="128" viewBox="0 0 128 128" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M64 0C28.672 0 0 28.672 0 64C0 99.328 28.672 128 64 128C99.328 128 128 99.328 128 64C128 28.672 99.328 0 64 0ZM64 19.2C74.624 19.2 83.2 27.776 83.2 38.4C83.2 49.024 74.624 57.6 64 57.6C53.376 57.6 44.8 49.024 44.8 38.4C44.8 27.776 53.376 19.2 64 19.2ZM64 110.08C48 110.08 33.856 101.888 25.6 89.472C25.792 76.736 51.2 69.76 64 69.76C76.736 69.76 102.208 76.736 102.4 89.472C94.144 101.888 80 110.08 64 110.08Z" fill="white" />
                         </svg>
-                        <label>Mot de passe *<label>
-                    </div>
 
-                    <div class="form-group">
-                        <input id="input-signin" type="password" placeholder="Rechercher un article...">
-                        <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                            <circle cx="12" cy="12" r="3"></circle>
-                        </svg>
-                        <label>Confirmer le mot de passe *<label>
-                    </div>
+                        <!-- Ceci est provisoire est devra changer en fonction de se que l utilisateur rentre -->
+                        <p>Le pseudo</p>
+                        <hr>
+                        <p>Prenom et nom</p>
+                        <p>L'adresse Email</p>
 
-
-                    <div class="souvenir">
-                        <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <span>Se souvenir de moi</span>
-                    </div>
-
-                    <div class="cdu">
-                        <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <span>Accepter les <a href="front\includes\pages\about.php" style="color:#FFFFFF; " Vers nos Conditions générales">Conditions générales d’utilisation</a></span>
-                    </div>
-
-                    <button>S'enregistrer</button>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="visualprofil">
-        <div class="background2">
-            <svg width="360" height="425" viewBox="0 0 360 425" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g filter="url(#filter0_b)">
-                    <rect width="360" height="425" fill="url(#paint0_linear)" />
-                </g>
-                <g style="mix-blend-mode:overlay" opacity="0.15">
-                    <path d="M242.811 244.653C265.609 188.068 320.452 161.164 360 154.631V424.697H40.1289C98.1903 388.259 220.013 301.238 242.811 244.653Z" fill="white" />
-                </g>
-                <g style="mix-blend-mode:overlay" opacity="0.05">
-                    <rect width="360" height="425" fill="url(#pattern0)" />
-                </g>
-                <defs>
-                    <filter id="filter0_b" x="-100" y="-100" width="560" height="625" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                        <feGaussianBlur in="BackgroundImage" stdDeviation="50" />
-                        <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur" />
-                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape" />
-                    </filter>
-                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1.69722" height="1.67529">
-                        <use xlink:href="#image0" transform="scale(0.00277778 0.00235294)" />
-                    </pattern>
-                    <linearGradient id="paint0_linear" x1="0" y1="0" x2="324.648" y2="383.755" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#12475E" stop-opacity="0.15" />
-                        <stop offset="1" stop-color="#12475E" stop-opacity="0.05" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-        <div class="content2">
-            <form>
-                <svg width="128" height="128" viewBox="0 0 128 128" fill="white" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M64 0C28.672 0 0 28.672 0 64C0 99.328 28.672 128 64 128C99.328 128 128 99.328 128 64C128 28.672 99.328 0 64 0ZM64 19.2C74.624 19.2 83.2 27.776 83.2 38.4C83.2 49.024 74.624 57.6 64 57.6C53.376 57.6 44.8 49.024 44.8 38.4C44.8 27.776 53.376 19.2 64 19.2ZM64 110.08C48 110.08 33.856 101.888 25.6 89.472C25.792 76.736 51.2 69.76 64 69.76C76.736 69.76 102.208 76.736 102.4 89.472C94.144 101.888 80 110.08 64 110.08Z" fill="white" />
-                </svg>
-
-                <!-- Ceci est provisoire est devra changer en fonction de se que l utilisateur rentre -->
-                <p>Le pseudo</p>
-                <p>___________________________________</p>
-                <p>Prenom et nom</p>
-                <p>L'adresse Email</p>
-
-            </form>
-        </div>
-    </div>
-
-
-
 
 
 
@@ -174,67 +194,38 @@ require_once('../commons/header.php');
 
 
     <div class="info">
-        <div class="background3">
-            <svg width="935" height="438" viewBox="0 0 935 438" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g filter="url(#filter0_b)">
-                    <rect y="0.0610352" width="935" height="437.939" fill="url(#paint0_linear)" />
-                </g>
-                <g style="mix-blend-mode:overlay" opacity="0.15">
-                    <path d="M556 0.000350903L0 0V226.03C0 226.03 225.293 259.066 376 209.032C526.707 158.999 698.195 79.4308 556 0.000350903Z" fill="white" />
-                </g>
-                <g style="mix-blend-mode:overlay" opacity="0.05">
-                    <rect y="0.0610352" width="932.955" height="437.939" fill="url(#pattern0)" />
-                </g>
-                <defs>
-                    <filter id="filter0_b" x="-100" y="-99.939" width="1135" height="637.939" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                        <feGaussianBlur in="BackgroundImage" stdDeviation="50" />
-                        <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur" />
-                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape" />
-                    </filter>
-                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="0.654908" height="1.6258">
-                        <use xlink:href="#image0" transform="scale(0.00107186 0.00228342)" />
-                    </pattern>
-                    <linearGradient id="paint0_linear" x1="0" y1="0.0610352" x2="204.658" y2="609.814" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#12475E" stop-opacity="0.15" />
-                        <stop offset="1" stop-color="#12475E" stop-opacity="0.05" />
-                    </linearGradient>
-                </defs>
-            </svg>
+        <div class="cguinfo ">
+            <div class="content3">
+                <form>
 
+                    <p class=textjamaislu>
+                        Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par Buenorizon (contact 1 : samuel.labagnere@mmibordeaux.com; contact 2 maxime.lasserre@mmibordeaux.com) pour la gestion des comptes.
+                        <br>
+                        <br>
+                        Les données collectées seront communiquées aux seuls destinataires suivants : Le service de gestions de donnée (contact ci-dessus) ainsi que les professeurs et intervenants dans le cadre du projet « Blog art ».
+                        <br>
+                        <br>
+                        Les données sont conservées pendant toute la durée du projet (un a deux mois).
+                        <br>
+                        <br>
+                        Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données. (En fonction de la base légale du traitement, mentionner également : Vous pouvez retirer à tout moment votre consentement au traitement de vos données ; Vous pouvez également vous opposer au traitement de vos données ; Vous pouvez également exercer votre droit à la portabilité de vos données)
+                        <br>
+                        <br>
+                        Consultez le site cnil.fr pour plus d’informations sur vos droits.
+                        <br>
+                        <br>
+                        Pour exercer ces droits ou pour toute question sur le traitement de vos données dans ce dispositif, vous pouvez contacter (le cas échéant, nos délégués à la protection des données ou le service chargé de l’exercice de ces droits) : Maxime Lasserre (maxime.lasserre@mmibordeaux.com ) ou Samuel Labagnere (samuel.labagnere@mmibordeaux.com).
+                        <br>
+                        <br>
+                        Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
+                    <p>
 
-
-        </div>
-        <div class="content3">
-            <form>
-
-                <p class=textjamaislu>
-                    Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par Buenorizon (contact 1 : samuel.labagnere@mmibordeaux.com; contact 2 maxime.lasserre@mmibordeaux.com) pour la gestion des comptes.
-                    <br>
-                    <br>
-                    Les données collectées seront communiquées aux seuls destinataires suivants : Le service de gestions de donnée (contact ci-dessus) ainsi que les professeurs et intervenants dans le cadre du projet « Blog art ».
-                    <br>
-                    <br>
-                    Les données sont conservées pendant toute la durée du projet (un a deux mois).
-                    <br>
-                    <br>
-                    Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données. (En fonction de la base légale du traitement, mentionner également : Vous pouvez retirer à tout moment votre consentement au traitement de vos données ; Vous pouvez également vous opposer au traitement de vos données ; Vous pouvez également exercer votre droit à la portabilité de vos données)
-                    <br>
-                    <br>
-                    Consultez le site cnil.fr pour plus d’informations sur vos droits.
-                    <br>
-                    <br>
-                    Pour exercer ces droits ou pour toute question sur le traitement de vos données dans ce dispositif, vous pouvez contacter (le cas échéant, nos délégués à la protection des données ou le service chargé de l’exercice de ces droits) : Maxime Lasserre (maxime.lasserre@mmibordeaux.com ) ou Samuel Labagnere (samuel.labagnere@mmibordeaux.com).
-                    <br>
-                    <br>
-                    Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
-                <p>
-
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 
-
+</div>
 
 
 

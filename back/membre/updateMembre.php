@@ -1,7 +1,13 @@
+<? 
+    require_once __DIR__ . '/../checkAdmin.php';
+?>
+
 <?php
 
      // Mode DEV
      require_once __DIR__ . '/../../util/utilErrOn.php';
+
+     require_once __DIR__ . '/../keys/reCaptchaKeys.php';
 
      // Init variables form
      include __DIR__ . '/initMembre.php';
@@ -45,8 +51,37 @@
                 $accordMemb = 0;
             }
 
-            $class->update($numMemb, $_POST['prenomMemb'], $_POST['nomMemb'], $_POST['pseudoMemb'], $_POST['passMemb'], $_POST['eMailMemb'], $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb);
-            $updated = true;
+            $response = $_POST['g-recaptcha-response'];
+            $secret = $reCaptchaPrivateKey;
+            $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
+
+            $data = array('secret' => $secret, 'response' => $response);
+
+            $options = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($data)
+                )
+            );
+            $context = stream_context_create($options);
+            $result = file_get_contents($urlApi, false, $context);
+
+            if ($result === FALSE){
+                // Erreur
+                echo("<p style=\"color: red;\">Il semblerait qu'il y ait une erreur. Veuillez réessayer plus tard.</p>");
+            }
+
+            $json = json_decode($result);
+
+            if($json->success){
+                var_dump($numMemb);
+                var_dump($idStat);
+                $class->update($numMemb, $_POST['prenomMemb'], $_POST['nomMemb'], $_POST['pseudoMemb'], $_POST['passMemb'], $_POST['eMailMemb'], $dtCreaMemb, $idStat, $souvenirMemb, $accordMemb);
+                $updated = true;
+            }else{
+                echo("<p style=\"color: red;\">Vous n'avez pas validé le Captcha.</p>");
+            }    
         }
 
     }else{
@@ -77,6 +112,12 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("theForm").submit();
+        }
+    </script>
     <!-- <link href="../css/style.css" rel="stylesheet" type="text/css" /> -->
 </head>
 
@@ -90,7 +131,7 @@
     }
     ?>
 
-    <form method="post" action=".\updateMembre.php" class="ui form">
+    <form method="post" action=".\updateMembre.php?id=<?= $numMemb ?>&date=<?= $dtCreaMemb ?>" class="ui form">
     
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
         <input type="hidden" id="date" name="date" value="<?= $_GET['date']; ?>" />
@@ -141,6 +182,7 @@
                 <input type="checkbox" tabindex="0" name="accordMemb" <? if($accordMemb == 1){ echo('checked'); } ?>>
                 <label>Accord des conditions ?</label>
             </div>
+            <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
         </div>
         <br>
         &nbsp;&nbsp;&nbsp;&nbsp;

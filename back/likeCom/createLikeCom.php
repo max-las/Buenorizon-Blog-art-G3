@@ -1,3 +1,7 @@
+<? 
+    require_once __DIR__ . '/../checkAdmin.php';
+?>
+
 <?php
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/likeCom.class.php';
@@ -49,16 +53,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
+            changeArt();
+            changeComment();
+
             $("#numArt").change(function(){
-                var numArt = $("#numArt").val();
-                $(".commentField").hide();
-                $("#commentField"+numArt).show();
+                changeArt();
+                changeComment();
             });
 
             $(".commentSelect").change(function(){
-                $("#numSeqCom").val($(this).val());
+                changeComment();
             });
         });
+
+        function changeArt(){
+            var numArt = $("#numArt").val();
+            $(".commentField").hide();
+            $("#commentField"+numArt).show();
+        }
+
+        function changeComment(){
+            var numArt = $("#numArt").val();
+            var numSeqCom = $("#commentSelect"+numArt).val();
+            $("#numSeqCom").val(numSeqCom);
+        }
     </script>
 </head>
 
@@ -68,7 +86,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <br>
     <form method="post" action=".\createLikeCom.php" class="ui form">
         <div class="field">
-            <label class="control-label" for="numMemb"><b>Membre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+            <label class="control-label" for="numMemb"><b>Membre :</b></label>
             <select name="numMemb" id="numMemb" class="ui dropdown"> 
             <?php
                 $allMembres = $monMembre->get_AllMembres();
@@ -104,7 +122,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <?php endforeach ?>
 
         <div class="field">
-            <input type="hidden" name="numSeqCom" value="">
+            <input type="hidden" name="numSeqCom" id="numSeqCom" value="">
         </div>
         <div class="field">
             <input type="hidden" name="likeC" value="1">
