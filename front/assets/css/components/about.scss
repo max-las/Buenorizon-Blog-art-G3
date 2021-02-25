@@ -1,13 +1,4 @@
-.fondSansLesMarges {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 81vw;
-    margin-left: 10%;
-    margin-bottom: 0;
-    padding-bottom: 5%;
- 
-}
+
 .fondArticle {
     position: relative;
     background: linear-gradient(144.37deg, rgba(18, 71, 94, 0.15) 0%, rgba(18, 71, 94, 0.05) 90.25%);
@@ -38,6 +29,24 @@
 }
 .fondAbout{
     position: relative;
-    overflow: hidden;
+    top:0;
+    left:0;
 }
+/* Rectangle 6 */
+fondSansLesMarges {
+    position: absolute;
+    background-color: white;
+    top: 0;
+    left: 0;
+    width: 81vw;
+    height: auto;
+    margin-left: 10%;
+    margin-bottom: 0;
+    padding-bottom: 5%;
+    
+    //background-image: "front\assets\img\fondDiv.svg";
+
+ 
+}
+
 
