@@ -6,6 +6,8 @@ $class = new MEMBRE;
 require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
 $monStatut = new STATUT;
 
+require_once __DIR__ . '/../keys/reCaptchaKey.php';
+
 $created = false;
 
 // if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -35,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 
     $response = $_POST['g-recaptcha-response'];
-    $secret = '6LcKCWYaAAAAAE0bkTnA1urVqeb1D6nLRKOiQfRy';
+    $secret = $reCaptchaKey;
     $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
 
     $data = array('secret' => $secret, 'response' => $response);
