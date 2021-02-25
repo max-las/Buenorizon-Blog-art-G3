@@ -112,7 +112,6 @@ body {
   background-color: black;
   color: white;
   overflow-x: hidden;
-  font-family: $montserrat;
 }
 ol,
 ul {
@@ -146,6 +145,13 @@ button {
   &:focus {
     outline: 0;
   }
+  &:hover {
+    top: 20px;
+    transition: 0.2s;
+  }
+}
+html {
+  font-family: $montserrat;
 }
 h1 {
   font-family: $michroma;
@@ -166,4 +172,21 @@ p {
   font-family: $montserrat;
   font-weight: 400;
   font-size: 1rem;
+  line-height: 22px;
+}
+.container {
+  background: linear-gradient(
+    176.95deg,
+    #0c0c0c -9.45%,
+    #002d41 6.79%,
+    #022838 13.85%,
+    #0c0c0c 33.02%,
+    #0c0c0c 56.17%,
+    #002d41 85.75%,
+    #0c0c0c 98.07%
+  );
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80vw;
 }

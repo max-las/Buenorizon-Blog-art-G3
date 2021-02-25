@@ -1,68 +1,140 @@
-.search {
-  position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
-  width: 256px;
-  font-size: 1.125rem;
-  display: flex;
-  align-items: center;
-  input {
-    color: white;
-    font-weight: 400;
-    font-size: 0.75rem;
-    width: 100%;
-    border: 0;
-    border-bottom: 2px solid white;
-    outline: 0;
-    padding: 6px 2rem;
-    background: transparent;
-    transition: border-color 0.2s;
-    &::placeholder {
-      visibility: hidden;
-    }
-    &:placeholder-shown ~ label {
-      cursor: text;
-      top: 22px;
-    }
-    &:focus {
-      border-color: $primary;
-      padding-bottom: 6px;
-      ~ label {
+#articles {
+  padding-top: 9em;
+  .header-article {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    margin-bottom: 2em;
+    .search {
+      top: -0.5rem;
+      position: relative;
+      padding: 15px 0 0;
+      height: 28px;
+      width: 256px;
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      input {
+        color: white;
+        font-weight: 400;
+        font-size: 0.75rem;
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid white;
+        outline: 0;
+        padding: 6px 2rem;
+        background: transparent;
+        transition: border-color 0.2s;
+        &::placeholder {
+          visibility: hidden;
+        }
+        &:placeholder-shown ~ label {
+          cursor: text;
+          top: 22px;
+        }
+        &:focus {
+          border-color: $primary;
+          padding-bottom: 6px;
+          ~ label {
+            position: absolute;
+            top: 0;
+            font-size: 1rem;
+            color: $primary;
+            transition: 0.2s;
+          }
+          ~ .search-icon {
+            transition: 0.2s;
+            stroke: $primary;
+          }
+        }
+      }
+      label {
+        margin-left: 2rem;
+        display: block;
+        font-weight: 400;
         position: absolute;
         top: 0;
+        transition: 0.2s;
         font-size: 1rem;
-        color: $primary;
-        transition: 0.2s;
+        pointer-events: none;
       }
-      ~ .search-icon {
-        transition: 0.2s;
-        stroke: $primary;
+      .search-icon {
+        margin-left: 0.5rem;
+        margin-bottom: 0px;
+        position: absolute;
+      }
+    }
+    .tri {
+      text-align: right;
+      .cmd-tri {
+        margin-top: 1.5rem;
+        button {
+          margin-left: 0.25rem;
+        }
+        .category-deselect {
+          border: 1px white solid;
+          background: linear-gradient(
+            144.37deg,
+            rgba(18, 71, 94, 0.15) 0%,
+            rgba(18, 71, 94, 0.05) 90.25%
+          );
+        }
       }
     }
   }
-  label {
-    margin-left: 2rem;
-    display: block;
-    font-weight: 400;
-    position: absolute;
-    top: 0;
-    transition: 0.2s;
-    font-size: 1rem;
-    pointer-events: none;
-  }
-  .search-icon {
-    margin-left: 0.5rem;
-    margin-bottom: 0px;
-    position: absolute;
-  }
-}
-.tri {
-  .category-deselect {
-    border: 1px white solid;
-    background: linear-gradient(
-      144.37deg,
-      rgba(18, 71, 94, 0.15) 0%,
-      rgba(18, 71, 94, 0.05) 90.25%
-    );
+  .article {
+    display: flex;
+    align-items: flex-start;
+    .info-articles {
+      margin-left: 4.5em;
+      .content {
+        background-image: url("data:image/svg+xml,%3Csvg width='456' height='278' viewBox='0 0 456 278' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect width='456' height='278' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-100' width='656' height='478' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0' x2='157.994' y2='361.648' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+        padding: 2em;
+        hr {
+          margin: 1.5em 0;
+        }
+        h2 {
+          font-weight: 700;
+          margin-top: 1em;
+        }
+        .meta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .date {
+            padding-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            svg {
+              margin-right: 0.25rem;
+              padding-bottom: 2px;
+            }
+          }
+          .category {
+            margin-left: 0.25rem;
+            color: $primary;
+            font-weight: 700;
+            font-size: 1em;
+          }
+        }
+        .interraction {
+          margin-top: 2em;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-weight: 600;
+          color: $primary;
+          .icons > * {
+            margin-left: 1em;
+          }
+        }
+      }
+    }
+    img {
+      width: 648px;
+      height: 343px;
+      object-fit: cover;
+    }
   }
 }

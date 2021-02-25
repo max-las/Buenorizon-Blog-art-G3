@@ -2,6 +2,11 @@
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/likeCom.class.php';
 $class = new LIKECOM;
+
+if(isset($_GET['numMemb']) && isset($_GET['numArt']) && isset($_GET['numSeqCom']) && isset($_GET['like'])){
+    $class->update($_GET['numMemb'], $_GET['numSeqCom'], $_GET['numArt'], $_GET['like']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,22 +32,24 @@ $class = new LIKECOM;
         <table class="ui celled table">
             <thead>
                 <tr>
-                    <th>Numéro Membre</th>
-                    <th>Numéro Commentaire</th>
-                    <th>Numéro Article</th>
+                    <th>Article</th>
+                    <th>N° Commentaire</th>
+                    <th>Commentaire</th>
+                    <th>Membre</th>
                     <th>Like</th>
                     <th colspan="2">&nbsp;Action&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                <?php $allLikesCom = $class->get_AllLikesCom();
+                <?php $allLikesCom = $class->get_AllLikesComJoined();
                 foreach ($allLikesCom as $row) { ?>
                     <tr>
-                        <td><?= $row['numMemb'] ?></td>
+                        <td><?= $row['libTitrArt'] ?></td>
                         <td><?= $row['numSeqCom'] ?></td>
-                        <td><?= $row['numArt'] ?></td>
+                        <td><?= $row['libCom'] ?></td>
+                        <td><?= $row['pseudoMemb'] ?></td>
                         <td><?= $row['likeC'] ?></td>
-                        <td>&nbsp;<a href="./updateLikeCom.php?numMemb=<?= $row['numMemb'] ?>&numSeqCom=<?= $row['numSeqCom'] ?>&numArt=<?= $row['numArt'] ?>"><i>Modifier</i></a>&nbsp;
+                        <td>&nbsp;<a href="./likeCom.php?numMemb=<?= $row['numMemb'] ?>&numSeqCom=<?= $row['numSeqCom'] ?>&numArt=<?= $row['numArt'] ?>&like=<?= intval(!$row['likeC']) ?>"><i>Modifier</i></a>&nbsp;
                         <br />
                     </td>
                     <td>&nbsp;<a href="./deleteLikeCom.php?numMemb=<?= $row['numMemb'] ?>&numSeqCom=<?= $row['numSeqCom'] ?>&numArt=<?= $row['numArt'] ?>"><i>Supprimer</i></a>&nbsp;
