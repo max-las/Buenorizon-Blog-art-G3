@@ -1,5 +1,67 @@
 <?php
 require_once('../commons/header.php');
+
+if(isset($_SESSION['pseudoMemb'])){
+    header("Location: ../../includes/pages/home.php");
+}
+
+$created = false;
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $pseudoMemb = $_POST['pseudoMemb'];
+    $prenomMemb = $_POST['prenomMemb'];
+    $nomMemb = $_POST['nomMemb'];
+    $eMailMemb = $_POST['eMailMemb'];
+    $passMemb = $_POST['passMemb'];
+    $passMembVerif = $_POST['passMembVerif'];
+    $souvMemb = $_POST['souvMemb'];
+    $condMemb = $_POST['condMemb'];
+    $dtCreaMemb = date('Y-m-d H:i:s');
+    $idStat = 1;
+    
+    $response = $_POST['g-recaptcha-response'];
+    $secret = $reCaptchaPrivateKey;
+    $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
+
+    $data = array('secret' => $secret, 'response' => $response);
+
+    $options = array(
+        'http' => array(
+            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context = stream_context_create($options);
+    $result = file_get_contents($urlApi, false, $context);
+
+    if ($result === FALSE){
+        // Erreur
+        $e = "<p style=\"color: red;\">Il semblerait qu'il y ait une erreur. Veuillez réessayer plus tard.</p>";
+    }
+
+    $json = json_decode($result);
+
+    if($json->success){
+        if(!empty($pseudoMemb) && !empty($eMailMemb) && !empty($passMemb) && !empty($passMembVerif)){
+            if(!empty($condMemb)){
+                if($passMemb === $passMembVerif){
+                    $created = true;
+                    $success = 'Compte créé avec succès.';
+                    $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $idStat, $souvMemb, $condMemb);
+                }else{
+                    $e = 'Les deux mots de passe ne correspondent pas.';
+                }
+            }else{
+                $e = 'Vous n\'avez pas accepté les conditions générales d\'utilisation.';
+            }
+        }else{
+            $e = 'Vous n\'avez pas renseigné tous les champs obligatoires.';
+        }
+    }else{
+        $e = "<p style=\"color: red;\">Vous n'avez pas validé le Captcha.</p>";
+    }
+}
 ?>
 
 <!-- Put your code here my friend ;) -->
@@ -16,26 +78,29 @@ require_once('../commons/header.php');
             <div class="signin">
                 <div class="infosignin">
 
+                    <p style="color: red;"><? if(isset($e)){echo $e;} ?></p>
+                    <p style="color: green;"><? if($created){echo $success;} ?></p>
+
                     <div class="content1">
-                        <form class="form-inscription" action="" method="post">
+                        <form class="form-inscription" action="./signin.php" method="post">
 
                             <div class="form-group">
-                                <input type="input" placeholder="Rechercher un article...">
-                                <label>Pseudo <b class=red>*</b><label>
+                                <input type="input" name="pseudoMemb" id="pseudoMemb" placeholder="Rechercher un article...">
+                                <label>Pseudo<b class=red>*</b><label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" placeholder="Rechercher un article...">
+                                <input type="input" name="prenomMemb" id="prenomMemb" placeholder="Rechercher un article...">
                                 <label>Prénom<label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" placeholder="Rechercher un article...">
+                                <input type="input" name="nomMemb" id="nomMemb" placeholder="Rechercher un article...">
                                 <label>Nom<label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" placeholder="Rechercher un article...">
+                                <input type="input" name="eMailMemb" id="eMailMemb" placeholder="Rechercher un article...">
                                 <label>Adresse mail <b class=red>*</b><label>
                             </div>
 
@@ -43,7 +108,7 @@ require_once('../commons/header.php');
 
 
                             <div class="form-group">
-                                <input id="input-signin" type="password" placeholder="Rechercher un article...">
+                                <input id="input-signin" name="passMemb" id="passMemb" type="password" placeholder="Rechercher un article...">
                                 <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
@@ -52,7 +117,7 @@ require_once('../commons/header.php');
                             </div>
 
                             <div class="form-group">
-                                <input id="input-signin" type="password" placeholder="Rechercher un article...">
+                                <input id="input-signin" name="passMembVerif" id="passMembVerif" type="password" placeholder="Rechercher un article...">
                                 <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
@@ -60,24 +125,31 @@ require_once('../commons/header.php');
                                 <label>Confirmer le mot de passe <b class=red>*</b><label>
                             </div>
 
+                            <script>
+
+                            </script>
+
 
                             <div class="souvenir">
-                                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg name="souvMembSvg" id="souvMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
+                                <input type="hidden" name="souvMemb" id="souvMemb" value="" />
                                 <span>Se souvenir de moi</span>
                             </div>
 
                             <div class="cdu">
-                                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg name="condMembSvg" id="condMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <span>Accepter les <a href="../pages/about.php" style="color:#FFFFFF; " Vers nos Conditions générales">Conditions générales d’utilisation</a></span>
+                                <input type="hidden" name="condMemb" id="condMemb" value="1" />
+                                <span>Accepter les <a href="../pages/about.php" style="color:#FFFFFF;">Conditions générales d’utilisation</a></span>
                             </div>
+                            <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
 
-                            <button>S'enregistrer</button>
+                            <button type="submit">S'enregistrer</button>
                         </form>
                     </div>
                 </div>
