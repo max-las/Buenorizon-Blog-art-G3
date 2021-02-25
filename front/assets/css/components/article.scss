@@ -86,8 +86,10 @@
   .article {
     display: flex;
     align-items: flex-start;
+    justify-content: flex-end;
     .info-articles {
-      margin-left: 4.5em;
+      margin-left: 4.5rem;
+      margin-right: 1.5rem;
       .content {
         background-image: url("data:image/svg+xml,%3Csvg width='456' height='278' viewBox='0 0 456 278' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect width='456' height='278' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-100' width='656' height='478' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0' x2='157.994' y2='361.648' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
         padding: 2em;

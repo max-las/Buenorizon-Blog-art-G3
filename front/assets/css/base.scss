@@ -4,7 +4,13 @@
 $primary: #e63946;
 $michroma: "Michroma", sans-serif;
 $montserrat: "Montserrat", sans-serif;
-
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+);
 html,
 body,
 div,
@@ -109,10 +115,12 @@ section {
 }
 body {
   line-height: 1;
-  background-color: black;
   width: 100vw;
   color: white;
+  background-image: url("./../img/Fondabout.svg");
+  background-size: 200vw;
   overflow-x: hidden;
+  width: 100vw;
 }
 ol,
 ul {
@@ -175,19 +183,35 @@ p {
   font-size: 1rem;
   line-height: 22px;
 }
+
 .container {
-  background: linear-gradient(
-    176.95deg,
-    #0c0c0c -9.45%,
-    #002d41 6.79%,
-    #022838 13.85%,
-    #0c0c0c 33.02%,
-    #0c0c0c 56.17%,
-    #002d41 85.75%,
-    #0c0c0c 98.07%
-  );
-  width: 100%;
+    background: linear-gradient(
+      176.95deg,
+      #0c0c0c9c -9.45%,
+      #002d419c 6.79%,
+      #0228389c 13.85%,
+      #0c0c0c9c 33.02%,
+      #0c0c0c9c 56.17%,
+      #002d419c 85.75%,
+      #0c0c0c9c 98.07%
+    );
+  position: relative;
   margin-left: auto;
   margin-right: auto;
-  max-width: 80vw;
+  width: 100%;
+  @media (min-width: map-get($container-max-widths,sm)) {
+    max-width: 540px;
+  }
+  @media (min-width: map-get($container-max-widths,md)) {
+    max-width: 720px;
+  }
+  @media (min-width: map-get($container-max-widths,lg)) {
+    max-width: 960px;
+  }
+  @media (min-width: map-get($container-max-widths,xl)) {
+    max-width: 1140px;
+  }
+  @media (min-width: map-get($container-max-widths,xxl)) {
+    max-width: 1320px;
+  }
 }
