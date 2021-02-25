@@ -1,3 +1,7 @@
+<? 
+    require_once __DIR__ . '/../checkAdmin.php';
+?>
+
 <?php
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/likeCom.class.php';
