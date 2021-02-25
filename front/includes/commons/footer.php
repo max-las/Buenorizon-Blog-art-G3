@@ -1,8 +1,8 @@
 </main>
 
 <footer class="footer">
-  <div class="container pt-5">
-    <div class="row py-5">
+  <div class="pt-5">
+    <div class="rowww py-5">
       <div class="col-md-4" id="copyright">
         <a href="/">© Eclatech 2021</a>
       </div>
