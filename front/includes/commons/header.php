@@ -34,6 +34,7 @@ $chemin = $_SERVER['REQUEST_URI'];
         }
     </script>
     <? } ?>
+
 </head>
 
 <body>
