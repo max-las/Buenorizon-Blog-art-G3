@@ -118,10 +118,9 @@ body {
   width: 100vw;
   min-height: 100vh;
   color: white;
-  background-image: url("./../img/Fondabout.svg");
+  background-color: rgb(5,5,10);
   background-size: 200vw;
   overflow-x: hidden;
-  // filter: blur(8px);
   display: flex;
   flex-direction: column;
 }
