@@ -73,7 +73,13 @@ require_once('../commons/header.php');
                 <figure>
 
                     <div class="slide-content-2">
-                        <p>gregre nieu nieu nieu</p>
+                        <p>31 Janvier 2021</p>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
                     </div>
 
                 </figure>
