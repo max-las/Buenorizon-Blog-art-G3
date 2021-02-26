@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $myMembreByMail = $monMembre->get_1MembreByMail($pseudo);
         if ($myMembreByPseudo) {
             if (password_verify($mdp, $myMembreByPseudo['passMemb'])) {
-                if(!empty($souvMemb)){
-                    setcookie('pseudoMemb', $pseudo, time()+60*60*24*30, "/");
+                if (!empty($souvMemb)) {
+                    setcookie('pseudoMemb', $pseudo, time() + 60 * 60 * 24 * 30, "/");
                 }
                 $memb = $monMembre->get_1Membre($myMembreByPseudo['numMemb']);
                 $success = true;
@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         } elseif ($myMembreByMail) {
             if (password_verify($mdp, $myMembreByMail['passMemb'])) {
-                if(!empty($souvMemb)){
-                    setcookie('pseudoMemb', $pseudo, time()+60*60*24*30, "/");
+                if (!empty($souvMemb)) {
+                    setcookie('pseudoMemb', $pseudo, time() + 60 * 60 * 24 * 30, "/");
                 }
                 $memb = $monMembre->get_1Membre($myMembreByMail['numMemb']);
                 $success = true;
@@ -50,7 +50,7 @@ require_once('../commons/header.php');
 
 <!-- Put your code here my friend ;) -->
 
-
+<canvas id="canvas3d"></canvas>
 <div class="container-login">
     <h1>Connexion</h1>
     <div class="login">
@@ -98,9 +98,8 @@ require_once('../commons/header.php');
                     <label>Mot de passe<label>
                 </div>
                 <div class="souvenir">
-                    <div id="checkbox"></div>
+                    <div id="checkbox"><input type="hidden" name="souvMemb" id="souvMemb" value="false" /></div>
                     <span>Se souvenir de moi</span>
-                    <input type="hidden" name="souvMemb" id="souvMemb" value="0" />
                 </div>
                 <? if($success){
                         echo '<br />';
