@@ -5,7 +5,7 @@ const input = document.getElementById("input-login")
 var animation = bodymovin.loadAnimation({
   container: eye,
   renderer: "svg",
-  path: "./../../assets/json/visibilityV2.json",
+  path: "/front/assets/json/visibilityV2.json",
   name: "eye",
 })
 lottie.setSpeed(1.25, "eye")
@@ -21,7 +21,7 @@ const checkbox = document.getElementById("checkbox")
 var animation = bodymovin.loadAnimation({
   container: checkbox,
   renderer: "svg",
-  path: "./../../assets/json/checkBox.json",
+  path: "/front/assets/json/checkBox.json",
   name: "checkbox",
   autoplay: false,
 })
