@@ -11,7 +11,7 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1320px,
 );
-html, 
+html,
 body,
 div,
 span,
@@ -118,7 +118,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   color: white;
-  background-color: rgb(5,5,10);
+  background-color: rgb(5, 5, 10);
   background-size: 200vw;
   overflow-x: hidden;
   display: flex;
@@ -164,8 +164,8 @@ button {
 html {
   font-family: $montserrat;
 }
-main{
-  flex:1;
+main {
+  flex: 1;
 }
 h1 {
   font-family: $michroma;
@@ -190,16 +190,16 @@ p {
 }
 
 .container {
-    background: linear-gradient(
-      176.95deg,
-      #0c0c0c9c -9.45%,
-      #002d419c 6.79%,
-      #0228389c 13.85%,
-      #0c0c0c9c 33.02%,
-      #0c0c0c9c 56.17%,
-      #002d419c 85.75%,
-      #0c0c0c9c 98.07%
-    );
+  background: linear-gradient(
+    176.95deg,
+    #0c0c0c9c -9.45%,
+    #002d419c 6.79%,
+    #0228389c 13.85%,
+    #0c0c0c9c 33.02%,
+    #0c0c0c9c 56.17%,
+    #002d419c 85.75%,
+    #0c0c0c9c 98.07%
+  );
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -218,5 +218,13 @@ p {
   }
   @media (min-width: map-get($container-max-widths,xxl)) {
     max-width: 1320px;
+  }
+}
+canvas{
+  position: absolute;
+  filter: blur(100px);
+  z-index: -1;
+  #circle{
+
   }
 }
