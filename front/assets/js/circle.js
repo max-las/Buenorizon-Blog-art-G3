@@ -8,7 +8,7 @@ var SPLINE_EXPORTED_SCENE = {
       spe_interaction: 0,
       translation: [0, 100, 0],
       rotation: [0, 0, 0, 1],
-      scale: [1, 1, 1],
+      scale: [0.5, 0.5, 0.5],
       visible: true,
       castShadow: true,
       receiveShadow: true,

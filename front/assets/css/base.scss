@@ -144,6 +144,7 @@ table {
   border-spacing: 0;
 }
 button {
+  position: relative;
   font-weight: 600;
   border-radius: 0.5rem;
   background-color: $primary;
@@ -153,12 +154,13 @@ button {
   border: none;
   padding: 8px 12px;
   font-size: 1rem;
+  transition: 0.2s;
   &:focus {
     outline: 0;
   }
   &:hover {
-    top: 20px;
-    transition: 0.2s;
+    top: -2px;
+    transition: 0.4s;
   }
 }
 html {
@@ -224,7 +226,5 @@ canvas{
   position: absolute;
   filter: blur(100px);
   z-index: -1;
-  #circle{
-
-  }
+  
 }

@@ -1,3 +1,4 @@
+<canvas id="canvas3d"></canvas>
 <?php
 require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
@@ -50,39 +51,9 @@ require_once('../commons/header.php');
 
 <!-- Put your code here my friend ;) -->
 
-<canvas id="canvas3d"></canvas>
 <div class="container-login">
     <h1>Connexion</h1>
     <div class="login">
-        <div class="background">
-            <svg width="100%" height="100%" viewBox="0 0 423 415" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g filter="url(#filter0_b)">
-                    <rect width="100%" height="100%" fill="url(#paint0_linear)" />
-                </g>
-                <g style="mix-blend-mode:overlay" opacity="0.15">
-                    <path d="M285.301 294.158C312.089 226.123 376.53 193.774 422.998 185.92V510.634H47.1504C115.373 466.823 258.514 362.193 285.301 294.158Z" fill="white" />
-                </g>
-                <g style="mix-blend-mode:overlay" opacity="0.05">
-                    <rect width="100%" height="100%" fill="url(#pattern0)" />
-                </g>
-                <defs>
-                    <filter id="filter0_b" x="-100" y="-100" width="623" height="711" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                        <feGaussianBlur in="BackgroundImage" stdDeviation="50" />
-                        <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur" />
-                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape" />
-                    </filter>
-                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1.44444" height="1.39335">
-                        <use xlink:href="#image0" transform="scale(0.00236407 0.00195695)" />
-
-                    </pattern>
-                    <linearGradient id="paint0_linear" x1="0" y1="0" x2="391.732" y2="452.518" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#12475E" stop-opacity="0.15" />
-                        <stop offset="1" stop-color="#12475E" stop-opacity="0.05" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
         <div class="content">
             <form class="form-connexion" method="post">
                 <svg width="128" height="128" viewBox="0 0 128 128" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +69,7 @@ require_once('../commons/header.php');
                     <label>Mot de passe<label>
                 </div>
                 <div class="souvenir">
-                    <div id="checkbox"><input type="hidden" name="souvMemb" id="souvMemb" value="false" /></div>
+                    <div id="checkbox" class="checkbox"><input type="hidden" name="souvMemb" id="souvMemb" value="false" /></div>
                     <span>Se souvenir de moi</span>
                 </div>
                 <? if($success){
