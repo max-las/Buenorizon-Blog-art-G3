@@ -103,6 +103,7 @@ require_once('../commons/header.php');
                                 name: 'eye',
                                 autoplay: !toggle,
                             })
+                            lottie.setSpeed(1.25,'eye')
                             eye.addEventListener('click', () => {
                                 toggle = !toggle
                                 lottie.play('eye')
@@ -136,11 +137,3 @@ require_once('../commons/header.php');
 <?php
 require_once('../commons/footer.php');
 ?>
-
-<script>
-    const eye = document.getElementById('eye')
-    const input = document.getElementById('input-login')
-    eye.addEventListener('click', () => {
-        input.type = input.type === 'password' ? 'text' : 'password'
-    })
-</script>

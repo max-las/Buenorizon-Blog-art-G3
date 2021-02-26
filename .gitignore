@@ -8,3 +8,5 @@ package-lock.json
 package.json
 CONNECT/config.php
 back/keys/reCaptchaKeys.php
+LisezmoiAdmin.txt
+LisezmoiUser.txt
