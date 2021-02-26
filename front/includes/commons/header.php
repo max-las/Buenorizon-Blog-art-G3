@@ -1,5 +1,5 @@
 <?php
-if(session_status() === PHP_SESSION_NONE){
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -9,7 +9,7 @@ $monMembre = new MEMBRE;
 $isConnected = false;
 $chemin = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/', 1));
 
-if($chemin == '/front/includes/pages/signin.php'){
+if ($chemin == '/front/includes/pages/signin.php') {
     require_once __DIR__ . '/../../../back/keys/reCaptchaKeys.php';
 }
 ?>
@@ -18,6 +18,8 @@ if($chemin == '/front/includes/pages/signin.php'){
 <html lang="fr">
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.4/lottie_svg.min.js" type="text/javascript"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,16 +27,16 @@ if($chemin == '/front/includes/pages/signin.php'){
     <link rel="stylesheet" href="../../assets/css/main.css">
 
     <? if(isset($_SESSION['pseudoMemb']) && $chemin == '/front/includes/pages/login.php'){ ?>
-        <meta http-equiv="refresh" content="2, url=../pages/home.php" />
+    <meta http-equiv="refresh" content="2, url=../pages/home.php" />
     <? } ?>
 
     <? if($chemin == '/front/includes/pages/signin.php'){ ?>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
-        <script>
-            function onSubmit(token) {
-                document.getElementById("theForm").submit();
-            }
-        </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("theForm").submit();
+        }
+    </script>
     <? } ?>
 </head>
 
@@ -49,18 +51,18 @@ if($chemin == '/front/includes/pages/signin.php'){
             </div>
             <div>
                 <? if(isset($_SESSION['pseudoMemb'])){ ?>
-                        <p><?= $_SESSION['pseudoMemb'] ?></p>
-                        <button onclick="location.href='../pages/moncompte.php'">Mon compte</button>
-                        <? 
+                <p><?= $_SESSION['pseudoMemb'] ?></p>
+                <button onclick="location.href='../pages/moncompte.php'">Mon compte</button>
+                <? 
                             $myMembre = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
                             if ($myMembre['idStat'] == 9){ 
                         ?>
-                            <!-- HTML link to CRUD -->
-                        <? } ?>
-                    <? }else{ ?>
-                        <a <?= ($chemin == '/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php">Connexion</a>
-                        <button onclick="location.href='../pages/signin.php'">S'inscrire</button>
-                    <? } ?>
+                <!-- HTML link to CRUD -->
+                <? } ?>
+                <? }else{ ?>
+                <a <?= ($chemin == '/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php">Connexion</a>
+                <button onclick="location.href='../pages/signin.php'">S'inscrire</button>
+                <? } ?>
             </div>
         </div>
     </header>
