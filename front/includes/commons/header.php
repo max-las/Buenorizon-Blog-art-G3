@@ -6,6 +6,9 @@ if (session_status() === PHP_SESSION_NONE) {
 $isConnected = false;
 if($_SERVER['SERVER_NAME'] == 'plateforme-mmi.iut.u-bordeaux-montaigne.fr'){
     $chemin = subStr($_SERVER['REQUEST_URI'], 30);
+    if((subStr($chemin, -1) == '/') && $chemin != '/'){
+        $chemin = subStr($chemin, 0, -1);
+    }
     $prefix = '/user03/Buenorizon-Blog-art-G3';
 }else{
     $chemin = $_SERVER['REQUEST_URI'];
