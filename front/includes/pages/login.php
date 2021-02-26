@@ -7,39 +7,39 @@ $monUser = new USER;
 $success = false;
 $e = '';
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pseudo = $_POST['name-login'];
     $mdp = $_POST['input-login'];
 
-    if(isset($pseudo) && isset($mdp)){
+    if (isset($pseudo) && isset($mdp)) {
         $myMembreByPseudo = $monMembre->get_1MembreByPseudo($pseudo);
         $myMembreByMail = $monMembre->get_1MembreByMail($pseudo);
-        if($myMembreByPseudo){
-            if(password_verify($mdp, $myMembreByPseudo['passMemb'])){
+        if ($myMembreByPseudo) {
+            if (password_verify($mdp, $myMembreByPseudo['passMemb'])) {
                 $memb = $monMembre->get_1Membre($myMembreByPseudo['numMemb']);
                 $success = true;
                 session_start();
                 $_SESSION['pseudoMemb'] = $memb['pseudoMemb'];
-            }else{
+            } else {
                 $e = 'Votre mot de passe n\'est pas valide.';
             }
-        }elseif($myMembreByMail){
-            if(password_verify($mdp, $myMembreByMail['passMemb'])){
+        } elseif ($myMembreByMail) {
+            if (password_verify($mdp, $myMembreByMail['passMemb'])) {
                 $memb = $monMembre->get_1Membre($myMembreByMail['numMemb']);
                 $success = true;
                 session_start();
                 $_SESSION['pseudoMemb'] = $memb['pseudoMemb'];
-            }else{
+            } else {
                 $e = 'Votre mot de passe n\'est pas valide.';
             }
-        }else{
+        } else {
             $e = 'Votre identifiant n\'est pas valide.';
         }
     }
 }
 
 require_once('../commons/header.php');
-?> 
+?>
 
 <!-- Put your code here my friend ;) -->
 
@@ -87,10 +87,31 @@ require_once('../commons/header.php');
                 </div>
                 <div class="form-group">
                     <input id="input-login" name="input-login" type="password" placeholder="...">
-                    <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                    <!-- <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
+                    </svg> -->
+                    <div id="anim" class="eye">
+                        <script>
+                            const eye = document.getElementById('anim');
+                            const input = document.getElementById('input-login')
+                            let toggle = false
+                            var animation = bodymovin.loadAnimation({
+                                container: eye,
+                                renderer: 'svg',
+                                path: './../../assets/json/visibilityV2.json',
+                                name: 'eye',
+                                autoplay: !toggle,
+                            })
+                            eye.addEventListener('click', () => {
+                                toggle = !toggle
+                                lottie.play('eye')
+                                toggle ? lottie.setDirection(-1, 'eye') : lottie.setDirection(1, 'eye')
+                                input.type = input.type === 'password' ? 'text' : 'password'
+                            })
+                        </script>
+                    </div>
+
                     <label>Mot de passe<label>
                 </div>
                 <div class="souvenir">
