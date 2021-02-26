@@ -48,6 +48,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(!empty($pseudoMemb) && !empty($eMailMemb) && !empty($passMemb) && !empty($passMembVerif)){
             if(!empty($condMemb)){
                 if($passMemb === $passMembVerif){
+                    if(!empty($souvMemb)){
+                        setcookie('pseudoMemb', $pseudoMemb, time()+60*60*24*30, "/");
+                    }
                     $created = true;
                     $success = 'Compte créé avec succès.';
                     $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $idStat, $souvMemb, $condMemb);
