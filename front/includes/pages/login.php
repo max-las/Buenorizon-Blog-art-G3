@@ -10,6 +10,7 @@ $e = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pseudo = $_POST['name-login'];
     $mdp = $_POST['input-login'];
+    $souvMemb = $_POST['souvMemb'];
 
     if (isset($pseudo) && isset($mdp)) {
         $myMembreByPseudo = $monMembre->get_1MembreByPseudo($pseudo);
@@ -17,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($myMembreByPseudo) {
             if (password_verify($mdp, $myMembreByPseudo['passMemb'])) {
                 if(!empty($souvMemb)){
-                    setcookie('pseudoMemb', $pseudoMemb, time()+60*60*24*30, "/");
+                    setcookie('pseudoMemb', $pseudo, time()+60*60*24*30, "/");
                 }
                 $memb = $monMembre->get_1Membre($myMembreByPseudo['numMemb']);
                 $success = true;
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } elseif ($myMembreByMail) {
             if (password_verify($mdp, $myMembreByMail['passMemb'])) {
                 if(!empty($souvMemb)){
-                    setcookie('pseudoMemb', $pseudoMemb, time()+60*60*24*30, "/");
+                    setcookie('pseudoMemb', $pseudo, time()+60*60*24*30, "/");
                 }
                 $memb = $monMembre->get_1Membre($myMembreByMail['numMemb']);
                 $success = true;
@@ -99,6 +100,7 @@ require_once('../commons/header.php');
                 <div class="souvenir">
                     <div id="checkbox"></div>
                     <span>Se souvenir de moi</span>
+                    <input type="hidden" name="souvMemb" id="souvMemb" value="0" />
                 </div>
                 <? if($success){
                         echo '<br />';
