@@ -17,18 +17,19 @@ require_once('../commons/header.php');
                 <form class="form-connexion" action="./login.php" method="post">
                     <div class="infoutilisateur">
                         <div class="form-group">
-                            <input type="input" id="" name="" placeholder="label">
+                            <input type="input" id="" name="" placeholder=" ">
                             <label>Nom<label>
                         </div>
                         <div class="form-group mail">
-                            <input type="input" id="" name="" placeholder="label">
+                            <input type="input" id="" name="" placeholder=" ">
                             <label>Adresse mail<label>
                         </div>
                     </div>
                     <div class="infomessage">
                         <div class="form-group">
-                            <input type="input" id="" name="" placeholder="label">
-                            <label>Votre message<label>
+                            <textarea id="story" name="story" rows="5" cols="33"placeholder="Votre message"></textarea>
+                            
+                                
                         </div>
                     </div>
 
