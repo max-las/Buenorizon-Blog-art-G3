@@ -117,10 +117,10 @@ body {
   line-height: 1;
   width: 100vw;
   min-height: 100vh;
-  background-image: url("./../img/Fondabout.svg");
+  color: white;
+  background-color: rgb(5,5,10);
   background-size: 200vw;
   overflow-x: hidden;
-  // filter: blur(8px);
   display: flex;
   flex-direction: column;
 }
@@ -164,7 +164,7 @@ button {
 html {
   font-family: $montserrat;
 }
-main {
+main{
   flex: 1;
 }
 h1 {
@@ -190,16 +190,16 @@ p {
 }
 
 .container {
-  background: linear-gradient(
-    176.95deg,
-    #0c0c0c9c -9.45%,
-    #002d419c 6.79%,
-    #0228389c 13.85%,
-    #0c0c0c9c 33.02%,
-    #0c0c0c9c 56.17%,
-    #002d419c 85.75%,
-    #0c0c0c9c 98.07%
-  );
+    background: linear-gradient(
+      176.95deg,
+      #0c0c0c9c -9.45%,
+      #002d419c 6.79%,
+      #0228389c 13.85%,
+      #0c0c0c9c 33.02%,
+      #0c0c0c9c 56.17%,
+      #002d419c 85.75%,
+      #0c0c0c9c 98.07%
+    );
   position: relative;
   margin-left: auto;
   margin-right: auto;
