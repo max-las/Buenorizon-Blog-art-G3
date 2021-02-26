@@ -6,8 +6,8 @@ require_once('../commons/header.php');
         <div class="title">
             <h1>Dronisos</h1>
             <h2>Comment dompter les drones ?</h2>
+            <img class="img-top" src="/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
-        <img src="" alt="">
         <div>
             <div>
                 <p> Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
