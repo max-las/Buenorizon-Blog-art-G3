@@ -4,21 +4,21 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $isConnected = false;
-if($_SERVER['SERVER_NAME'] == 'plateforme-mmi.iut.u-bordeaux-montaigne.fr'){
+if ($_SERVER['SERVER_NAME'] == 'plateforme-mmi.iut.u-bordeaux-montaigne.fr') {
     $chemin = subStr($_SERVER['REQUEST_URI'], 30);
     $prefix = '/user03/Buenorizon-Blog-art-G3';
-}else{
+} else {
     $chemin = $_SERVER['REQUEST_URI'];
     $prefix = '';
 }
-if((subStr($chemin, -1) == '/') && $chemin != '/'){
+if ((subStr($chemin, -1) == '/') && $chemin != '/') {
     $chemin = subStr($chemin, 0, -1);
 }
 
 require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
 
-if($chemin == '/'){
+if ($chemin == '/') {
     require_once __DIR__ . '/../../../CLASS_CRUD/article.class.php';
     $monArticle = new ARTICLE;
     require_once __DIR__ . '/../../../CLASS_CRUD/motclearticle.class.php';
@@ -52,7 +52,12 @@ if($chemin == '/'){
         }
     </script>
     <? } ?>
-
+    <script>
+        var SPE = {};
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.spline.design/lib/anime.min.js"></script>
+    <script src="https://cdn.spline.design/lib/spline.runtime.min.js"></script>
 </head>
 
 <body>

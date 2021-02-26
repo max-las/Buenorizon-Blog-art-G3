@@ -159,9 +159,7 @@ button {
     outline: 0;
   }
   &:hover {
-    transform: scale(2);
-    top: -1px;
-    
+    transform: scale(1.05);
   }
 }
 html {
@@ -224,9 +222,13 @@ p {
     max-width: 1320px;
   }
 }
-canvas{
+canvas {
   position: absolute;
-  // filter: blur(0);
-  z-index: 0;
-  
+  filter: blur(50px);
+  // z-index: 20;
+}
+
+a:hover{
+position: relative;
+top: -1px;  
 }

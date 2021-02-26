@@ -1,4 +1,9 @@
 .container-login {
+  canvas{
+    top: -10rem;
+    right: -2rem;
+    z-index: -1;
+  }
   padding-top: 8rem;
   width: 100vw;
   display: flex;
