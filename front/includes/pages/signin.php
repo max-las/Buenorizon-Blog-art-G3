@@ -113,7 +113,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
                             <div class="form-group">
-                                <input id="input-signin" name="passMemb" id="passMemb" type="password" placeholder=" ">
+                                <input name="passMemb" id="passMemb" type="password" placeholder=" ">
                                 <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
@@ -122,7 +122,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             </div>
 
                             <div class="form-group">
-                                <input id="input-signin" name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
+                                <input name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
                                 <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
@@ -131,7 +131,31 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             </div>
 
                             <script>
-
+                                $(document).ready(function(){
+                                    $('#pseudoMemb').on("keyup paste", function(){
+                                        if($(this).val() == ''){
+                                            $('#pseudoPaste').text('Pseudo');
+                                        }else{
+                                            $('#pseudoPaste').text($(this).val());
+                                        }
+                                    });
+                                    $('#prenomMemb, #nomMemb').on("keyup paste", function(){
+                                        var prenom = $('#prenomMemb').val();
+                                        var nom = $('#nomMemb').val();
+                                        if(prenom + nom == ''){
+                                            $('#nomPaste').text('Prénom et Nom');
+                                        }else{
+                                            $('#nomPaste').text(prenom + ' ' + nom);
+                                        }
+                                    });
+                                    $('#eMailMemb').on("keyup paste", function(){
+                                        if($(this).val() == ''){
+                                            $('#eMailPaste').text('Adresse E-mail');
+                                        }else{
+                                            $('#eMailPaste').text($(this).val());
+                                        }
+                                    });
+                                });
                             </script>
 
 
@@ -180,10 +204,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         </svg>
 
                         <!-- Ceci est provisoire est devra changer en fonction de se que l utilisateur rentre -->
-                        <p>Le pseudo</p>
+                        <p id="pseudoPaste">Pseudo</p>
                         <hr>
-                        <p>Prenom et nom</p>
-                        <p>L'adresse Email</p>
+                        <p id="nomPaste">Prénom et Nom</p>
+                        <p id="eMailPaste">Adresse E-mail</p>
 
                     </form>
                 </div>

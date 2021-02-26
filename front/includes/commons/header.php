@@ -6,13 +6,13 @@ if (session_status() === PHP_SESSION_NONE) {
 $isConnected = false;
 if($_SERVER['SERVER_NAME'] == 'plateforme-mmi.iut.u-bordeaux-montaigne.fr'){
     $chemin = subStr($_SERVER['REQUEST_URI'], 30);
-    if((subStr($chemin, -1) == '/') && $chemin != '/'){
-        $chemin = subStr($chemin, 0, -1);
-    }
     $prefix = '/user03/Buenorizon-Blog-art-G3';
 }else{
     $chemin = $_SERVER['REQUEST_URI'];
     $prefix = '';
+}
+if((subStr($chemin, -1) == '/') && $chemin != '/'){
+    $chemin = subStr($chemin, 0, -1);
 }
 
 require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
@@ -44,6 +44,7 @@ if($chemin == '/'){
     <? } ?>
 
     <? if($chemin == '/signin'){ ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
