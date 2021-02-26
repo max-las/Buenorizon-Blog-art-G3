@@ -229,6 +229,9 @@
         @media (min-width: map-get($container-max-widths,xxl)) {
           max-width: 40vw;
         }
+        @media (min-width: 1620px){
+          max-width: 35vw;
+        }
 
         hr {
           margin: 1.5em 0;
