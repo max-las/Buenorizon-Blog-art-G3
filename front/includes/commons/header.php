@@ -3,11 +3,19 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$isConnected = false;
+$chemin = $_SERVER['REQUEST_URI'];
+
 require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
 
-$isConnected = false;
-$chemin = $_SERVER['REQUEST_URI'];
+if($chemin == '/'){
+    require_once __DIR__ . '/../../../CLASS_CRUD/article.class.php';
+    $monArticle = new ARTICLE;
+    require_once __DIR__ . '/../../../CLASS_CRUD/motclearticle.class.php';
+    $monMotCleA = new MOTCLEARTICLE;
+}
+
 
 ?>
 
