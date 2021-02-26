@@ -1,15 +1,15 @@
 <?php
 require_once('../commons/header.php');
 
-if(isset($_SESSION['pseudoMemb'])){
+if (isset($_SESSION['pseudoMemb'])) {
     header("Location: ../../includes/pages/home.php");
 }
 
-require_once __DIR__.'/../../../back/keys/reCaptchaKeys.php';
+require_once __DIR__ . '/../../../back/keys/reCaptchaKeys.php';
 
 $created = false;
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pseudoMemb = $_POST['pseudoMemb'];
     $prenomMemb = $_POST['prenomMemb'];
     $nomMemb = $_POST['nomMemb'];
@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $condMemb = $_POST['condMemb'];
     $dtCreaMemb = date('Y-m-d H:i:s');
     $idStat = 1;
-    
+
     $response = $_POST['g-recaptcha-response'];
     $secret = $reCaptchaPrivateKey;
     $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
@@ -37,33 +37,33 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $context = stream_context_create($options);
     $result = file_get_contents($urlApi, false, $context);
 
-    if ($result === FALSE){
+    if ($result === FALSE) {
         // Erreur
         $e = "<p style=\"color: red;\">Il semblerait qu'il y ait une erreur. Veuillez réessayer plus tard.</p>";
     }
 
     $json = json_decode($result);
 
-    if($json->success){
-        if(!empty($pseudoMemb) && !empty($eMailMemb) && !empty($passMemb) && !empty($passMembVerif)){
-            if(!empty($condMemb)){
-                if($passMemb === $passMembVerif){
-                    if(!empty($souvMemb)){
-                        setcookie('pseudoMemb', $pseudoMemb, time()+60*60*24*30, "/");
+    if ($json->success) {
+        if (!empty($pseudoMemb) && !empty($eMailMemb) && !empty($passMemb) && !empty($passMembVerif)) {
+            if (!empty($condMemb)) {
+                if ($passMemb === $passMembVerif) {
+                    if (!empty($souvMemb)) {
+                        setcookie('pseudoMemb', $pseudoMemb, time() + 60 * 60 * 24 * 30, "/");
                     }
                     $created = true;
                     $success = 'Compte créé avec succès.';
                     $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $idStat, $souvMemb, $condMemb);
-                }else{
+                } else {
                     $e = 'Les deux mots de passe ne correspondent pas.';
                 }
-            }else{
+            } else {
                 $e = 'Vous n\'avez pas accepté les conditions générales d\'utilisation.';
             }
-        }else{
+        } else {
             $e = 'Vous n\'avez pas renseigné tous les champs obligatoires.';
         }
-    }else{
+    } else {
         $e = "<p style=\"color: red;\">Vous n'avez pas validé le Captcha.</p>";
     }
 }
@@ -83,8 +83,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <div class="signin">
                 <div class="infosignin">
 
-                    <p style="color: red;"><? if(isset($e)){echo $e;} ?></p>
-                    <p style="color: green;"><? if($created){echo $success;} ?></p>
+                    <p style="color: red;">
+                        <? if(isset($e)){echo $e;} ?>
+                    </p>
+                    <p style="color: green;">
+                        <? if($created){echo $success;} ?>
+                    </p>
 
                     <div class="content1">
                         <form class="form-inscription" method="post">

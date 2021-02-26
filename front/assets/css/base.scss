@@ -159,8 +159,9 @@ button {
     outline: 0;
   }
   &:hover {
-    top: -2px;
-    transition: 0.4s;
+    transform: scale(2);
+    top: -1px;
+    
   }
 }
 html {
