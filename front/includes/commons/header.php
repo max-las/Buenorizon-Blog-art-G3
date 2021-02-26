@@ -18,7 +18,8 @@ $chemin = $_SERVER['REQUEST_URI'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Eclatech</title>
+    <link rel="icon" href="/front/assets/img/favicon.ico" />
     <link rel="stylesheet" href="/front/assets/css/main.css">
 
     <? if(isset($_SESSION['pseudoMemb']) && $chemin == '/login'){ ?>
