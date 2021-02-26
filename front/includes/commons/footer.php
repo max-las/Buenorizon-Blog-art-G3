@@ -23,6 +23,13 @@
     </div>
   </div>
 </footer>
+<script>
+  var SPE = {};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.spline.design/lib/anime.min.js"></script>
+<script src="https://cdn.spline.design/lib/spline.runtime.min.js"></script>
+<script src="/front/assets/js/circle.js"></script>
 <script src="/front/assets/js/lottie.js"></script>
 <script src="/front/assets/js/app.js"></script>
 </body>

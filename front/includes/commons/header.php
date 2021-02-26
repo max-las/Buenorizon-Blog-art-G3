@@ -42,6 +42,7 @@ if($chemin == '/'){
         }
     </script>
     <? } ?>
+
 </head>
 
 <body>
