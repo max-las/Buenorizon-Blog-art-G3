@@ -85,9 +85,8 @@ require_once('../commons/header.php');
                 Le Directeur de la publication est Théo Deschamps.
             </p>
             <h3 class="h3about"> Article 2 : L’hébergeur
-                (!!! A compléter quand on aura l’hébergeur)</h3 class="h3about">
-            <p>L'hébergeur du site Eclat Tech est la Société _______________, dont le siège social est situé au _______________ , avec le numéro de téléphone : _______________.
-            </p>
+            </h3 class="h3about">
+            <p>L'hébergeur du site Eclat Tech est l’université Bordeaux Montaigne, situé à l’adresse 1 rue Jacques Ellul 33080 Bordeaux, avec le numéro de téléphone : 05 57 12 20 44. </p>
             <h3 class="h3about">Article 3 : Accès au site
             </h3 class="h3about">
             <p>Le site est accessible par tout endroit, 7j/7, 24h/24 sauf cas de force majeure, interruption programmée ou non et pouvant découlant d’une nécessité de maintenance.
