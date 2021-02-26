@@ -5,6 +5,8 @@ if(isset($_SESSION['pseudoMemb'])){
     header("Location: ../../includes/pages/home.php");
 }
 
+require_once __DIR__.'/../../../back/keys/reCaptchaKeys.php';
+
 $created = false;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -82,25 +84,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <p style="color: green;"><? if($created){echo $success;} ?></p>
 
                     <div class="content1">
-                        <form class="form-inscription" action="./signin.php" method="post">
+                        <form class="form-inscription" method="post">
 
                             <div class="form-group">
-                                <input type="input" name="pseudoMemb" id="pseudoMemb" placeholder="Rechercher un article...">
+                                <input type="input" name="pseudoMemb" id="pseudoMemb" placeholder=" ">
                                 <label>Pseudo<b class=red>*</b><label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" name="prenomMemb" id="prenomMemb" placeholder="Rechercher un article...">
+                                <input type="input" name="prenomMemb" id="prenomMemb" placeholder=" ">
                                 <label>Prénom<label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" name="nomMemb" id="nomMemb" placeholder="Rechercher un article...">
+                                <input type="input" name="nomMemb" id="nomMemb" placeholder=" ">
                                 <label>Nom<label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" name="eMailMemb" id="eMailMemb" placeholder="Rechercher un article...">
+                                <input type="input" name="eMailMemb" id="eMailMemb" placeholder=" ">
                                 <label>Adresse mail <b class=red>*</b><label>
                             </div>
 
@@ -108,7 +110,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
                             <div class="form-group">
-                                <input id="input-signin" name="passMemb" id="passMemb" type="password" placeholder="Rechercher un article...">
+                                <input id="input-signin" name="passMemb" id="passMemb" type="password" placeholder=" ">
                                 <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
@@ -117,7 +119,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             </div>
 
                             <div class="form-group">
-                                <input id="input-signin" name="passMembVerif" id="passMembVerif" type="password" placeholder="Rechercher un article...">
+                                <input id="input-signin" name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
                                 <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>

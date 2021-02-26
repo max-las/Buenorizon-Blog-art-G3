@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteRule ^$ front/includes/pages/home.php
+RewriteRule signin front/includes/pages/signin.php
+RewriteRule login front/includes/pages/login.php
+RewriteRule article front/includes/pages/article.php
+RewriteRule about front/includes/pages/about.php
+RewriteRule contact front/includes/pages/contact.php
+RewriteRule moncompte front/includes/pages/moncompte.php

@@ -1,5 +1,6 @@
 <?php
 require_once('../commons/header.php');
+
 ?>
 
 <!-- Put your code here my friend ;) -->
