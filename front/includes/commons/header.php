@@ -7,11 +7,8 @@ require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
 
 $isConnected = false;
-$chemin = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], '/', 1));
+$chemin = $_SERVER['REQUEST_URI'];
 
-if ($chemin == '/front/includes/pages/signin.php') {
-    require_once __DIR__ . '/../../../back/keys/reCaptchaKeys.php';
-}
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +19,14 @@ if ($chemin == '/front/includes/pages/signin.php') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <? if(isset($_SESSION['pseudoMemb']) && $chemin == '/front/includes/pages/login.php'){ ?>
-    <meta http-equiv="refresh" content="2, url=../pages/home.php" />
+    <link rel="stylesheet" href="/front/assets/css/main.css">
+
+    <? if(isset($_SESSION['pseudoMemb']) && $chemin == '/login'){ ?>
+    <meta http-equiv="refresh" content="2, url=/" />
     <? } ?>
-    <? if($chemin == '/front/includes/pages/signin.php'){ ?>
+
+    <? if($chemin == '/signin'){ ?>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
             document.getElementById("theForm").submit();
@@ -39,15 +39,15 @@ if ($chemin == '/front/includes/pages/signin.php') {
     <header>
         <div class="navbar">
             <div>
-                <a <?= ($chemin == '/front/includes/pages/home.php') ? 'class="highlight"' : '' ?> href="../pages/home.php">Accueil</a>
-                <a <?= ($chemin == '/front/includes/pages/article.php') ? 'class="highlight"' : '' ?> href="../pages/home.php#articles">Articles</a>
-                <a <?= ($chemin == '/front/includes/pages/contact.php') ? 'class="highlight"' : '' ?> href="../pages/contact.php">Contact</a>
-                <a <?= ($chemin == '/front/includes/pages/about.php') ? 'class="highlight"' : '' ?> href="../pages/about.php">A propos</a>
+                <a <?= ($chemin == '/') ? 'class="highlight"' : '' ?> href="/">Accueil</a>
+                <a <?= ($chemin == '/article') ? 'class="highlight"' : '' ?> href="/article">Articles</a>
+                <a <?= ($chemin == '/contact') ? 'class="highlight"' : '' ?> href="/contact">Contact</a>
+                <a <?= ($chemin == '/about') ? 'class="highlight"' : '' ?> href="/about">A propos</a>
             </div>
             <div>
                 <? if(isset($_SESSION['pseudoMemb'])){ ?>
                 <p><?= $_SESSION['pseudoMemb'] ?></p>
-                <button onclick="location.href='../pages/moncompte.php'">Mon compte</button>
+                <button onclick="location.href='/moncompte'">Mon compte</button>
                 <? 
                             $myMembre = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
                             if ($myMembre['idStat'] == 9){ 
@@ -55,8 +55,8 @@ if ($chemin == '/front/includes/pages/signin.php') {
                 <!-- HTML link to CRUD -->
                 <? } ?>
                 <? }else{ ?>
-                <a <?= ($chemin == '/front/includes/pages/login.php') ? 'class="highlight"' : '' ?> href="../pages/login.php">Connexion</a>
-                <button onclick="location.href='../pages/signin.php'">S'inscrire</button>
+                <a <?= ($chemin == '/login') ? 'class="highlight"' : '' ?> href="/login">Connexion</a>
+                <button onclick="location.href='/signin'">S'inscrire</button>
                 <? } ?>
             </div>
         </div>
