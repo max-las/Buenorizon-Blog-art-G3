@@ -63,6 +63,28 @@ require_once('../commons/header.php');
 
         </figure>
     </div>
+
+    <div class="content-slider2">
+
+        <div class="content-slider-abso">
+
+            <div id="slider2">
+
+                <figure>
+
+                    <div class="slide-content-2">
+                        <p>gregre nieu nieu nieu</p>
+                    </div>
+
+                </figure>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 </div>
 
 

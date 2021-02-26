@@ -10,7 +10,7 @@
     figure {
       display: flex;
       position: relative;
-      width:500% ;
+      width: 500%;
       margin: 0;
       padding: 0;
       font-size: 0;
@@ -22,15 +22,46 @@
         background-size: cover;
         background-position-y: center;
         background-image: url(./../../assets/img/drone-carrousel.jpg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .title {
           display: flex;
           justify-content: center;
           align-items: center;
 
+
           h1 {
             margin-left: 0.5rem;
             font-size: 4rem;
+          }
+        }
+      }
+    }
+  }
+
+  .content-slider2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .content-slider-abso {
+      position: absolute;
+
+      #slider2 {
+        width: 50vw;
+        max-width: 80vw;
+        height: 20%;
+        overflow: hidden;
+
+        figure {
+          .slide-content-2 {
+            background-color: lawngreen;
+
+            h1 {
+              text-align: center;
+            }
           }
         }
       }
@@ -56,9 +87,8 @@
     95% {
       left: -200%;
     }
-    100%{
+    100% {
       left: 0%;
     }
-   
   }
 }
