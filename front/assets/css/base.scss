@@ -116,12 +116,14 @@ section {
 body {
   line-height: 1;
   width: 100vw;
+  min-height: 100vh;
   color: white;
   background-image: url("./../img/Fondabout.svg");
   background-size: 200vw;
   overflow-x: hidden;
-  width: 100vw;
   // filter: blur(8px);
+  display: flex;
+  flex-direction: column;
 }
 ol,
 ul {
@@ -162,6 +164,9 @@ button {
 }
 html {
   font-family: $montserrat;
+}
+main{
+  flex: 1;
 }
 h1 {
   font-family: $michroma;
