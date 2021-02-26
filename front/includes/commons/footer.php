@@ -23,7 +23,8 @@
     </div>
   </div>
 </footer>
-
+<script src="/front/assets/js/lottie.js"></script>
+<script src="/front/assets/js/app.js"></script>
 </body>
 
 </html>
