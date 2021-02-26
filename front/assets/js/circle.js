@@ -114,7 +114,7 @@ var SPLINE_EXPORTED_SCENE = {
   cameras: [
     {
       type: "Orthographic",
-      orthographic: { xmag: 1904, ymag: 1018, zfar: 100000, znear: -50000 },
+      orthographic: { xmag: 1000, ymag: 1018, zfar: 100000, znear: -50000 },
       spe_options: { zoom: 1 },
     },
   ],
@@ -290,8 +290,8 @@ var SPLINE_EXPORTED_SCENE = {
     cameraPan: false,
     cameraZoom: false,
     viewMode: 1,
-    viewWidth: 512,
-    viewHeight: 512,
+    viewWidth: 100,
+    viewHeight: 100,
     quality: "low",
     useOrbitControls: false,
   },

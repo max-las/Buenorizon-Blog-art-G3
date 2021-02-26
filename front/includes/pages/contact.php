@@ -16,15 +16,15 @@ require_once('../commons/header.php');
 
                 <form class="form-connexion" action="./login.php" method="post">
                 <div class="form-group">
-                    <input type="input" id="" name="" placeholder="">
+                    <input type="input" id="" name="" placeholder="label">
                     <label>Nom<label>
                 </div>
                 <div class="form-group">
-                    <input type="input" id="" name="" placeholder="">
+                    <input type="input" id="" name="" placeholder="label">
                     <label>Adresse mail<label>
                 </div>
                 <div class="form-group">
-                    <input type="input" id="" name="" placeholder="">
+                    <input type="input" id="" name="" placeholder="label">
                     <label>Votre message<label>
                 </div>
 

@@ -13,7 +13,7 @@ require_once('../commons/header.php');
             <div class="slide-content">
 
                 <div class="title">
-                    <svg width="15" height="64" viewBox="0 0 15 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="15" height="64" viewBox="0 0 15 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.83444e-06 0L15 6.47133e-07V0.75278L2.8011e-06 0.75278L2.83444e-06 0ZM2.76776e-06 1.50556L15 1.50556V3.01112L2.70108e-06 3.01112L2.76776e-06 1.50556ZM2.60106e-06 5.26946L15 5.26946V6.02224L2.56772e-06 6.02224L2.60106e-06 5.26946Z" fill="white" />
                         <path d="M2.46762e-06 8.28254L15 8.28254V9.7881L2.40094e-06 9.7881L2.46762e-06 8.28254ZM2.30092e-06 12.0464H15V12.7992L2.26758e-06 12.7992L2.30092e-06 12.0464ZM2.23425e-06 13.552L15 13.552V15.8103L2.13423e-06 15.8103L2.23425e-06 13.552Z" fill="white" />
                         <path d="M2.1008e-06 16.5651L15 16.5651V17.3179L2.06746e-06 17.3179L2.1008e-06 16.5651ZM1.96745e-06 19.5762L15 19.5762V21.8345H1.86743e-06L1.96745e-06 19.5762ZM1.83409e-06 22.5873L15 22.5873V24.0929H1.76741e-06L1.83409e-06 22.5873Z" fill="white" />
@@ -30,7 +30,7 @@ require_once('../commons/header.php');
             <div class="slide-content">
 
                 <div class="title">
-                    <svg width="15" height="64" viewBox="0 0 15 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="15" height="64" viewBox="0 0 15 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.83444e-06 0L15 6.47133e-07V0.75278L2.8011e-06 0.75278L2.83444e-06 0ZM2.76776e-06 1.50556L15 1.50556V3.01112L2.70108e-06 3.01112L2.76776e-06 1.50556ZM2.60106e-06 5.26946L15 5.26946V6.02224L2.56772e-06 6.02224L2.60106e-06 5.26946Z" fill="white" />
                         <path d="M2.46762e-06 8.28254L15 8.28254V9.7881L2.40094e-06 9.7881L2.46762e-06 8.28254ZM2.30092e-06 12.0464H15V12.7992L2.26758e-06 12.7992L2.30092e-06 12.0464ZM2.23425e-06 13.552L15 13.552V15.8103L2.13423e-06 15.8103L2.23425e-06 13.552Z" fill="white" />
                         <path d="M2.1008e-06 16.5651L15 16.5651V17.3179L2.06746e-06 17.3179L2.1008e-06 16.5651ZM1.96745e-06 19.5762L15 19.5762V21.8345H1.86743e-06L1.96745e-06 19.5762ZM1.83409e-06 22.5873L15 22.5873V24.0929H1.76741e-06L1.83409e-06 22.5873Z" fill="white" />
@@ -47,7 +47,7 @@ require_once('../commons/header.php');
             <div class="slide-content">
 
                 <div class="title">
-                    <svg width="15" height="64" viewBox="0 0 15 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="15" height="64" viewBox="0 0 15 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.83444e-06 0L15 6.47133e-07V0.75278L2.8011e-06 0.75278L2.83444e-06 0ZM2.76776e-06 1.50556L15 1.50556V3.01112L2.70108e-06 3.01112L2.76776e-06 1.50556ZM2.60106e-06 5.26946L15 5.26946V6.02224L2.56772e-06 6.02224L2.60106e-06 5.26946Z" fill="white" />
                         <path d="M2.46762e-06 8.28254L15 8.28254V9.7881L2.40094e-06 9.7881L2.46762e-06 8.28254ZM2.30092e-06 12.0464H15V12.7992L2.26758e-06 12.7992L2.30092e-06 12.0464ZM2.23425e-06 13.552L15 13.552V15.8103L2.13423e-06 15.8103L2.23425e-06 13.552Z" fill="white" />
                         <path d="M2.1008e-06 16.5651L15 16.5651V17.3179L2.06746e-06 17.3179L2.1008e-06 16.5651ZM1.96745e-06 19.5762L15 19.5762V21.8345H1.86743e-06L1.96745e-06 19.5762ZM1.83409e-06 22.5873L15 22.5873V24.0929H1.76741e-06L1.83409e-06 22.5873Z" fill="white" />
@@ -64,6 +64,75 @@ require_once('../commons/header.php');
 
         </figure>
     </div>
+
+    <div class="content-slider2">
+
+        <div class="content-slider-abso">
+
+            <div id="slider2">
+
+                <figure>
+
+                    <div class="slide-content-2">
+
+                        <div class="left-box">
+
+
+                            <p>31 Janvier 2021</p>
+                            <h2>France Digitale Tour</h2>
+
+                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
+
+
+
+                        </div>
+
+                        <div class="right-box">
+
+                            <p>31 Janvier 2021</p>
+                            <h2>France Digitale Tour</h2>
+
+                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
+
+
+                        </div>
+                    </div>
+
+                    <div class="slide-content-2">
+
+                        <div class="left-box">
+
+
+                            <p>31 Janvier 2021</p>
+                            <h2>France Digitale Tour</h2>
+
+                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
+
+
+
+                        </div>
+
+                        <div class="right-box">
+
+                            <p>31 Janvier 2021</p>
+                            <h2>France Digitale Tour</h2>
+
+                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
+
+
+                        </div>
+                    </div>
+
+
+                </figure>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 </div>
 
 
@@ -90,7 +159,7 @@ require_once('../commons/header.php');
             </div>
         </div>
 
-    <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
 
         <?
             $allArticles = $monArticle->get_AllArticles();
@@ -102,21 +171,21 @@ require_once('../commons/header.php');
                     break;
                 }
         ?>
-            <div class="article <?= ($i%2) ? "" : "left" ?>">
+        <div class="article <?= ($i % 2) ? "" : "left" ?>">
             <img src="/back/article/uploads/<?= $row['urlPhotArt'] ?>" alt="">
             <div class="info-articles">
                 <div class="content">
                     <div class="meta">
                         <? foreach($mesMotsClesA as $raw): ?>
-                            <span class="category"><?= $raw['libMotCle'] ?><span>
-                        <? endforeach ?>
-                        <div class="date">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.99301 1.3335C4.31301 1.3335 1.33301 4.32016 1.33301 8.00016C1.33301 11.6802 4.31301 14.6668 7.99301 14.6668C11.6797 14.6668 14.6663 11.6802 14.6663 8.00016C14.6663 4.32016 11.6797 1.3335 7.99301 1.3335ZM7.99967 13.3335C5.05301 13.3335 2.66634 10.9468 2.66634 8.00016C2.66634 5.0535 5.05301 2.66683 7.99967 2.66683C10.9463 2.66683 13.333 5.0535 13.333 8.00016C13.333 10.9468 10.9463 13.3335 7.99967 13.3335Z" fill="white" />
-                                <path d="M8.33301 4.6665H7.33301V8.6665L10.833 10.7665L11.333 9.9465L8.33301 8.1665V4.6665Z" fill="white" />
-                            </svg>
-                            <p><?= $row['dtCreArt'] ?></p>
-                        </div>
+                        <span class="category"><?= $raw['libMotCle'] ?><span>
+                                <? endforeach ?>
+                                <div class="date">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.99301 1.3335C4.31301 1.3335 1.33301 4.32016 1.33301 8.00016C1.33301 11.6802 4.31301 14.6668 7.99301 14.6668C11.6797 14.6668 14.6663 11.6802 14.6663 8.00016C14.6663 4.32016 11.6797 1.3335 7.99301 1.3335ZM7.99967 13.3335C5.05301 13.3335 2.66634 10.9468 2.66634 8.00016C2.66634 5.0535 5.05301 2.66683 7.99967 2.66683C10.9463 2.66683 13.333 5.0535 13.333 8.00016C13.333 10.9468 10.9463 13.3335 7.99967 13.3335Z" fill="white" />
+                                        <path d="M8.33301 4.6665H7.33301V8.6665L10.833 10.7665L11.333 9.9465L8.33301 8.1665V4.6665Z" fill="white" />
+                                    </svg>
+                                    <p><?= $row['dtCreArt'] ?></p>
+                                </div>
                     </div>
                     <h2><?= $row['libTitrArt'] ?></h2>
                     <hr>
@@ -139,7 +208,7 @@ require_once('../commons/header.php');
             endforeach
         ?>
 
-    <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+        <!-- -------------------------------------------------------------------------------------------------------------------------- -->
 
         <!-- <div class="article">
             <img src="/front/assets/img/drone-carrousel.jpg" alt="image de drone">
