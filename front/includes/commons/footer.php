@@ -30,6 +30,7 @@
 <script src="https://cdn.spline.design/lib/anime.min.js"></script>
 <script src="https://cdn.spline.design/lib/spline.runtime.min.js"></script>
 <script src="<?= $prefix ?>/front/assets/js/circle.js"></script>
+<!-- <script src="<?= $prefix ?>/front/assets/js/square.js"></script> -->
 <script src="<?= $prefix ?>/front/assets/js/lottie.js"></script>
 <script src="<?= $prefix ?>/front/assets/js/app.js"></script>
 </body>
