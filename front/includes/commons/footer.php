@@ -23,7 +23,9 @@
     </div>
   </div>
 </footer>
-
+<script src="./../../assets/js/lottie.js"></script>
+<script src="./../../assets/js/app.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 </body>
 
 </html>

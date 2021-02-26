@@ -18,20 +18,15 @@ if ($chemin == '/front/includes/pages/signin.php') {
 <html lang="fr">
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.4/lottie_svg.min.js" type="text/javascript"></script>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../assets/css/main.css">
-
     <? if(isset($_SESSION['pseudoMemb']) && $chemin == '/front/includes/pages/login.php'){ ?>
     <meta http-equiv="refresh" content="2, url=../pages/home.php" />
     <? } ?>
-
     <? if($chemin == '/front/includes/pages/signin.php'){ ?>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
             document.getElementById("theForm").submit();
