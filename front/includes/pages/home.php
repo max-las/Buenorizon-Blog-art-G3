@@ -90,7 +90,7 @@ require_once('../commons/header.php');
             </div>
         </div>
         <div class="article">
-            <img src="./../../assets/img/drone-carrousel.jpg" alt="image de drone">
+            <img src="/front/assets/img/drone-carrousel.jpg" alt="image de drone">
             <div class="info-articles">
                 <div class="content">
                     <div class="meta">
@@ -149,7 +149,7 @@ require_once('../commons/header.php');
                     </div>
                 </div>
             </div>
-            <img src="./../../assets/img/drone-carrousel.jpg" alt="image de drone">
+            <img src="/front/assets/img/drone-carrousel.jpg" alt="image de drone">
         </div>
     </div>
 </div>
