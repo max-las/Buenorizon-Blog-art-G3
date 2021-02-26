@@ -98,6 +98,9 @@ require_once('../commons/header.php');
             foreach($allArticles as $row):
                 $mesMotsClesA = $monMotCleA->get_AllMotClesByArticle($row['numArt']);
                 $i++;
+                if($i == 5){
+                    break;
+                }
         ?>
             <div class="article <?= ($i%2) ? "" : "left" ?>">
             <img src="/back/article/uploads/<?= $row['urlPhotArt'] ?>" alt="">
