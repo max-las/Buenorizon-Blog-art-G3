@@ -2,7 +2,7 @@
   canvas{
     top: -10rem;
     right: -2rem;
-    z-index: -1;
+    z-index: 0;
   }
   padding-top: 8rem;
   width: 100vw;
@@ -107,7 +107,7 @@
         }
       }
       button {
-        margin-top: 4em;
+        margin-top: 2em;
       }
     }
   }
