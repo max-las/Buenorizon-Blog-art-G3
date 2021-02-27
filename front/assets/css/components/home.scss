@@ -55,7 +55,7 @@
 
       width: 50vw;
       max-width: 50vw;
-      height: 30vh;
+      height: 100vh;
 
       #slider2 {
         display: flex;
@@ -68,21 +68,19 @@
         figure {
           display: flex;
           position: relative;
-          width: 500%;
+          width: 300%;
 
-          
           height: 30%;
           display: flex;
 
           animation: 30s slidy infinite;
-
           .slide-content-2 {
             background: rgba(3, 63, 133, 0.1);
             box-shadow: 12px 12px 12px rgba(0, 40, 59, 0.6),
               inset 60px 12px 100px rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(50px);
 
-            
+            width: 300vw;
           }
         }
       }
