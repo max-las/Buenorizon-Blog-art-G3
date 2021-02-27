@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!empty($pseudoMemb) && !empty($eMailMemb) && !empty($passMemb) && !empty($passMembVerif)) {
             if (!empty($condMemb)) {
                 if ($passMemb === $passMembVerif) {
-                    if (!empty($souvMemb)) {
+                    if ($souvMemb == 'true') {
                         setcookie('pseudoMemb', $pseudoMemb, time() + 60 * 60 * 24 * 30, "/");
                     }
                     $created = true;

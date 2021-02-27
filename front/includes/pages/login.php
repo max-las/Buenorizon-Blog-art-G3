@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $myMembreByMail = $monMembre->get_1MembreByMail($pseudo);
         if ($myMembreByPseudo) {
             if (password_verify($mdp, $myMembreByPseudo['passMemb'])) {
-                if (!empty($souvMemb)) {
+                if ($souvMemb == 'true') {
                     setcookie('pseudoMemb', $pseudo, time() + 60 * 60 * 24 * 30, "/");
                 }
                 $memb = $monMembre->get_1Membre($myMembreByPseudo['numMemb']);
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         } elseif ($myMembreByMail) {
             if (password_verify($mdp, $myMembreByMail['passMemb'])) {
-                if (!empty($souvMemb)) {
+                if ($souvMemb == 'true') {
                     setcookie('pseudoMemb', $pseudo, time() + 60 * 60 * 24 * 30, "/");
                 }
                 $memb = $monMembre->get_1Membre($myMembreByMail['numMemb']);
