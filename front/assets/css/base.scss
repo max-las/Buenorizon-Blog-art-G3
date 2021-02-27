@@ -9,7 +9,7 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   xl: 1140px,
-  xxl: 1320px,
+  xxl: 1441px,
 );
 html,
 body,
@@ -144,6 +144,7 @@ table {
   border-spacing: 0;
 }
 button {
+  position: relative;
   font-weight: 600;
   border-radius: 0.5rem;
   background-color: $primary;
@@ -153,12 +154,12 @@ button {
   border: none;
   padding: 8px 12px;
   font-size: 1rem;
+  transition: 0.2s;
   &:focus {
     outline: 0;
   }
   &:hover {
-    top: 20px;
-    transition: 0.2s;
+    transform: scale(1.05);
   }
 }
 html {
@@ -166,6 +167,7 @@ html {
 }
 main {
   flex: 1;
+  z-index: 10;
 }
 h1 {
   font-family: $michroma;
@@ -220,11 +222,16 @@ p {
     max-width: 1320px;
   }
 }
-canvas{
+canvas {
   position: absolute;
-  filter: blur(100px);
-  z-index: -1;
-  #circle{
-
+  filter: blur(35px);
+  // z-index: 20;
+}
+a {
+  text-decoration: unset;
+  color: unset;
+  &:hover {
+    position: relative;
+    top: -1px;
   }
 }

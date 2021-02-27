@@ -1,15 +1,15 @@
 <?php
 require_once('../commons/header.php');
 
-if(isset($_SESSION['pseudoMemb'])){
+if (isset($_SESSION['pseudoMemb'])) {
     header("Location: ../../includes/pages/home.php");
 }
 
-require_once __DIR__.'/../../../back/keys/reCaptchaKeys.php';
+require_once __DIR__ . '/../../../back/keys/reCaptchaKeys.php';
 
 $created = false;
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pseudoMemb = $_POST['pseudoMemb'];
     $prenomMemb = $_POST['prenomMemb'];
     $nomMemb = $_POST['nomMemb'];
@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $condMemb = $_POST['condMemb'];
     $dtCreaMemb = date('Y-m-d H:i:s');
     $idStat = 1;
-    
+
     $response = $_POST['g-recaptcha-response'];
     $secret = $reCaptchaPrivateKey;
     $urlApi = 'https://www.google.com/recaptcha/api/siteverify';
@@ -37,33 +37,33 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $context = stream_context_create($options);
     $result = file_get_contents($urlApi, false, $context);
 
-    if ($result === FALSE){
+    if ($result === FALSE) {
         // Erreur
         $e = "<p style=\"color: red;\">Il semblerait qu'il y ait une erreur. Veuillez réessayer plus tard.</p>";
     }
 
     $json = json_decode($result);
 
-    if($json->success){
-        if(!empty($pseudoMemb) && !empty($eMailMemb) && !empty($passMemb) && !empty($passMembVerif)){
-            if(!empty($condMemb)){
-                if($passMemb === $passMembVerif){
-                    if(!empty($souvMemb)){
-                        setcookie('pseudoMemb', $pseudoMemb, time()+60*60*24*30, "/");
+    if ($json->success) {
+        if (!empty($pseudoMemb) && !empty($eMailMemb) && !empty($passMemb) && !empty($passMembVerif)) {
+            if (!empty($condMemb)) {
+                if ($passMemb === $passMembVerif) {
+                    if ($souvMemb == 'true') {
+                        setcookie('pseudoMemb', $pseudoMemb, time() + 60 * 60 * 24 * 30, "/");
                     }
                     $created = true;
                     $success = 'Compte créé avec succès.';
                     $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $dtCreaMemb, $idStat, $souvMemb, $condMemb);
-                }else{
+                } else {
                     $e = 'Les deux mots de passe ne correspondent pas.';
                 }
-            }else{
+            } else {
                 $e = 'Vous n\'avez pas accepté les conditions générales d\'utilisation.';
             }
-        }else{
+        } else {
             $e = 'Vous n\'avez pas renseigné tous les champs obligatoires.';
         }
-    }else{
+    } else {
         $e = "<p style=\"color: red;\">Vous n'avez pas validé le Captcha.</p>";
     }
 }
@@ -83,8 +83,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <div class="signin">
                 <div class="infosignin">
 
-                    <p style="color: red;"><? if(isset($e)){echo $e;} ?></p>
-                    <p style="color: green;"><? if($created){echo $success;} ?></p>
+                    <p style="color: red;">
+                        <? if(isset($e)){echo $e;} ?>
+                    </p>
+                    <p style="color: green;">
+                        <? if($created){echo $success;} ?>
+                    </p>
 
                     <div class="content1">
                         <form class="form-inscription" method="post">
@@ -113,7 +117,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
                             <div class="form-group">
-                                <input id="input-signin" name="passMemb" id="passMemb" type="password" placeholder=" ">
+                                <input name="passMemb" id="passMemb" type="password" placeholder=" ">
                                 <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
@@ -122,7 +126,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             </div>
 
                             <div class="form-group">
-                                <input id="input-signin" name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
+                                <input name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
                                 <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
@@ -131,7 +135,31 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             </div>
 
                             <script>
-
+                                $(document).ready(function(){
+                                    $('#pseudoMemb').on("keyup paste", function(){
+                                        if($(this).val() == ''){
+                                            $('#pseudoPaste').text('Pseudo');
+                                        }else{
+                                            $('#pseudoPaste').text($(this).val());
+                                        }
+                                    });
+                                    $('#prenomMemb, #nomMemb').on("keyup paste", function(){
+                                        var prenom = $('#prenomMemb').val();
+                                        var nom = $('#nomMemb').val();
+                                        if(prenom + nom == ''){
+                                            $('#nomPaste').text('Prénom et Nom');
+                                        }else{
+                                            $('#nomPaste').text(prenom + ' ' + nom);
+                                        }
+                                    });
+                                    $('#eMailMemb').on("keyup paste", function(){
+                                        if($(this).val() == ''){
+                                            $('#eMailPaste').text('Adresse E-mail');
+                                        }else{
+                                            $('#eMailPaste').text($(this).val());
+                                        }
+                                    });
+                                });
                             </script>
 
 
@@ -180,10 +208,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         </svg>
 
                         <!-- Ceci est provisoire est devra changer en fonction de se que l utilisateur rentre -->
-                        <p>Le pseudo</p>
+                        <p id="pseudoPaste">Pseudo</p>
                         <hr>
-                        <p>Prenom et nom</p>
-                        <p>L'adresse Email</p>
+                        <p id="nomPaste">Prénom et Nom</p>
+                        <p id="eMailPaste">Adresse E-mail</p>
 
                     </form>
                 </div>

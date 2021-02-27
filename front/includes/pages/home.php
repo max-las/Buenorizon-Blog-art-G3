@@ -86,8 +86,9 @@ require_once('../commons/header.php');
                     <div class="slide-content-2">
 
                         <p>31 Janvier 2021</p>
+                        <br/>
                         <h2>France Digitale Tour</h2>
-
+                        <br/>
                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
 
                     </div>
@@ -105,6 +106,8 @@ require_once('../commons/header.php');
 
 
                 </figure>
+
+                
 
             </div>
 
@@ -168,7 +171,7 @@ require_once('../commons/header.php');
                     <hr>
                     <p><?= $row['libChapoArt'] ?></p>
                     <div class="interraction">
-                        <p><a href="/article?id=<?= $row['numArt'] ?>">En savoir plus</a></p>
+                      <a href="/article?id=<?= $row['numArt'] ?>">En savoir plus</a>
                         <div class="icons">
                             <svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M23.1496 2.85611C20.6844 0.382065 16.6842 0.380913 14.2179 2.85496L14.2156 2.85611L12.9985 4.07701L11.7814 2.85611C9.31513 0.382065 5.31716 0.382065 2.84972 2.85611C0.383427 5.33015 0.383427 9.34299 2.84972 11.817L4.06564 13.0379L12.9985 22L21.9313 13.0379L23.1496 11.817C25.6159 9.34414 25.617 5.33246 23.1519 2.85841L23.1496 2.85611Z" stroke="white" stroke-width="1.97918" stroke-linecap="round" stroke-linejoin="round" />

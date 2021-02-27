@@ -5,11 +5,19 @@
         $monMembre = new MEMBRE;
 		$myMembre = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
 		if(intval($myMembre['idStat']) != 9){
-            header("Location: ../../front/includes/pages/home.php");
-            die();
+			if($_SERVER['SERVER_NAME'] == 'plateforme-mmi.iut.u-bordeaux-montaigne.fr'){
+				header("Location: /user03/Buenorizon-Blog-art-G3");
+			}else{
+				header("Location: /");
+			}
+        die();
 		}
 	}else{
-		header("Location: ../../front/includes/pages/home.php");
+		if($_SERVER['SERVER_NAME'] == 'plateforme-mmi.iut.u-bordeaux-montaigne.fr'){
+			header("Location: /user03/Buenorizon-Blog-art-G3");
+		}else{
+			header("Location: /");
+		}
         die();
 	}
 ?>
