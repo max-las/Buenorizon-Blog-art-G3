@@ -75,52 +75,32 @@ require_once('../commons/header.php');
 
                     <div class="slide-content-2">
 
-                        <div class="left-box">
+                        <p>31 Janvier 2021</p>
+                        <h2>France Digitale Tour</h2>
 
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
 
-                            <p>31 Janvier 2021</p>
-                            <h2>France Digitale Tour</h2>
-
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
-
-
-
-                        </div>
-
-                        <div class="right-box">
-
-                            <p>31 Janvier 2021</p>
-                            <h2>France Digitale Tour</h2>
-
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
-
-
-                        </div>
                     </div>
 
+                    
                     <div class="slide-content-2">
 
-                        <div class="left-box">
+                        <p>31 Janvier 2021</p>
+                        <h2>France Digitale Tour</h2>
 
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
 
-                            <p>31 Janvier 2021</p>
-                            <h2>France Digitale Tour</h2>
+                    </div>
 
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
+                    
+                    <div class="slide-content-2">
 
+                        <p>31 Janvier 2021</p>
+                        <br/>
+                        <h2>France Digitale Tour</h2>
+                        <br/>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
 
-
-                        </div>
-
-                        <div class="right-box">
-
-                            <p>31 Janvier 2021</p>
-                            <h2>France Digitale Tour</h2>
-
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
-
-
-                        </div>
                     </div>
 
 
@@ -167,9 +147,6 @@ require_once('../commons/header.php');
             foreach($allArticles as $row):
                 $mesMotsClesA = $monMotCleA->get_AllMotClesByArticle($row['numArt']);
                 $i++;
-                if($i == 5){
-                    break;
-                }
         ?>
         <div class="article <?= ($i % 2) ? "" : "left" ?>">
             <img src="/back/article/uploads/<?= $row['urlPhotArt'] ?>" alt="">
