@@ -85,11 +85,11 @@ require_once('../commons/header.php');
                     
                     <div class="slide-content-2">
 
-                        <p>31 Janvier 2021</p>
+                        <p class="date-mini">31 Janvier 2021</p>
                         <br/>
-                        <h2>France Digitale Tour</h2>
+                        <h2 class="titre-mini">France Digitale Tour</h2>
                         <br/>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
+                        <p class="text-mini"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
 
                     </div>
 
