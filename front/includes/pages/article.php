@@ -8,14 +8,14 @@ require_once('../commons/header.php');
             <h2>Comment dompter les drones ?</h2>
             <img class="img-top" src="/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
-        <div>
+        <div class="para-left">
             <div>
                 <p> Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
                     « Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
                     Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.
                 </p>
             </div>
-            <img src="" alt="">
+            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
         <div>
             <img src="" alt="">
@@ -55,6 +55,12 @@ require_once('../commons/header.php');
         </div>
         <div class="hashtag"></div>
     </div>
+    <div class="comment">
+        <div class="header"></div>
+        <div class="content"></div>
+        <div class="interaction"></div>
+    </div>
+    <div class="add-comment"></div>
 </div>
 <?php
 require_once('../commons/footer.php');
