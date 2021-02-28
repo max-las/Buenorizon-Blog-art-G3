@@ -60,7 +60,11 @@ require_once('../commons/header.php');
         <div class="content"></div>
         <div class="interaction"></div>
     </div>
-    <div class="add-comment"></div>
+    <div class="add-comment">
+        <h2 class="name"></h2>
+        <input type="text" >
+        <label for="">Ajouter un commentaire public</label>
+    </div>
 </div>
 <?php
 require_once('../commons/footer.php');
