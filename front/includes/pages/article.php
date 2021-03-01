@@ -23,11 +23,11 @@ $parag3Art = "Le cirque a présenté une première: un spectacle de domptage de 
 « Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
 Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.";
 $libConclArt = 'C\'est fini les amis';
-$urlPhotArt = $prefix.'/front/assets/img/drone-carrousel.jpg';
+$urlPhotArt = $prefix . '/front/assets/img/drone-carrousel.jpg';
 
 $article = $monArticle->get_1Article($numArt);
 
-if($article){
+if ($article) {
     $libTitrArt = $article['libTitrArt'];
     $libChapoArt = $article['libChapoArt'];
     $libAccrochArt = $article['libAccrochArt'];
@@ -37,7 +37,7 @@ if($article){
     $parag2Art = $article['parag2Art'];
     $parag3Art = $article['parag3Art'];
     $libConclArt = $article['libConclArt'];
-    $urlPhotArt = $prefix.'/back/article/uploads/'.$article['urlPhotArt'];
+    $urlPhotArt = $prefix . '/back/article/uploads/' . $article['urlPhotArt'];
 }
 
 
@@ -52,7 +52,7 @@ if($article){
             <img class="img-top" src="<?= $urlPhotArt ?>" alt="">
         </div>
         <div class="para-left">
-            <div>
+            <div class="text">
                 <p><?= $libAccrochArt ?></p>
             </div>
             <img src="/front/assets/img/drone-carrousel.jpg" alt="">
@@ -102,7 +102,7 @@ if($article){
     </div>
     <div class="add-comment">
         <h2 class="name"></h2>
-        <input type="text" >
+        <input type="text">
         <label for="">Ajouter un commentaire public</label>
     </div>
 </div>
