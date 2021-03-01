@@ -6,9 +6,19 @@
         align-items: center;
     }
     .img-top{
+        position: relative;
         margin-top: 5rem;
         width: 30vw;
         height: 12rem;
         object-fit: cover;
+        z-index: 10;
+    }
+    .para-left{display: flex;
+        justify-content: space-between;
+        img{
+            width: 10vw;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 }

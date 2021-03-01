@@ -51,11 +51,11 @@ if($article){
             <h2><?= $libChapoArt ?></h2>
             <img class="img-top" src="<?= $urlPhotArt ?>" alt="">
         </div>
-        <div>
+        <div class="para-left">
             <div>
                 <p><?= $libAccrochArt ?></p>
             </div>
-            <img src="" alt="">
+            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
         <div>
             <img src="" alt="">
@@ -94,6 +94,16 @@ if($article){
             <a href="">Voir ses articles</a>
         </div>
         <div class="hashtag"></div>
+    </div>
+    <div class="comment">
+        <div class="header"></div>
+        <div class="content"></div>
+        <div class="interaction"></div>
+    </div>
+    <div class="add-comment">
+        <h2 class="name"></h2>
+        <input type="text" >
+        <label for="">Ajouter un commentaire public</label>
     </div>
 </div>
 <?php
