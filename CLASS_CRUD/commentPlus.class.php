@@ -21,7 +21,7 @@
 		function get_AllCommentsRByComment($numArt, $numSeqCom){
 			global $db;
 
-			$query = 'SELECT * FROM comment INNER JOIN commentplus ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE numArt = ? AND numSeqCom = ?';
+			$query = 'SELECT * FROM comment INNER JOIN commentplus ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE commentplus.numArt = ? AND commentplus.numSeqCom = ?';
 
 			$request = $db->prepare($query);
 	
@@ -36,7 +36,7 @@
         function get_AllCommentsRByArticle($numArt){
 			global $db;
 
-			$query = 'SELECT * FROM comment INNER JOIN commentplus ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE numArt = ?';
+			$query = 'SELECT * FROM comment INNER JOIN commentplus ON commentplus.numSeqComR = comment.numSeqCom AND commentplus.numArt = comment.numArt WHERE commentplus.numArt = ?';
 
 			$request = $db->prepare($query);
 	

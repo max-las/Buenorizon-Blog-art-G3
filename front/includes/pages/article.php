@@ -3,6 +3,12 @@ require_once('../commons/header.php');
 
 require_once __DIR__ . '/../../../CLASS_CRUD/article.class.php';
 $monArticle = new ARTICLE;
+require_once __DIR__ . '/../../../CLASS_CRUD/comment.class.php';
+$monComment = new COMMENT;
+require_once __DIR__ . '/../../../CLASS_CRUD/commentPlus.class.php';
+$monCommentPlus = new COMMENTPLUS;
+require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
+$monMembre = new MEMBRE;
 
 $numArt = isset($_GET["id"]) ? $_GET["id"] : "";
 
@@ -91,17 +97,46 @@ if ($article) {
                 <svg></svg>
             </div>
         </div>
-        <div>
-            <p>Jean michel Redacteur</p>
-            <a href="">Voir ses articles</a>
-        </div>
         <div class="hashtag"></div>
     </div>
+    <? 
+        $allComments = $monComment->get_AllCommentsByArticle($numArt);
+        foreach($allComments as $row):
+            $myMembre = $monMembre->get_1Membre($row['numMemb']);
+            $verif = $monCommentPlus->get_AllCommentsRByArticle($numArt);
+            $verifBool = false;
+            foreach($verif as $raw){
+                if($raw['numSeqComR'] == $row['numSeqCom']){
+                    $verifBool = true;
+                }
+            }
+            if(!$verifBool){
+        
+    ?>
     <div class="comment">
-        <div class="header"></div>
-        <div class="content"></div>
+        <div class="header"><?= $myMembre['pseudoMemb'] ?> - <?= $row['dtCreCom'] ?></div>
+        <div class="content"><?= $row['libCom'] ?></div>
         <div class="interaction"></div>
     </div>
+    <?
+        }
+
+        $verifR = $monCommentPlus->get_AllCommentsRByComment($numArt, $row['numSeqCom']);
+        if($verifR){
+            foreach($verifR as $riw):
+                $myCommentR = $monComment->get_1Comment($riw['numSeqComR'], $numArt);
+                $myMembreR = $monMembre->get_1Membre($myCommentR['numMemb']);
+    ?>
+    <div class="subcomment">
+        <div class="header"><?= $myMembreR['pseudoMemb'] ?> - <?= $myCommentR['dtCreCom'] ?></div>
+        <div class="content"><?= $myCommentR['libCom'] ?></div>
+        <div class="interaction"></div>
+    </div>
+    <?
+            endforeach;
+        }
+    endforeach;
+    ?>
     <div class="add-comment">
         <h2 class="name"></h2>
         <input type="text">
