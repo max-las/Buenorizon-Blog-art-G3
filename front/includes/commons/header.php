@@ -44,13 +44,7 @@ if ($chemin == '/') {
     <? } ?>
 
     <? if($chemin == '/signin'){ ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("theForm").submit();
-        }
-    </script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
     <? } ?>
     <script>
         var SPE = {};
@@ -58,6 +52,7 @@ if ($chemin == '/') {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <script src="https://cdn.spline.design/lib/anime.min.js"></script>
     <script src="https://cdn.spline.design/lib/spline.runtime.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
