@@ -204,8 +204,13 @@ $(document).ready(function(){
                         <div class="icons">
                         <?
                             if(isset($_SESSION['pseudoMemb'])){
-                                if($monLikeA->get_1LikeArt($memb['numMemb'], $row['numArt'])){
-                                    $heart = 'white';
+                                $likeA = $monLikeA->get_1LikeArt($memb['numMemb'], $row['numArt'])
+                                if($likeA){
+                                    if($likeA['likeA'] == '1'){
+                                        $heart = 'white';
+                                    }else{
+                                        $heart = 'none';
+                                    }
                                 }else{
                                     $heart = 'none';
                                 }
