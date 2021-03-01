@@ -9,6 +9,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  h1{
+    z-index: 10;
+  }
   .login {
     position: relative;
     width: 30vw;
