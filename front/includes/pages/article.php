@@ -22,7 +22,9 @@ Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à l
 $parag3Art = "Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
 « Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
 Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.";
-$libConclArt = 'C\'est fini les amis';
+$libConclArt = "C'est fini les amis  Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
+« Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
+Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.";
 $urlPhotArt = $prefix . '/front/assets/img/drone-carrousel.jpg';
 
 $article = $monArticle->get_1Article($numArt);
@@ -51,36 +53,36 @@ if ($article) {
             <h2><?= $libChapoArt ?></h2>
             <img class="img-top" src="<?= $urlPhotArt ?>" alt="">
         </div>
-        <div class="para-left">
+        <div class="para">
             <div class="text">
                 <p><?= $libAccrochArt ?></p>
             </div>
             <img src="/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
-        <div>
-            <img src="" alt="">
-            <div>
+        <div class="para">
+            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <div class="text">
                 <h3><?= $libSsTitr1Art ?></h3>
                 <p><?= $parag1Art ?></p>
             </div>
         </div>
-        <div>
-            <div>
+        <div class="para">
+            <div class="text">
                 <h3><?= $libSsTitr2Art ?></h3>
                 <p><?= $parag2Art ?></p>
             </div>
-            <img src="" alt="">
+            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
-        <div>
-            <div>
+        <div class="para">
+            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <div class="text">
                 <p><?= $parag3Art ?></p>
             </div>
-            <img src="" alt="">
         </div>
         <div class="conclu">
             <p><?= $libConclArt ?></p>
         </div>
-        <div>
+        <div class="interraction">
             <a href="">Signalez une erreur dans le texte</a>
             <div>
                 <p>Partagez</p>
