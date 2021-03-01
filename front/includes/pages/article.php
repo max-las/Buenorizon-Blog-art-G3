@@ -11,6 +11,23 @@ require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
 
 $numArt = isset($_GET["id"]) ? $_GET["id"] : "";
+$e = '';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    // require_once __DIR__ . '/../../../CLASS_CRUD/getNextNumCom.php';
+    if(isset($_SESSION['pseudoMemb'])){
+        $numMemb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb'])['numMemb'];
+        $libCom = $_POST['libCom'];
+
+        if(!empty($libCom)){
+            $monComment->create(getNextNumCom(), $numArt, date('Y-m-d H:i:s'), $libCom, 0, 0, 0, $numMemb);
+        }else{
+            $e = 'Veuillez spécifier votre commentaire.';
+        }
+    }else{
+        $e = 'Vous ne vous êtes pas connecté(e).';
+    }
+}
 
 $libTitrArt = 'Dronisos';
 $libChapoArt = 'Comment dompter les drones ?';
@@ -137,11 +154,12 @@ if ($article) {
         }
     endforeach;
     ?>
-    <div class="add-comment">
+    <form class="add-comment" method="post">
         <h2 class="name"></h2>
-        <input type="text">
-        <label for="">Ajouter un commentaire public</label>
-    </div>
+        <p style="color: red;"><?= $e ?></p>
+        <input type="text" id="libCom" name="libCom" />
+        <input type="submit" value="Ajouter un commentaire" />
+    </form>
 </div>
 <?php
 require_once('../commons/footer.php');

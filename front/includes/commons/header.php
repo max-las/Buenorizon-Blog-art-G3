@@ -72,7 +72,7 @@ if ($chemin == '/') {
                             $myMembre = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
                             if ($myMembre['idStat'] == 9){ 
                         ?>
-                <!-- HTML link to CRUD -->
+                <p><a href='<?= $prefix ?>/index1.php'>CRUD</a></p>
                 <? } ?>
                 <? }else{ ?>
                 <a <?= ($chemin == '/login') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/login">Connexion</a>
