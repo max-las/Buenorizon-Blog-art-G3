@@ -200,7 +200,7 @@ $(document).ready(function(){
                     <hr>
                     <p><?= $row['libChapoArt'] ?></p>
                     <div class="interraction">
-                      <a href="/article?id=<?= $row['numArt'] ?>">En savoir plus</a>
+                      <a href="<?= $prefix ?>/article?id=<?= $row['numArt'] ?>">En savoir plus</a>
                         <div class="icons">
                         <?
                             if(isset($_SESSION['pseudoMemb'])){
