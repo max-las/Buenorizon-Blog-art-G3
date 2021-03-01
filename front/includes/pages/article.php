@@ -1,44 +1,84 @@
 <?php
 require_once('../commons/header.php');
+
+require_once __DIR__ . '/../../../CLASS_CRUD/article.class.php';
+$monArticle = new ARTICLE;
+
+$numArt = isset($_GET["id"]) ? $_GET["id"] : "";
+
+$libTitrArt = 'Dronisos';
+$libChapoArt = 'Comment dompter les drones ?';
+$libAccrochArt = "Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
+« Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
+Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.";
+$libSsTitr1Art = 'Dronisos : qui sont-ils ?';
+$parag1Art = "Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
+« Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
+Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.";
+$libSsTitr2Art = 'Dronisos : qui sont-ils ?';
+$parag2Art = "Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
+« Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
+Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.";
+$parag3Art = "Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
+« Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
+Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.";
+$libConclArt = 'C\'est fini les amis';
+$urlPhotArt = $prefix . '/front/assets/img/drone-carrousel.jpg';
+
+$article = $monArticle->get_1Article($numArt);
+
+if ($article) {
+    $libTitrArt = $article['libTitrArt'];
+    $libChapoArt = $article['libChapoArt'];
+    $libAccrochArt = $article['libAccrochArt'];
+    $libSsTitr1Art = $article['libSsTitr1Art'];
+    $parag1Art = $article['parag1Art'];
+    $libSsTitr2Art = $article['libSsTitr2Art'];
+    $parag2Art = $article['parag2Art'];
+    $parag3Art = $article['parag3Art'];
+    $libConclArt = $article['libConclArt'];
+    $urlPhotArt = $prefix . '/back/article/uploads/' . $article['urlPhotArt'];
+}
+
+
+
+
 ?>
 <div class="container">
     <div class="article">
         <div class="title">
-            <h1>Dronisos</h1>
-            <h2>Comment dompter les drones ?</h2>
-            <img class="img-top" src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <h1><?= $libTitrArt ?></h1>
+            <h2><?= $libChapoArt ?></h2>
+            <img class="img-top" src="<?= $urlPhotArt ?>" alt="">
         </div>
-        <div>
-            <div>
-                <p> Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
-                    « Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
-                    Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.
-                </p>
+        <div class="para-left">
+            <div class="text">
+                <p><?= $libAccrochArt ?></p>
             </div>
-            <img src="" alt="">
+            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
         <div>
             <img src="" alt="">
             <div>
-                <h3>Donisos : qui sont-ils ?</h3>
-                <p> Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
-                    « Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
-                    Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.
-                </p>
+                <h3><?= $libSsTitr1Art ?></h3>
+                <p><?= $parag1Art ?></p>
             </div>
         </div>
         <div>
             <div>
-                <h3></h3>
-                <p> Le cirque a présenté une première: un spectacle de domptage de drones. Une gracieuse performance, un ballet illusionniste, montrant un envol d’engins équipés d’hélices qui se meuvent dans un espace défini. Spectacle présenté énergiquement par le clown Mathieu et son collègue, au centre du chapiteau, sur une piste blanche jonchée de marqueurs colorés.
-                    « Tout l’art de l’artiste au milieu, c’est de créer l'interaction », nous explique Laurent Perchais, fondateur de Dronisos. Les drones suivent au tic près leur chorégraphie pré-programmée, alors que le performeur s’agite dans tous les sens pour donner vie à la scène. Les drones suivent au doigt et à l'œil leur maître, passent à travers des cerceaux, font des loopings et des danses synchronisées. Attention, ils ne sont pas tous obéissants, et certains sont même têtus. En sortie de salle, les spectateurs sont souriants. Le show est même jugé « novateur » et « très enthousiasmant ».
-                    Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.
-                </p>
+                <h3><?= $libSsTitr2Art ?></h3>
+                <p><?= $parag2Art ?></p>
+            </div>
+            <img src="" alt="">
+        </div>
+        <div>
+            <div>
+                <p><?= $parag3Art ?></p>
             </div>
             <img src="" alt="">
         </div>
         <div class="conclu">
-            <p></p>
+            <p><?= $libConclArt ?></p>
         </div>
         <div>
             <a href="">Signalez une erreur dans le texte</a>
@@ -54,6 +94,16 @@ require_once('../commons/header.php');
             <a href="">Voir ses articles</a>
         </div>
         <div class="hashtag"></div>
+    </div>
+    <div class="comment">
+        <div class="header"></div>
+        <div class="content"></div>
+        <div class="interaction"></div>
+    </div>
+    <div class="add-comment">
+        <h2 class="name"></h2>
+        <input type="text">
+        <label for="">Ajouter un commentaire public</label>
     </div>
 </div>
 <?php
