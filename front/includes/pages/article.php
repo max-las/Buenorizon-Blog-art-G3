@@ -15,14 +15,27 @@ $e = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once __DIR__ . '/../../../CLASS_CRUD/getNextNumCom.php';
+
     if (isset($_SESSION['pseudoMemb'])) {
         $numMemb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb'])['numMemb'];
-        $libCom = $_POST['libCom'];
 
-        if (!empty($libCom)) {
-            $monComment->create(getNextNumCom($numArt), $numArt, date('Y-m-d H:i:s'), $libCom, 0, 0, 0, $numMemb);
-        } else {
-            $e = 'Veuillez spécifier votre commentaire.';
+        if (isset($_POST["numRepCom"])) { //réponse à un commentaire
+
+            if (!empty($_POST["repCom"])) {
+                $numSeqComR = getNextNumCom($numArt);
+                $monComment->create($numSeqComR, $numArt, date('Y-m-d H:i:s'), $_POST["repCom"], 0, 0, 0, $numMemb);
+                $monCommentPlus->create($numArt, $_POST["numRepCom"], $numSeqComR);
+            } else {
+                $e = 'Veuillez spécifier votre commentaire.';
+            }
+        } else { //simple commentaire
+            $libCom = $_POST['libCom'];
+
+            if (!empty($libCom)) {
+                $monComment->create(getNextNumCom($numArt), $numArt, date('Y-m-d H:i:s'), $libCom, 0, 0, 0, $numMemb);
+            } else {
+                $e = 'Veuillez spécifier votre commentaire.';
+            }
         }
     } else {
         $e = 'Vous ne vous êtes pas connecté(e).';
@@ -80,10 +93,10 @@ if ($article) {
             <div class="text">
                 <p><?= $libAccrochArt ?></p>
             </div>
-            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <img src="<?= $prefix ?>/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
         <div class="para">
-            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <img src="<?= $prefix ?>/front/assets/img/drone-carrousel.jpg" alt="">
             <div class="text">
                 <h3><?= $libSsTitr1Art ?></h3>
                 <p><?= $parag1Art ?></p>
@@ -94,10 +107,10 @@ if ($article) {
                 <h3><?= $libSsTitr2Art ?></h3>
                 <p><?= $parag2Art ?></p>
             </div>
-            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <img src="<?= $prefix ?>/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
         <div class="para">
-            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <img src="<?= $prefix ?>/front/assets/img/drone-carrousel.jpg" alt="">
             <div class="text">
                 <p><?= $parag3Art ?></p>
             </div>
@@ -154,8 +167,9 @@ if ($article) {
         <div class="content"><?= $row['libCom'] ?></div>
         <div class="interaction"><a class="reponse" id="reponse<?= $row['numSeqCom'] ?>" href="javascript:void(0)">Répondre</a></div>
         <form class="add-comment answer" method="post" id="form<?= $row['numSeqCom'] ?>" style="display: none;">
-            <input type="text" />
-            <input type="submit" value="Répondre" />
+            <input type="text" name="repCom" />
+            <button type="submit">Répondre</button>
+            <input type="hidden" name="numRepCom" value="<?= $row['numSeqCom'] ?>">
         </form>
     </div>
     <?
@@ -167,7 +181,7 @@ if ($article) {
                 $myCommentR = $monComment->get_1Comment($riw['numSeqComR'], $numArt);
                 $myMembreR = $monMembre->get_1Membre($myCommentR['numMemb']);
     ?>
-    <div class="subcomment">
+    <div class="subcomment" style="margin-left:50px;">
         <div class="header"><?= $myMembreR['pseudoMemb'] ?> - <?= substr($row['dtCreCom'], 0, -9) ?></div>
         <div class="content"><?= $myCommentR['libCom'] ?></div>
         <div class="interaction"></div>
