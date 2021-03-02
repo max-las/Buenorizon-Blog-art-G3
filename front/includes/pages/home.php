@@ -2,6 +2,8 @@
 require_once('../commons/header.php');
 require_once __DIR__ . '../../../../CLASS_CRUD/likeArt.class.php';
 $monLikeA = new LIKEART;
+require_once __DIR__ . '../../../../CLASS_CRUD/thematique.class.php';
+$maThematique = new THEMATIQUE;
 
 if(isset($_SESSION['pseudoMemb'])){
     $memb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
@@ -177,7 +179,8 @@ $(document).ready(function(){
             $allArticles = $monArticle->get_AllArticles();
             $i = 1;
             foreach($allArticles as $row):
-                $mesMotsClesA = $monMotCleA->get_AllMotClesByArticle($row['numArt']);
+                // $mesMotsClesA = $monMotCleA->get_AllMotClesByArticle($row['numArt']);
+                $mesThematiques = $maThematique->get_1Thematique($row['numThem']);
                 $i++;
         ?>
         <div class="article <?= ($i % 2) ? "" : "left" ?>">
@@ -185,9 +188,7 @@ $(document).ready(function(){
             <div class="info-articles">
                 <div class="content">
                     <div class="meta">
-                        <? foreach($mesMotsClesA as $raw): ?>
-                        <span class="category"><?= $raw['libMotCle'] ?><span>
-                                <? endforeach ?>
+                        <span class="category"><?= $mesThematiques['libThem'] ?><span>
                                 <div class="date">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.99301 1.3335C4.31301 1.3335 1.33301 4.32016 1.33301 8.00016C1.33301 11.6802 4.31301 14.6668 7.99301 14.6668C11.6797 14.6668 14.6663 11.6802 14.6663 8.00016C14.6663 4.32016 11.6797 1.3335 7.99301 1.3335ZM7.99967 13.3335C5.05301 13.3335 2.66634 10.9468 2.66634 8.00016C2.66634 5.0535 5.05301 2.66683 7.99967 2.66683C10.9463 2.66683 13.333 5.0535 13.333 8.00016C13.333 10.9468 10.9463 13.3335 7.99967 13.3335Z" fill="white" />
