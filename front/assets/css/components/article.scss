@@ -1,6 +1,5 @@
-.article {
+.article-page {
   padding-top: 8rem;
-  text-indent: 2rem;
 
   .title {
     display: flex;
@@ -16,6 +15,7 @@
     z-index: 10;
   }
   .para {
+    text-indent: 2rem;
     display: flex;
     justify-content: space-between;
     margin-top: 4rem;
@@ -33,9 +33,11 @@
       width: 25vw;
       max-height: 70vh;
       object-fit: cover;
+      margin-top: 2rem;
     }
   }
   .conclu {
+    text-indent: 2rem;
     & > * {
       line-height: 36px;
     }
@@ -45,9 +47,51 @@
     margin: 4rem auto 0;
     padding: 2rem;
   }
-  .interraction{
-      a{font-size: 14px;
-          text-decoration: underline;
+  .interraction {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    .social-media {
+      display: flex;
+      align-items: center;
+      p {
+        margin-right: 0.5rem;
       }
+      svg {
+        margin-left: 0.5rem;
+      }
+    }
+    a {
+      font-size: 14px;
+      text-decoration: underline;
+    }
+  }
+  .meta {
+    display: flex;
+    .author {
+      display: flex;
+      align-items: center;
+      a {
+        text-decoration: underline;
+        margin-left: 1rem;
+      }
+    }
+    .hashtag {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      flex-shrink: 3;
+      button {
+        margin-left: 1rem;
+        font-weight: 400;
+        border: 1px white solid;
+        background: linear-gradient(
+          144.37deg,
+          rgba(18, 71, 94, 0.15) 0%,
+          rgba(18, 71, 94, 0.05) 90.25%
+        );
+      }
+    }
   }
 }
