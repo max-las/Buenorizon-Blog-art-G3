@@ -80,10 +80,10 @@ if ($article) {
             <div class="text">
                 <p><?= $libAccrochArt ?></p>
             </div>
-            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <img src="<?= $prefix ?>/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
         <div class="para">
-            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <img src="<?= $prefix ?>/front/assets/img/drone-carrousel.jpg" alt="">
             <div class="text">
                 <h3><?= $libSsTitr1Art ?></h3>
                 <p><?= $parag1Art ?></p>
@@ -94,10 +94,10 @@ if ($article) {
                 <h3><?= $libSsTitr2Art ?></h3>
                 <p><?= $parag2Art ?></p>
             </div>
-            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <img src="<?= $prefix ?>/front/assets/img/drone-carrousel.jpg" alt="">
         </div>
         <div class="para">
-            <img src="/front/assets/img/drone-carrousel.jpg" alt="">
+            <img src="<?= $prefix ?>/front/assets/img/drone-carrousel.jpg" alt="">
             <div class="text">
                 <p><?= $parag3Art ?></p>
             </div>
