@@ -5,7 +5,7 @@ $monLikeA = new LIKEART;
 require_once __DIR__ . '../../../../CLASS_CRUD/thematique.class.php';
 $maThematique = new THEMATIQUE;
 
-if(isset($_SESSION['pseudoMemb'])){
+if (isset($_SESSION['pseudoMemb'])) {
     $memb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
 }
 
@@ -14,25 +14,27 @@ if(isset($_SESSION['pseudoMemb'])){
 <!-- Put your code here my friend ;) -->
 
 <script>
-$(document).ready(function(){
-    $(".like").click(function(){
-        var numArt = $(this).attr('id').substr(4);
-        $.post("<?= $prefix ?>/back/ajax/likeArt.php", {numArt: numArt}, function(result){
-            var resultO = JSON.parse(result);
-            console.log(resultO);
-            if(resultO.success){
-                if(resultO.like){
-                    $("#like"+resultO.numArt).attr("fill", "white");
-                }else{
-                    $("#like"+resultO.numArt).attr("fill", "none");
+    $(document).ready(function() {
+        $(".like").click(function() {
+            var numArt = $(this).attr('id').substr(4);
+            $.post("<?= $prefix ?>/back/ajax/likeArt.php", {
+                numArt: numArt
+            }, function(result) {
+                var resultO = JSON.parse(result);
+                console.log(resultO);
+                if (resultO.success) {
+                    if (resultO.like) {
+                        $("#like" + resultO.numArt).attr("fill", "white");
+                    } else {
+                        $("#like" + resultO.numArt).attr("fill", "none");
+                    }
+
+                } else {
+                    console.log(resultO.error);
                 }
-                
-            }else{
-                console.log(resultO.error);
-            }
+            });
         });
     });
-});
 </script>
 
 <div class="container-arrivee">
@@ -113,24 +115,24 @@ $(document).ready(function(){
 
                     </div>
 
-                    
+
                     <div class="slide-content-2">
 
                         <p class="date-mini">31 Janvier 2021</p>
-                        <br/>
+                        <br />
                         <h2 class="titre-mini">France Digitale Tour</h2>
-                        <br/>
+                        <br />
                         <p class="text-mini"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
 
                     </div>
 
-                    
+
                     <div class="slide-content-2">
 
                         <p>31 Janvier 2021</p>
-                        <br/>
+                        <br />
                         <h2>France Digitale Tour</h2>
-                        <br/>
+                        <br />
                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mi porta neque tincidunt semper. </p>
 
                     </div>
@@ -138,7 +140,7 @@ $(document).ready(function(){
 
                 </figure>
 
-                
+
 
             </div>
 
@@ -188,22 +190,22 @@ $(document).ready(function(){
             <div class="info-articles">
                 <div class="content">
                     <div class="meta">
-                        <span class="category"><?= $mesThematiques['libThem'] ?><span>
-                                <div class="date">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.99301 1.3335C4.31301 1.3335 1.33301 4.32016 1.33301 8.00016C1.33301 11.6802 4.31301 14.6668 7.99301 14.6668C11.6797 14.6668 14.6663 11.6802 14.6663 8.00016C14.6663 4.32016 11.6797 1.3335 7.99301 1.3335ZM7.99967 13.3335C5.05301 13.3335 2.66634 10.9468 2.66634 8.00016C2.66634 5.0535 5.05301 2.66683 7.99967 2.66683C10.9463 2.66683 13.333 5.0535 13.333 8.00016C13.333 10.9468 10.9463 13.3335 7.99967 13.3335Z" fill="white" />
-                                        <path d="M8.33301 4.6665H7.33301V8.6665L10.833 10.7665L11.333 9.9465L8.33301 8.1665V4.6665Z" fill="white" />
-                                    </svg>
-                                    <p><?= substr($row['dtCreArt'], 0, -9) ?></p>
-                                </div>
+                        <span class="category"><?= $mesThematiques['libThem'] ?></span>
+                        <div class="date">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.99301 1.3335C4.31301 1.3335 1.33301 4.32016 1.33301 8.00016C1.33301 11.6802 4.31301 14.6668 7.99301 14.6668C11.6797 14.6668 14.6663 11.6802 14.6663 8.00016C14.6663 4.32016 11.6797 1.3335 7.99301 1.3335ZM7.99967 13.3335C5.05301 13.3335 2.66634 10.9468 2.66634 8.00016C2.66634 5.0535 5.05301 2.66683 7.99967 2.66683C10.9463 2.66683 13.333 5.0535 13.333 8.00016C13.333 10.9468 10.9463 13.3335 7.99967 13.3335Z" fill="white" />
+                                <path d="M8.33301 4.6665H7.33301V8.6665L10.833 10.7665L11.333 9.9465L8.33301 8.1665V4.6665Z" fill="white" />
+                            </svg>
+                            <p><?= substr($row['dtCreArt'], 0, -9) ?></p>
+                        </div>
                     </div>
                     <h2><?= $row['libTitrArt'] ?></h2>
                     <hr>
                     <p><?= $row['libChapoArt'] ?></p>
                     <div class="interraction">
-                      <a href="<?= $prefix ?>/article?id=<?= $row['numArt'] ?>">En savoir plus</a>
+                        <a href="<?= $prefix ?>/article?id=<?= $row['numArt'] ?>">En savoir plus</a>
                         <div class="icons">
-                        <?
+                            <?
                             if(isset($_SESSION['pseudoMemb'])){
                                 $likeA = $monLikeA->get_1LikeArt($memb['numMemb'], $row['numArt']);
                                 if($likeA){
