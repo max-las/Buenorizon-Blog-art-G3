@@ -181,7 +181,7 @@ $(document).ready(function(){
                 $i++;
         ?>
         <div class="article <?= ($i % 2) ? "" : "left" ?>">
-            <img src="/back/article/uploads/<?= $row['urlPhotArt'] ?>" alt="">
+            <img src="<?= $prefix ?>/back/article/uploads/<?= $row['urlPhotArt'] ?>" alt="">
             <div class="info-articles">
                 <div class="content">
                     <div class="meta">
