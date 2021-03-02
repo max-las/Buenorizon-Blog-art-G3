@@ -13,20 +13,20 @@ $monMembre = new MEMBRE;
 $numArt = isset($_GET["id"]) ? $_GET["id"] : "";
 $e = '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // require_once __DIR__ . '/../../../CLASS_CRUD/getNextNumCom.php';
-    if (isset($_SESSION['pseudoMemb'])) {
-        $numMemb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb'])['numMemb'];
-        $libCom = $_POST['libCom'];
-
-        if (!empty($libCom)) {
-            $monComment->create(getNextNumCom(), $numArt, date('Y-m-d H:i:s'), $libCom, 0, 0, 0, $numMemb);
-        } else {
-            $e = 'Veuillez spécifier votre commentaire.';
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    require_once __DIR__ . '/../../../CLASS_CRUD/getNextNumCom.php';
+        if(isset($_SESSION['pseudoMemb'])){
+            $numMemb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb'])['numMemb'];
+            $libCom = $_POST['libCom'];
+    
+            if(!empty($libCom)){
+                $monComment->create(getNextNumCom($numArt), $numArt, date('Y-m-d H:i:s'), $libCom, 0, 0, 0, $numMemb);
+            }else{
+                $e = 'Veuillez spécifier votre commentaire.';
+            }
+        }else{
+            $e = 'Vous ne vous êtes pas connecté(e).';
         }
-    } else {
-        $e = 'Vous ne vous êtes pas connecté(e).';
-    }
 }
 
 $libTitrArt = 'Dronisos';
@@ -152,7 +152,11 @@ if ($article) {
     <div class="comment">
         <div class="header"><?= $myMembre['pseudoMemb'] ?> - <?= $row['dtCreCom'] ?></div>
         <div class="content"><?= $row['libCom'] ?></div>
-        <div class="interaction"></div>
+        <div class="interaction" ><a class="reponse" id="reponse<?= $row['numSeqCom'] ?>" href="javascript:void(0)">Répondre</a></div>
+        <form class="add-comment answer" method="post" id="form<?= $row['numSeqCom'] ?>" style="display: none;">
+            <input type="text"/>
+            <input type="submit" value="Répondre" />
+        </form>
     </div>
     <?
         }
@@ -173,11 +177,25 @@ if ($article) {
         }
     endforeach;
     ?>
+
+    <script>
+        $(document).ready(function() {
+            $('.reponse').click(function(){
+                numSeqCom = $(this).attr('id').substr(7);
+                if($('#form' + numSeqCom).is(':hidden')){
+                    $('.answer').hide();
+                    $('#form' + numSeqCom).show();
+                }
+            });
+        });
+    </script>
+
+
     <form class="add-comment" method="post">
         <h2 class="name"></h2>
         <p style="color: red;"><?= $e ?></p>
         <input type="text" id="libCom" name="libCom" />
-        <input type="submit" value="Ajouter un commentaire" />
+        <input type="submit" name="submit" value="Ajouter un commentaire" />
     </form>
 </div>
 <?php

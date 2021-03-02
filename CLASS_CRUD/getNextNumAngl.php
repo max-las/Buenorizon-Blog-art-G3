@@ -19,7 +19,7 @@ require_once __DIR__ . '/../util/utilErrOn.php';
       $libLangSelect = substr($numLang, 0, 4);
       $parmNumLang = $libLangSelect . '%';
 
-      $requete = "SELECT MAX(numLang) AS numLang FROM ANGLE WHERE numLang LIKE '$parmNumLang';";
+      $requete = "SELECT MAX(numLang) AS numLang FROM angle WHERE numLang LIKE '$parmNumLang';";
       $result = $db->query($requete);
 
       if ($result) {
@@ -27,7 +27,7 @@ require_once __DIR__ . '/../util/utilErrOn.php';
           $numLang = $tuple["numLang"];
           if (is_null($numLang)) {    // New lang dans ANGLE
               // Récup dernière PK utilisée
-              $requete = "SELECT MAX(numAngl) AS numAngl FROM ANGLE;";
+              $requete = "SELECT MAX(numAngl) AS numAngl FROM angle;";
               $result = $db->query($requete);
               $tuple = $result->fetch();
               $numAngl = $tuple["numAngl"];
@@ -40,7 +40,7 @@ require_once __DIR__ . '/../util/utilErrOn.php';
           }
           else {
               // Récup dernière PK pour FK sélectionnée
-              $requete = "SELECT MAX(numAngl) AS numAngl FROM ANGLE WHERE numLang LIKE '$parmNumLang' ;";
+              $requete = "SELECT MAX(numAngl) AS numAngl FROM angle WHERE numLang LIKE '$parmNumLang' ;";
               $result = $db->query($requete);
               $tuple = $result->fetch();
               $numAngl = $tuple["numAngl"];

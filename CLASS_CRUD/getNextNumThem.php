@@ -19,7 +19,7 @@ require_once __DIR__ . '/../util/utilErrOn.php';
       $libLangSelect = substr($numLang, 0, 4);
       $parmNumLang = $libLangSelect . '%';
 
-      $requete = "SELECT MAX(numLang) AS numLang FROM THEMATIQUE WHERE numLang LIKE '$parmNumLang';";
+      $requete = "SELECT MAX(numLang) AS numLang FROM thematique WHERE numLang LIKE '$parmNumLang';";
       $result = $db->query($requete);
 
       if ($result) {
@@ -27,7 +27,7 @@ require_once __DIR__ . '/../util/utilErrOn.php';
           $numLang = $tuple["numLang"];
           if (is_null($numLang)) {    // New lang dans THEMATIQUE
               // Récup dernière PK utilisée
-              $requete = "SELECT MAX(numThem) AS numThem FROM THEMATIQUE;";
+              $requete = "SELECT MAX(numThem) AS numThem FROM thematique;";
               $result = $db->query($requete);
               $tuple = $result->fetch();
               $numThem = $tuple["numThem"];
@@ -40,7 +40,7 @@ require_once __DIR__ . '/../util/utilErrOn.php';
           }
           else {
               // Récup dernière PK pour FK sélectionnée
-              $requete = "SELECT MAX(numThem) AS numThem FROM THEMATIQUE WHERE numLang LIKE '$parmNumLang' ;";
+              $requete = "SELECT MAX(numThem) AS numThem FROM thematique WHERE numLang LIKE '$parmNumLang' ;";
               $result = $db->query($requete);
               $tuple = $result->fetch();
               $numThem = $tuple["numThem"];
