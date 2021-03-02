@@ -3,6 +3,12 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+    if($_POST['submit'] == 'disconnect'){
+        session_unset();
+    }
+}
+
 $isConnected = false;
 if ($_SERVER['SERVER_NAME'] == 'plateforme-mmi.iut.u-bordeaux-montaigne.fr') {
     $chemin = subStr($_SERVER['REQUEST_URI'], 30);
@@ -74,6 +80,9 @@ if ($chemin == '/') {
                         ?>
                 <p><a href='<?= $prefix ?>/index1.php'>CRUD</a></p>
                 <? } ?>
+                <form method="post">
+                    <button type="submit" value="disconnect" name="submit">Se déconnecter</button>
+                </form>
                 <? }else{ ?>
                 <a <?= ($chemin == '/login') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/login">Connexion</a>
                 <button onclick="location.href='<?= $prefix ?>/signin'">S'inscrire</button>
