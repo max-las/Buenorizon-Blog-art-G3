@@ -92,22 +92,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <form class="form-inscription" method="post">
 
                             <div class="form-group">
-                                <input type="input" name="pseudoMemb" id="pseudoMemb" placeholder=" " onchange="document.getElementById('Pseudo').textContent = this.value ;">
+                                <input type="input" name="pseudoMemb" id="pseudoMemb" placeholder=" ">
                                 <label>Pseudo<b class=red>*</b><label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" name="prenomMemb" id="prenomMemb" placeholder=" " onchange="document.getElementById('prenom').textContent = this.value ;">
+                                <input type="input" name="prenomMemb" id="prenomMemb" placeholder=" ">
                                 <label>Prénom<label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" name="nomMemb" id="nomMemb" placeholder=" " onchange="document.getElementById('nom').textContent = this.value ;">
+                                <input type="input" name="nomMemb" id="nomMemb" placeholder=" ">
                                 <label>Nom<label>
                             </div>
 
                             <div class="form-group">
-                                <input type="input" name="eMailMemb" id="eMailMemb" placeholder=" " onchange="document.getElementById('mail').textContent = this.value ;"">
+                                <input type="input" name="eMailMemb" id="eMailMemb" placeholder=" ">
                                 <label>Adresse mail <b class=red>*</b><label>
                             </div>
 
@@ -217,17 +217,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                             <!-- Ceci est provisoire est devra changer en fonction de se que l utilisateur rentre -->
                             <div>
-                                <p id="Pseudo">Pseudo</p>
+                                <p id="pseudoPaste">Pseudo</p>
                             </div>
                             <div>
                                 <hr>
                             </div>
-                            <div class="nomprenom">
-                                <p id="prenom">Prénom</label>
-                                <p id="nom">Nom</p>
+                            <div>
+                                <p id="nomPaste">Prénom et Nom</p>
                             </div>
                             <div>
-                                <p id="mail">eMail</p>
+                                <p id="eMailPaste">Adresse E-mail</p>
                             </div>
 
                         </form>

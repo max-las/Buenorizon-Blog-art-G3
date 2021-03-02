@@ -150,7 +150,7 @@ if ($article) {
         
     ?>
     <div class="comment">
-        <div class="header"><?= $myMembre['pseudoMemb'] ?> - <?= $row['dtCreCom'] ?></div>
+        <div class="header"><?= $myMembre['pseudoMemb'] ?> - <?= substr($row['dtCreCom'], 0, -9) ?></div>
         <div class="content"><?= $row['libCom'] ?></div>
         <div class="interaction" ><a class="reponse" id="reponse<?= $row['numSeqCom'] ?>" href="javascript:void(0)">Répondre</a></div>
         <form class="add-comment answer" method="post" id="form<?= $row['numSeqCom'] ?>" style="display: none;">
@@ -168,7 +168,7 @@ if ($article) {
                 $myMembreR = $monMembre->get_1Membre($myCommentR['numMemb']);
     ?>
     <div class="subcomment">
-        <div class="header"><?= $myMembreR['pseudoMemb'] ?> - <?= $myCommentR['dtCreCom'] ?></div>
+        <div class="header"><?= $myMembreR['pseudoMemb'] ?> - <?= substr($row['dtCreCom'], 0, -9) ?></div>
         <div class="content"><?= $myCommentR['libCom'] ?></div>
         <div class="interaction"></div>
     </div>
