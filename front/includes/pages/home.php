@@ -4,6 +4,12 @@ require_once __DIR__ . '../../../../CLASS_CRUD/likeArt.class.php';
 $monLikeA = new LIKEART;
 require_once __DIR__ . '../../../../CLASS_CRUD/thematique.class.php';
 $maThematique = new THEMATIQUE;
+require_once __DIR__ . '/../../../CLASS_CRUD/article.class.php';
+$monArticle = new ARTICLE;
+require_once __DIR__ . '/../../../CLASS_CRUD/motclearticle.class.php';
+$monMotCleA = new MOTCLEARTICLE;
+
+$allArticles = $monArticle->get_AllArticles();
 
 if(isset($_SESSION['pseudoMemb'])){
     $memb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
@@ -31,6 +37,18 @@ $(document).ready(function(){
                 console.log(resultO.error);
             }
         });
+    });
+
+    $(".filter").click(function(){
+        var classes = $(this).attr("class").split(/\s+/);
+        var numThem = $(this).attr("id").substr(6);
+        if(classes.includes("category-deselect")){
+            $(this).removeClass("category-deselect");
+            $(".them"+numThem).show();
+        }else{
+            $(this).addClass("category-deselect");
+            $(".them"+numThem).hide();
+        }
     });
 });
 </script>
@@ -163,12 +181,15 @@ $(document).ready(function(){
                 <label>Rechercher un article</label>
             </div>
             <div class="tri">
-                3 articles en ligne
+                <?= strval(count($allArticles)).' articles en ligne' ?>
                 <div class="cmd-tri">
                     Trier par catégories :
-                    <button>Startups</button>
-                    <button>Évenements</button>
-                    <button class="category-deselect">Acteurs</button>
+                    <?php 
+                        $allThematiquesFR = $maThematique->get_AllThematiquesByLang('FRAN01');
+                        foreach($allThematiquesFR as $row):
+                    ?>
+                        <button class="filter" id="filter<?= $row['numThem'] ?>"><?= $row["libThem"] ?></button>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -176,14 +197,14 @@ $(document).ready(function(){
         <!-- -------------------------------------------------------------------------------------------------------------------------- -->
 
         <?
-            $allArticles = $monArticle->get_AllArticles();
+            
             $i = 1;
             foreach($allArticles as $row):
                 // $mesMotsClesA = $monMotCleA->get_AllMotClesByArticle($row['numArt']);
                 $mesThematiques = $maThematique->get_1Thematique($row['numThem']);
                 $i++;
         ?>
-        <div class="article <?= ($i % 2) ? "" : "left" ?>">
+        <div class="article <?= ($i % 2) ? "" : "left" ?> <?= 'them'.$row['numThem'] ?>">
             <img src="<?= $prefix ?>/back/article/uploads/<?= $row['urlPhotArt'] ?>" alt="">
             <div class="info-articles">
                 <div class="content">
