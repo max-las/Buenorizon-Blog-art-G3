@@ -15,7 +15,6 @@ $e = '';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require_once __DIR__ . '/../../../CLASS_CRUD/getNextNumCom.php';
-    if(/*Déterminer si c'est un commentaire ou une réponse*/){
         if(isset($_SESSION['pseudoMemb'])){
             $numMemb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb'])['numMemb'];
             $libCom = $_POST['libCom'];
@@ -28,7 +27,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }else{
             $e = 'Vous ne vous êtes pas connecté(e).';
         }
-    }
 }
 
 $libTitrArt = 'Dronisos';
