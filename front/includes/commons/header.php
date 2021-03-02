@@ -78,7 +78,7 @@ if ($chemin == '/') {
                             $myMembre = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
                             if ($myMembre['idStat'] == 9){ 
                         ?>
-                <p><a href='<?= $prefix ?>/index1.php'>CRUD</a></p>
+                <p><a href='<?= $prefix ?>/index1.php' target="_blank">CRUD</a></p>
                 <? } ?>
                 <form method="post">
                     <button type="submit" value="disconnect" name="submit">Se déconnecter</button>

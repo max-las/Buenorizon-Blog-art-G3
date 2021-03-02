@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $e = 'Vous n\'avez pas renseigné tous les champs obligatoires.';
         }
     } else {
-        $e = "<p style=\"color: red;\">Vous n'avez pas validé le Captcha.</p>";
+        $e = ">Vous n'avez pas validé le Captcha.";
     }
 }
 ?>
