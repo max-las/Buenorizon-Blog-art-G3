@@ -14,13 +14,13 @@ $numArt = isset($_GET["id"]) ? $_GET["id"] : "";
 $e = '';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    // require_once __DIR__ . '/../../../CLASS_CRUD/getNextNumCom.php';
+    require_once __DIR__ . '/../../../CLASS_CRUD/getNextNumCom.php';
     if(isset($_SESSION['pseudoMemb'])){
         $numMemb = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb'])['numMemb'];
         $libCom = $_POST['libCom'];
 
         if(!empty($libCom)){
-            $monComment->create(getNextNumCom(), $numArt, date('Y-m-d H:i:s'), $libCom, 0, 0, 0, $numMemb);
+            $monComment->create(getNextNumCom($numArt), $numArt, date('Y-m-d H:i:s'), $libCom, 0, 0, 0, $numMemb);
         }else{
             $e = 'Veuillez spécifier votre commentaire.';
         }
@@ -133,7 +133,7 @@ if ($article) {
     <div class="comment">
         <div class="header"><?= $myMembre['pseudoMemb'] ?> - <?= $row['dtCreCom'] ?></div>
         <div class="content"><?= $row['libCom'] ?></div>
-        <div class="interaction"></div>
+        <div class="interaction">Répondre</div>
     </div>
     <?
         }

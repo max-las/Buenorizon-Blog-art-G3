@@ -19,7 +19,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
       $libLangSelect = substr($numLang, 0, 4);
       $parmNumLang = $libLangSelect . '%';
 
-      $requete = "SELECT MAX(numLang) AS numLang FROM MOTCLE WHERE numLang LIKE '$parmNumLang';";
+      $requete = "SELECT MAX(numLang) AS numLang FROM motcle WHERE numLang LIKE '$parmNumLang';";
       $result = $db->query($requete);
 
       if ($result) {
@@ -27,7 +27,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
           $numLang = $tuple["numLang"];
           if (is_null($numLang)) {    // New lang dans MOTCLE
               // Récup dernière PK utilisée
-              $requete = "SELECT MAX(numMoCle) AS numMoCle FROM MOTCLE;";
+              $requete = "SELECT MAX(numMoCle) AS numMoCle FROM motcle;";
               $result = $db->query($requete);
               $tuple = $result->fetch();
               $numMoCle = $tuple["numMoCle"];
@@ -40,7 +40,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
           }
           else {
               // Récup dernière PK pour FK sélectionnée
-              $requete = "SELECT MAX(numMoCle) AS numMoCle FROM MOTCLE WHERE numLang LIKE '$parmNumLang' ;";
+              $requete = "SELECT MAX(numMoCle) AS numMoCle FROM motcle WHERE numLang LIKE '$parmNumLang' ;";
               $result = $db->query($requete);
               $tuple = $result->fetch();
               $numMoCle = $tuple["numMoCle"];

@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////
 
 // Mode DEV
-require_once __DIR__ . '/util/utilErrOn.php';
+require_once __DIR__ . '/../util/utilErrOn.php';
 
 // Fonction : recupérer next numéro séquence de article recherché (PK COMMENT)
 // Commentaire suivant sur un article
@@ -20,7 +20,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
       global $db;
 
       //récup id de l'article et num séquence comment
-      $queryText = "SELECT CO.numArt, MAX(numSeqCom) AS numSeqCom FROM ARTICLE AR INNER JOIN COMMENT CO ON AR.numArt = CO.numArt WHERE AR.numArt = ?;";
+      $queryText = "SELECT CO.numArt, MAX(numSeqCom) AS numSeqCom FROM article AR INNER JOIN comment CO ON AR.numArt = CO.numArt WHERE AR.numArt = ?;";
       $result = $db->prepare($queryText);
       $result->execute(array($numArt));
 

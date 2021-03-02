@@ -20,7 +20,7 @@ require_once __DIR__ . '/../util/utilErrOn.php';
       // Récup dernière PK utilisée pour le pays concerné
       $numPaysSelect = $numPays;  // exemple : 'CHIN'
       $parmNumLang = $numPaysSelect . '%';
-      $requete = "SELECT MAX(numLang) AS numLang FROM LANGUE WHERE numLang LIKE '$parmNumLang';";
+      $requete = "SELECT MAX(numLang) AS numLang FROM langue WHERE numLang LIKE '$parmNumLang';";
 
       $result = $db->query($requete);
 
