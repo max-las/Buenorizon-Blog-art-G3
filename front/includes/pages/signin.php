@@ -176,7 +176,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                     <input type="hidden" name="condMemb" id="condMemb" value="1" />
-                                    <span>Accepter les <a href="../pages/about.php" style="color:#FFFFFF;">Conditions <br> générales d’utilisation</a></span>
+                                    <span>Accepter les <a href="<?= $prefix ?>/cgu" style="color:#FFFFFF;">Conditions <br> générales d’utilisation</a></span>
+                                </div>
+
+                                <div class="rpgd">
+                                    <svg name="condMembSvg" id="condMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <input type="hidden" name="condMemb" id="condMemb" value="1" />
+                                    <span>Accepter l'<a href="<?= $prefix ?>#rgpd" style="color:#FFFFFF;">archivage <br>de mes données par <br />Buenorizon</a></span>
                                 </div>
                             </div>
                             <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
@@ -248,7 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="content3">
 
 
-        <p class=textjamaislu>
+        <!-- <p class=textjamaislu>
             Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par Buenorizon (contact 1 : samuel.labagnere@mmibordeaux.com; contact 2 maxime.lasserre@mmibordeaux.com) pour la gestion des comptes.
             <br>
             <br>
@@ -268,9 +277,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <br>
             <br>
             Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
-        <p>
+        <p> -->
 
-
+        <div id="rgpd">
+            <p>En cochant la case « Accepter l'archivage de mes informations par Buenorizon » vous consentez aux actes suivants:</p>
+            <p>Les informations recueillies dans ce formulaire seront enregistrées dans un fichier informatisé par Buenorizon pour la gestion des comptes utilisateurs.</p>
+            <p>Sont tenus pour responsables: Contact 1 (samuel.labagnere@mmibordeaux.com) ou Contact 2 (maxime.lasserre@mmibordeaux.com).</p>
+            <p>Les données collectées seront communiquées aux seuls destinataires suivants: Le service de gestion de données (contacts ci-dessus).</p>
+            <br />
+            <p>Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données en vous adressant directement aux contacts des reponsables (exprimés ci-dessus).</p>
+            <p>Consultez le site cnil.fr pour plus d'informations sur vos droits.</p>
+            <br />
+            <p>En refusant ce recueil, vous vous opposez à la création de votre compte, résultant en l'impossibilité de poster des commentaires ou de liker les articles. Toutefois, le site vous reste accessible au même titre qu'un utilisateur inscrit.</p>
+            <p>Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.</p>
+        </div>
     </div>
 
 
