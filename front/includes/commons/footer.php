@@ -4,7 +4,7 @@
   <div class="pt-5">
     <div class="rowww py-5">
       <div class="col-md-4" id="copyright">
-        <a href="../pages/home.php">© Eclatech 2021</a>
+        <a href="<?= $prefix ?>/">© Eclatech 2021</a>
       </div>
       <div class="col-6 col-md-3 offset-md-2">
         <ul class="list-unstyled">

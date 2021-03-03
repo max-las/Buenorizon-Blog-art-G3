@@ -101,10 +101,11 @@
     }
   }
 }
+
 .article-footer {
+  margin-left: 10px;
   margin-top: 4rem;
   display: flex;
-  justify-content: space-around;
   .comment {
     width: 40%;
     transition: 0.5s;
@@ -139,6 +140,7 @@
       transition: 0.5s;
     }
   }
+
   .add-comment {
     display: flex;
     flex-direction: column;
@@ -204,6 +206,12 @@
     }
   }
 }
+
+.subcomment {
+  margin-left: 60px;
+  margin-top: 20px;
+}
+
 canvas{
   width: 100vw;
 }

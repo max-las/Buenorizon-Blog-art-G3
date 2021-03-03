@@ -59,21 +59,21 @@ $monMembre = new MEMBRE;
         <div class="navbar">
             <div>
                 <a <?= ($chemin == '/') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/">Accueil</a>
-                <a <?= ($chemin == '/article') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/article">Articles</a>
+                <a <?= ($chemin == '/article') ? 'class="highlight"' : '' ?> href="#articles">Articles</a>
                 <a <?= ($chemin == '/contact') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/contact">Contact</a>
                 <a <?= ($chemin == '/about') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/about">A propos</a>
             </div>
-            <div>
+            <div id="accountButtons">
                 <? if(isset($_SESSION['pseudoMemb'])){ ?>
-                <p><?= $_SESSION['pseudoMemb'] ?></p>
-                <button onclick="location.href='<?= $prefix ?>/moncompte'">Mon compte</button>
+                <a><?= $_SESSION['pseudoMemb'] ?></a>
+                <!-- <button onclick="location.href='<?= $prefix ?>/moncompte'">Mon compte</button> -->
                 <? 
-                            $myMembre = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
-                            if ($myMembre['idStat'] == 9){ 
-                        ?>
-                <p><a href='<?= $prefix ?>/index1.php' target="_blank">CRUD</a></p>
+                    $myMembre = $monMembre->get_1MembreByPseudo($_SESSION['pseudoMemb']);
+                    if ($myMembre['idStat'] == 9){ 
+                ?>
+                <a href='<?= $prefix ?>/index1.php' target="_blank">CRUD</a>
                 <? } ?>
-                <form method="post">
+                <form method="post" style="display:inline-block;">
                     <button type="submit" value="disconnect" name="submit">Se déconnecter</button>
                 </form>
                 <? }else{ ?>

@@ -13,6 +13,11 @@ $monMembre = new MEMBRE;
 $numArt = isset($_GET["id"]) ? $_GET["id"] : "";
 $e = '';
 
+$article = $monArticle->get_1Article($numArt);
+if(!$article){
+    header('Location: '.$prefix.'/#articles');
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once __DIR__ . '/../../../CLASS_CRUD/getNextNumCom.php';
 
@@ -26,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $monComment->create($numSeqComR, $numArt, date('Y-m-d H:i:s'), $_POST["repCom"], 0, 0, 0, $numMemb);
                 $monCommentPlus->create($numArt, $_POST["numRepCom"], $numSeqComR);
             } else {
-                $e = 'Veuillez spécifier votre réponse.';
+                $repE = 'Veuillez spécifier votre réponse.';
             }
         } else { //simple commentaire
             $libCom = $_POST['libCom'];
@@ -38,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     } else {
-        $e = 'Vous ne vous êtes pas connecté(e).';
+        header("Location: ".$prefix."/login");
     }
 }
 
@@ -63,8 +68,6 @@ $libConclArt = "C'est fini les amis  Le cirque a présenté une première: un sp
 Ce type de spectacle, nous offrant un goût de nouveau, est possible grâce à la Start-up bordelaise Dronisos, experte dans les spectacles de drones, domaine dont ils sont les instigateurs.";
 $urlPhotArt = $prefix . '/front/assets/img/drone-carrousel.jpg';
 
-$article = $monArticle->get_1Article($numArt);
-
 if ($article) {
     $libTitrArt = $article['libTitrArt'];
     $libChapoArt = $article['libChapoArt'];
@@ -83,7 +86,7 @@ if ($article) {
 
 ?>
 <div class="container">
-    <canvas id="canvas3d"></canvas>
+    <!-- <canvas id="canvas3d"></canvas> -->
     <div class="article-page">
         <div class="title">
             <h1><?= $libTitrArt ?></h1>
@@ -120,7 +123,7 @@ if ($article) {
             <p><?= $libConclArt ?></p>
         </div>
         <div class="interraction">
-            <a class="signalez" href="">Signalez une erreur dans le texte</a>
+            <a class="signalez" href="<?= $prefix ?>/contact">Signalez une erreur dans le texte</a>
             <div class="social-media">
                 <p>Partagez</p>
                 <a href="facebook.com"><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -160,7 +163,28 @@ if ($article) {
             if(!$verifBool){
         
     ?>
-    <div class="comment">
+    <div class="article-footer">
+        <div class="comment" id="comment<?= $row['numSeqCom'] ?>">
+            <div class="title">
+                <h2><?= $myMembre['pseudoMemb'] ?> · </h2>
+                <p><?= substr($row['dtCreCom'], 0, -9) ?></p>
+            </div>
+            <div class="content">
+                <p><?= $row['libCom'] ?></p>
+            </div>
+            <a class="reponse" id="reponse<?= $row['numSeqCom'] ?>" href="<?= isset($_SESSION['pseudoMemb']) ? 'javascript:void(0)' : $prefix.'login' ?>">Répondre</a>
+        </div>
+    </div>
+    <?php if(!empty($repE) && $_POST["numRepCom"] == $row['numSeqCom']){ ?>
+            <p style="color: red;"><?= $repE ?></p>
+    <?php } ?>
+    <form class="add-comment answer" method="post" action="#comment<?= $row['numSeqCom'] ?>" id="form<?= $row['numSeqCom'] ?>" style="display: none;">
+        <input type="text" name="repCom" />
+        <button type="submit">Répondre</button>
+        <input type="hidden" name="numRepCom" value="<?= $row['numSeqCom'] ?>">
+    </form>
+
+    <!-- <div class="comment">
         <div class="header"><?= $myMembre['pseudoMemb'] ?> - <?= substr($row['dtCreCom'], 0, -9) ?></div>
         <div class="content"><?= $row['libCom'] ?></div>
         <div class="interaction"><a class="reponse" id="reponse<?= $row['numSeqCom'] ?>" href="javascript:void(0)">Répondre</a></div>
@@ -169,7 +193,7 @@ if ($article) {
             <button type="submit">Répondre</button>
             <input type="hidden" name="numRepCom" value="<?= $row['numSeqCom'] ?>">
         </form>
-    </div>
+    </div> -->
     <?
         }
 
@@ -179,11 +203,25 @@ if ($article) {
                 $myCommentR = $monComment->get_1Comment($riw['numSeqComR'], $numArt);
                 $myMembreR = $monMembre->get_1Membre($myCommentR['numMemb']);
     ?>
-    <div class="subcomment" style="margin-left:50px;">
-        <div class="header"><?= $myMembreR['pseudoMemb'] ?> - <?= substr($row['dtCreCom'], 0, -9) ?></div>
-        <div class="content"><?= $myCommentR['libCom'] ?></div>
-        <div class="interaction"></div>
-    </div>
+        <div class="article-footer subcomment">
+            <div class="comment">
+                <div class="title">
+                    <h2><?= $myMembreR['pseudoMemb'] ?> · </h2>
+                    <p><?= substr($row['dtCreCom'], 0, -9) ?></p>
+                </div>
+                <div class="content">
+                    <p><?= $myCommentR['libCom'] ?></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="comment" style="margin-left:50px;">
+            <div class="header"><?= $myMembreR['pseudoMemb'] ?> - <?= substr($row['dtCreCom'], 0, -9) ?></div>
+            <div class="content"><?= $myCommentR['libCom'] ?></div>
+            <div class="interaction"></div>
+        </div> -->
+
+    
     <?
             endforeach;
         }
@@ -204,18 +242,7 @@ if ($article) {
 
 
     <div class="article-footer">
-        <div class="comment">
-            <div class="title">
-                <h2>Michael · </h2>
-                <p> 18 minutes</p>
-            </div>
-            <div class="content">
-                <p>Bla bla bla bla quoi l’article est trés bien sauf à cet endroit ou c’est pas fou. J’aurais plus mis un truc du genre.</p>
-            </div>
-            <a href="">Répondre</a>
-            <hr>
-        </div>
-        <form class="add-comment" method="post">
+        <form id="addComment" class="add-comment" method="post" action="#addComment">
             <h2 class="name">Ajouter un commentaire</h2>
             <p style="color: red;"><?= $e ?></p>
             <div class="field">
