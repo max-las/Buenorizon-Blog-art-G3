@@ -54,6 +54,23 @@ if (isset($_SESSION['pseudoMemb'])) {
     });
 </script>
 
+<!-- LES COOKIES -->
+<!-- <div class="cookie">
+    <img src="<?= $prefix ?>/front/assets/img/cookie.svg" height="194px" width="635px" style="border-radius: 8px;">
+    <h2 style="position: absolute; top: 50px; left: 150px;">Nous sommes les cookies !</h2>
+    <p style="position: absolute; top: 100px;">Vous pouvez consulter nos conditions d’utilisation des données en cliquant <a style="text-decoration: underline;" href="<?= $prefix ?>/cgu">ici</a></p>
+    <div style="display: flex; flex-direction: row; align-items: center; position: absolute; top: 150px; left: 100px;">
+        <a>
+            <div style="margin-right: 50px; width: 88px; height: 36px; border: 1px solid #FFFFFF; box-sizing: border-box; backdrop-filter: blur(100px); border-radius: 4px;">
+                <p style="position: relative; top: 5px; text-align: center;">Refuser</p>
+            </div>
+        </a>
+        <a style="margin-right: 50px; text-decoration: underline;">Personnalisez</a>
+        <button>Accepter</button>
+    </div>
+</div> -->
+<!-- ----------- -->
+
 <div class="container-arrivee">
 
     <div id="slider">
