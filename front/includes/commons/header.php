@@ -3,8 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-    if($_POST['submit'] == 'disconnect'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+    if ($_POST['submit'] == 'disconnect') {
         session_unset();
     }
 }
