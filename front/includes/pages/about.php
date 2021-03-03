@@ -15,64 +15,6 @@ require_once('../commons/header.php');
             <h1>À propos</h1>
         </div>
 
-        <h2 class="h2about">Conditions générales d’utilisation du site EclatTech</h2 class="h2about">
-        <div class="fondArticle">
-            <h3 class="h3about">Article 1 : Objet</h3 class="h3about">
-            <p>Les présentes CGU ou Conditions Générales d’Utilisation encadrent juridiquement l’utilisation des services du site EclatTech.
-                Constituant le contrat entre la société Buenorizon, l’Utilisateur, l’accès au site doit être précédé de l’acceptation de ces CGU. L’accès à cette plateforme signifie l’acceptation des présentes CGU.
-            </p>
-            <h3 class="h3about">Article 2 : Mentions légales</h3 class="h3about">
-            <p>L’édition du site EclatTech est assurée par la société Buenorizon créée uniquement dans le cadre du projet étudiant MMI «Blog art ».
-                L’hébergeur du site EclatTech est l'Université Bordeaux Montaigne, Domaine Universitaire 33607 Pessac Cedex.
-            </p>
-            <h3 class="h3about">Article 3 : Accès au site</h3 class="h3about">
-            <p>Le site EclatTech permet d’accéder gratuitement aux services suivants :
-                - Lecture et appréciation d’articles
-                - Publication de commentaires
-                Le site est accessible gratuitement depuis n’importe où par tout utilisateur disposant d’un accès à Internet. Tous les frais nécessaires pour l’accès aux services (matériel informatique, connexion Internet…) sont à la charge de l’utilisateur.
-                L’accès aux services dédiés aux membres s’effectue à l’aide d’un identifiant et d’un mot de passe.
-                Pour des raisons de maintenance ou autres, l’accès au site peut être interrompu ou suspendu par l’éditeur sans préavis ni justification.
-            </p>
-            <h3 class="h3about">Article 4 : Collecte des données</h3 class="h3about">
-            <p>Pour la création du compte de l’Utilisateur, la collecte des informations au moment de l’inscription sur le site est nécessaire et obligatoire. Conformément à la loi n°78-17 du 6 janvier relative à l’informatique, aux fichiers et aux libertés, la collecte et le traitement d’informations personnelles s’effectuent dans le respect de la vie privée.
-                Suivant la loi Informatique et Libertés en date du 6 janvier 1978, articles 39 et 40, l’Utilisateur dispose du droit d’accéder, de rectifier, de supprimer et d’opposer ses données personnelles. L’exercice de ce droit s’effectue par :
-                le formulaire de contact et son espace client.
-            </p>
-            <h3 class="h3about">Article 5 : Propriété intellectuelle</h3 class="h3about">
-            <p>Les marques, logos ainsi que les contenus du site EclatTech (illustrations graphiques, textes…) sont protégés par le Code de la propriété intellectuelle et par le droit d’auteur.
-                La reproduction et la copie des contenus par l’Utilisateur requièrent une autorisation préalable du site. Dans ce cas, toute utilisation à des usages commerciaux ou à des fins publicitaires est proscrite.
-            </p>
-            <h3 class="h3about">Article 6 : Responsabilité</h3 class="h3about">
-            <p>Bien que les informations publiées sur le site soient réputées fiables, le site se réserve la faculté d’une non-garantie de la fiabilité des sources.
-                Les informations diffusées sur le site EclatTech sont présentées à titre purement informatif et sont sans valeur contractuelle. En dépit des mises à jour régulières, la responsabilité du site ne peut être engagée en cas de modification des dispositions administratives et juridiques apparaissant après la publication. Il en est de même pour l’utilisation et l’interprétation des informations communiquées sur la plateforme.
-                Le site décline toute responsabilité concernant les éventuels virus pouvant infecter le matériel informatique de l’Utilisateur après l’utilisation ou l’accès à ce site.
-                Le site ne peut être tenu pour responsable en cas de force majeure ou du fait imprévisible et insurmontable d’un tiers.
-                La garantie totale de la sécurité et la confidentialité des données n’est pas assurée par le site. Cependant, le site s’engage à mettre en œuvre toutes les méthodes requises pour le faire au mieux.
-            </p>
-            <h3 class="h3about">Article 7 : Liens hypertextes</h3 class="h3about">
-            <p>Le site peut être constitué de liens hypertextes. En cliquant sur ces derniers, l’Utilisateur sortira de la plateforme. Cette dernière n’a pas de contrôle et ne peut pas être tenue responsable du contenu des pages web relatives à ces liens.
-            </p>
-            <h3 class="h3about">Article 8 : Publication par l’Utilisateur</h3 class="h3about">
-            <p>Le site EclatTech permet aux membres de publier des commentaires.
-                Dans ses publications, le membre est tenu de respecter les règles de la Netiquette ainsi que les règles de droit en vigueur.
-                Le site dispose du droit d’exercer une modération à priori sur les publications et peut refuser leur mise en ligne sans avoir à fournir de justification.
-                Le membre garde l’intégralité de ses droits de propriété intellectuelle. Toutefois, toute publication sur le site implique la délégation du droit non exclusif et gratuit à la société éditrice de représenter, reproduire, modifier, adapter, distribuer et diffuser la publication n’importe où et sur n’importe quel support pour la durée de la propriété intellectuelle. Cela peut se faire directement ou par l’intermédiaire d’un tiers autorisé. Cela concerne notamment le droit d’utilisation de la publication sur le web et sur les réseaux de téléphonie mobile.
-                À chaque utilisation, l’éditeur s’engage à mentionner le nom du membre à proximité de la publication.
-                L’Utilisateur est tenu responsable de tout contenu qu’il met en ligne. L’Utilisateur s’engage à ne pas publier de contenus susceptibles de porter atteinte aux intérêts de tierces personnes. Toutes procédures engagées en justice par un tiers lésé à l’encontre du site devront être prises en charge par l’Utilisateur.
-                La suppression ou la modification par le site du contenu de l’Utilisateur peut s’effectuer à tout moment, pour n’importe quelle raison et sans préavis.
-            </p>
-            <h3 class="h3about">Article 9 : Durée du contrat</h3 class="h3about">
-            <p>Le présent contrat est valable pour une durée indéterminée. Le début de l’utilisation des services du site marque l’application du contrat à l’égard de l’Utilisateur.
-            </p>
-            <h3 class="h3about">Article 10 : Droit applicable et juridiction compétente</h3 class="h3about">
-            <p>Le présent contrat est soumis à la législation française. L’absence de résolution à l’amiable des cas de litige entre les parties implique le recours aux tribunaux français compétents pour régler le contentieux.
-            </p>
-            <h3 class="h3about">Article 11 : Cookies</h3 class="h3about">
-            <p>Lors des visites sur le site, l’installation automatique d’un cookie sur le logiciel de navigation de l’Utilisateur peut survenir.
-                Les cookies correspondent à de petits fichiers déposés temporairement sur le disque dur de l’ordinateur de l’Utilisateur. Ces cookies sont nécessaires pour assurer l’accessibilité et la navigation sur le site. Ces fichiers ne comportent pas d’informations personnelles et ne peuvent pas être utilisés pour l’identification d’une personne.
-                L’information présente dans les cookies est utilisée pour améliorer les performances de navigation sur le site EclatTech.
-            </p>
-        </div>
         <h2 class="h2about">Mentions légales</h2 class="h2about">
         <div class="fondArticle2">
             <p>Conformément aux dispositions des Articles 6-III et 19 de la Loi n°2004-575 du 21 juin 2004 pour la Confiance dans l’économie numérique, dite L.C.E.N., il est porté à la connaissance des Utilisateurs du site Eclat Tech les présentes mentions légales.
@@ -108,6 +50,8 @@ require_once('../commons/header.php');
         </div>
     </div>
 
+    
+</div>
     <?php
     require_once('../commons/footer.php');
     ?>

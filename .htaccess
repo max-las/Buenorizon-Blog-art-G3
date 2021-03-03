@@ -6,3 +6,4 @@ RewriteRule article front/includes/pages/article.php
 RewriteRule about front/includes/pages/about.php
 RewriteRule contact front/includes/pages/contact.php
 RewriteRule moncompte front/includes/pages/moncompte.php
+RewriteRule cgu front/includes/pages/cgu.php

@@ -8,9 +8,10 @@
       </div>
       <div class="col-6 col-md-3 offset-md-2">
         <ul class="list-unstyled">
-          <li class="mb-3"><a href="../pages/home.php#articles">Articles</Article></a></li>
-          <li class="mb-3"><a href="../pages/contact.php">Contact</a></li>
-          <li class="mb-3"><a href="../pages/about.php">Mentions légales</a></li>
+          <li class="mb-3"><a href="<?= $prefix ?>/#articles">Articles</Article></a></li>
+          <li class="mb-3"><a href="<?= $prefix ?>/contact">Contact</a></li>
+          <li class="mb-3"><a href="<?= $prefix ?>/about">Mentions légales</a></li>
+          <li class="mb-3"><a href="<?= $prefix ?>/cgu">Conditions Générales d'Utilisation</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-3">

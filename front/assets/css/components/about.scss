@@ -45,17 +45,27 @@
     padding-right: 1.4492753623188406vw;
     padding-bottom: 3.1446540880503147vh;
 }
-.AproposTitre {
+
+.AproposTitre, .CGUTitre {
     padding-top: 19.2102454642476vh;
     margin-bottom: 8.537886872998932vh;
     text-align: center;
 }
 
+.cguParag {
+    margin-left: 2%;
+}
+
+#vigueur {
+    display: flex;
+    justify-content: center;
+}
+
 .h3about {
     font-family: Montserrat;
     text-indent: 2%;
-    padding-top: 3.7353255069370332vh;
-    padding-bottom: 17.1.8676627534685166vh;
+    padding-top: 4vh;
+    padding-bottom: 2vh;
     
 }
 
