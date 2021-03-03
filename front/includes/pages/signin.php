@@ -234,7 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                     <input type="hidden" name="condMemb" id="condMemb" value="1" />
-                                    <span>Accepter les <a href="<?= $prefix ?>/cgu" style="color:#FFFFFF;">Conditions <br> générales d’utilisation</a></span>
+                                    <span>Je reconnais avoir lu et compris les <u><a href="<?= $prefix ?>/cgu" style="color:#FFFFFF;">Conditions générales d’utilisation</a></u> et je les accepte</span>
                                 </div>
                                 <div class="rgpd">
                                     <svg name="condMembSvg" id="condMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                     <input type="hidden" name="condMemb" id="condMemb" value="1" />
-                                    <span>Accepter l'<a href="<?= $prefix ?>#rgpd" style="color:#FFFFFF;">archivage <br>de mes données par <br />Buenorizon</a></span>
+                                    <span>J'accepte qu'EclaTech <a href="<?= $prefix ?>#rgpd" style="color:#FFFFFF;">stocke mes données personnelles</a></span>
                                 </div>
                             </div>
                             <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
@@ -326,9 +326,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p> -->
 
         <div id="rgpd">
-            <p>En cochant la case « Accepter l'archivage de mes informations par Buenorizon » vous consentez aux actes suivants:</p>
-            <p>Les informations recueillies dans ce formulaire seront enregistrées dans un fichier informatisé par Buenorizon pour la gestion des comptes utilisateurs.</p>
-            <p>Sont tenus pour responsables: Contact 1 (samuel.labagnere@mmibordeaux.com) ou Contact 2 (maxime.lasserre@mmibordeaux.com).</p>
+            <p>En cochant la case « J'accepte qu'EclaTech stocke mes données personnelles » vous consentez aux actes suivants:</p>
+            <p>Les informations recueillies dans ce formulaire seront enregistrées dans un fichier informatisé par EclaTech pour la gestion des comptes utilisateurs.</p>
+            <p>Sont tenus pour responsables: Samuel Labagnère (samuel.labagnere@mmibordeaux.com) ou Maxime Lasserre (maxime.lasserre@mmibordeaux.com).</p>
             <p>Les données collectées seront communiquées aux seuls destinataires suivants: Le service de gestion de données (contacts ci-dessus).</p>
             <br />
             <p>Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données en vous adressant directement aux contacts des reponsables (exprimés ci-dessus).</p>
