@@ -24,13 +24,6 @@ if ((subStr($chemin, -1) == '/') && $chemin != '/') {
 require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
 
-if ($chemin == '/') {
-    require_once __DIR__ . '/../../../CLASS_CRUD/article.class.php';
-    $monArticle = new ARTICLE;
-    require_once __DIR__ . '/../../../CLASS_CRUD/motclearticle.class.php';
-    $monMotCleA = new MOTCLEARTICLE;
-}
-
 
 ?>
 

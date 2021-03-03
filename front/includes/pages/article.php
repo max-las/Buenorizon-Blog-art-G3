@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $numSeqComR = getNextNumCom($numArt);
                 $monComment->create($numSeqComR, $numArt, date('Y-m-d H:i:s'), $_POST["repCom"], 0, 0, 0, $numMemb);
                 $monCommentPlus->create($numArt, $_POST["numRepCom"], $numSeqComR);
-            } else {
-                $e = 'Veuillez spécifier votre commentaire.';
+            }else{
+                $e = 'Veuillez spécifier votre réponse.';
             }
         } else { //simple commentaire
             $libCom = $_POST['libCom'];
