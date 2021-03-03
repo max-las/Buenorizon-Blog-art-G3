@@ -112,18 +112,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
 
 
+                            <script src="<?= $prefix ?>/front/assets/js/lottie.js"></script>
+
 
 
                             <div class="form-group">
-                                <input class="input-signin1" name="passMemb" id="passMemb" type="password" placeholder=" ">
+                                <input name="passMemb" id="passMemb" type="password" placeholder=" ">
                                 <div id="eyeSignin1" class="eye"></div>
                                 <label>Mot de passe<b class=red>*</b><label>
                             </div>
+                            <script>
+                                let toggleEyeSignin1 = false
+                                const eyeSignin1 = document.getElementById("eyeSignin1")
+                                const inputEyeSignin1 = document.getElementById("passMemb")
+                                var animation = bodymovin.loadAnimation({
+                                    container: eyeSignin1,
+                                    renderer: "svg",
+                                    path: "/front/assets/json/visibilityV2.json",
+                                    name: "eyeSignin1",
+                                })
+                                lottie.setSpeed(1.25, "eyeSignin1")
+                                eyeSignin1.addEventListener("click", () => {
+                                    toggleEyeSignin1 = !toggleEyeSignin1
+                                    lottie.play("eyeSignin1")
+                                    toggleEyeSignin1
+                                        ?
+                                        lottie.setDirection(-1, "eyeSignin1") :
+                                        lottie.setDirection(1, "eyeSignin1")
+                                    inputEyeSignin1.type =
+                                        inputEyeSignin1.type === "password" ? "text" : "password"
+                                })
+                            </script>
                             <div class="form-group">
                                 <input class="input-signin2" name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
                                 <div id="eyeSignin2" class="eye"></div>
                                 <label>Confirmer le mot de passe <b class=red>*</b><label>
                             </div>
+                            <script>
+                                let toggleEyeSignin2 = false
+                                const eyeSignin2 = document.getElementById("eyeSignin2")
+                                const inputEyeSignin2 = document.getElementsByClassName("input-signin2")[0]
+                                var animation = bodymovin.loadAnimation({
+                                    container: eyeSignin2,
+                                    renderer: "svg",
+                                    path: "/front/assets/json/visibilityV2.json",
+                                    name: "eyeSignin2",
+                                })
+                                lottie.setSpeed(1.25, "eyeSignin2")
+                                eyeSignin2.addEventListener("click", () => {
+                                    toggleEyeSignin2 = !toggleEyeSignin2
+                                    lottie.play("eyeSignin2")
+                                    toggleEyeSignin2
+                                        ?
+                                        lottie.setDirection(-1, "eyeSignin2") :
+                                        lottie.setDirection(1, "eyeSignin2")
+                                    inputEyeSignin2.type =
+                                        inputEyeSignin2.type === "password" ? "text" : "password"
+                                })
+                            </script>
                             <script>
                                 $(document).ready(function() {
                                     $('#pseudoMemb').on("keyup paste", function() {
