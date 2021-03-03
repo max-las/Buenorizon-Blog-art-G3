@@ -135,9 +135,6 @@ if ($article) {
                     </svg></a>
             </div>
             <div class="meta">
-                <div class="author">
-                    <p>Jean-Michel Rédacteur</p> <a href="">Voir ses articles</a>
-                </div>
                 <!-- <div class="hashtag">
                     <button>#hashtag</button>
                     <button>#hashtag</button>
@@ -219,12 +216,11 @@ if ($article) {
             <hr>
         </div>
         <form class="add-comment" method="post">
-            <h2 class="name">Bernard L'hermite</h2>
+            <h2 class="name">Ajouter un commentaire</h2>
             <p style="color: red;"><?= $e ?></p>
             <div class="field">
                 <div class="form-group">
                     <input type="text" id="libCom" name="libCom" placeholder=" " />
-                    <label>Ajouter un commentaire</label>
                 </div>
                 <button type="submit" name="submit">Ajouter un commentaire </button>
             </div>

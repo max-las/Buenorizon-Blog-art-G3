@@ -42,9 +42,8 @@ if (isset($_SESSION['pseudoMemb'])) {
         });
 
         $(".filter").click(function(){
-            var classes = $(this).attr("class").split(/\s+/);
             var numThem = $(this).attr("id").substr(6);
-            if(classes.includes("category-deselect")){
+            if($(this).hasClass('category-deselect')){
                 $(this).removeClass("category-deselect");
                 $(".them"+numThem).show();
             }else{
