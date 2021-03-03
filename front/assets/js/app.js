@@ -1,4 +1,4 @@
-
+console.log(prefix)
 // Animation oeil mot de passe
 let toggleEye = false
 const eye = document.getElementById("eye")
@@ -6,7 +6,7 @@ const inputEye = document.getElementById("input-login")
 var animation = bodymovin.loadAnimation({
   container: eye,
   renderer: "svg",
-  path: "<?= $prefix ?>/front/assets/json/visibilityV2.json",
+  path: prefix + "/front/assets/json/visibilityV2.json",
   name: "eye",
 })
 lottie.setSpeed(1.25, "eye")
@@ -17,7 +17,6 @@ eye.addEventListener("click", () => {
   inputEye.type = inputEye.type === "password" ? "text" : "password"
 })
 
-
 // Animation checkbox Se souvenir de moi
 let toggleCheckbox = false
 const checkbox = document.getElementById("checkbox")
@@ -25,7 +24,7 @@ let inputCheckbox = document.getElementById("souvMemb")
 var animation = bodymovin.loadAnimation({
   container: checkbox,
   renderer: "svg",
-  path: "<?= $prefix ?>/front/assets/json/checkBox.json",
+  path: prefix + "/front/assets/json/checkBox.json",
   name: "checkbox",
   autoplay: false,
 })

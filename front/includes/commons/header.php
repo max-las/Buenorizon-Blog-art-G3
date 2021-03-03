@@ -46,6 +46,9 @@ $monMembre = new MEMBRE;
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <? } ?>
     <script>
+        prefix = "<?= $prefix ?>"
+    </script>
+    <script>
         var SPE = {};
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
