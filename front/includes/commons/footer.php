@@ -24,8 +24,6 @@
     </div>
   </div>
 </footer>
-<script src="<?= $prefix ?>/front/assets/js/lottie.js"></script>
-<script src="<?= $prefix ?>/front/assets/js/app.js"></script>
 
 </body>
 

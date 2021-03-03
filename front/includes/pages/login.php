@@ -84,6 +84,9 @@ require_once('../commons/header.php');
         </div>
     </div>
 </div>
+<script src="<?= $prefix ?>/front/assets/js/lottie.js"></script>
+<script src="<?= $prefix ?>/front/assets/js/app.js"></script>
+
 <script type="text/javascript">
     var SPLINE_EXPORTED_SCENE = {
         scenes: [{
