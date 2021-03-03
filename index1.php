@@ -76,16 +76,16 @@ require_once __DIR__ . '/util/utilErrOn.php';
 		<a href="./back/comment/comment.php">Commentaire </a>
 		<br /><br />
 		Gestion du CRUD :
-		<a href="./back/commentplus/commentplus.php">Réponse sur Commentaire </a>
+		<a href="./back/commentplus/commentPlus.php">Réponse sur Commentaire </a>
 		<br /><br />
 		Gestion du CRUD :
 		<a href="./back/langue/langue.php">Langue </a>
 		<br /><br />
 		Gestion du CRUD :
-		<a href="./back/likeart/likeart.php">Like Article </a>
+		<a href="./back/likeart/likeArt.php">Like Article </a>
 		<br /><br />
 		Gestion du CRUD :
-		<a href="./back/likecom/likecom.php">Like Commentaire </a>
+		<a href="./back/likecom/likeCom.php">Like Commentaire </a>
 		<br /><br />
 		Gestion du CRUD :
 		<a href="./back/membre/membre.php">Membre </a>
