@@ -4,6 +4,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    h1{
+      margin-bottom: 2rem;
+    }
   }
   .img-top {
     position: relative;

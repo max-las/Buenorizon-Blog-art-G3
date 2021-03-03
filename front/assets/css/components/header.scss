@@ -8,6 +8,8 @@ header {
   width: 100vw;
   align-items: center;
   font-weight: 600;
+  background-color: #02142ee8 ;
+  padding-bottom: 2rem;
   .navbar {
     margin-top: 1.5rem;
     display: flex;
@@ -22,6 +24,17 @@ header {
       color: white;
       margin-right: 2rem;
       text-decoration: none;
+    }
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 3vw;
+      @media (min-width: 1440px) {
+        left: 5vw;
+      }
+      img {
+        height: 56px;
+      }
     }
   }
 }
