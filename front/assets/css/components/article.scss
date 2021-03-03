@@ -8,8 +8,8 @@
   .img-top {
     position: relative;
     margin-top: 5rem;
-    width: 30vw;
-    height: 12rem;
+    width: 60vw;
+    height: 16rem;
     object-fit: cover;
     z-index: 10;
   }
@@ -28,7 +28,8 @@
       background-size: cover;
     }
     img {
-      margin-right: 4rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
       width: 25vw;
       max-height: 70vh;
       object-fit: cover;
@@ -202,4 +203,7 @@
       }
     }
   }
+}
+canvas{
+  width: 100vw;
 }
