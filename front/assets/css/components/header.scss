@@ -23,5 +23,13 @@ header {
       margin-right: 2rem;
       text-decoration: none;
     }
+    #logo {
+      position: fixed;
+      top: 10px;
+      left: 100px;
+      img {
+        height: 56px;
+      }
+    }
   }
 }

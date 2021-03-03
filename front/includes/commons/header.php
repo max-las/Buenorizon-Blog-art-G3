@@ -58,6 +58,9 @@ $monMembre = new MEMBRE;
     <header>
         <div class="navbar">
             <div>
+                <a id="logo" href="<?= $prefix ?>/">
+                    <img src="<?= $prefix ?>/front/assets/img/logoET.png">
+                </a>
                 <a <?= ($chemin == '/') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/">Accueil</a>
                 <a <?= ($chemin == '/article') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/#articles">Articles</a>
                 <a <?= ($chemin == '/contact') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/contact">Contact</a>
