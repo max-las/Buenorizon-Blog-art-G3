@@ -22,13 +22,13 @@ require_once('../commons/header.php');
                 Constituant le contrat entre la société Buenorizon, l’Utilisateur, l’accès au site doit être précédé de l’acceptation de ces CGU. L’accès à cette plateforme signifie l’acceptation des présentes CGU.
             </p>
             <h3 class="h3about">Article 2 : Mentions légales</h3 class="h3about">
-            <p>L’édition du site EclatTech est assurée par la société Buenorizon créer uniquement dans le cadre du projet étudiant mmi «Blog art ».
-                L’hébergeur du site EclatTech est la société [Nom et adresse de l’hébergeur] , [adresse de l’hébergeur].
+            <p>L’édition du site EclatTech est assurée par la société Buenorizon créée uniquement dans le cadre du projet étudiant MMI «Blog art ».
+                L’hébergeur du site EclatTech est l'Université Bordeaux Montaigne, Domaine Universitaire 33607 Pessac Cedex.
             </p>
             <h3 class="h3about">Article 3 : Accès au site</h3 class="h3about">
             <p>Le site EclatTech permet d’accéder gratuitement aux services suivants :
-                -Lecteur d’articles
-                -Mettre des commentaires
+                - Lecture et appréciation d’articles
+                - Publication de commentaires
                 Le site est accessible gratuitement depuis n’importe où par tout utilisateur disposant d’un accès à Internet. Tous les frais nécessaires pour l’accès aux services (matériel informatique, connexion Internet…) sont à la charge de l’utilisateur.
                 L’accès aux services dédiés aux membres s’effectue à l’aide d’un identifiant et d’un mot de passe.
                 Pour des raisons de maintenance ou autres, l’accès au site peut être interrompu ou suspendu par l’éditeur sans préavis ni justification.
@@ -81,12 +81,11 @@ require_once('../commons/header.php');
             </p>
             <h3 class="h3about">Article 1 : L’éditeur
             </h3 class="h3about">
-            <p>L'édition du site Eclat Tech est assurée par la Société Buenorizon créé uniquement dans le cadre du projet étudiant mmi «Blog art», adresses e-mail : contact 1 (maxime.lasserre@mmibordeaux.com), contact 2 (samuel.labagnere@mmibordeaux.com).
-                Le Directeur de la publication est Théo Deschamps.
+            <p>L'édition du site Eclat Tech est assurée par la Société Buenorizon créée uniquement dans le cadre du projet étudiant MMI «Blog art», adresses e-mail : contact 1 (maxime.lasserre@mmibordeaux.com), contact 2 (samuel.labagnere@mmibordeaux.com).
             </p>
             <h3 class="h3about"> Article 2 : L’hébergeur
             </h3 class="h3about">
-            <p>L'hébergeur du site Eclat Tech est l’université Bordeaux Montaigne, situé à l’adresse 1 rue Jacques Ellul 33080 Bordeaux, avec le numéro de téléphone : 05 57 12 20 44. </p>
+            <p>L'hébergeur du site Eclat Tech est l’université Bordeaux Montaigne, situé à l’adresse Domaine Universitaire 33607 Pessac Cedex, avec le numéro de téléphone : 05 57 12 44 44. </p>
             <h3 class="h3about">Article 3 : Accès au site
             </h3 class="h3about">
             <p>Le site est accessible par tout endroit, 7j/7, 24h/24 sauf cas de force majeure, interruption programmée ou non et pouvant découlant d’une nécessité de maintenance.

@@ -61,7 +61,7 @@ $monMembre = new MEMBRE;
                 <a <?= ($chemin == '/') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/">Accueil</a>
                 <a <?= ($chemin == '/article') ? 'class="highlight"' : '' ?> href="#articles">Articles</a>
                 <a <?= ($chemin == '/contact') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/contact">Contact</a>
-                <a <?= ($chemin == '/about') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/about">A propos</a>
+                <a <?= ($chemin == '/about') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/about">À propos</a>
             </div>
             <div id="accountButtons">
                 <? if(isset($_SESSION['pseudoMemb'])){ ?>
