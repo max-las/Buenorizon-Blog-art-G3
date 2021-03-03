@@ -1,209 +1,219 @@
 .signinblock {
-    width: 100vw;
+  width: 100vw;
+  display: flex;
+  padding-top: 12%;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+
+  .container-haut {
     display: flex;
-    padding-top: 12%;
-    flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
 
-    .container-haut {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+    .title {
+      display: flex;
+      flex-direction: column;
+      h1,
+      p {
+        display: inline-block;
+      }
+    }
 
-        .title {
+    .container-signin {
+      padding-top: 10em;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      .red {
+        color: $primary;
+      }
+      .signin {
+        position: relative;
+        width: 50vw;
+        margin-top: 32px;
+        display: flex;
+        align-items: flex-start;
+
+        .content1 {
+          padding: 2em;
+          background-image: url("data:image/svg+xml,%3Csvg width='416' height='670' viewBox='0 0 416 670' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect width='416' height='670' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:overlay' opacity='0.15'%3E%3Cpath d='M187.991 291.593C132.191 184.413 34.3444 100.812 0.00095502 79.4048L0 669.998H162.684C229.737 593.451 251.256 413.113 187.991 291.593Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-100' width='616' height='870' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0' x2='513.688' y2='445.087' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E ");
+          width: 30vw;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .form-inscription {
+          //   padding: 2em 0;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          flex-direction: column;
+          .form-group {
+            margin-top: 2em;
+            position: relative;
+            padding: 15px 0 0;
+            width: 80%;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            input {
+              color: white;
+              font-weight: 400;
+              font-size: 0.75rem;
+              width: 100%;
+              border: 0;
+              border-bottom: 2px solid white;
+              outline: 0;
+              padding: 6px 0.25rem;
+              background: transparent;
+              transition: border-color 0.2s;
+              &::placeholder {
+                visibility: hidden;
+              }
+              &:placeholder-shown ~ label {
+                cursor: text;
+                top: 22px;
+              }
+              &:focus {
+                border-color: $primary;
+                padding-bottom: 6px;
+                ~ label {
+                  position: absolute;
+                  top: 0;
+                  font-size: 1rem;
+                  color: $primary;
+                  transition: 0.2s;
+                  font-weight: 600;
+                }
+              }
+            }
+            label {
+              margin-left: 0.25rem;
+              display: block;
+              font-weight: 400;
+              position: absolute;
+              top: 0;
+              transition: 0.2s;
+              font-size: 1rem;
+              pointer-events: none;
+            }
+            .eye {
+              position: absolute;
+              right: 0.5em;
+              bottom: 0.15em;
+              width: 24px;
+              height: 24px;
+              fill: white;
+            }
+          }
+
+          .coche {
+            width: 80%;
+
+            .souvenir {
+              margin-top: 3em;
+              display: flex;
+              align-items: center;
+
+              span {
+                font-size: 14px;
+                margin-left: 0.5rem;
+              }
+            }
+            .cdu {
+              margin-top: 1rem;
+              //   margin-bottom: 2rem;
+              display: flex;
+              //   width: 200%;
+              span {
+                font-size: 14px;
+                margin-left: 0.5rem;
+                display: block;
+              }
+            }
+            .rgpd {
+              margin-top: 1rem;
+              margin-bottom: 2rem;
+              display: flex;
+              //   width: 200%;
+              span {
+                font-size: 14px;
+                margin-left: 0.5rem;
+                display: block;
+                white-space: nowrap;
+              }
+            }
+          }
+          button {
+            margin-top: 2em;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            background-color: $primary;
+            font-family: $montserrat;
+            color: white;
+            text-decoration: none;
+            border: none;
+            padding: 8px 12px;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .visualprofil {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .profil {
+        margin-left: 4.5em;
+        .content2 {
+          background-image: url("data:image/svg+xml,%3Csvg width='935' height='438' viewBox='0 0 935 438' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect y='0.0610352' width='935' height='437.939' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:overlay' opacity='0.15'%3E%3Cpath d='M556 0.000350903L0 0V226.03C0 226.03 225.293 259.066 376 209.032C526.707 158.999 698.195 79.4308 556 0.000350903Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-99.939' width='1135' height='637.939' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0.0610352' x2='204.658' y2='609.814' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+          padding: 2em;
+          background-size: cover;
+          // width: 15rem;
+          // height: 20rem;
+
+          .content {
             display: flex;
             flex-direction: column;
-            h1,
-            p {
-                display: inline-block;
+
+            .nomprenom {
+              display: flex;
+              flex-direction: row;
+
+              #nom {
+                margin-left: 1em;
+              }
             }
+          }
         }
+      }
 
-        .container-signin {
-            padding-top: 10em;
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-
-            .red {
-                color: $primary;
-            }
-            .signin {
-                position: relative;
-                width: 50vw;
-                margin-top: 32px;
-                display: flex;
-                align-items: flex-start;
-
-                .content1 {
-                    padding: 2em;
-                    background-image: url("data:image/svg+xml,%3Csvg width='416' height='670' viewBox='0 0 416 670' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect width='416' height='670' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:overlay' opacity='0.15'%3E%3Cpath d='M187.991 291.593C132.191 184.413 34.3444 100.812 0.00095502 79.4048L0 669.998H162.684C229.737 593.451 251.256 413.113 187.991 291.593Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-100' width='616' height='870' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0' x2='513.688' y2='445.087' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E ");
-
-                    display: flex;
-                    align-items: center;
-                    flex-direction: column;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                }
-                .form-inscription {
-                    padding: 2em 0;
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    flex-direction: column;
-                    .form-group {
-                        margin-top: 2em;
-                        position: relative;
-                        padding: 15px 0 0;
-                        width: 80%;
-                        font-size: 1.125rem;
-                        display: flex;
-                        align-items: center;
-                        input {
-                            color: white;
-                            font-weight: 400;
-                            font-size: 0.75rem;
-                            width: 100%;
-                            border: 0;
-                            border-bottom: 2px solid white;
-                            outline: 0;
-                            padding: 6px 0.25rem;
-                            background: transparent;
-                            transition: border-color 0.2s;
-                            &::placeholder {
-                                visibility: hidden;
-                            }
-                            &:placeholder-shown ~ label {
-                                cursor: text;
-                                top: 22px;
-                            }
-                            &:focus {
-                                border-color: $primary;
-                                padding-bottom: 6px;
-                                ~ label {
-                                    position: absolute;
-                                    top: 0;
-                                    font-size: 1rem;
-                                    color: $primary;
-                                    transition: 0.2s;
-                                    font-weight: 600;
-                                }
-                            }
-                        }
-                        label {
-                            margin-left: 0.25rem;
-                            display: block;
-                            font-weight: 400;
-                            position: absolute;
-                            top: 0;
-                            transition: 0.2s;
-                            font-size: 1rem;
-                            pointer-events: none;
-                        }
-                        .eye {
-                            position: absolute;
-                            right: 0.5em;
-                            bottom: 0.15em;
-                        }
-                    }
-
-                    .coche {
-                       width: 80%;
-
-
-
-                        .souvenir {
-                            margin-top: 3em;
-                            display: flex;
-                            align-items: center;
-                           
-
-                            span {
-                                font-size: 14px;
-                                margin-left: 0.5rem;
-                            }
-                        }
-                        .cdu {
-                            margin-top: 1rem;
-                            margin-bottom: 2rem;
-                            display: flex;
-                            width: 200%;
-                           
-
-                            span {
-                                font-size: 14px;
-                                margin-left: 0.5rem;
-                                display: block;
-                            }
-                        }
-                    }
-                    button {
-                        margin-top: 2em;
-                        font-weight: 600;
-                        border-radius: 0.5rem;
-                        background-color: $primary;
-                        font-family: $montserrat;
-                        color: white;
-                        text-decoration: none;
-                        border: none;
-                        padding: 8px 12px;
-                        font-size: 1rem;
-                    }
-                }
-            }
-        }
-
-        .visualprofil {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .profil {
-                margin-left: 4.5em;
-                .content2 {
-                    background-image: url("data:image/svg+xml,%3Csvg width='935' height='438' viewBox='0 0 935 438' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect y='0.0610352' width='935' height='437.939' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:overlay' opacity='0.15'%3E%3Cpath d='M556 0.000350903L0 0V226.03C0 226.03 225.293 259.066 376 209.032C526.707 158.999 698.195 79.4308 556 0.000350903Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-99.939' width='1135' height='637.939' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0.0610352' x2='204.658' y2='609.814' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
-                    padding: 2em;
-                    background-size: cover;
-                    // width: 15rem;
-                    // height: 20rem;
-
-                    .content {
-                        display: flex;
-                        flex-direction: column;
-
-                        .nomprenom {
-                            display: flex;
-                            flex-direction: row;
-
-                            #nom {
-                                margin-left: 1em;
-                            }
-                        }
-                    }
-                }
-            }
-
-            img {
-                width: 648px;
-                height: 343px;
-                object-fit: cover;
-            }
-        }
+      img {
+        width: 648px;
+        height: 343px;
+        object-fit: cover;
+      }
     }
+  }
 
-    .content3 {
-        margin-top: 8em;
-        width: 70vw;
-        background-image: url("data:image/svg+xml,%3Csvg width='935' height='438' viewBox='0 0 935 438' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect y='0.0610352' width='935' height='437.939' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:overlay' opacity='0.15'%3E%3Cpath d='M556 0.000350903L0 0V226.03C0 226.03 225.293 259.066 376 209.032C526.707 158.999 698.195 79.4308 556 0.000350903Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-99.939' width='1135' height='637.939' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0.0610352' x2='204.658' y2='609.814' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
-        padding: 2em;
-        background-size: cover;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-        .textjamaislu {
-            font-size: 14px;
-        }
+  .content3 {
+    margin-top: 8em;
+    width: 70vw;
+    background-image: url("data:image/svg+xml,%3Csvg width='935' height='438' viewBox='0 0 935 438' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect y='0.0610352' width='935' height='437.939' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:overlay' opacity='0.15'%3E%3Cpath d='M556 0.000350903L0 0V226.03C0 226.03 225.293 259.066 376 209.032C526.707 158.999 698.195 79.4308 556 0.000350903Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-99.939' width='1135' height='637.939' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0.0610352' x2='204.658' y2='609.814' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+    padding: 2em;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    .textjamaislu {
+      font-size: 14px;
     }
+  }
 }

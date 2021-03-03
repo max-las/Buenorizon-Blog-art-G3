@@ -114,24 +114,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-                            <div class=" form-group">
-                                <input name="passMemb" id="passMemb" type="password" placeholder=" ">
-                                <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
+                            <div class="form-group">
+                                <input class="input-signin1" name="passMemb" id="passMemb" type="password" placeholder=" ">
+                                <div id="eyeSignin1" class="eye"></div>
                                 <label>Mot de passe<b class=red>*</b><label>
                             </div>
-
                             <div class="form-group">
-                                <input name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
-                                <svg id="eye" class="eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
+                                <input class="input-signin2" name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
+                                <div id="eyeSignin2" class="eye"></div>
                                 <label>Confirmer le mot de passe <b class=red>*</b><label>
                             </div>
-
                             <script>
                                 $(document).ready(function() {
                                     $('#pseudoMemb').on("keyup paste", function() {
@@ -178,8 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <input type="hidden" name="condMemb" id="condMemb" value="1" />
                                     <span>Accepter les <a href="<?= $prefix ?>/cgu" style="color:#FFFFFF;">Conditions <br> générales d’utilisation</a></span>
                                 </div>
-
-                                <div class="rpgd">
+                                <div class="rgpd">
                                     <svg name="condMembSvg" id="condMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -202,17 +193,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
 
             <div class="visualprofil">
                 <div class="profil">
@@ -296,16 +276,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 </div>
-
-
-
-<script>
-    const eye = document.getElementById('eye')
-    const input = document.getElementById('input-signin')
-    eye.addEventListener('click', () => {
-        input.type = input.type === 'password' ? 'text' : 'password'
-    })
-</script>
 
 
 <?php
