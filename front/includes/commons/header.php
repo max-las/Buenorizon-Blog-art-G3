@@ -59,7 +59,7 @@ $monMembre = new MEMBRE;
         <div class="navbar">
             <div>
                 <a <?= ($chemin == '/') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/">Accueil</a>
-                <a <?= ($chemin == '/article') ? 'class="highlight"' : '' ?> href="#articles">Articles</a>
+                <a <?= ($chemin == '/article') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/#articles">Articles</a>
                 <a <?= ($chemin == '/contact') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/contact">Contact</a>
                 <a <?= ($chemin == '/about') ? 'class="highlight"' : '' ?> href="<?= $prefix ?>/about">A propos</a>
             </div>
