@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             var animation = bodymovin.loadAnimation({
                                 container: eyeSignin1,
                                 renderer: "svg",
-                                path: "/front/assets/json/visibilityV2.json",
+                                path: "<?= $prefix ?>/front/assets/json/visibilityV2.json",
                                 name: "eyeSignin1",
                             })
                             lottie.setSpeed(1.25, "eyeSignin1")
@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             var animation = bodymovin.loadAnimation({
                                 container: eyeSignin2,
                                 renderer: "svg",
-                                path: "/front/assets/json/visibilityV2.json",
+                                path: "<?= $prefix ?>/front/assets/json/visibilityV2.json",
                                 name: "eyeSignin2",
                             })
                             lottie.setSpeed(1.25, "eyeSignin2")
@@ -209,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 var animation = bodymovin.loadAnimation({
                                     container: checkbox,
                                     renderer: "svg",
-                                    path: "/front/assets/json/checkBox.json",
+                                    path: "<?= $prefix ?>/front/assets/json/checkBox.json",
                                     name: "checkbox",
                                     autoplay: false,
                                 })
@@ -240,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 var animation = bodymovin.loadAnimation({
                                     container: checkbox1,
                                     renderer: "svg",
-                                    path: "/front/assets/json/checkBox.json",
+                                    path: "<?= $prefix ?>/front/assets/json/checkBox.json",
                                     name: "checkbox1",
                                     autoplay: false,
                                 })
@@ -269,7 +269,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 var animation = bodymovin.loadAnimation({
                                     container: document.getElementById("checkbo"),
                                     renderer: "svg",
-                                    path: "/front/assets/json/checkBox.json",
+                                    path: "<?= $prefix ?>/front/assets/json/checkBox.json",
                                     name: "checkbox2",
                                     autoplay: false,
                                 })
