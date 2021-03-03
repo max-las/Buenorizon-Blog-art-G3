@@ -26,6 +26,13 @@
 </footer>
 <script src="<?= $prefix ?>/front/assets/js/lottie.js"></script>
 <script src="<?= $prefix ?>/front/assets/js/app.js"></script>
+<script src="<?= $prefix ?>/front/assets/js/cookie.js"></script>
+
+<?
+
+include("../commons/cookies.php");
+
+?>
 
 </body>
 
