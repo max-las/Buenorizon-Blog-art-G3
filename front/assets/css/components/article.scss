@@ -1,6 +1,5 @@
 .article-page {
   padding-top: 8rem;
-
   .title {
     display: flex;
     flex-direction: column;
@@ -9,8 +8,8 @@
   .img-top {
     position: relative;
     margin-top: 5rem;
-    width: 30vw;
-    height: 12rem;
+    width: 60vw;
+    height: 16rem;
     object-fit: cover;
     z-index: 10;
   }
@@ -29,7 +28,8 @@
       background-size: cover;
     }
     img {
-      margin-right: 4rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
       width: 25vw;
       max-height: 70vh;
       object-fit: cover;
@@ -63,12 +63,18 @@
       }
     }
     a {
-      font-size: 14px;
+      .signalez {
+        position: relative;
+        top: 6px;
+      }
+      vertical-align: bottom;
+      // font-size: 14px;
       text-decoration: underline;
     }
   }
   .meta {
     display: flex;
+    align-items: center;
     .author {
       display: flex;
       align-items: center;
@@ -94,4 +100,110 @@
       }
     }
   }
+}
+.article-footer {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-around;
+  .comment {
+    width: 40%;
+    transition: 0.5s;
+
+    &:hover{
+      transform: scale(1.01);
+    }
+    .title {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+      p {
+        margin-left: 0.25rem;
+      }
+    }
+    .content {
+      margin-bottom: 1rem;
+      &:hover ~ hr {
+        background-color: $primary;
+      }
+    }
+    a {
+      font-size: 14px;
+      text-decoration: underline;
+    }
+    hr {
+      width: 90%;
+      margin-top: 2rem;
+      height: 1px;
+      border: none;
+      background-color: white;
+      transition: 0.5s;
+    }
+  }
+  .add-comment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .field {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+    button {
+      font-size: 12px;
+    }
+    .form-group {
+      margin-right: 0.5rem;
+      position: relative;
+      padding: 15px 0 0;
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      top: -7px;
+      input {
+        width: 13rem;
+        color: white;
+        font-weight: 400;
+        font-size: 0.75rem;
+        border: 0;
+        border-bottom: 2px solid white;
+        outline: 0;
+        padding: 6px 0.25rem;
+        background: transparent;
+        transition: border-color 0.2s;
+        &::placeholder {
+          visibility: hidden;
+        }
+        &:placeholder-shown ~ label {
+          cursor: text;
+          top: 22px;
+        }
+        &:focus {
+          border-color: $primary;
+          padding-bottom: 6px;
+          ~ label {
+            position: absolute;
+            top: 0;
+            font-size: 1rem;
+            color: $primary;
+            transition: 0.2s;
+            font-weight: 600;
+          }
+        }
+      }
+      label {
+        white-space: nowrap;
+        margin-left: 0.25rem;
+        display: block;
+        font-weight: 400;
+        position: absolute;
+        top: 0;
+        transition: 0.2s;
+        font-size: 1rem;
+        pointer-events: none;
+      }
+    }
+  }
+}
+canvas{
+  width: 100vw;
 }

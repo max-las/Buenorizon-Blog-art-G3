@@ -3,8 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-    if($_POST['submit'] == 'disconnect'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+    if ($_POST['submit'] == 'disconnect') {
         session_unset();
     }
 }
@@ -23,13 +23,6 @@ if ((subStr($chemin, -1) == '/') && $chemin != '/') {
 
 require_once __DIR__ . '/../../../CLASS_CRUD/membre.class.php';
 $monMembre = new MEMBRE;
-
-if ($chemin == '/') {
-    require_once __DIR__ . '/../../../CLASS_CRUD/article.class.php';
-    $monArticle = new ARTICLE;
-    require_once __DIR__ . '/../../../CLASS_CRUD/motclearticle.class.php';
-    $monMotCleA = new MOTCLEARTICLE;
-}
 
 
 ?>
