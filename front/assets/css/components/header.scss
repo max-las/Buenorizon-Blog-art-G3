@@ -26,7 +26,10 @@ header {
     #logo {
       position: fixed;
       top: 10px;
-      left: 100px;
+      left: 3vw;
+      @media (min-width: 1440px) {
+        left: 5vw;
+      }
       img {
         height: 56px;
       }
