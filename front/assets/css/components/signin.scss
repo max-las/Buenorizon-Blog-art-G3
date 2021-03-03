@@ -21,17 +21,18 @@
     }
 
     .container-signin {
-      padding-top: 10em;
+      padding-top: 6em;
       display: flex;
-      align-items: center;
-      flex-direction: row;
+      justify-content: center;
+      width: 80vw;
 
       .red {
         color: $primary;
       }
       .signin {
+        margin-right: 4rem;
         position: relative;
-        width: 50vw;
+        // width: 50vw;
         margin-top: 32px;
         display: flex;
         align-items: flex-start;
@@ -118,7 +119,11 @@
               margin-top: 3em;
               display: flex;
               align-items: center;
-
+              .checkbox {
+                width: 28px;
+                height: 28px;
+                margin-bottom: 2px;
+              }
               span {
                 font-size: 14px;
                 margin-left: 0.5rem;
@@ -129,17 +134,36 @@
               //   margin-bottom: 2rem;
               display: flex;
               //   width: 200%;
+              .checkbox {
+                width: 28px;
+                height: 28px;
+                margin-bottom: 2px;
+                svg {
+                  width: auto !important;
+                }
+              }
               span {
+                margin-top: 8px;
                 font-size: 14px;
                 margin-left: 0.5rem;
                 display: block;
               }
             }
             .rgpd {
+              display: flex;
+              align-items: center;
               margin-top: 1rem;
               margin-bottom: 2rem;
               display: flex;
               //   width: 200%;
+              .checkbox {
+                width: 28px;
+                height: 28px;
+                margin-bottom: 2px;
+                svg {
+                  width: auto !important;
+                }
+              }
               span {
                 font-size: 14px;
                 margin-left: 0.5rem;
@@ -168,19 +192,39 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-left: 2rem;
       .profil {
         margin-left: 4.5em;
         .content2 {
           background-image: url("data:image/svg+xml,%3Csvg width='935' height='438' viewBox='0 0 935 438' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect y='0.0610352' width='935' height='437.939' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:overlay' opacity='0.15'%3E%3Cpath d='M556 0.000350903L0 0V226.03C0 226.03 225.293 259.066 376 209.032C526.707 158.999 698.195 79.4308 556 0.000350903Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-99.939' width='1135' height='637.939' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0.0610352' x2='204.658' y2='609.814' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
           padding: 2em;
           background-size: cover;
-          // width: 15rem;
+          width: 20vw;
           // height: 20rem;
-
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          #pseudoPaste {
+            text-align: center;
+          }
+          #eMailPaste {
+            text-align: center;
+          }
+          #nomPaste {
+            text-align: center;
+          }
           .content {
             display: flex;
             flex-direction: column;
-
+            align-items: center;
+            width: 100%;
+            p{
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+            hr {
+              width: 20vw;
+            }
             .nomprenom {
               display: flex;
               flex-direction: row;
@@ -202,7 +246,10 @@
   }
 
   .content3 {
-    margin-top: 8em;
+      p{
+          font-size: 14px;
+      }
+    margin-top: 12em;
     width: 70vw;
     background-image: url("data:image/svg+xml,%3Csvg width='935' height='438' viewBox='0 0 935 438' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_b)'%3E%3Crect y='0.0610352' width='935' height='437.939' fill='url(%23paint0_linear)'/%3E%3C/g%3E%3Cg style='mix-blend-mode:overlay' opacity='0.15'%3E%3Cpath d='M556 0.000350903L0 0V226.03C0 226.03 225.293 259.066 376 209.032C526.707 158.999 698.195 79.4308 556 0.000350903Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_b' x='-100' y='-99.939' width='1135' height='637.939' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeGaussianBlur in='BackgroundImage' stdDeviation='50'/%3E%3CfeComposite in2='SourceAlpha' operator='in' result='effect1_backgroundBlur'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_backgroundBlur' result='shape'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear' x1='0' y1='0.0610352' x2='204.658' y2='609.814' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2312475E' stop-opacity='0.15'/%3E%3Cstop offset='1' stop-color='%2312475E' stop-opacity='0.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
     padding: 2em;

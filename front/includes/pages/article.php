@@ -86,8 +86,8 @@ if ($article) {
 
 ?>
 <div class="container">
-    <!-- <canvas id="canvas3d"></canvas> -->
     <div class="article-page">
+        <canvas class="canvas-article" id="canvas3d"></canvas>
         <div class="title">
             <h1><?= $libTitrArt ?></h1>
             <h2><?= $libChapoArt ?></h2>

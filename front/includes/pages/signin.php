@@ -84,179 +84,239 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container-signin">
 
             <div class="signin">
-                <div class="infosignin">
 
 
 
-                    <div class="content1">
-                        <form class="form-inscription" method="post">
+                <div class="content1">
+                    <form class="form-inscription" method="post">
 
-                            <div class="form-group">
-                                <input type="input" name="pseudoMemb" id="pseudoMemb" placeholder=" ">
-                                <label>Pseudo<b class=red>*</b><label>
-                            </div>
+                        <div class="form-group">
+                            <input type="input" name="pseudoMemb" id="pseudoMemb" placeholder=" ">
+                            <label>Pseudo<b class=red>*</b><label>
+                        </div>
 
-                            <div class="form-group">
-                                <input type="input" name="prenomMemb" id="prenomMemb" placeholder=" ">
-                                <label>Prénom<label>
-                            </div>
+                        <div class="form-group">
+                            <input type="input" name="prenomMemb" id="prenomMemb" placeholder=" ">
+                            <label>Prénom<label>
+                        </div>
 
-                            <div class="form-group">
-                                <input type="input" name="nomMemb" id="nomMemb" placeholder=" ">
-                                <label>Nom<label>
-                            </div>
+                        <div class="form-group">
+                            <input type="input" name="nomMemb" id="nomMemb" placeholder=" ">
+                            <label>Nom<label>
+                        </div>
 
-                            <div class="form-group">
-                                <input type="input" name="eMailMemb" id="eMailMemb" placeholder=" ">
-                                <label>Adresse mail <b class=red>*</b><label>
-                            </div>
-
-
-                            <script src="<?= $prefix ?>/front/assets/js/lottie.js"></script>
+                        <div class="form-group">
+                            <input type="input" name="eMailMemb" id="eMailMemb" placeholder=" ">
+                            <label>Adresse mail <b class=red>*</b><label>
+                        </div>
 
 
+                        <script src="<?= $prefix ?>/front/assets/js/lottie.js"></script>
 
-                            <div class="form-group">
-                                <input name="passMemb" id="passMemb" type="password" placeholder=" ">
-                                <div id="eyeSignin1" class="eye"></div>
-                                <label>Mot de passe<b class=red>*</b><label>
-                            </div>
-                            <script>
-                                let toggleEyeSignin1 = false
-                                const eyeSignin1 = document.getElementById("eyeSignin1")
-                                const inputEyeSignin1 = document.getElementById("passMemb")
-                                var animation = bodymovin.loadAnimation({
-                                    container: eyeSignin1,
-                                    renderer: "svg",
-                                    path: "/front/assets/json/visibilityV2.json",
-                                    name: "eyeSignin1",
-                                })
-                                lottie.setSpeed(1.25, "eyeSignin1")
-                                eyeSignin1.addEventListener("click", () => {
-                                    toggleEyeSignin1 = !toggleEyeSignin1
-                                    lottie.play("eyeSignin1")
-                                    toggleEyeSignin1
-                                        ?
-                                        lottie.setDirection(-1, "eyeSignin1") :
-                                        lottie.setDirection(1, "eyeSignin1")
-                                    inputEyeSignin1.type =
-                                        inputEyeSignin1.type === "password" ? "text" : "password"
-                                })
-                            </script>
-                            <div class="form-group">
-                                <input class="input-signin2" name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
-                                <div id="eyeSignin2" class="eye"></div>
-                                <label>Confirmer le mot de passe <b class=red>*</b><label>
-                            </div>
-                            <script>
-                                let toggleEyeSignin2 = false
-                                const eyeSignin2 = document.getElementById("eyeSignin2")
-                                const inputEyeSignin2 = document.getElementsByClassName("input-signin2")[0]
-                                var animation = bodymovin.loadAnimation({
-                                    container: eyeSignin2,
-                                    renderer: "svg",
-                                    path: "/front/assets/json/visibilityV2.json",
-                                    name: "eyeSignin2",
-                                })
-                                lottie.setSpeed(1.25, "eyeSignin2")
-                                eyeSignin2.addEventListener("click", () => {
-                                    toggleEyeSignin2 = !toggleEyeSignin2
-                                    lottie.play("eyeSignin2")
-                                    toggleEyeSignin2
-                                        ?
-                                        lottie.setDirection(-1, "eyeSignin2") :
-                                        lottie.setDirection(1, "eyeSignin2")
-                                    inputEyeSignin2.type =
-                                        inputEyeSignin2.type === "password" ? "text" : "password"
-                                })
-                            </script>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#pseudoMemb').on("keyup paste", function() {
-                                        if ($(this).val() == '') {
-                                            $('#pseudoPaste').text('Pseudo');
-                                        } else {
-                                            $('#pseudoPaste').text($(this).val());
-                                        }
-                                    });
-                                    $('#prenomMemb, #nomMemb').on("keyup paste", function() {
-                                        var prenom = $('#prenomMemb').val();
-                                        var nom = $('#nomMemb').val();
-                                        if (prenom + nom == '') {
-                                            $('#nomPaste').text('Prénom et Nom');
-                                        } else {
-                                            $('#nomPaste').text(prenom + ' ' + nom);
-                                        }
-                                    });
-                                    $('#eMailMemb').on("keyup paste", function() {
-                                        if ($(this).val() == '') {
-                                            $('#eMailPaste').text('Adresse E-mail');
-                                        } else {
-                                            $('#eMailPaste').text($(this).val());
-                                        }
-                                    });
+
+
+                        <div class="form-group">
+                            <input name="passMemb" id="passMemb" type="password" placeholder=" ">
+                            <div id="eyeSignin1" class="eye"></div>
+                            <label>Mot de passe<b class=red>*</b><label>
+                        </div>
+                        <script>
+                            let toggleEyeSignin1 = false
+                            const eyeSignin1 = document.getElementById("eyeSignin1")
+                            const inputEyeSignin1 = document.getElementById("passMemb")
+                            var animation = bodymovin.loadAnimation({
+                                container: eyeSignin1,
+                                renderer: "svg",
+                                path: "<?= $prefix ?>/front/assets/json/visibilityV2.json",
+                                name: "eyeSignin1",
+                            })
+                            lottie.setSpeed(1.25, "eyeSignin1")
+                            eyeSignin1.addEventListener("click", () => {
+                                toggleEyeSignin1 = !toggleEyeSignin1
+                                lottie.play("eyeSignin1")
+                                toggleEyeSignin1
+                                    ?
+                                    lottie.setDirection(-1, "eyeSignin1") :
+                                    lottie.setDirection(1, "eyeSignin1")
+                                inputEyeSignin1.type =
+                                    inputEyeSignin1.type === "password" ? "text" : "password"
+                            })
+                        </script>
+                        <div class="form-group">
+                            <input class="input-signin2" name="passMembVerif" id="passMembVerif" type="password" placeholder=" ">
+                            <div id="eyeSignin2" class="eye"></div>
+                            <label>Confirmer le mot de passe <b class=red>*</b><label>
+                        </div>
+                        <script>
+                            let toggleEyeSignin2 = false
+                            const eyeSignin2 = document.getElementById("eyeSignin2")
+                            const inputEyeSignin2 = document.getElementsByClassName("input-signin2")[0]
+                            var animation = bodymovin.loadAnimation({
+                                container: eyeSignin2,
+                                renderer: "svg",
+                                path: "<?= $prefix ?>/front/assets/json/visibilityV2.json",
+                                name: "eyeSignin2",
+                            })
+                            lottie.setSpeed(1.25, "eyeSignin2")
+                            eyeSignin2.addEventListener("click", () => {
+                                toggleEyeSignin2 = !toggleEyeSignin2
+                                lottie.play("eyeSignin2")
+                                toggleEyeSignin2
+                                    ?
+                                    lottie.setDirection(-1, "eyeSignin2") :
+                                    lottie.setDirection(1, "eyeSignin2")
+                                inputEyeSignin2.type =
+                                    inputEyeSignin2.type === "password" ? "text" : "password"
+                            })
+                        </script>
+                        <script>
+                            $(document).ready(function() {
+                                $('#pseudoMemb').on("keyup paste", function() {
+                                    if ($(this).val() == '') {
+                                        $('#pseudoPaste').text('Pseudo');
+                                    } else {
+                                        $('#pseudoPaste').text($(this).val());
+                                    }
                                 });
-                            </script>
+                                $('#prenomMemb, #nomMemb').on("keyup paste", function() {
+                                    var prenom = $('#prenomMemb').val();
+                                    var nom = $('#nomMemb').val();
+                                    if (prenom + nom == '') {
+                                        $('#nomPaste').text('Prénom et Nom');
+                                    } else {
+                                        $('#nomPaste').text(prenom + ' ' + nom);
+                                    }
+                                });
+                                $('#eMailMemb').on("keyup paste", function() {
+                                    if ($(this).val() == '') {
+                                        $('#eMailPaste').text('Adresse E-mail');
+                                    } else {
+                                        $('#eMailPaste').text($(this).val());
+                                    }
+                                });
+                            });
+                        </script>
 
-                            <div class="coche">
-                                <div class="souvenir">
-                                    <svg name="souvMembSvg" id="souvMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    <input type="hidden" name="souvMemb" id="souvMemb" value="0" />
-                                    <span>Se souvenir de moi</span>
-                                </div>
-
-                                <div class="cdu">
-                                    <svg name="condMembSvg" id="condMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    <input type="hidden" name="condMemb" id="condMemb" value="1" />
-                                    <span>Je reconnais avoir lu et compris les <u><a href="<?= $prefix ?>/cgu" style="color:#FFFFFF;">Conditions générales d’utilisation</a></u> et je les accepte</span>
-                                </div>
-                                <div class="rgpd">
-                                    <svg name="condMembSvg" id="condMembSvg" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.40039 8.11131L9.10033 10.778L19.0001 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M17.1997 9.00071V15.2231C17.1997 15.6946 17.01 16.1468 16.6725 16.4802C16.3349 16.8136 15.8771 17.0009 15.3997 17.0009H2.79996C2.32258 17.0009 1.86476 16.8136 1.5272 16.4802C1.18964 16.1468 1 15.6946 1 15.2231V2.77832C1 2.30681 1.18964 1.85461 1.5272 1.5212C1.86476 1.18779 2.32258 1.00049 2.79996 1.00049H12.6998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    <input type="hidden" name="condMemb" id="condMemb" value="1" />
-                                    <span>J'accepte qu'EclaTech <a href="<?= $prefix ?>#rgpd" style="color:#FFFFFF;">stocke mes données personnelles</a></span>
-                                </div>
+                        <div class="coche">
+                            <div class="souvenir">
+                                <div id="checkbox" class="checkbox"> <input type="hidden" name="souvMemb" id="souvMemb" value="0" /></div>
+                                <span>Se souvenir de moi</span>
                             </div>
-                            <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
+                            <script>
+                                let toggleCheckbox = false
+                                const checkbox = document.getElementById("checkbox")
+                                let inputCheckbox = document.getElementById("souvMemb")
+                                var animation = bodymovin.loadAnimation({
+                                    container: checkbox,
+                                    renderer: "svg",
+                                    path: "<?= $prefix ?>/front/assets/json/checkBox.json",
+                                    name: "checkbox",
+                                    autoplay: false,
+                                })
 
-                            <p style="color: red;">
-                                <? if(isset($e)){echo $e;} ?>
-                            </p>
-                            <p style="color: green;">
-                                <? if($created){echo $success;} ?>
-                            </p>
+                                function parseBool(char) {
+                                    return char == "true"
+                                }
+                                checkbox.addEventListener("click", () => {
+                                    toggleCheckbox = !toggleCheckbox
+                                    inputCheckbox.value = !parseBool(inputCheckbox.value)
+                                    toggleCheckbox
+                                        ?
+                                        lottie.setDirection(1, "checkbox") :
+                                        lottie.setDirection(-1, "checkbox")
+                                    lottie.play("checkbox")
+                                })
+                            </script>
+                            <div class="cdu">
+                                <div id="checkbox1" class="checkbox">
+                                    <input type="hidden" name="condMemb" id="condMemb" value="1" />
+                                </div>
+                                <span>Je reconnais avoir lu et compris les <u><a href="<?= $prefix ?>/cgu" style="color:#FFFFFF;">Conditions générales d’utilisation</a></u> et je les accepte</span>
+                            </div>
+                            <script>
+                                let toggleCheckbox1 = false
+                                const checkbox1 = document.getElementById("checkbox1")
+                                let inputCheckbox1 = document.getElementById("condMemb")
+                                var animation = bodymovin.loadAnimation({
+                                    container: checkbox1,
+                                    renderer: "svg",
+                                    path: "<?= $prefix ?>/front/assets/json/checkBox.json",
+                                    name: "checkbox1",
+                                    autoplay: false,
+                                })
 
-                            <button type="submit">S'enregistrer</button>
-                        </form>
-                    </div>
+
+                                checkbox1.addEventListener("click", () => {
+                                    toggleCheckbox1 = !toggleCheckbox1
+                                    inputCheckbox1.value = !parseBool(inputCheckbox1.value)
+                                    toggleCheckbox1
+                                        ?
+                                        lottie.setDirection(1, "checkbox1") :
+                                        lottie.setDirection(-1, "checkbox1")
+                                    lottie.play("checkbox1")
+                                })
+                            </script>
+                            <div class="rgpd">
+                                <div id="checkbo" class="checkbox">
+                                    <input type="hidden" name="cond1Memb" id="cond1Memb" value="1" />
+                                </div>
+                                <span>J'accepte qu'EclaTech <a href="<?= $prefix ?>#rgpd" style="color:#FFFFFF;">stocke <br>mes données personnelles</a></span>
+                            </div>
+                            <script>
+                                let toggleCheckbox2 = false
+                                const checkbox2 = document.getElementById("checkbo")
+                                let inputCheckbox2 = document.getElementById("cond1Memb")
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById("checkbo"),
+                                    renderer: "svg",
+                                    path: "<?= $prefix ?>/front/assets/json/checkBox.json",
+                                    name: "checkbox2",
+                                    autoplay: false,
+                                })
+
+                                checkbox2.addEventListener("click", () => {
+                                    toggleCheckbox2 = !toggleCheckbox2
+                                    inputCheckbox2.value = !parseBool(inputCheckbox2.value)
+                                    toggleCheckbox2
+                                        ?
+                                        lottie.setDirection(1, "checkbox2") :
+                                        lottie.setDirection(-1, "checkbox2")
+                                    lottie.play("checkbox2")
+                                })
+                            </script>
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="<?= $reCaptchaPublicKey ?>"></div>
+
+                        <p style="color: red;">
+                            <? if(isset($e)){echo $e;} ?>
+                        </p>
+                        <p style="color: green;">
+                            <? if($created){echo $success;} ?>
+                        </p>
+
+                        <button type="submit">S'enregistrer</button>
+                    </form>
                 </div>
+
             </div>
 
             <div class="visualprofil">
                 <div class="profil">
                     <div class="content2">
                         <form class="content">
-                            <div>
-                                <svg width="128" height="128" viewBox="0 0 128 128" fill="white" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M64 0C28.672 0 0 28.672 0 64C0 99.328 28.672 128 64 128C99.328 128 128 99.328 128 64C128 28.672 99.328 0 64 0ZM64 19.2C74.624 19.2 83.2 27.776 83.2 38.4C83.2 49.024 74.624 57.6 64 57.6C53.376 57.6 44.8 49.024 44.8 38.4C44.8 27.776 53.376 19.2 64 19.2ZM64 110.08C48 110.08 33.856 101.888 25.6 89.472C25.792 76.736 51.2 69.76 64 69.76C76.736 69.76 102.208 76.736 102.4 89.472C94.144 101.888 80 110.08 64 110.08Z" fill="white" />
-                                </svg>
-                            </div>
+
+                            <svg width="128" height="128" viewBox="0 0 128 128" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M64 0C28.672 0 0 28.672 0 64C0 99.328 28.672 128 64 128C99.328 128 128 99.328 128 64C128 28.672 99.328 0 64 0ZM64 19.2C74.624 19.2 83.2 27.776 83.2 38.4C83.2 49.024 74.624 57.6 64 57.6C53.376 57.6 44.8 49.024 44.8 38.4C44.8 27.776 53.376 19.2 64 19.2ZM64 110.08C48 110.08 33.856 101.888 25.6 89.472C25.792 76.736 51.2 69.76 64 69.76C76.736 69.76 102.208 76.736 102.4 89.472C94.144 101.888 80 110.08 64 110.08Z" fill="white" />
+                            </svg>
+
 
                             <!-- Ceci est provisoire est devra changer en fonction de se que l utilisateur rentre -->
                             <div>
                                 <p id="pseudoPaste">Pseudo</p>
                             </div>
-                            <div>
-                                <hr>
-                            </div>
+
+                            <hr>
+
                             <div>
                                 <p id="nomPaste">Prénom et Nom</p>
                             </div>
