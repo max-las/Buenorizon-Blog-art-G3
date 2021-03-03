@@ -22,7 +22,6 @@
         background-size: cover;
         background-position-y: center;
         background-position-x: center;
-        background-image: url(./../../assets/img/drone-carrousel.jpg);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -37,6 +36,18 @@
             font-size: 4rem;
           }
         }
+      }
+
+      .dronisos {
+        background-image: url(./../../assets/img/drone-carrousel.jpg);
+      }
+
+      .franceDigitale {
+        background-image: url(./../../assets/img/france-digitale-tour.png);
+      }
+
+      .eric {
+        background-image: url(./../../assets/img/eric-carreel.jpg);
       }
     }
   }

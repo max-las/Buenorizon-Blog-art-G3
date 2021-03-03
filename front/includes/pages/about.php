@@ -27,6 +27,6 @@ require_once('../commons/header.php');
 
     
 </div>
-    <?php
-    require_once('../commons/footer.php');
-    ?>
+<?php
+require_once('../commons/footer.php');
+?>
