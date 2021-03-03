@@ -172,7 +172,7 @@ if ($article) {
             <div class="content">
                 <p><?= $row['libCom'] ?></p>
             </div>
-            <a class="reponse" id="reponse<?= $row['numSeqCom'] ?>" href="<?= isset($_SESSION['pseudoMemb']) ? 'javascript:void(0)' : $prefix.'login' ?>">Répondre</a>
+            <a class="reponse" id="reponse<?= $row['numSeqCom'] ?>" href="<?= isset($_SESSION['pseudoMemb']) ? 'javascript:void(0)' : $prefix.'/login' ?>">Répondre</a>
         </div>
     </div>
     <?php if(!empty($repE) && $_POST["numRepCom"] == $row['numSeqCom']){ ?>
