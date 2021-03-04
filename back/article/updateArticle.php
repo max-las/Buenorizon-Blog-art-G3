@@ -359,43 +359,43 @@ if ($dtCreArt) {
             </script>
 
             <?php
-            foreach ($allLangs as $row) {
-                $group = $monAngle->get_AllAnglesByLang($row['numLang']);
-
-                echo "<div class=\"field langSelect\" id=\"" . "angl" . $row['numLang'] . "\">";
-                echo "<label class=\"control-label\" for=\"" . "ang" . $row['numLang'] . "\"><b>Angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>";
-                echo "<br><select class=\"anglSelect\" name=\"" . "ang" . $row['numLang'] . "\" id=\"" . "ang" . $row['numLang'] . "\">";
-                foreach ($group as $raw) {
-                    if ($raw["numAngl"] === $numAngl) {
-                        $selected = "selected";
-                    } else {
-                        $selected = "";
-                    }
-                    echo '<option value="' . $raw["numAngl"] . '"' . $selected . '>' . $raw["libAngl"] . '</option>';
-                }
-                echo "</select>";
-                echo "</div>";
-            }
-            ?>
-
-            <?php
             // foreach ($allLangs as $row) {
-            //     $group = $maThem->get_AllThematiquesByLang($row['numLang']);
+            //     $group = $monAngle->get_AllAnglesByLang($row['numLang']);
 
-            //     echo "<div class=\"field langSelect\" id=\"" . "them" . $row['numLang'] . "\">";
-            //     echo "<label class=\"control-label\" for=\"" . $row['numLang'] . "\"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>";
-            //     echo "<br><select class=\"themSelect\" name=\"" . $row['numLang'] . "\" id=\"" . $row['numLang'] . "\">";
+            //     echo "<div class=\"field langSelect\" id=\"" . "angl" . $row['numLang'] . "\">";
+            //     echo "<label class=\"control-label\" for=\"" . "ang" . $row['numLang'] . "\"><b>Angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>";
+            //     echo "<br><select class=\"anglSelect\" name=\"" . "ang" . $row['numLang'] . "\" id=\"" . "ang" . $row['numLang'] . "\">";
             //     foreach ($group as $raw) {
-            //         if ($raw["numThem"] === $numThem) {
+            //         if ($raw["numAngl"] === $numAngl) {
             //             $selected = "selected";
             //         } else {
             //             $selected = "";
             //         }
-            //         echo '<option value="' . $raw["numThem"] . '"' . $selected . '>' . $raw["libThem"] . '</option>';
+            //         echo '<option value="' . $raw["numAngl"] . '"' . $selected . '>' . $raw["libAngl"] . '</option>';
             //     }
             //     echo "</select>";
             //     echo "</div>";
             // }
+            ?>
+
+            <?php
+            foreach ($allLangs as $row) {
+                $group = $maThem->get_AllThematiquesByLang($row['numLang']);
+
+                echo "<div class=\"field langSelect\" id=\"" . "them" . $row['numLang'] . "\">";
+                echo "<label class=\"control-label\" for=\"" . $row['numLang'] . "\"><b>Thématique :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>";
+                echo "<br><select class=\"themSelect\" name=\"" . $row['numLang'] . "\" id=\"" . $row['numLang'] . "\">";
+                foreach ($group as $raw) {
+                    if ($raw["numThem"] === $numThem) {
+                        $selected = "selected";
+                    } else {
+                        $selected = "";
+                    }
+                    echo '<option value="' . $raw["numThem"] . '"' . $selected . '>' . $raw["libThem"] . '</option>';
+                }
+                echo "</select>";
+                echo "</div>";
+            }
             ?>
 
             <?php 
